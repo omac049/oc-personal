@@ -5,7 +5,7 @@ import { experienceData } from '@/data/experience';
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 bg-gray-50">
+    <section id="experience" className="py-20 bg-gray-50 jade-pattern">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -14,18 +14,18 @@ export default function Experience() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {experienceData.title}
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="jade-text-gradient">{experienceData.title}</span>
           </h2>
           <p className="text-xl text-gray-600 mb-8">
             {experienceData.subtitle}
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-teal-500 to-emerald-600 mx-auto"></div>
         </motion.div>
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-600"></div>
+          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-teal-500 to-emerald-600"></div>
 
           <div className="space-y-12">
             {experienceData.timeline.map((job, index) => (
@@ -40,7 +40,7 @@ export default function Experience() {
                 } flex-col md:justify-between`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full border-4 border-white shadow-lg z-10"></div>
+                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-1/2 w-4 h-4 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-full border-4 border-white shadow-lg z-10"></div>
 
                 {/* Content */}
                 <div className={`w-full md:w-5/12 ${
@@ -52,14 +52,14 @@ export default function Experience() {
                         {job.position}
                       </h3>
                       <div className="flex flex-wrap items-center gap-4 mb-2">
-                        <h4 className="text-lg font-semibold text-blue-600">
+                        <h4 className="text-lg font-semibold text-teal-600">
                           {job.company}
                         </h4>
                         <span className="text-sm text-gray-500">
                           {job.location}
                         </span>
                       </div>
-                      <p className="text-sm font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-full inline-block">
+                      <p className="text-sm font-medium text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full inline-block">
                         {job.period}
                       </p>
                     </div>
@@ -73,7 +73,7 @@ export default function Experience() {
                       <ul className="space-y-2">
                         {job.achievements.map((achievement, achIndex) => (
                           <li key={achIndex} className="flex items-start space-x-2">
-                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                            <div className="w-2 h-2 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-full mt-2 flex-shrink-0"></div>
                             <span className="text-gray-700 text-sm">{achievement}</span>
                           </li>
                         ))}

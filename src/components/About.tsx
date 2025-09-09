@@ -5,7 +5,7 @@ import { aboutData } from '@/data/about';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-gray-50 jade-pattern">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -14,10 +14,10 @@ export default function About() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {aboutData.title}
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="jade-text-gradient">{aboutData.title}</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-teal-500 to-emerald-600 mx-auto"></div>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -58,7 +58,7 @@ export default function About() {
                     viewport={{ once: true }}
                     className="flex items-center space-x-4"
                   >
-                    <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg font-bold text-lg min-w-[80px] text-center">
+                    <div className="bg-gradient-to-r from-teal-500 to-emerald-600 text-white px-4 py-2 rounded-lg font-bold text-lg min-w-[80px] text-center">
                       {stat.number}
                     </div>
                     <p className="text-gray-700 font-medium">{stat.label}</p>

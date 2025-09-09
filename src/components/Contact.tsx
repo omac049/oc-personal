@@ -18,7 +18,7 @@ const iconMap: { [key: string]: typeof faLinkedin } = {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white">
+    <section id="contact" className="py-20 bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -30,10 +30,10 @@ export default function Contact() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             {socialsData.cta.title}
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
             {socialsData.cta.subtitle}
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-teal-400 to-emerald-400 mx-auto"></div>
         </motion.div>
 
         {/* Contact Methods */}
@@ -48,15 +48,15 @@ export default function Contact() {
             href={`mailto:${socialsData.email}`}
             className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl hover:bg-white/20 transition-all duration-300 group"
           >
-            <FontAwesomeIcon icon={faEnvelope} className="text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform duration-300" />
+            <FontAwesomeIcon icon={faEnvelope} className="text-3xl text-teal-400 mb-4 group-hover:scale-110 transition-transform duration-300" />
             <h3 className="text-xl font-semibold mb-2">Email</h3>
-            <p className="text-blue-100">{socialsData.email}</p>
+            <p className="text-emerald-100">{socialsData.email}</p>
           </a>
 
           <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl">
-            <FontAwesomeIcon icon={faPhone} className="text-3xl text-purple-400 mb-4" />
+            <FontAwesomeIcon icon={faPhone} className="text-3xl text-emerald-400 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Phone</h3>
-            <p className="text-blue-100">{socialsData.phone}</p>
+            <p className="text-emerald-100">{socialsData.phone}</p>
           </div>
         </motion.div>
 
@@ -104,7 +104,7 @@ export default function Contact() {
             href={`mailto:${socialsData.cta.email}`}
             whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-block bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             {socialsData.cta.buttonText}
           </motion.a>

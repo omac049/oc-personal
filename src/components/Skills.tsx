@@ -38,13 +38,13 @@ export default function Skills() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {skillsData.title}
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="jade-text-gradient">{skillsData.title}</span>
           </h2>
           <p className="text-xl text-gray-600 mb-8">
             {skillsData.subtitle}
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-teal-500 to-emerald-600 mx-auto"></div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -76,7 +76,7 @@ export default function Skills() {
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-lg flex items-center justify-center">
                           <FontAwesomeIcon 
                             icon={iconMap[skill.icon]} 
                             className="text-white text-sm"
@@ -86,7 +86,7 @@ export default function Skills() {
                           {skill.name}
                         </span>
                       </div>
-                      <span className="font-bold text-blue-600">
+                      <span className="font-bold text-teal-600">
                         {skill.proficiency}%
                       </span>
                     </div>
@@ -101,7 +101,7 @@ export default function Skills() {
                           ease: "easeOut"
                         }}
                         viewport={{ once: true }}
-                        className="bg-gradient-to-r from-blue-500 to-purple-600 h-full rounded-full"
+                        className="bg-gradient-to-r from-teal-500 to-emerald-600 h-full rounded-full"
                       />
                     </div>
                   </motion.div>
