@@ -3,34 +3,14 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-  faSearch, faFileText, faLink, faCog, faMobileAlt, faMapMarkerAlt,
-  faShoppingCart, faCode, faChartLine, faSearchPlus, faChartBar,
-  faEdit, faLanguage, faRobot, faBrain, faEye, faArrowUp, faPlay,
-  faGlobe, faBolt, faShield, faMagic, faGem, faStar,
-  faFire, faLightbulb, faRocket, faAtom, faSparkles,
-  faCrown, faInfinity, faWandMagicSparkles, faHeart
+  faCog, faBrain, faChartLine, faGlobe, faShoppingCart, faLightbulb,
+  faCrown, faInfinity, faWandMagicSparkles, faWandSparkles, faGem, faStar,
+  faAtom, faHeart, faRocket, faMagic
 } from '@fortawesome/free-solid-svg-icons';
-import { skillsData } from '@/data/skills';
 import SkillModal from './SkillModal';
 import { useRef, useState, useEffect, useCallback } from 'react';
 
-const iconMap: { [key: string]: typeof faSearch } = {
-  'search': faSearch,
-  'file-text': faFileText,
-  'link': faLink,
-  'cog': faCog,
-  'mobile-alt': faMobileAlt,
-  'map-marker-alt': faMapMarkerAlt,
-  'shopping-cart': faShoppingCart,
-  'code': faCode,
-  'chart-line': faChartLine,
-  'search-plus': faSearchPlus,
-  'chart-bar': faChartBar,
-  'analytics': faChartBar,
-  'edit': faEdit,
-  'language': faLanguage,
-  'robot': faRobot
-};
+
 
 // Creative skill universe data with magical SEO themes
 const skillUniverse = [
@@ -126,7 +106,6 @@ export default function Skills() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [hoveredPlanet, setHoveredPlanet] = useState<string | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -138,13 +117,6 @@ export default function Skills() {
 
   useEffect(() => {
     setMounted(true);
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const openSkillModal = useCallback((skill: { name: string; icon: string; proficiency: number }) => {
@@ -182,10 +154,10 @@ export default function Skills() {
             ease: "easeInOut"
           }}
         >
-          <FontAwesomeIcon 
-            icon={[faSparkles, faGem, faStar, faAtom][Math.floor(Math.random() * 4)]} 
-            className="text-blue-400 opacity-30 text-xs" 
-          />
+                     <FontAwesomeIcon 
+             icon={[faWandSparkles, faGem, faStar, faAtom][Math.floor(Math.random() * 4)]} 
+             className="text-blue-400 opacity-30 text-xs" 
+           />
         </motion.div>
       ))}
     </div>
@@ -412,8 +384,8 @@ export default function Skills() {
         <FontAwesomeIcon icon={faInfinity} className="text-amber-400 text-2xl" />
       </motion.div>
 
-      {/* Orbiting Elements */}
-      {[faSparkles, faGem, faStar].map((icon, i) => (
+             {/* Orbiting Elements */}
+       {[faWandSparkles, faGem, faStar].map((icon, i) => (
         <motion.div
           key={i}
           className="absolute w-4 h-4 flex items-center justify-center"
@@ -593,9 +565,9 @@ export default function Skills() {
               ease: "easeInOut"
             }}
           >
-            <FontAwesomeIcon icon={faHeart} className="text-pink-400" />
-            Hover over each skill planet to discover the magic within
-            <FontAwesomeIcon icon={faSparkles} className="text-amber-400" />
+                         <FontAwesomeIcon icon={faHeart} className="text-pink-400" />
+             Hover over each skill planet to discover the magic within
+             <FontAwesomeIcon icon={faWandSparkles} className="text-amber-400" />
           </motion.p>
 
           {/* Call to Action */}
