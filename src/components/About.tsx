@@ -178,8 +178,6 @@ export default function About() {
           className="absolute z-5 pointer-events-none"
           style={{
             ...element.position,
-            x: useTransform(smoothMouseX, [-100, 100], [-15 + index * 2, 15 - index * 2]),
-            y: useTransform(smoothMouseY, [-100, 100], [-10 + index * 1.5, 10 - index * 1.5]),
           }}
           animate={{
             rotate: [0, 360],
@@ -580,7 +578,7 @@ export default function About() {
                        whileInView={{ opacity: 1 }}
                        transition={{ delay: 1.2, duration: 1 }}
                      >
-                       I'm a forward-thinking SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
+                       I&apos;m a forward-thinking SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
                      </motion.p>
                    </div>
                  </motion.div>
@@ -1036,7 +1034,7 @@ export default function About() {
                        whileInView={{ opacity: 1 }}
                        transition={{ delay: 1.8, duration: 1 }}
                      >
-                       Whether it's optimizing content for AI search engines, implementing AI-driven SEO workflows, or developing LLM-enhanced content strategies, I'm committed to delivering cutting-edge results that future-proof your business in the evolving search landscape.
+                                                Whether it&apos;s optimizing content for AI search engines, implementing AI-driven SEO workflows, or developing LLM-enhanced content strategies, I&apos;m committed to delivering cutting-edge results that future-proof your business in the evolving search landscape.
                      </motion.p>
                    </div>
                  </motion.div>
@@ -1080,8 +1078,8 @@ export default function About() {
                        z: 50
                      }}
                      style={{
-                       x: useTransform(smoothMouseX, [-100, 100], [-8 + index * 2, 8 - index * 2]),
-                       y: useTransform(smoothMouseY, [-100, 100], [-5 + index, 5 - index]),
+                       x: mouseParallaxX,
+                       y: mouseParallaxY,
                      }}
                    >
                      <motion.div 
