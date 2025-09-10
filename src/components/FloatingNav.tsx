@@ -69,11 +69,10 @@ export default function FloatingNav() {
         scale: isVisible ? 1 : 0.8
       }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], type: "spring", bounce: 0.2 }}
-      className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 pointer-events-none"
-      style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
+      className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-40 ${isVisible ? 'pointer-events-auto' : 'pointer-events-none'}`}
     >
       <motion.div 
-        className="bg-slate-900/80 backdrop-blur-xl border border-blue-500/30 rounded-2xl p-3 shadow-2xl"
+        className="bg-slate-900/80 backdrop-blur-xl border border-blue-500/30 rounded-2xl p-3 shadow-2xl mx-auto"
         whileHover={{ 
           scale: 1.02,
           boxShadow: "0 20px 40px rgba(59, 130, 246, 0.2)"
@@ -95,7 +94,7 @@ export default function FloatingNav() {
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`relative p-3 rounded-xl transition-all duration-300 ${
+              className={`relative p-3 rounded-xl transition-all duration-300 cursor-pointer ${
                 activeSection === item.id
                   ? 'text-white bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg'
                   : 'text-gray-300 hover:text-white hover:bg-white/10'
