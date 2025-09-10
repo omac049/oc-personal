@@ -28,7 +28,7 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight">
             {socialsData.cta.title}
           </h2>
           <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">

@@ -223,7 +223,7 @@ export default function About() {
             }}
           >
             <motion.h2 
-              className="text-6xl md:text-8xl font-black text-white mb-8 leading-none"
+              className="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight"
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               }}

@@ -288,7 +288,7 @@ export default function Hero() {
         >
           <AnimatedText
             text={heroData.name}
-            className="text-5xl md:text-7xl font-bold leading-tight"
+            className="text-5xl md:text-6xl font-light tracking-tight"
             stagger={0.05}
             delay={0.3}
             as="h1"
