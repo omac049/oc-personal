@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { aboutData } from '@/data/about';
 import AnimatedText from './AnimatedText';
 import ParallaxContainer from './ParallaxContainer';
+import InteractiveBackground from './InteractiveBackground';
 
 export default function About() {
   const containerRef = useRef<HTMLElement>(null);
@@ -17,12 +18,9 @@ export default function About() {
   const statsY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
 
   return (
-    <section ref={containerRef} id="about" className="py-20 bg-gray-50 jade-pattern relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <ParallaxContainer speed={0.2} className="absolute inset-0">
-        <div className="absolute top-40 right-10 w-32 h-32 bg-teal-400/20 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 left-10 w-48 h-48 bg-emerald-400/20 rounded-full blur-xl"></div>
-      </ParallaxContainer>
+    <section ref={containerRef} id="about" className="py-20 dynamic-bg relative overflow-hidden">
+      {/* Interactive Background */}
+      <InteractiveBackground variant="primary" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
@@ -35,7 +33,7 @@ export default function About() {
           <motion.div className="mb-4">
             <AnimatedText
               text={aboutData.title}
-              className="text-4xl md:text-5xl font-bold jade-text-gradient"
+              className="text-4xl md:text-5xl font-bold modern-text-gradient"
               as="h2"
               stagger={0.08}
               delay={0.2}

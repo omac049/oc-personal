@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from 'react';
 import { heroData } from '@/data/hero';
 import AnimatedText from './AnimatedText';
 import ParallaxContainer from './ParallaxContainer';
+import ClientOnly from './ClientOnly';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faSearch, 
@@ -342,61 +343,56 @@ export default function Hero() {
             whileHover={{ 
               scale: 1.05, 
               boxShadow: "0 20px 40px rgba(13, 148, 136, 0.4)",
-              rotateY: 5,
               y: -5
             }}
             whileTap={{ scale: 0.95 }}
-            style={{
-              x: useTransform(smoothMouseX, [-50, 50], [-5, 5]),
-              rotateX: useTransform(smoothMouseY, [-50, 50], [5, -5]),
-            }}
             className="group inline-block bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-500 shadow-lg hover:shadow-xl relative overflow-hidden"
           >
-            {/* Particle Trail Effect */}
-            <motion.div
-              className="absolute inset-0 rounded-full"
-              animate={{ 
-                background: [
-                  'radial-gradient(circle at 20% 50%, rgba(13, 148, 136, 0.3) 0%, transparent 50%)',
-                  'radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.3) 0%, transparent 50%)',
-                  'radial-gradient(circle at 20% 50%, rgba(13, 148, 136, 0.3) 0%, transparent 50%)'
-                ]
-              }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-            
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/5"
-              initial={{ x: '-100%' }}
-              whileHover={{ x: '100%' }}
-              transition={{ duration: 0.6 }}
-            />
-            
-            {/* Floating Icons around button */}
-            <motion.div
-              className="absolute -top-2 -left-2 text-teal-200 opacity-0 group-hover:opacity-70"
-              animate={{ 
-                rotate: [0, 360],
-                scale: [0.8, 1.2, 0.8]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <FontAwesomeIcon icon={faRocket} className="w-3 h-3" />
-            </motion.div>
-            
-            <motion.div
-              className="absolute -bottom-2 -right-2 text-emerald-200 opacity-0 group-hover:opacity-70"
-              animate={{ 
-                rotate: [360, 0],
-                scale: [0.8, 1.2, 0.8]
-              }}
-              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-            >
-              <FontAwesomeIcon icon={faChartLine} className="w-3 h-3" />
-            </motion.div>
-            
-            <span className="relative z-10">{heroData.cta.text}</span>
-          </motion.a>
+              {/* Particle Trail Effect */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                animate={{ 
+                  background: [
+                    'radial-gradient(circle at 20% 50%, rgba(13, 148, 136, 0.3) 0%, transparent 50%)',
+                    'radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.3) 0%, transparent 50%)',
+                    'radial-gradient(circle at 20% 50%, rgba(13, 148, 136, 0.3) 0%, transparent 50%)'
+                  ]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/5"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.6 }}
+              />
+              
+              {/* Floating Icons around button */}
+              <motion.div
+                className="absolute -top-2 -left-2 text-teal-200 opacity-0 group-hover:opacity-70"
+                animate={{ 
+                  rotate: [0, 360],
+                  scale: [0.8, 1.2, 0.8]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <FontAwesomeIcon icon={faRocket} className="w-3 h-3" />
+              </motion.div>
+              
+              <motion.div
+                className="absolute -bottom-2 -right-2 text-emerald-200 opacity-0 group-hover:opacity-70"
+                animate={{ 
+                  rotate: [360, 0],
+                  scale: [0.8, 1.2, 0.8]
+                }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+              >
+                <FontAwesomeIcon icon={faChartLine} className="w-3 h-3" />
+              </motion.div>
+              
+              <span className="relative z-10">{heroData.cta.text}</span>
+            </motion.a>
         </motion.div>
       </motion.div>
       

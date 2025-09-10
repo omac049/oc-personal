@@ -78,7 +78,7 @@ export default function Skills() {
           <motion.h2 className="text-4xl md:text-5xl font-bold mb-4">
             <AnimatedText
               text={skillsData.title}
-              className="jade-text-gradient"
+              className="modern-text-gradient"
               as="span"
               stagger={0.05}
             />

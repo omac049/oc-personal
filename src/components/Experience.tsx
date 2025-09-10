@@ -5,11 +5,15 @@ import { useRef } from 'react';
 import { experienceData } from '@/data/experience';
 import AnimatedText from './AnimatedText';
 import ParallaxContainer from './ParallaxContainer';
+import InteractiveBackground from './InteractiveBackground';
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 bg-gray-50 jade-pattern">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="experience" className="py-20 dynamic-bg relative overflow-hidden">
+      {/* Interactive Background */}
+      <InteractiveBackground variant="secondary" />
+      
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +24,7 @@ export default function Experience() {
           <motion.div className="mb-4">
             <AnimatedText
               text={experienceData.title}
-              className="text-4xl md:text-5xl font-bold jade-text-gradient"
+              className="text-4xl md:text-5xl font-bold modern-text-gradient"
               as="h2"
               stagger={0.08}
               delay={0.2}
