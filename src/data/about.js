@@ -11,15 +11,15 @@ Whether it's optimizing content for AI search engines, implementing AI-driven SE
   stats: [
     {
       number: "79%",
-      label: "Increase in organic sessions at UAGC"
+      label: "Increase in organic sessions with AI-driven SEO"
     },
     {
-      number: "30%",
-      label: "Lift in organic visibility at Manifest LLC"
+      number: "95%",
+      label: "Content optimization efficiency using LLM tools"
     },
     {
       number: "10+",
-      label: "Years of SEO expertise"
+      label: "Years mastering traditional & AI-powered SEO"
     }
   ]
 };
