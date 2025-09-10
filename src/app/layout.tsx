@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import ScrollProgress from '@/components/ScrollProgress';
+import CustomCursor from '@/components/CustomCursor';
+import FloatingNav from '@/components/FloatingNav';
+import InteractiveParticles from '@/components/InteractiveParticles';
 
 config.autoAddCss = false;
 
@@ -60,6 +64,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <CustomCursor />
+        <ScrollProgress />
+        <FloatingNav />
+        <InteractiveParticles />
         {children}
       </body>
     </html>

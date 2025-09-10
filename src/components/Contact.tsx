@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { socialsData } from '@/data/socials';
+import InteractiveContactForm from './InteractiveContactForm';
 
 const iconMap: { [key: string]: typeof faLinkedin } = {
   'linkedin': faLinkedin,
@@ -93,21 +94,14 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* CTA Button */}
+        {/* Interactive Contact Form */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <motion.a
-            href={`mailto:${socialsData.cta.email}`}
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            {socialsData.cta.buttonText}
-          </motion.a>
+          <InteractiveContactForm />
         </motion.div>
       </div>
     </section>

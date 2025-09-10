@@ -9,7 +9,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { skillsData } from '@/data/skills';
 import AnimatedText from './AnimatedText';
-import { useRef } from 'react';
+import SkillModal from './SkillModal';
+import { useRef, useState } from 'react';
 
 const iconMap: { [key: string]: typeof faSearch } = {
   'search': faSearch,
@@ -31,12 +32,29 @@ const iconMap: { [key: string]: typeof faSearch } = {
 
 export default function Skills() {
   const containerRef = useRef<HTMLElement>(null);
+  const [selectedSkill, setSelectedSkill] = useState<{
+    name: string;
+    icon: string;
+    proficiency: number;
+  } | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+
+  const openSkillModal = (skill: { name: string; icon: string; proficiency: number }) => {
+    setSelectedSkill(skill);
+    setIsModalOpen(true);
+  };
+
+  const closeSkillModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedSkill(null), 300);
+  };
 
   return (
     <section ref={containerRef} id="skills" className="py-20 bg-white relative overflow-hidden">
@@ -156,11 +174,12 @@ export default function Skills() {
                         ease: [0.22, 1, 0.36, 1]
                       }}
                       viewport={{ once: true }}
-                      whileHover={{ 
-                        x: 5,
-                        transition: { duration: 0.2 }
-                      }}
-                      className="skill-item group/skill cursor-pointer"
+                                           whileHover={{ 
+                       x: 5,
+                       transition: { duration: 0.2 }
+                     }}
+                     onClick={() => openSkillModal(skill)}
+                     className="skill-item group/skill cursor-pointer"
                     >
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center space-x-3">
@@ -234,6 +253,13 @@ export default function Skills() {
           ))}
         </motion.div>
       </div>
+
+      {/* Skill Detail Modal */}
+      <SkillModal 
+        skill={selectedSkill}
+        isOpen={isModalOpen}
+        onClose={closeSkillModal}
+      />
     </section>
   );
 }

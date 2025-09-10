@@ -18,6 +18,7 @@ export default function Hero() {
 
   return (
     <section 
+      id="hero"
       ref={containerRef}
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white relative overflow-hidden"
     >
