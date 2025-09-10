@@ -275,26 +275,54 @@ export default function Skills() {
         <AnimatePresence>
           {isHovered && (
             <motion.div
-              className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-slate-800/90 backdrop-blur-md rounded-xl px-4 py-3 border border-white/20 shadow-2xl z-20"
-              initial={{ opacity: 0, y: 10, scale: 0.8 }}
+              className="absolute -top-20 left-1/2 transform -translate-x-1/2 bg-slate-900/95 backdrop-blur-lg rounded-2xl px-6 py-4 border-2 border-white/30 shadow-2xl z-20 min-w-[280px]"
+              initial={{ opacity: 0, y: 15, scale: 0.85 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.8 }}
-              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0, y: 15, scale: 0.85 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              style={{
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95))',
+                boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1)'
+              }}
             >
               <div className="text-center">
-                <h4 className="text-white font-semibold text-sm mb-1">{skill.name}</h4>
-                <p className="text-gray-300 text-xs mb-2">{skill.description}</p>
-                <div className="flex flex-wrap gap-1 justify-center">
-                  {skill.skills.slice(0, 2).map((skillName, i) => (
-                    <span key={i} className="text-xs bg-white/10 text-white px-2 py-1 rounded-full">
+                <h4 className="text-white font-semibold text-lg mb-2 tracking-wide">{skill.name}</h4>
+                <p className="text-gray-100 text-sm mb-4 leading-relaxed font-medium opacity-90">{skill.description}</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {skill.skills.slice(0, 3).map((skillName, i) => (
+                    <motion.span 
+                      key={i} 
+                      className={`text-sm bg-gradient-to-r ${skill.color} text-white px-3 py-1.5 rounded-full font-medium shadow-lg backdrop-blur-sm border border-white/20`}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.1 }}
+                      whileHover={{ scale: 1.05 }}
+                    >
                       {skillName}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </div>
               
-              {/* Tooltip Arrow */}
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800/90" />
+              {/* Enhanced Tooltip Arrow */}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2">
+                <div className="w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-slate-900/95" />
+                <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-5 border-r-5 border-t-5 border-transparent border-t-white/30" />
+              </div>
+
+              {/* Subtle glow effect */}
+              <motion.div
+                className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${skill.color} opacity-20 blur-sm -z-10`}
+                animate={{
+                  opacity: [0.1, 0.3, 0.1],
+                  scale: [1, 1.02, 1]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -461,7 +489,7 @@ export default function Skills() {
           className="text-center mb-20"
         >
           <motion.h2 
-            className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight"
+            className="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -555,19 +583,19 @@ export default function Skills() {
           viewport={{ once: true }}
         >
           <motion.p
-            className="text-gray-400 text-lg mb-8 flex items-center justify-center gap-2"
+            className="text-gray-300 text-xl mb-8 flex items-center justify-center gap-3 font-medium"
             animate={{
-              opacity: [0.5, 1, 0.5],
+              opacity: [0.7, 1, 0.7],
             }}
             transition={{
-              duration: 2,
+              duration: 2.5,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           >
-                         <FontAwesomeIcon icon={faHeart} className="text-pink-400" />
-             Hover over each skill planet to discover the magic within
-             <FontAwesomeIcon icon={faWandSparkles} className="text-amber-400" />
+            <FontAwesomeIcon icon={faHeart} className="text-pink-400 text-lg" />
+            Hover over each skill planet to discover the magic within
+            <FontAwesomeIcon icon={faWandSparkles} className="text-amber-400 text-lg" />
           </motion.p>
 
           {/* Call to Action */}
