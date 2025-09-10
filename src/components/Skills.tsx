@@ -206,6 +206,28 @@ export default function Skills() {
   // Analytics Dashboard Component
   const AnalyticsDashboard = () => {
     const analyticsSkills = skillsData.categories.find(cat => cat.name === "Analytics & Tools")?.skills || [];
+    const [chartData, setChartData] = useState<number[][]>([]);
+    const [mounted, setMounted] = useState(false);
+    
+    // Initialize chart data after mount to prevent hydration mismatch
+    useEffect(() => {
+      const initialData = analyticsSkills.map(() => 
+        Array.from({ length: 8 }, () => Math.random() * 100)
+      );
+      setChartData(initialData);
+      setMounted(true);
+      
+      // Update chart data periodically
+      const interval = setInterval(() => {
+        setChartData(prev => 
+          prev.map(skillData => 
+            skillData.map(() => Math.random() * 100)
+          )
+        );
+      }, 2000);
+      
+      return () => clearInterval(interval);
+    }, [analyticsSkills.length]);
     
     return (
       <div className="bg-slate-800 rounded-xl border border-slate-600 p-4">
@@ -235,15 +257,26 @@ export default function Skills() {
               
               {/* Live Chart Simulation */}
               <div className="h-12 flex items-end gap-1">
-                {[...Array(8)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="flex-1 bg-blue-700 rounded-sm"
-                    style={{ height: `${Math.random() * 100}%` }}
-                    animate={{ height: [`${Math.random() * 100}%`, `${Math.random() * 100}%`] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
-                  />
-                ))}
+                {mounted && chartData[index] ? (
+                  chartData[index].map((height, i) => (
+                    <motion.div
+                      key={i}
+                      className="flex-1 bg-blue-700 rounded-sm"
+                      initial={{ height: '50%' }}
+                      animate={{ height: `${height}%` }}
+                      transition={{ duration: 1.5, ease: 'easeInOut' }}
+                    />
+                  ))
+                ) : (
+                  // Static placeholder during SSR/initial render
+                  [...Array(8)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 bg-blue-700 rounded-sm"
+                      style={{ height: '50%' }}
+                    />
+                  ))
+                )}
               </div>
               
               <div className="flex justify-between items-center mt-2">
