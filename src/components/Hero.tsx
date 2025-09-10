@@ -84,7 +84,7 @@ export default function Hero() {
     <section 
       id="hero"
       ref={containerRef}
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center bg-slate-900 text-white relative overflow-hidden"
     >
       {/* Animated Background Layers */}
       <motion.div 

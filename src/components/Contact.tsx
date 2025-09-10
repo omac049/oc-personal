@@ -19,7 +19,7 @@ const iconMap: { [key: string]: typeof faLinkedin } = {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white">
+    <section id="contact" className="py-20 bg-slate-900 text-white">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

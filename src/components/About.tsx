@@ -76,7 +76,7 @@ export default function About() {
   }, [mouseX, mouseY]);
 
   return (
-    <section ref={containerRef} id="about" className="min-h-screen modern-about-bg relative overflow-hidden">
+    <section ref={containerRef} id="about" className="min-h-screen bg-slate-800 relative overflow-hidden">
       {/* Enhanced Interactive Background Elements */}
       <motion.div 
         className="absolute inset-0 z-0"

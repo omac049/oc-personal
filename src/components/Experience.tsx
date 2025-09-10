@@ -15,7 +15,7 @@ export default function Experience() {
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
 
   return (
-    <section ref={containerRef} id="experience" className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 relative overflow-hidden">
+    <section ref={containerRef} id="experience" className="min-h-screen bg-slate-700 relative overflow-hidden">
       {/* Minimal Elegant Background */}
       <motion.div 
         className="absolute inset-0 z-0"

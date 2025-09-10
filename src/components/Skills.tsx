@@ -56,7 +56,7 @@ export default function Skills() {
   };
 
   return (
-    <section ref={containerRef} id="skills" className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 relative overflow-hidden">
+    <section ref={containerRef} id="skills" className="min-h-screen bg-slate-800 relative overflow-hidden">
       {/* Minimal Elegant Background */}
       <motion.div 
         className="absolute inset-0 z-0"
