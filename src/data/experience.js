@@ -10,7 +10,7 @@ export const experienceData = {
       location: "Remote",
       description: "Leading comprehensive SEO initiatives for one of the largest online universities in the United States, integrating cutting-edge AI technologies with traditional SEO strategies.",
       achievements: [
-        "Achieved a +79% increase in organic sessions through strategic SEO optimization",
+        "Achieved a +31% increase in organic sessions through strategic SEO optimization",
         "Pioneered AI-driven content optimization strategies using LLM tools like ChatGPT and Claude",
         "Implemented Search Generative Experience (SGE) optimization across university web properties",
         "Developed automated SEO workflows using AI tools for content creation and optimization",

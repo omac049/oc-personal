@@ -10,7 +10,7 @@ Whether it's optimizing content for AI search engines, implementing AI-driven SE
   image: "/images/omar-profile.jpg", // Can be added later
   stats: [
     {
-      number: "79%",
+      number: "31%",
       label: "Increase in organic sessions with AI-driven SEO"
     },
     {
