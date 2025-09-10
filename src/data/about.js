@@ -18,7 +18,7 @@ Whether it's optimizing content for AI search engines, implementing AI-driven SE
       label: "Lift in organic visibility at Manifest LLC"
     },
     {
-      number: "5+",
+      number: "10+",
       label: "Years of SEO expertise"
     }
   ]
