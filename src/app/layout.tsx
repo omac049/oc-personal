@@ -6,6 +6,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import ScrollProgress from '@/components/ScrollProgress';
 import FloatingNav from '@/components/FloatingNav';
 import InteractiveParticles from '@/components/InteractiveParticles';
+import MonogramLogo from '@/components/MonogramLogo';
 
 config.autoAddCss = false;
 
@@ -63,6 +64,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <MonogramLogo />
         <ScrollProgress />
         <FloatingNav />
         <InteractiveParticles />
