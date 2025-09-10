@@ -144,17 +144,18 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-24"
+          className="text-center mb-32"
         >
+          {/* Title Section with proper spacing */}
           <motion.div 
-            className="relative inline-block"
+            className="relative inline-block mb-16"
             style={{
               x: mouseParallaxX,
               y: mouseParallaxY,
             }}
           >
             <motion.h2 
-              className="text-6xl md:text-8xl font-black text-white mb-6 leading-none"
+              className="text-6xl md:text-8xl font-black text-white mb-8 leading-none"
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               }}
@@ -170,23 +171,47 @@ export default function About() {
               {aboutData.title}
             </motion.h2>
 
-            {/* Dynamic underline */}
+            {/* Enhanced Dynamic underline with better positioning */}
             <motion.div
-              className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 rounded-full"
-              initial={{ width: 0 }}
-              whileInView={{ width: '100%' }}
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 rounded-full shadow-lg"
+              initial={{ width: 0, opacity: 0 }}
+              whileInView={{ width: '100%', opacity: 1 }}
               transition={{ duration: 1.5, delay: 0.5 }}
+              style={{
+                boxShadow: '0 0 20px rgba(96, 165, 250, 0.5)'
+              }}
             />
           </motion.div>
           
-          <motion.p 
-            className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
+          {/* Descriptive text with proper spacing */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 1, delay: 1 }}
           >
-            Pioneering the future of search with artificial intelligence and data-driven strategies
-          </motion.p>
+            <motion.p 
+              className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed relative z-10"
+              style={{
+                x: useTransform(smoothMouseX, [-50, 50], [-5, 5]),
+              }}
+            >
+              Pioneering the future of search with artificial intelligence and data-driven strategies
+            </motion.p>
+            
+            {/* Subtle accent decoration */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl opacity-20 pointer-events-none"
+              animate={{
+                background: [
+                  'radial-gradient(ellipse at center, rgba(96, 165, 250, 0.1), transparent)',
+                  'radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1), transparent)',
+                  'radial-gradient(ellipse at center, rgba(96, 165, 250, 0.1), transparent)',
+                ]
+              }}
+              transition={{ duration: 6, repeat: Infinity }}
+            />
+          </motion.div>
         </motion.div>
 
         {/* Modern Layout Grid */}
