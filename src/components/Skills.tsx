@@ -6,9 +6,9 @@ import {
   faSearch, faFileText, faLink, faCog, faMobileAlt, faMapMarkerAlt,
   faShoppingCart, faCode, faChartLine, faSearchPlus, faChartBar,
   faEdit, faLanguage, faRobot, faBrain, faEye, faArrowUp, faPlay,
-  faTrophy, faGlobe, faBolt, faShield, faMagic, faGem, faStar,
-  faFire, faLightbulb, faChartPie, faGraduationCap, faCertificate,
-  faAward, faRocket, faUsers, faTools, faChevronRight
+  faGlobe, faBolt, faShield, faMagic, faGem, faStar,
+  faFire, faLightbulb, faRocket, faAtom, faSparkles,
+  faCrown, faInfinity, faWandMagicSparkles, faHeart
 } from '@fortawesome/free-solid-svg-icons';
 import { skillsData } from '@/data/skills';
 import SkillModal from './SkillModal';
@@ -32,49 +32,89 @@ const iconMap: { [key: string]: typeof faSearch } = {
   'robot': faRobot
 };
 
-// Professional Achievements & Certifications
-const achievements = [
+// Creative skill universe data with magical SEO themes
+const skillUniverse = [
   {
-    id: 'experience',
-    title: '10+ Years',
-    subtitle: 'SEO Expertise',
-    icon: faGraduationCap,
-    color: 'from-blue-500 to-blue-600',
-    description: 'Decade of proven SEO success'
+    id: 'seo-core',
+    name: 'SEO Mastery',
+    icon: faCrown,
+    description: 'The heart of search optimization',
+    color: 'from-amber-400 to-amber-600',
+    size: 'large',
+    orbit: 0,
+    skills: ['Technical SEO', 'On-Page Optimization', 'Link Building', 'Keyword Research']
   },
   {
-    id: 'ai_innovation',
-    title: 'AI Pioneer',
-    subtitle: 'LLM Integration',
+    id: 'ai-brain',
+    name: 'AI Integration',
     icon: faBrain,
-    color: 'from-purple-500 to-purple-600',
-    description: 'Leading edge AI-powered SEO'
+    description: 'Cutting-edge AI-powered strategies',
+    color: 'from-purple-400 to-purple-600',
+    size: 'large',
+    orbit: 120,
+    skills: ['ChatGPT Integration', 'LLM Optimization', 'AI Content Creation', 'Machine Learning']
   },
   {
-    id: 'results',
-    title: '500+',
-    subtitle: 'Projects Delivered',
-    icon: faRocket,
-    color: 'from-amber-500 to-amber-600',
-    description: 'Successful SEO campaigns'
+    id: 'analytics-insights',
+    name: 'Data Analytics',
+    icon: faChartLine,
+    description: 'Deep insights from data patterns',
+    color: 'from-blue-400 to-blue-600',
+    size: 'medium',
+    orbit: 240,
+    skills: ['Google Analytics', 'Search Console', 'Performance Tracking', 'ROI Analysis']
   },
   {
-    id: 'expertise',
-    title: 'Bilingual',
-    subtitle: 'SEO Specialist',
+    id: 'content-magic',
+    name: 'Content Strategy',
+    icon: faWandMagicSparkles,
+    description: 'Magical content that converts',
+    color: 'from-green-400 to-green-600',
+    size: 'medium',
+    orbit: 60,
+    skills: ['Content Optimization', 'Copywriting', 'User Intent', 'Content Planning']
+  },
+  {
+    id: 'technical-wizardry',
+    name: 'Technical Excellence',
+    icon: faCog,
+    description: 'Advanced technical optimization',
+    color: 'from-cyan-400 to-cyan-600',
+    size: 'medium',
+    orbit: 180,
+    skills: ['Core Web Vitals', 'Schema Markup', 'Site Speed', 'Mobile Optimization']
+  },
+  {
+    id: 'global-reach',
+    name: 'International SEO',
     icon: faGlobe,
-    color: 'from-green-500 to-green-600',
-    description: 'English & Spanish markets'
+    description: 'Worldwide optimization expertise',
+    color: 'from-pink-400 to-pink-600',
+    size: 'small',
+    orbit: 300,
+    skills: ['Multilingual SEO', 'Hreflang', 'Cultural Adaptation', 'Global Strategy']
+  },
+  {
+    id: 'ecommerce-power',
+    name: 'E-commerce SEO',
+    icon: faShoppingCart,
+    description: 'Driving online sales success',
+    color: 'from-orange-400 to-orange-600',
+    size: 'small',
+    orbit: 20,
+    skills: ['Product Optimization', 'Category Pages', 'Shopping Feeds', 'Conversion Focus']
+  },
+  {
+    id: 'innovation-spark',
+    name: 'Innovation',
+    icon: faLightbulb,
+    description: 'Always ahead of the curve',
+    color: 'from-indigo-400 to-indigo-600',
+    size: 'small',
+    orbit: 140,
+    skills: ['Emerging Trends', 'Beta Testing', 'Experimental SEO', 'Future-Proofing']
   }
 ];
-
-// Skill Proficiency Levels
-const getSkillLevel = (proficiency: number) => {
-  if (proficiency >= 95) return { level: 'Expert', color: 'text-amber-400', bgColor: 'bg-amber-400' };
-  if (proficiency >= 85) return { level: 'Advanced', color: 'text-blue-400', bgColor: 'bg-blue-400' };
-  if (proficiency >= 75) return { level: 'Proficient', color: 'text-green-400', bgColor: 'bg-green-400' };
-  return { level: 'Intermediate', color: 'text-gray-400', bgColor: 'bg-gray-400' };
-};
 
 export default function Skills() {
   const containerRef = useRef<HTMLElement>(null);
@@ -85,17 +125,26 @@ export default function Skills() {
   } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [hoveredPlanet, setHoveredPlanet] = useState<string | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
+  const centerY = useTransform(scrollYProgress, [0, 1], ['20%', '80%']);
+  const rotateUniverse = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
   useEffect(() => {
     setMounted(true);
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const openSkillModal = useCallback((skill: { name: string; icon: string; proficiency: number }) => {
@@ -108,300 +157,287 @@ export default function Skills() {
     setTimeout(() => setSelectedSkill(null), 300);
   }, []);
 
-  // Professional Achievements Section
-  const ProfessionalAchievements = () => (
-    <div className="mb-16">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-center mb-12"
-      >
-        <h3 className="text-2xl font-semibold text-white mb-4 flex items-center justify-center gap-2">
-          <FontAwesomeIcon icon={faAward} className="text-amber-400" />
-          Professional Excellence
-        </h3>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Recognized expertise and proven track record in AI-powered SEO optimization
-        </p>
-      </motion.div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {achievements.map((achievement, index) => (
-          <motion.div
-            key={achievement.id}
-            className="relative group"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -8 }}
-          >
-            <div className="bg-slate-800 rounded-xl border border-slate-600 p-6 text-center relative overflow-hidden group-hover:border-slate-500 transition-all duration-300">
-              {/* Gradient Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${achievement.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`} />
-              
-              <div className="relative z-10">
-                <motion.div
-                  className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${achievement.color} rounded-full flex items-center justify-center`}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FontAwesomeIcon icon={achievement.icon} className="text-white text-xl" />
-                </motion.div>
-                
-                <h4 className="text-2xl font-bold text-white mb-1">{achievement.title}</h4>
-                <p className="text-blue-400 font-medium mb-2">{achievement.subtitle}</p>
-                <p className="text-gray-400 text-sm">{achievement.description}</p>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+  // Floating Skill Particles Background
+  const FloatingParticles = () => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {[...Array(15)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            y: [0, -30, 0],
+            x: [0, Math.random() * 20 - 10, 0],
+            rotate: [0, 360],
+            opacity: [0.2, 0.8, 0.2],
+            scale: [0.8, 1.2, 0.8]
+          }}
+          transition={{
+            duration: 4 + Math.random() * 4,
+            repeat: Infinity,
+            delay: Math.random() * 2,
+            ease: "easeInOut"
+          }}
+        >
+          <FontAwesomeIcon 
+            icon={[faSparkles, faGem, faStar, faAtom][Math.floor(Math.random() * 4)]} 
+            className="text-blue-400 opacity-30 text-xs" 
+          />
+        </motion.div>
+      ))}
     </div>
   );
 
-  // Interactive Skills Visualization
-  const SkillsVisualization = () => (
-    <div className="mb-16">
+  // Interactive Skill Planet
+  const SkillPlanet = ({ skill, index }: { skill: typeof skillUniverse[0], index: number }) => {
+    const planetSize = skill.size === 'large' ? 'w-24 h-24' : skill.size === 'medium' ? 'w-16 h-16' : 'w-12 h-12';
+    const isHovered = hoveredPlanet === skill.id;
+    
+    return (
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-center mb-12"
-      >
-        <h3 className="text-2xl font-semibold text-white mb-4 flex items-center justify-center gap-2">
-          <FontAwesomeIcon icon={faTools} className="text-blue-400" />
-          Core Competencies
-        </h3>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Comprehensive skill set spanning traditional SEO, AI integration, and cutting-edge optimization techniques
-        </p>
-      </motion.div>
-
-      <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-        {skillsData.categories.map((category, categoryIndex) => {
-          const avgProficiency = Math.round(
-            category.skills.reduce((acc, skill) => acc + skill.proficiency, 0) / category.skills.length
-          );
-          const skillLevel = getSkillLevel(avgProficiency);
-
-          return (
-            <motion.div
-              key={category.name}
-              className="bg-slate-800 rounded-xl border border-slate-600 p-6 relative overflow-hidden group hover:border-slate-500 transition-all duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              viewport={{ once: true }}
-              onMouseEnter={() => setHoveredCategory(category.name)}
-              onMouseLeave={() => setHoveredCategory(null)}
-              whileHover={{ y: -4 }}
-            >
-              {/* Category Header */}
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h4 className="text-xl font-semibold text-white mb-2">{category.name}</h4>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-sm font-medium ${skillLevel.color}`}>{skillLevel.level}</span>
-                    <span className="text-gray-400 text-sm">• {avgProficiency}% Mastery</span>
-                  </div>
-                </div>
-                <div className={`w-16 h-16 rounded-full ${skillLevel.bgColor} bg-opacity-20 flex items-center justify-center`}>
-                  <span className={`text-2xl font-bold ${skillLevel.color}`}>{avgProficiency}</span>
-                </div>
-              </div>
-
-              {/* Category Progress Bar */}
-              <div className="mb-6">
-                <div className="w-full bg-slate-700 rounded-full h-3">
-                  <motion.div
-                    className={`h-full ${skillLevel.bgColor} rounded-full`}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${avgProficiency}%` }}
-                    transition={{ duration: 1.5, delay: categoryIndex * 0.2 }}
-                    viewport={{ once: true }}
-                  />
-                </div>
-              </div>
-
-              {/* Individual Skills */}
-              <div className="space-y-3">
-                {category.skills.map((skill, skillIndex) => {
-                  const individualSkillLevel = getSkillLevel(skill.proficiency);
-                  
-                  return (
-                    <motion.div
-                      key={skill.name}
-                      className="flex items-center justify-between p-3 bg-slate-700 rounded-lg cursor-pointer hover:bg-slate-650 transition-all duration-200 group/skill"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: skillIndex * 0.1 + categoryIndex * 0.2 }}
-                      viewport={{ once: true }}
-                      onClick={() => openSkillModal(skill)}
-                      whileHover={{ x: 4 }}
-                    >
-                      <div className="flex items-center gap-3 flex-1">
-                        <div className="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center group-hover/skill:bg-blue-600 transition-colors">
-                          <FontAwesomeIcon icon={iconMap[skill.icon]} className="text-white text-sm" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-300 font-medium group-hover/skill:text-white transition-colors">
-                              {skill.name}
-                            </span>
-                            <div className="flex items-center gap-2">
-                              <span className={`text-xs px-2 py-1 rounded ${individualSkillLevel.bgColor} bg-opacity-20 ${individualSkillLevel.color}`}>
-                                {individualSkillLevel.level}
-                              </span>
-                              <span className="text-amber-400 font-mono text-sm font-semibold">
-                                {skill.proficiency}%
-                              </span>
-                            </div>
-                          </div>
-                          
-                          {/* Mini Progress Bar */}
-                          <div className="w-full bg-slate-600 rounded-full h-1 mt-2">
-                            <motion.div
-                              className={`h-full ${individualSkillLevel.bgColor} rounded-full`}
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${skill.proficiency}%` }}
-                              transition={{ duration: 1, delay: skillIndex * 0.1 + categoryIndex * 0.2 + 0.5 }}
-                              viewport={{ once: true }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <FontAwesomeIcon 
-                        icon={faChevronRight} 
-                        className="text-gray-500 group-hover/skill:text-blue-400 transition-colors ml-2" 
-                      />
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-              {/* Hover Effect Overlay */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                initial={false}
-              />
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  );
-
-  // Expertise Highlights
-  const ExpertiseHighlights = () => (
-    <div className="mb-16">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-center mb-12"
-      >
-        <h3 className="text-2xl font-semibold text-white mb-4 flex items-center justify-center gap-2">
-          <FontAwesomeIcon icon={faLightbulb} className="text-amber-400" />
-          Areas of Specialization
-        </h3>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Focused expertise in high-impact SEO strategies that drive measurable results
-        </p>
-      </motion.div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          {
-            title: 'AI-Powered SEO',
-            description: 'Leveraging machine learning and LLMs for next-generation optimization',
-            icon: faRobot,
-            skills: ['ChatGPT Integration', 'LLM Content Optimization', 'AI Keyword Research'],
-            color: 'from-purple-500 to-blue-500'
+        className="absolute cursor-pointer group"
+        style={{
+          left: '50%',
+          top: '50%',
+        }}
+        animate={{
+          x: Math.cos((skill.orbit + index * 45) * Math.PI / 180) * (120 + index * 20),
+          y: Math.sin((skill.orbit + index * 45) * Math.PI / 180) * (80 + index * 15),
+          rotate: [0, 360],
+        }}
+        transition={{
+          rotate: {
+            duration: 20 + index * 5,
+            repeat: Infinity,
+            ease: "linear"
           },
-          {
-            title: 'Technical SEO',
-            description: 'Deep technical expertise in site optimization and performance',
-            icon: faCog,
-            skills: ['Core Web Vitals', 'Schema Markup', 'Site Architecture'],
-            color: 'from-blue-500 to-cyan-500'
+          x: {
+            duration: 2,
+            ease: "easeOut"
           },
-          {
-            title: 'Analytics & Insights',
-            description: 'Data-driven strategies with comprehensive performance tracking',
-            icon: faChartLine,
-            skills: ['Google Analytics 4', 'Search Console', 'Performance Monitoring'],
-            color: 'from-green-500 to-teal-500'
-          },
-          {
-            title: 'Content Strategy',
-            description: 'Strategic content development that ranks and converts',
-            icon: faEdit,
-            skills: ['Content Optimization', 'Keyword Strategy', 'User Intent Analysis'],
-            color: 'from-amber-500 to-orange-500'
-          },
-          {
-            title: 'International SEO',
-            description: 'Bilingual optimization for global market reach',
-            icon: faGlobe,
-            skills: ['Multilingual SEO', 'Hreflang Implementation', 'Cultural Optimization'],
-            color: 'from-pink-500 to-red-500'
-          },
-          {
-            title: 'E-commerce SEO',
-            description: 'Specialized optimization for online retail success',
-            icon: faShoppingCart,
-            skills: ['Product Optimization', 'Category Pages', 'Shopping Feed Optimization'],
-            color: 'from-indigo-500 to-purple-500'
+          y: {
+            duration: 2,
+            ease: "easeOut"
           }
-        ].map((specialty, index) => (
-          <motion.div
-            key={specialty.title}
-            className="bg-slate-800 rounded-xl border border-slate-600 p-6 group hover:border-slate-500 transition-all duration-300 relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -4 }}
-          >
-            {/* Gradient Background */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${specialty.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`} />
-            
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4">
-                <div className={`w-12 h-12 bg-gradient-to-br ${specialty.color} rounded-lg flex items-center justify-center`}>
-                  <FontAwesomeIcon icon={specialty.icon} className="text-white text-lg" />
+        }}
+        whileHover={{ 
+          scale: 1.3,
+          zIndex: 10
+        }}
+        onHoverStart={() => setHoveredPlanet(skill.id)}
+        onHoverEnd={() => setHoveredPlanet(null)}
+        onClick={() => {
+          // Create a mock skill object for the modal
+          const mockSkill = {
+            name: skill.name,
+            icon: 'robot', // Default icon
+            proficiency: 95 // Default high proficiency
+          };
+          openSkillModal(mockSkill);
+        }}
+      >
+        {/* Planet Glow Effect */}
+        <motion.div
+          className={`absolute inset-0 ${planetSize} rounded-full bg-gradient-to-br ${skill.color} opacity-20 blur-xl`}
+          animate={{
+            scale: isHovered ? [1, 1.5, 1] : [1, 1.2, 1],
+            opacity: isHovered ? [0.2, 0.6, 0.2] : [0.1, 0.3, 0.1]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+
+        {/* Main Planet */}
+        <motion.div
+          className={`relative ${planetSize} bg-gradient-to-br ${skill.color} rounded-full flex items-center justify-center shadow-2xl border-2 border-white/20 backdrop-blur-sm`}
+          animate={{
+            boxShadow: isHovered 
+              ? ["0 0 20px rgba(255,255,255,0.3)", "0 0 40px rgba(255,255,255,0.6)", "0 0 20px rgba(255,255,255,0.3)"]
+              : ["0 0 10px rgba(255,255,255,0.1)", "0 0 20px rgba(255,255,255,0.3)", "0 0 10px rgba(255,255,255,0.1)"]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <FontAwesomeIcon 
+            icon={skill.icon} 
+            className={`text-white ${skill.size === 'large' ? 'text-2xl' : skill.size === 'medium' ? 'text-xl' : 'text-lg'}`} 
+          />
+        </motion.div>
+
+        {/* Orbital Ring */}
+        <motion.div
+          className="absolute inset-0 rounded-full border border-white/10"
+          style={{
+            width: `${parseInt(planetSize.split(' ')[0].replace('w-', '')) * 8}px`,
+            height: `${parseInt(planetSize.split(' ')[0].replace('w-', '')) * 8}px`,
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)'
+          }}
+          animate={{
+            rotate: 360,
+            opacity: isHovered ? 0.6 : 0.2
+          }}
+          transition={{
+            rotate: {
+              duration: 10 + index * 3,
+              repeat: Infinity,
+              ease: "linear"
+            },
+            opacity: {
+              duration: 0.3
+            }
+          }}
+        />
+
+        {/* Floating Skill Details */}
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-slate-800/90 backdrop-blur-md rounded-xl px-4 py-3 border border-white/20 shadow-2xl z-20"
+              initial={{ opacity: 0, y: 10, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="text-center">
+                <h4 className="text-white font-semibold text-sm mb-1">{skill.name}</h4>
+                <p className="text-gray-300 text-xs mb-2">{skill.description}</p>
+                <div className="flex flex-wrap gap-1 justify-center">
+                  {skill.skills.slice(0, 2).map((skillName, i) => (
+                    <span key={i} className="text-xs bg-white/10 text-white px-2 py-1 rounded-full">
+                      {skillName}
+                    </span>
+                  ))}
                 </div>
-                <h4 className="text-lg font-semibold text-white">{specialty.title}</h4>
               </div>
               
-              <p className="text-gray-400 mb-4 text-sm leading-relaxed">{specialty.description}</p>
-              
-              <div className="space-y-2">
-                {specialty.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={skill}
-                    className="flex items-center gap-2 text-sm"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 + skillIndex * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
-                    <span className="text-gray-300">{skill}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+              {/* Tooltip Arrow */}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800/90" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Particle Trail */}
+        {isHovered && [...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full"
+            style={{
+              left: '50%',
+              top: '50%'
+            }}
+            animate={{
+              x: [0, Math.cos((skill.orbit + i * 120) * Math.PI / 180) * 40],
+              y: [0, Math.sin((skill.orbit + i * 120) * Math.PI / 180) * 40],
+              opacity: [1, 0],
+              scale: [1, 0]
+            }}
+            transition={{
+              duration: 1,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeOut"
+            }}
+          />
         ))}
-      </div>
-    </div>
+      </motion.div>
+    );
+  };
+
+  // Central SEO Core
+  const SEOCore = () => (
+    <motion.div
+      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+      style={{ y: centerY }}
+      animate={{
+        rotate: 360,
+        scale: [1, 1.1, 1],
+      }}
+      transition={{
+        rotate: {
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear"
+        },
+        scale: {
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }
+      }}
+    >
+      {/* Central Glow */}
+      <motion.div
+        className="absolute inset-0 w-32 h-32 bg-gradient-to-r from-blue-500 via-purple-500 to-amber-500 rounded-full opacity-30 blur-2xl"
+        animate={{
+          scale: [1, 1.5, 1],
+          opacity: [0.2, 0.5, 0.2]
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
+      {/* Core Planet */}
+      <motion.div
+        className="relative w-20 h-20 bg-gradient-to-br from-slate-800 to-slate-900 rounded-full flex items-center justify-center shadow-2xl border-2 border-amber-400/50"
+        whileHover={{ scale: 1.2 }}
+        animate={{
+          boxShadow: [
+            "0 0 20px rgba(251, 191, 36, 0.3)",
+            "0 0 40px rgba(251, 191, 36, 0.6)",
+            "0 0 20px rgba(251, 191, 36, 0.3)"
+          ]
+        }}
+        transition={{
+          boxShadow: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }
+        }}
+      >
+        <FontAwesomeIcon icon={faInfinity} className="text-amber-400 text-2xl" />
+      </motion.div>
+
+      {/* Orbiting Elements */}
+      {[faSparkles, faGem, faStar].map((icon, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-4 h-4 flex items-center justify-center"
+          style={{
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)'
+          }}
+          animate={{
+            x: Math.cos((i * 120) * Math.PI / 180) * 50,
+            y: Math.sin((i * 120) * Math.PI / 180) * 50,
+            rotate: -360,
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear",
+            delay: i * 0.5
+          }}
+        >
+          <FontAwesomeIcon icon={icon} className="text-amber-400 text-sm opacity-70" />
+        </motion.div>
+      ))}
+    </motion.div>
   );
 
   if (!mounted) {
@@ -414,13 +450,9 @@ export default function Skills() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              <div className="h-8 bg-slate-700 rounded w-64 mx-auto"></div>
-              <div className="h-4 bg-slate-800 rounded w-96 mx-auto"></div>
-              <div className="grid lg:grid-cols-3 gap-8 mt-8">
-                <div className="h-64 bg-slate-800 rounded-xl"></div>
-                <div className="h-64 bg-slate-800 rounded-xl"></div>
-                <div className="h-64 bg-slate-800 rounded-xl"></div>
-              </div>
+              <div className="h-12 bg-slate-700 rounded w-96 mx-auto"></div>
+              <div className="h-6 bg-slate-800 rounded w-[600px] mx-auto"></div>
+              <div className="w-96 h-96 bg-slate-800 rounded-full mx-auto mt-16"></div>
             </motion.div>
           </div>
         </div>
@@ -430,18 +462,25 @@ export default function Skills() {
 
   return (
     <section ref={containerRef} id="skills" className="min-h-screen bg-slate-900 relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Animated Background */}
       <motion.div 
-        className="absolute inset-0 z-0"
-        style={{ y: parallaxY }}
-      >
-        <div className="absolute top-20 right-20 w-32 h-32 bg-blue-500 opacity-10 rounded-full" />
-        <div className="absolute bottom-32 left-16 w-24 h-24 bg-amber-400 opacity-8 rounded-full" />
-        <div className="absolute top-1/2 right-1/3 w-16 h-16 bg-purple-500 opacity-6 rounded-full" />
-      </motion.div>
+        className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+        animate={{
+          backgroundPosition: ['0% 0%', '100% 100%'],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "linear"
+        }}
+      />
+
+      {/* Floating Particles */}
+      <FloatingParticles />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 py-20">
-        {/* Main Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -450,65 +489,143 @@ export default function Skills() {
           className="text-center mb-20"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight"
+            className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Skills & Expertise
+            <motion.span
+              className="bg-gradient-to-r from-blue-400 via-purple-400 to-amber-400 bg-clip-text text-transparent"
+              animate={{
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            >
+              SEO Skill Universe
+            </motion.span>
           </motion.h2>
           
-          <motion.div
-            className="w-24 h-1 bg-gradient-to-r from-blue-500 to-amber-400 mx-auto mb-6"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          />
-          
           <motion.p 
-            className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Comprehensive SEO expertise enhanced with cutting-edge AI technologies. 
-            Proven track record of delivering exceptional results through innovative optimization strategies 
-            and data-driven insights.
+            Explore the constellation of expertise that powers exceptional SEO results. 
+            Each skill planet represents mastery in action.
           </motion.p>
         </motion.div>
 
-        {/* Professional Achievements */}
-        <ProfessionalAchievements />
-
-        {/* Skills Visualization */}
-        <SkillsVisualization />
-
-        {/* Expertise Highlights */}
-        <ExpertiseHighlights />
-
-        {/* Call to Action */}
+        {/* Main Skill Universe */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          className="relative h-[600px] mx-auto max-w-4xl"
+          style={{ rotate: rotateUniverse }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center bg-slate-800 rounded-2xl border border-slate-600 p-8"
         >
-          <h3 className="text-2xl font-semibold text-white mb-4 flex items-center justify-center gap-2">
-            <FontAwesomeIcon icon={faRocket} className="text-amber-400" />
-            Ready to Leverage These Skills?
-          </h3>
-          <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-            Let's discuss how my comprehensive SEO expertise and AI-powered strategies can drive exceptional results for your business.
-          </p>
+          {/* Central SEO Core */}
+          <SEOCore />
+
+          {/* Skill Planets */}
+          {skillUniverse.map((skill, index) => (
+            <SkillPlanet key={skill.id} skill={skill} index={index} />
+          ))}
+
+          {/* Connecting Lines/Energy */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+            <defs>
+              <radialGradient id="energy-gradient" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            {skillUniverse.map((skill, index) => (
+              <motion.circle
+                key={skill.id}
+                cx="50%"
+                cy="50%"
+                r={100 + index * 15}
+                fill="none"
+                stroke="url(#energy-gradient)"
+                strokeWidth="1"
+                strokeDasharray="5,5"
+                animate={{
+                  strokeDashoffset: [0, -20],
+                  opacity: hoveredPlanet ? 0.8 : 0.3
+                }}
+                transition={{
+                  strokeDashoffset: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  },
+                  opacity: {
+                    duration: 0.3
+                  }
+                }}
+              />
+            ))}
+          </svg>
+        </motion.div>
+
+        {/* Interaction Hint */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          viewport={{ once: true }}
+        >
+          <motion.p
+            className="text-gray-400 text-lg mb-8 flex items-center justify-center gap-2"
+            animate={{
+              opacity: [0.5, 1, 0.5],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <FontAwesomeIcon icon={faHeart} className="text-pink-400" />
+            Hover over each skill planet to discover the magic within
+            <FontAwesomeIcon icon={faSparkles} className="text-amber-400" />
+          </motion.p>
+
+          {/* Call to Action */}
           <motion.button
-            className="bg-blue-700 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 shadow-xl flex items-center gap-2 mx-auto"
-            whileHover={{ scale: 1.05, y: -2 }}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-2xl transition-all duration-300 flex items-center gap-3 mx-auto"
+            whileHover={{ 
+              scale: 1.05, 
+              y: -5,
+              boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
+            }}
             whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            animate={{
+              boxShadow: [
+                "0 10px 20px rgba(0,0,0,0.2)",
+                "0 15px 30px rgba(59, 130, 246, 0.3)",
+                "0 10px 20px rgba(0,0,0,0.2)"
+              ]
+            }}
+            transition={{
+              boxShadow: {
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
+            }}
           >
-            <FontAwesomeIcon icon={faPlay} />
-            Start Your SEO Transformation
+            <FontAwesomeIcon icon={faRocket} />
+            Launch Your SEO Journey
+            <FontAwesomeIcon icon={faMagic} />
           </motion.button>
         </motion.div>
       </div>
