@@ -168,7 +168,7 @@ export default function Hero() {
       {seoIcons.map((seoIcon, index) => (
         <motion.div
           key={index}
-          className={`absolute z-20 ${seoIcon.color} opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer group`}
+          className={`absolute z-20 ${seoIcon.color} opacity-70 hover:opacity-100 transition-opacity duration-300 group`}
                                            style={{
              ...seoIcon.position,
              transform: `translateY(${index * 2}px)`,

@@ -400,9 +400,9 @@ export default function About() {
            >
              {/* Creative Interactive Content Blocks */}
              <div className="space-y-16">
-               {/* AI Expertise Block - Creative Card Design */}
-               <motion.div
-                 className="relative group cursor-pointer perspective-1000"
+                             {/* AI Expertise Block - Creative Card Design */}
+              <motion.div
+                className="relative group perspective-1000"
                  initial={{ opacity: 0, y: 80, rotateX: -30 }}
                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                  transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -584,9 +584,9 @@ export default function About() {
                  </motion.div>
                </motion.div>
 
-               {/* LLM Specialization Block - Creative Design */}
-               <motion.div
-                 className="relative group cursor-pointer perspective-1000"
+                             {/* LLM Specialization Block - Creative Design */}
+              <motion.div
+                className="relative group perspective-1000"
                  initial={{ opacity: 0, y: 80, rotateX: -30 }}
                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                  transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -736,9 +736,9 @@ export default function About() {
                  </motion.div>
                </motion.div>
 
-               {/* Technical Excellence Block - Creative Design */}
-               <motion.div
-                 className="relative group cursor-pointer perspective-1000"
+                             {/* Technical Excellence Block - Creative Design */}
+              <motion.div
+                className="relative group perspective-1000"
                  initial={{ opacity: 0, y: 80, rotateX: 30 }}
                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                  transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -888,9 +888,9 @@ export default function About() {
                  </motion.div>
                </motion.div>
 
-               {/* Future-Forward Commitment Block - Creative Design */}
-               <motion.div
-                 className="relative group cursor-pointer perspective-1000"
+                             {/* Future-Forward Commitment Block - Creative Design */}
+              <motion.div
+                className="relative group perspective-1000"
                  initial={{ opacity: 0, y: 80, rotateX: -30 }}
                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                  transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -1060,9 +1060,9 @@ export default function About() {
                
                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                  {aboutData.stats.map((stat, index) => (
-                   <motion.div
-                     key={index}
-                     className="relative group cursor-pointer"
+                                     <motion.div
+                    key={index}
+                    className="relative group"
                      initial={{ opacity: 0, y: 100, rotateX: -30 }}
                      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                      transition={{ 

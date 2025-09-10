@@ -183,7 +183,7 @@ export default function Experience() {
                           transition={{ delay: index * 0.15 + 0.3 }}
                           viewport={{ once: true }}
                         >
-                          <h4 className="text-lg font-medium text-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
+                          <h4 className="text-lg font-medium text-blue-400 hover:text-blue-300 transition-colors">
                             {job.company}
                           </h4>
                           <span className="text-sm text-gray-400">
@@ -266,7 +266,7 @@ export default function Experience() {
                           {job.technologies.map((tech, techIndex) => (
                             <motion.span
                               key={techIndex}
-                              className="bg-white/10 hover:bg-blue-500/20 text-gray-300 hover:text-blue-300 text-xs px-3 py-1.5 rounded-full font-medium cursor-pointer transition-all duration-200 border border-white/5 hover:border-blue-400/30"
+                              className="bg-white/10 hover:bg-blue-500/20 text-gray-300 hover:text-blue-300 text-xs px-3 py-1.5 rounded-full font-medium transition-all duration-200 border border-white/5 hover:border-blue-400/30"
                               initial={{ opacity: 0, scale: 0.8 }}
                               whileInView={{ opacity: 1, scale: 1 }}
                               transition={{ 

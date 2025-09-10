@@ -191,7 +191,7 @@ export default function Skills() {
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skillIndex}
-                    className="group/skill cursor-pointer"
+                    className="group/skill"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ 
