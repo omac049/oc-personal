@@ -1,15 +1,16 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faSearch, faFileText, faLink, faCog, faMobileAlt, faMapMarkerAlt,
   faShoppingCart, faCode, faChartLine, faSearchPlus, faChartBar,
-  faEdit, faLanguage, faRobot
+  faEdit, faLanguage, faRobot, faBrain, faEye, faArrowUp, faPlay,
+  faDownload, faFilter, faCalendar, faBell, faUser, faRocket
 } from '@fortawesome/free-solid-svg-icons';
 import { skillsData } from '@/data/skills';
 import SkillModal from './SkillModal';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const iconMap: { [key: string]: typeof faSearch } = {
   'search': faSearch,
@@ -37,12 +38,21 @@ export default function Skills() {
     proficiency: number;
   } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [liveData, setLiveData] = useState(0);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '-5%']);
+  // Live data animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveData(prev => (prev + 1) % 100);
+    }, 150);
+    return () => clearInterval(interval);
+  }, []);
 
   const openSkillModal = (skill: { name: string; icon: string; proficiency: number }) => {
     setSelectedSkill(skill);
@@ -54,143 +64,323 @@ export default function Skills() {
     setTimeout(() => setSelectedSkill(null), 300);
   };
 
-  return (
-    <section ref={containerRef} id="skills" className="min-h-screen bg-slate-800 relative overflow-hidden">
-      {/* Simplified Background */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        style={{ y: parallaxY }}
-      >
-        {/* Clean geometric shapes */}
-        <div className="absolute top-20 right-20 w-32 h-32 bg-blue-700 opacity-10 rounded-full" />
-        <div className="absolute bottom-32 left-16 w-24 h-24 bg-amber-400 opacity-8 rounded-full" />
-        <div className="absolute top-1/2 right-1/3 w-16 h-16 bg-blue-600 opacity-6 rounded-full" />
-      </motion.div>
+  // AI Neural Network Component
+  const AINeuralNetwork = () => {
+    const aiSkills = skillsData.categories.find(cat => cat.name === "AI & LLM SEO")?.skills || [];
+    
+    return (
+      <div className="relative h-64 bg-slate-900 rounded-xl border border-slate-600 p-4 overflow-hidden">
+        <div className="flex items-center gap-2 mb-4">
+          <FontAwesomeIcon icon={faBrain} className="text-amber-400" />
+          <span className="text-white font-medium">AI Neural Network</span>
+          <div className="ml-auto flex gap-1">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            <span className="text-xs text-green-400">Active</span>
+          </div>
+        </div>
+        
+        <div className="relative h-48">
+          {aiSkills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              className="absolute cursor-pointer group"
+              style={{
+                left: `${20 + (index % 2) * 60}%`,
+                top: `${15 + index * 25}%`
+              }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: index * 0.2, duration: 0.5 }}
+              whileHover={{ scale: 1.2 }}
+              onClick={() => openSkillModal(skill)}
+            >
+              {/* Neural Node */}
+              <div className="relative">
+                <motion.div
+                  className="w-8 h-8 bg-blue-700 rounded-full flex items-center justify-center border-2 border-blue-500"
+                  animate={{ 
+                    boxShadow: ["0 0 0 0 rgba(59, 130, 246, 0.4)", "0 0 0 8px rgba(59, 130, 246, 0)", "0 0 0 0 rgba(59, 130, 246, 0)"]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <FontAwesomeIcon icon={faRobot} className="text-white text-xs" />
+                </motion.div>
+                
+                {/* Skill Label */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 px-2 py-1 rounded text-xs text-white whitespace-nowrap z-10">
+                  {skill.name} ({skill.proficiency}%)
+                </div>
+                
+                {/* Neural Connections */}
+                {index < aiSkills.length - 1 && (
+                  <motion.div
+                    className="absolute top-4 left-8 w-16 h-px bg-blue-500 opacity-50"
+                    animate={{ opacity: [0.3, 0.7, 0.3] }}
+                    transition={{ duration: 1.5, repeat: Infinity, delay: index * 0.3 }}
+                  />
+                )}
+              </div>
+            </motion.div>
+          ))}
+          
+          {/* Data Flow Animation */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-amber-400 rounded-full animate-ping" />
+          </motion.div>
+        </div>
+      </div>
+    );
+  };
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10 py-20">
-        {/* Clean Header */}
+  // SEO Search Console Component
+  const SEOSearchConsole = () => {
+    const seoSkills = skillsData.categories.find(cat => cat.name === "SEO Fundamentals")?.skills || [];
+    
+    return (
+      <div className="bg-white rounded-xl border border-slate-300 overflow-hidden">
+        {/* Google Search Console Header */}
+        <div className="bg-blue-700 text-white p-3 flex items-center gap-3">
+          <FontAwesomeIcon icon={faSearchPlus} />
+          <span className="font-medium">SEO Search Console</span>
+          <div className="ml-auto flex items-center gap-2 text-xs">
+            <span className="bg-green-500 px-2 py-1 rounded">Live</span>
+            <span>Last updated: now</span>
+          </div>
+        </div>
+        
+        {/* Search Bar */}
+        <div className="p-4 border-b border-slate-200">
+          <div className="relative">
+            <FontAwesomeIcon icon={faSearch} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Search skills and expertise..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-500"
+            />
+          </div>
+        </div>
+        
+        {/* Skills as Search Results */}
+        <div className="p-4 space-y-3">
+          {seoSkills
+            .filter(skill => skill.name.toLowerCase().includes(searchQuery.toLowerCase()))
+            .map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              className="flex items-center gap-4 p-3 hover:bg-slate-50 rounded-lg cursor-pointer border border-transparent hover:border-blue-200 transition-all"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              onClick={() => openSkillModal(skill)}
+            >
+              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                <FontAwesomeIcon icon={iconMap[skill.icon]} className="text-blue-700 text-sm" />
+              </div>
+              
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-medium text-slate-800">{skill.name}</span>
+                  <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">Optimized</span>
+                </div>
+                <div className="text-sm text-slate-600">Proficiency: {skill.proficiency}% • Expert Level</div>
+              </div>
+              
+              {/* Live Performance Indicator */}
+              <div className="text-right">
+                <div className="text-xs text-slate-500">Performance</div>
+                <div className="text-green-600 font-semibold">+{Math.floor(skill.proficiency * 0.8)}%</div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  // Analytics Dashboard Component
+  const AnalyticsDashboard = () => {
+    const analyticsSkills = skillsData.categories.find(cat => cat.name === "Analytics & Tools")?.skills || [];
+    
+    return (
+      <div className="bg-slate-800 rounded-xl border border-slate-600 p-4">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <FontAwesomeIcon icon={faChartLine} className="text-amber-400" />
+            <span className="text-white font-medium">Analytics Dashboard</span>
+          </div>
+          <div className="text-xs text-slate-400">Real-time data</div>
+        </div>
+        
+        <div className="grid grid-cols-2 gap-4">
+          {analyticsSkills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              className="bg-slate-700 rounded-lg p-3 cursor-pointer hover:bg-slate-650 transition-colors"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: index * 0.15 }}
+              whileHover={{ scale: 1.02 }}
+              onClick={() => openSkillModal(skill)}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <FontAwesomeIcon icon={iconMap[skill.icon]} className="text-blue-400 text-sm" />
+                <span className="text-white text-sm font-medium">{skill.name}</span>
+              </div>
+              
+              {/* Live Chart Simulation */}
+              <div className="h-12 flex items-end gap-1">
+                {[...Array(8)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex-1 bg-blue-700 rounded-sm"
+                    style={{ height: `${Math.random() * 100}%` }}
+                    animate={{ height: [`${Math.random() * 100}%`, `${Math.random() * 100}%`] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
+                  />
+                ))}
+              </div>
+              
+              <div className="flex justify-between items-center mt-2">
+                <span className="text-xs text-slate-400">Proficiency</span>
+                <span className="text-amber-400 font-semibold">{skill.proficiency}%</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <section ref={containerRef} id="skills" className="min-h-screen bg-slate-900 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 py-20">
+        {/* Dashboard Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-white mb-4 tracking-tight">
-            {skillsData.title}
-          </h2>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <FontAwesomeIcon icon={faCog} className="text-amber-400 text-2xl animate-spin" style={{ animationDuration: '3s' }} />
+            <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
+              SEO Command Center
+            </h2>
+            <FontAwesomeIcon icon={faEye} className="text-blue-400 text-2xl" />
+          </div>
           
-          <div className="w-20 h-1 bg-blue-700 mx-auto mb-6" />
-          
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            {skillsData.subtitle}
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
+            Experience my expertise through interactive tools and real-time demonstrations
           </p>
+          
+          {/* Live Status Indicators */}
+          <div className="flex items-center justify-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-green-400">Systems Online</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+              <span className="text-blue-400">AI Models Active</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
+              <span className="text-amber-400">Analytics Running</span>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Simplified Skills Grid */}
-        <motion.div 
-          className="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2
-              }
-            }
-          }}
-          initial="hidden"
-          whileInView="visible"
+        {/* Interactive Dashboard Grid */}
+        <motion.div
+          className="grid lg:grid-cols-2 gap-8 mb-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, staggerChildren: 0.2 }}
           viewport={{ once: true }}
         >
-          {skillsData.categories.map((category, categoryIndex) => (
+          {/* AI Neural Network */}
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <AINeuralNetwork />
+          </motion.div>
+
+          {/* Analytics Dashboard */}
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <AnalyticsDashboard />
+          </motion.div>
+        </motion.div>
+
+        {/* SEO Search Console - Full Width */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-8"
+        >
+          <SEOSearchConsole />
+        </motion.div>
+
+        {/* Specialized Skills Grid */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, staggerChildren: 0.1 }}
+          viewport={{ once: true }}
+        >
+          {skillsData.categories
+            .filter(cat => !["SEO Fundamentals", "AI & LLM SEO", "Analytics & Tools"].includes(cat.name))
+            .map((category, index) => (
             <motion.div
-              key={categoryIndex}
-              className="bg-slate-700 rounded-2xl p-6 border border-slate-600 shadow-xl"
-              variants={{
-                hidden: { 
-                  opacity: 0, 
-                  y: 30
-                },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.6,
-                    ease: "easeOut"
-                  }
-                }
-              }}
-              whileHover={{ 
-                y: -4,
-                transition: { duration: 0.3, ease: "easeOut" }
-              }}
+              key={category.name}
+              className="bg-slate-800 rounded-xl border border-slate-600 p-6"
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -2 }}
             >
-              {/* Category Header */}
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  {category.name}
-                </h3>
-                <div className="w-12 h-0.5 bg-amber-400" />
-              </div>
-                
-              {/* Skills List */}
-              <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                <FontAwesomeIcon icon={faCode} className="text-amber-400" />
+                {category.name}
+              </h3>
+              
+              <div className="space-y-3">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
-                    key={skillIndex}
-                    className="group cursor-pointer"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ 
-                      duration: 0.5, 
-                      delay: skillIndex * 0.1,
-                      ease: "easeOut"
-                    }}
-                    viewport={{ once: true }}
-                    whileHover={{ 
-                      x: 4,
-                      transition: { duration: 0.2 }
-                    }}
+                    key={skill.name}
+                    className="flex items-center justify-between p-3 bg-slate-700 rounded-lg hover:bg-slate-650 cursor-pointer transition-colors"
+                    whileHover={{ x: 4 }}
                     onClick={() => openSkillModal(skill)}
                   >
-                    {/* Skill Item */}
-                    <div className="p-4 rounded-xl bg-slate-800 border border-slate-600 hover:border-blue-600 hover:bg-slate-750 transition-all duration-300">
-                      {/* Skill Header */}
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                            <FontAwesomeIcon 
-                              icon={iconMap[skill.icon]} 
-                              className="text-white text-sm"
-                            />
-                          </div>
-                          
-                          <span className="font-medium text-gray-300 group-hover:text-white transition-colors duration-300">
-                            {skill.name}
-                          </span>
-                        </div>
-                        
-                        <span className="text-sm font-mono text-amber-400 font-semibold">
-                          {skill.proficiency}%
-                        </span>
-                      </div>
-                      
-                      {/* Clean Progress Bar */}
-                      <div className="relative h-2 bg-slate-600 rounded-full overflow-hidden">
+                    <div className="flex items-center gap-3">
+                      <FontAwesomeIcon icon={iconMap[skill.icon]} className="text-blue-400" />
+                      <span className="text-gray-300">{skill.name}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-16 h-2 bg-slate-600 rounded-full overflow-hidden">
                         <motion.div
+                          className="h-full bg-blue-700 rounded-full"
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.proficiency}%` }}
-                          transition={{ 
-                            duration: 1, 
-                            delay: skillIndex * 0.1 + 0.3,
-                            ease: "easeOut"
-                          }}
-                          viewport={{ once: true }}
-                          className="h-full bg-blue-700 rounded-full"
+                          transition={{ duration: 1, delay: skillIndex * 0.1 }}
                         />
                       </div>
+                      <span className="text-amber-400 text-sm font-mono w-10">{skill.proficiency}%</span>
                     </div>
                   </motion.div>
                 ))}
@@ -205,18 +395,23 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-16 p-8 bg-slate-800 rounded-2xl border border-slate-600"
         >
-          <p className="text-gray-400 mb-6">
-            Want to see these skills in action? Let's discuss your project.
+          <div className="mb-4">
+            <FontAwesomeIcon icon={faRocket} className="text-4xl text-amber-400 mb-4" />
+          </div>
+          <h3 className="text-2xl font-semibold text-white mb-4">Ready to Experience These Skills?</h3>
+          <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+            Let's discuss how my AI-powered SEO expertise can drive exceptional results for your business.
           </p>
           <motion.button
-            className="bg-blue-700 hover:bg-blue-600 text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 shadow-xl"
+            className="bg-blue-700 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 shadow-xl flex items-center gap-2 mx-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Get In Touch
+            <FontAwesomeIcon icon={faPlay} />
+            Start Your SEO Transformation
           </motion.button>
         </motion.div>
       </div>
