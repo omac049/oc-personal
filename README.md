@@ -1,207 +1,234 @@
 # Omar Corral Portfolio
 
-Welcome to the codebase for Omar Corral’s personal website.  
-The goal of this site is to present Omar’s professional profile, share his experience and showcase his skills in search‑engine optimisation (SEO) and digital marketing. It’s built with modern front‑end technologies and optimised for performance, accessibility and SEO so that potential clients and employers can learn about Omar and connect with him.
+## Project Overview
+
+Welcome to the codebase for Omar Corral's personal website. This portfolio showcases Omar's expertise as an SEO specialist and digital marketing strategist. It is designed to present his professional profile, highlight his skills, and share his experience in search-engine optimization (SEO) and digital marketing. Built with modern frontend technologies, the site is optimized for performance, accessibility, and SEO to ensure potential clients and employers can easily learn about Omar and connect with him.
 
 ## Purpose
 
-Omar is a passionate SEO specialist and digital marketing strategist. He uses this platform to explain how he helps businesses grow by understanding search algorithms, identifying keyword opportunities and crafting data‑driven strategies to improve rankings [omar-corral.com](https://omar-corral.com).  
-His experience spans keyword research, on‑page and technical SEO, content strategy, analytics and the use of industry‑leading tools such as Google Search Console, Google Analytics, SEMrush, Moz and Ahrefs [omar-corral.com](https://omar-corral.com). Omar’s site also lists his work experience, including roles at the University of Arizona Global Campus, Zovio, Manifest LLC and V Digital Services [omar-corral.com](https://omar-corral.com).
+Omar uses this platform to demonstrate how he helps businesses grow by understanding search algorithms, identifying keyword opportunities, and crafting data-driven strategies that improve search rankings. His experience covers keyword research, on-page and technical SEO, content strategy, analytics, and proficiency with industry-leading tools such as Google Search Console, Google Analytics, SEMrush, Moz, and Ahrefs. The site also details his work history, including roles at the University of Arizona Global Campus, Zovio, Manifest LLC, and V Digital Services.
+
+---
 
 ## Features
 
-- **About Section** – An introduction describing Omar’s philosophy and the value he brings as an SEO manager and consultant [omar-corral.com](https://omar-corral.com).
+- **About Section**  
+  An introduction highlighting Omar's SEO philosophy and the value he brings as a consultant and manager.
 
-- **Skills Matrix** – Highlights areas such as keyword research, on‑page/off‑page/technical SEO, content strategy, mobile/local/eCommerce SEO, analytics, schema markup and tool proficiency [omar-corral.com](https://omar-corral.com).
+- **Skills Matrix**  
+  Showcases expertise areas such as keyword research, on-page/off-page/technical SEO, content strategy, mobile/local/eCommerce SEO, analytics, schema markup, bilingual SEO, and AI tools like ChatGPT and Midjourney.
 
-- **Experience Timeline** – Summarises past and present roles; for example, he served as SEO Manager at the University of Arizona Global Campus, achieving a +79 % increase in organic sessions [omar-corral.com](https://omar-corral.com), and led performance marketing initiatives at Manifest LLC resulting in a 30 % lift in organic visibility [omar-corral.com](https://omar-corral.com).
+- **Experience Timeline**  
+  Summarizes past and current professional roles with measurable achievements, including significant organic traffic growth and performance marketing successes.
 
-- **Contact & Social Links** – Lists ways to get in touch (email and social profiles) and encourages collaboration.
+- **Contact & Social Links**  
+  Provides multiple ways to get in touch, including email and social media profiles, encouraging collaboration.
+
+---
 
 ## Libraries & Tools
 
-This project is built on a modern frontend stack. Key libraries and tools include:
+This project leverages a modern frontend stack with the following key libraries and tools:
 
-- **Next.js & React** – The core framework for the site, providing routing, components, static site generation and server‑side rendering. Next.js can export a fully static site by setting `output: 'export'` in `next.config.js`; when you run `next build`, it generates an HTML file per route for faster page loads and can be hosted on any static file server. [Next.js](https://nextjs.org).
+- **Next.js & React**  
+  Core framework providing routing, components, static site generation, and server-side rendering. Supports static export for fast, SEO-friendly pages.  
+  [Next.js Documentation](https://nextjs.org)
 
-- **Tailwind CSS** – A utility‑first CSS framework for rapid, responsive design. It pairs nicely with Next.js and can be customised via a `tailwind.config.js`.
+- **Tailwind CSS**  
+  Utility-first CSS framework for rapid, responsive design with easy customization.  
+  [Tailwind CSS](https://tailwindcss.com)
 
-- **Font Awesome** – Provides a comprehensive set of icons. This repository already includes `@fortawesome/fontawesome-svg-core` and several icon packs.
+- **Font Awesome**  
+  Comprehensive icon library included for UI enhancement.
 
-- **Motion (Framer Motion)** – A production‑grade animation library for React, JavaScript and Vue. It is free, open‑source and easy to use, making it ideal for smooth transitions, scroll animations and interactive gestures. [motion.dev](https://motion.dev).
+- **Framer Motion**  
+  Production-grade animation library for smooth transitions and interactive effects.  
+  [Framer Motion](https://www.framer.com/motion/)
 
-- **gh-pages** – A dev dependency used to deploy the built site to GitHub Pages. It publishes the contents of the `out` directory to the `gh-pages` branch.
+- **gh-pages**  
+  Dev dependency used to deploy the built site to GitHub Pages.
 
-- **Optional utilities** – You may also want `@headlessui/react` for accessible UI components, `lucide-react` or `heroicons` for lightweight icons, and email utilities (such as `@emailjs/browser` or Formspree) for a contact form.
+- **Optional Utilities**  
+  Includes `@headlessui/react` for accessible UI components, icon libraries like `lucide-react` or `heroicons`, and email utilities such as `@emailjs/browser` or Formspree for contact forms.
+
+---
 
 ## Project Setup & Structure
 
-The recommended way to build this portfolio is to scaffold a new Next.js project and then add Tailwind CSS and the other libraries. A typical workflow:
+### Initial Setup
 
-- Create the project: run  
-  ```bash
-  npx create-next-app@latest oc-portfolio
-  ```  
-  (or use Cursor’s UI to create a Next.js app). Choose TypeScript if desired.
+1. **Create the Next.js project**  
+   ```bash
+   npx create-next-app@latest oc-portfolio
+   ```
+   Choose TypeScript if preferred.
 
-- Add Tailwind CSS: install Tailwind and its peer dependencies:  
-  ```bash
-  npm install -D tailwindcss postcss autoprefixer
-  npx tailwindcss init -p
-  ```
+2. **Add Tailwind CSS**  
+   ```bash
+   npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+   ```
+   Configure `tailwind.config.js` to scan your `src` directory and add Tailwind directives to `styles/globals.css`:
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
 
-- Configure `tailwind.config.js` to include your `src` directory in the content array. Add the Tailwind directives (`@tailwind base;`, `@tailwind components;`, `@tailwind utilities;`) to `styles/globals.css`.
+3. **Install additional libraries**  
+   ```bash
+   npm install framer-motion @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+   ```
+   Add other icon sets or utilities as needed.
 
-- Install animation and icon libraries:  
-  ```bash
-  npm install framer-motion @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
-  ```
+4. **Install gh-pages for deployment**  
+   ```bash
+   npm install --save-dev gh-pages
+   ```
 
-- You can also install additional icon sets (e.g., `@fortawesome/free-brands-svg-icons`) as needed.
+### Directory Structure
 
-- Install `gh-pages`:  
-  ```bash
-  npm install --save-dev gh-pages
-  ```
+- `src/pages` — Route components (pages).
+- `src/components` — Reusable UI components.
+- `src/data` — JSON or JavaScript modules containing site content (hero text, about info, skills, experience, socials).
 
-- Create your directory structure: use a `src` folder with `pages` for route components, `components` for reusable UI, and `data` for JSON/JS modules containing your content (hero text, about text, skills, experience and socials). Follow the guidelines in the Customising Your Content section to populate these files.
+Populate the data files according to the content guidelines in the Customising Your Content section.
 
-- Version control: initialise a Git repository (`git init`), commit your changes and push to GitHub.
-
-Within your pages, import the data modules and compose them into sections: a hero banner, about section, skills grid, experience timeline and a contact form. Leverage Tailwind utilities and Motion components to create responsive layouts, transitions and interactive effects.
+---
 
 ## Development Workflow
 
-After you have set up your project, use the following commands to develop, test and build your site:
-
-- Install dependencies – run  
+- **Install dependencies**  
   ```bash
   npm install
-  ```  
-  to download all packages defined in `package.json`.
+  ```
 
-- Start the development server – run  
+- **Start development server**  
   ```bash
   npm run dev
   ```  
-  to launch a local server. Visit [http://localhost:3000](http://localhost:3000) in your browser to view the site. Edits to the source files will hot‑reload the page.
+  Visit [http://localhost:3000](http://localhost:3000) to view the site. Hot reload is enabled for live updates.
 
-- Build for production – run  
+- **Build for production**  
   ```bash
   npm run build
   ```  
-  to create an optimised build. Because the project uses static export, this will generate an `out` folder containing HTML, CSS and JavaScript files. [Next.js](https://nextjs.org). If you have configured `gh-pages` (see below), the `predeploy` script will run this command automatically.
+  Generates an optimized static export in the `out` directory.
+
+---
 
 ## Customising Your Content
 
-The goal of this repository is to make it simple to personalise the site. Most content is defined in data files under a `src/data` directory (create this directory if it doesn’t exist). For example:
+Content is managed through data files in the `src/data` directory:
 
-- `src/data/hero.js` – Contains the headline and subheading that appear on the landing page. Update it with your own tagline (for instance, “Expert SEO Specialist & Digital Marketing Strategist”).
+- `hero.js` — Headline and subheading for the landing page.
+- `about.js` — Text describing Omar's background and approach.
+- `skills.js` — Array of skills and tools.
+- `experience.js` — Work history with roles and achievements.
+- `socials.js` — Links to social profiles and contact email.
 
-- `src/data/about.js` – Stores the text for the about section. Include details such as your passion for SEO, your experience using tools like SEMrush, Moz, Ahrefs and Google Analytics, and your customer‑centric approach [omar-corral.com](https://omar-corral.com).
+Edit these files to personalize your portfolio. The components import these modules to render dynamic sections.
 
-- `src/data/skills.js` – An array listing each skill (keyword research, on‑page SEO, technical SEO, content strategy, mobile/local/eCommerce SEO, analytics, schema markup, bilingual SEO and AI tools such as ChatGPT and Midjourney) [omar-corral.com](https://omar-corral.com).
-
-- `src/data/experience.js` – Lists your work experience; include positions such as SEO Manager at the University of Arizona Global Campus (Aug 2022 – present), Sr. Search Engine Optimization Specialist at Zovio (Feb 2021 – Aug 2022), Sr. Performance Marketing Engineer at Manifest LLC (Aug 2018 – Aug 2021) and Sr. Bilingual SEO Strategist at V Digital Services (Mar 2017 – Aug 2018) [omar-corral.com](https://omar-corral.com).
-
-- `src/data/socials.js` – Defines links to your LinkedIn, Facebook, Instagram profiles, and a contact email.
-
-You can structure these files as JSON or JavaScript modules. The site’s components will import them to render sections dynamically.
+---
 
 ## Deployment
 
-You can deploy the built site to a static host such as Vercel, Netlify or GitHub Pages. A typical workflow for Vercel is:
-
-- Push your repository to GitHub.
-
-- Sign up for a Vercel account and import your GitHub repo.
-
-- Configure the project (framework preset, build command `npm run build` and output directory).
-
-- Deploy. Vercel will handle continuous deployment on each push to your main branch.
-
-For GitHub Pages, you can use the `gh-pages` package to publish the `out` or `build` directory.
-
 ### Deploying to GitHub Pages
 
-To publish the site to GitHub Pages using `gh-pages`, follow these steps:
+1. **Configure Next.js for static export**  
+   In `next.config.js`, add:
+   ```js
+   const isProd = process.env.NODE_ENV === 'production';
 
-- Configure static export: in your `next.config.js`, set the output mode to static export and define the asset prefix and base path for your repository:
+   const nextConfig = {
+     output: 'export',
+     assetPrefix: isProd ? '/<repository-name>/' : '',
+     basePath: isProd ? '/<repository-name>' : '',
+   };
 
-  ```js
-  // next.config.js
-  const isProd = process.env.NODE_ENV === 'production';
-  const nextConfig = {
-    output: 'export',
-    assetPrefix: isProd ? '/<repository-name>/' : '',
-    basePath: isProd ? '/<repository-name>' : '',
-  };
-  export default nextConfig;
-  ```
+   export default nextConfig;
+   ```
+   Replace `<repository-name>` with your GitHub repository name.
 
-  This tells Next.js to generate a static site and serve assets from the correct subpath. [Next.js](https://nextjs.org).
+2. **Update `package.json`**  
+   Add the homepage and deployment scripts:
+   ```json
+   "homepage": "https://<github-username>.github.io/<repository-name>",
+   "scripts": {
+     "dev": "next dev",
+     "build": "next build",
+     "start": "next start",
+     "predeploy": "npm run build",
+     "deploy": "gh-pages -d out"
+   }
+   ```
+   Replace `<github-username>` and `<repository-name>` accordingly.
 
-- Add a homepage field and deploy scripts: update your `package.json` to include the correct GitHub Pages URL and the predeploy/deploy scripts:
+3. **Deploy the site**  
+   ```bash
+   npm run predeploy
+   npm run deploy
+   ```
 
-  ```json
-  "homepage": "https://<github-username>.github.io/<repository-name>",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
-  }
-  ```
+4. **Enable GitHub Pages**  
+   On GitHub, navigate to **Settings > Pages**, select the `gh-pages` branch, and set the root (`/`) as the source.
 
-- Run the deployment: execute  
-  ```bash
-  npm run predeploy
-  npm run deploy
-  ```  
-  These commands build the site, export it to the `out` directory and push it to the `gh-pages` branch of your repository. [Dev.to](https://dev.to).
+5. **Add `.nojekyll` file**  
+   Ensure a `.nojekyll` file exists at the root of the `gh-pages` branch to prevent Jekyll processing.
 
-- Enable GitHub Pages: on GitHub, go to Settings → Pages, choose the `gh-pages` branch and `/` as the source, then save your settings. [Dev.to](https://dev.to).
+Your site will be live at `https://<github-username>.github.io/<repository-name>`.
 
-- Add `.nojekyll`: manually add a `.nojekyll` file at the root of the `gh-pages` branch to prevent GitHub Pages from processing the site with Jekyll. [Dev.to](https://dev.to).
+### Custom Domain Setup
 
-Your site will be live at `https://<github-username>.github.io/<repository-name>`. Push your latest changes to the main branch and re-run the deploy script whenever you want to update the live site.
+1. **Add your domain in GitHub**  
+   In your repository's **Settings > Pages**, enter your custom domain (e.g., `omar-corral.com`) and save.
 
-### Custom Domain
+2. **Configure DNS records**  
+   - For the apex domain (`omar-corral.com`), add A records pointing to GitHub Pages IPs:  
+     ```
+     185.199.108.153
+     185.199.109.153
+     185.199.110.153
+     185.199.111.153
+     ```
+   - For the `www` subdomain, add a CNAME record pointing to `<github-username>.github.io`.
 
-If you want `omar-corral.com` to point to your GitHub Pages site, configure a custom domain:
+3. **Wait for DNS propagation** (up to 24 hours).
 
-- Add the domain in GitHub: in your repository’s Settings → Pages, enter `omar-corral.com` in the Custom domain field and click Save. This will create a commit adding a `CNAME` file to your repository. [GitHub Docs](https://docs.github.com).
+4. **Enable HTTPS enforcement**  
+   After DNS updates, enable "Enforce HTTPS" in GitHub Pages settings.
 
-- Configure DNS records: at your domain registrar or DNS provider, create the following records:
+---
 
-  - For the apex domain (`omar-corral.com`), add an A record (or ALIAS/ANAME record) pointing to GitHub Pages’ IP addresses:  
-    `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153`. [GitHub Docs](https://docs.github.com).
+## Design & Brand Guidelines
 
-  - For the `www` subdomain, add a CNAME record pointing `www.omar-corral.com` to your GitHub Pages default domain (`<github-username>.github.io`). [GitHub Docs](https://docs.github.com).
+For comprehensive design guidelines, color palettes, typography, components, and brand standards, please refer to the dedicated **[Brand Guide](./brand_guide.md)**.
 
-- Wait for propagation: DNS changes can take up to 24 hours to propagate. [GitHub Docs](https://docs.github.com). Once they do, your domain will serve your GitHub Pages site. Return to the Pages settings and enable Enforce HTTPS.
+The brand guide includes:
+- Complete color palette and usage guidelines
+- Typography scale and font specifications  
+- Component styling standards
+- Animation and interaction principles
+- Layout and spacing guidelines
+- SEO and performance standards
+- Accessibility requirements
+- Implementation checklists
 
-## Design Guidelines
-
-To make the site modern and engaging:
-
-- **Hero section**: start with a bold hero area displaying your name, tagline and a call‑to‑action button. Use a high‑quality background image or a subtle gradient.
-
-- **Animations**: leverage Motion’s simple API to animate sections as they enter the viewport or on hover. Smooth scroll and exit animations help guide the user’s attention. [motion.dev](https://motion.dev).
-
-- **Responsive layout**: use Tailwind’s responsive utilities to create grids and cards that adapt to all screen sizes. Keep text legible and use ample whitespace.
-
-- **Colour palette and typography**: choose a cohesive colour palette and pair it with modern fonts (you can import Google Fonts via Next.js). Provide a dark mode toggle if desired.
-
-- **Images and icons**: integrate relevant illustrations, photos or icons to reinforce your expertise in SEO and digital marketing. Font Awesome and Lucide/Heroicons can supply crisp icons.
-
-- **SEO optimization**: define metadata in each page’s `<Head>` component, including meaningful titles, descriptions and open graph tags. Use semantic HTML and alt text for images.
+---
 
 ## Contributing
 
-This site represents Omar Corral’s personal brand. If you wish to suggest improvements (for example, UI enhancements, performance optimisations or additional sections), feel free to open an issue or create a pull request.
+This portfolio represents Omar Corral's personal brand. Contributions are welcome to improve UI, performance, accessibility, or add new features. To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or fix.
+3. Commit your changes with clear messages.
+4. Open a pull request describing your changes.
+
+Please ensure code quality and consistency with the existing style.
+
+---
 
 ## License
 
-This project is licensed under the MIT License. You are free to reuse the codebase for your own personal portfolio or to help others establish their online presence.
+This project is licensed under the MIT License. You are free to use, modify, and distribute the code for your personal portfolio or to help others establish their online presence.
