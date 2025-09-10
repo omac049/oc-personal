@@ -1,10 +1,12 @@
 export const aboutData = {
   title: "About Omar",
-  content: `I'm a passionate SEO specialist and digital marketing strategist with extensive experience in helping businesses achieve their online growth goals. My expertise spans across comprehensive SEO strategies, from technical audits to content optimization and everything in between.
+  content: `I'm a forward-thinking SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
 
-I believe in a customer-centric approach, using data-driven insights to understand search algorithms, identify keyword opportunities, and craft strategies that deliver measurable results. My experience with industry-leading tools such as Google Search Console, Google Analytics, SEMrush, Moz, and Ahrefs allows me to provide comprehensive SEO solutions that drive organic traffic and improve search rankings.
+I specialize in leveraging Large Language Models and AI tools like ChatGPT, Claude, and custom AI solutions to enhance SEO performance. From AI-powered keyword research and automated content optimization to prompt engineering for SEO-focused content creation, I stay at the forefront of the AI revolution in search marketing.
 
-Whether it's conducting in-depth keyword research, optimizing on-page elements, implementing technical SEO improvements, or developing content strategies, I'm committed to delivering results that matter to your business bottom line.`,
+My expertise extends beyond traditional SEO to include LLM content optimization, AI-assisted technical audits, automated schema markup generation, and developing strategies that perform well in both traditional search results and AI-powered search experiences. I use industry-leading tools including Google Search Console, Google Analytics, SEMrush, Moz, Ahrefs, alongside AI platforms to deliver comprehensive solutions that drive organic traffic and improve search rankings in the age of artificial intelligence.
+
+Whether it's optimizing content for AI search engines, implementing AI-driven SEO workflows, or developing LLM-enhanced content strategies, I'm committed to delivering cutting-edge results that future-proof your business in the evolving search landscape.`,
   image: "/images/omar-profile.jpg", // Can be added later
   stats: [
     {

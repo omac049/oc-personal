@@ -83,6 +83,31 @@ export const skillsData = {
       ]
     },
     {
+      name: "AI & LLM SEO",
+      skills: [
+        {
+          name: "LLM Content Optimization",
+          icon: "robot",
+          proficiency: 95
+        },
+        {
+          name: "AI-Powered Keyword Research",
+          icon: "search",
+          proficiency: 92
+        },
+        {
+          name: "Search Generative Experience (SGE)",
+          icon: "cog",
+          proficiency: 88
+        },
+        {
+          name: "ChatGPT & Claude Integration",
+          icon: "robot",
+          proficiency: 90
+        }
+      ]
+    },
+    {
       name: "Content & Strategy",
       skills: [
         {
@@ -91,14 +116,19 @@ export const skillsData = {
           proficiency: 92
         },
         {
+          name: "AI Content Creation",
+          icon: "robot",
+          proficiency: 88
+        },
+        {
           name: "Bilingual SEO",
           icon: "language",
           proficiency: 95
         },
         {
-          name: "AI Tools (ChatGPT, Midjourney)",
-          icon: "robot",
-          proficiency: 80
+          name: "Prompt Engineering",
+          icon: "code",
+          proficiency: 90
         }
       ]
     }

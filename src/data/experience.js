@@ -8,14 +8,16 @@ export const experienceData = {
       position: "SEO Manager",
       period: "Aug 2022 - Present",
       location: "Remote",
-      description: "Leading comprehensive SEO initiatives for one of the largest online universities in the United States.",
+      description: "Leading comprehensive SEO initiatives for one of the largest online universities in the United States, integrating cutting-edge AI technologies with traditional SEO strategies.",
       achievements: [
         "Achieved a +79% increase in organic sessions through strategic SEO optimization",
-        "Implemented technical SEO improvements across multiple web properties",
-        "Developed and executed content strategies that improved organic visibility",
-        "Collaborated with cross-functional teams to align SEO with business objectives"
+        "Pioneered AI-driven content optimization strategies using LLM tools like ChatGPT and Claude",
+        "Implemented Search Generative Experience (SGE) optimization across university web properties",
+        "Developed automated SEO workflows using AI tools for content creation and optimization",
+        "Enhanced technical SEO implementations with AI-assisted schema markup generation",
+        "Collaborated with cross-functional teams to align AI-powered SEO with business objectives"
       ],
-      technologies: ["Google Analytics", "Google Search Console", "SEMrush", "Technical SEO", "Content Strategy"]
+      technologies: ["Google Analytics", "Google Search Console", "SEMrush", "ChatGPT", "Claude", "AI Content Optimization", "SGE Optimization", "Technical SEO"]
     },
     {
       id: 2,
