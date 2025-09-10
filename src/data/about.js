@@ -7,7 +7,7 @@ I specialize in leveraging Large Language Models and AI tools like ChatGPT, Clau
 My expertise extends beyond traditional SEO to include LLM content optimization, AI-assisted technical audits, automated schema markup generation, and developing strategies that perform well in both traditional search results and AI-powered search experiences. I use industry-leading tools including Google Search Console, Google Analytics, SEMrush, Moz, Ahrefs, alongside AI platforms to deliver comprehensive solutions that drive organic traffic and improve search rankings in the age of artificial intelligence.
 
 Whether it's optimizing content for AI search engines, implementing AI-driven SEO workflows, or developing LLM-enhanced content strategies, I'm committed to delivering cutting-edge results that future-proof your business in the evolving search landscape.`,
-  image: "/images/omar-profile.jpg", // Can be added later
+  image: "/omar.jpeg", // Omar's professional headshot
   stats: [
     {
       number: "31%",
