@@ -1,18 +1,17 @@
 'use client';
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useAnimation } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { aboutData } from '@/data/about';
-import AnimatedText from './AnimatedText';
+import Image from 'next/image';
+import AlgorithmBackground from './AlgorithmBackground';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faRocket, 
   faBrain, 
-  faCode, 
   faChartLine, 
   faLightbulb,
   faCog,
-  faSearch,
   faRobot,
   faStar,
   faGem,
@@ -24,16 +23,13 @@ import {
 
 export default function About() {
   const containerRef = useRef<HTMLElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [selectedStat, setSelectedStat] = useState<number | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [textVisible, setTextVisible] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
-
-  const { scrollY } = useScroll();
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -45,6 +41,14 @@ export default function About() {
   const parallaxX = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
   const mouseParallaxX = useTransform(smoothMouseX, [-200, 200], [-50, 50]);
   const mouseParallaxY = useTransform(smoothMouseY, [-200, 200], [-30, 30]);
+
+  // Text entrance animation based on mouse position
+  const textEntranceX = useTransform(smoothMouseX, [-100, 100], 
+    textVisible ? [-5, 5] : [-300, 300]
+  );
+  const textEntranceY = useTransform(smoothMouseY, [-100, 100], 
+    textVisible ? [-2, 2] : [-200, 200]
+  );
 
   // Modern floating elements
   const modernElements = [
@@ -62,7 +66,6 @@ export default function About() {
       if (rect) {
         const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
         const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-        setMousePosition({ x, y });
         mouseX.set(x * 100);
         mouseY.set(y * 100);
       }
@@ -76,7 +79,10 @@ export default function About() {
   }, [mouseX, mouseY]);
 
   return (
-    <section ref={containerRef} id="about" className="min-h-screen bg-slate-800 relative overflow-hidden">
+    <section ref={containerRef} id="about" className="min-h-screen bg-slate-900 relative overflow-hidden">
+      {/* Global Algorithm Background */}
+      <AlgorithmBackground opacity="opacity-5" />
+      
       {/* Enhanced Interactive Background Elements */}
       <motion.div 
         className="absolute inset-0 z-0"
@@ -333,10 +339,11 @@ export default function About() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <img
+                  <Image
                     src="/omar.jpeg"
                     alt="Omar Corral - AI-Powered SEO Specialist"
-                    className="w-full h-full object-cover object-center"
+                    fill
+                    className="object-cover object-center"
                     style={{
                       filter: 'brightness(1.1) contrast(1.05) saturate(1.1)'
                     }}
@@ -492,21 +499,50 @@ export default function About() {
                          transition={{ delay: 0.6, duration: 1 }}
                        />
                        <div>
-                         <motion.h3 
-                           className="text-3xl font-black text-white mb-2 bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent"
-                           whileHover={{ scale: 1.05 }}
-                           style={{
-                             x: useTransform(smoothMouseX, [-50, 50], [-2, 2]),
-                           }}
-                         >
-                           AI-Powered SEO Innovation
-                         </motion.h3>
-                         <motion.div
-                           className="flex gap-2 mb-4"
-                           initial={{ opacity: 0 }}
-                           whileInView={{ opacity: 1 }}
-                           transition={{ delay: 0.8, duration: 0.6 }}
-                         >
+                                                 <motion.h3 
+                          className="text-3xl font-black text-white mb-2 bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent"
+                          whileHover={{ scale: 1.05 }}
+                          style={{
+                            x: textEntranceX,
+                            y: useTransform(textEntranceY, (value) => value * 0.5),
+                          }}
+                          initial={{ opacity: 0, x: 300, y: -100 }}
+                          animate={{
+                            x: textVisible ? 0 : 300,
+                            y: textVisible ? 0 : -100,
+                            opacity: textVisible ? 1 : 0
+                          }}
+                          transition={{ 
+                            delay: 0.2, 
+                            duration: 1.2, 
+                            ease: [0.22, 1, 0.36, 1],
+                            type: "spring",
+                            stiffness: 120,
+                            damping: 25
+                          }}
+                        >
+                          AI-Powered SEO Innovation
+                        </motion.h3>
+                                                   <motion.div
+                            className="flex gap-2 mb-4"
+                            initial={{ opacity: 0, x: -200, scale: 0.8 }}
+                            animate={{
+                              x: textVisible ? 0 : -200,
+                              scale: textVisible ? 1 : 0.8,
+                              opacity: textVisible ? 1 : 0
+                            }}
+                            style={{
+                              x: useTransform(textEntranceX, (value) => value * 0.3),
+                            }}
+                            transition={{ 
+                              delay: 0.3, 
+                              duration: 1, 
+                              ease: [0.22, 1, 0.36, 1],
+                              type: "spring",
+                              stiffness: 110,
+                              damping: 20
+                            }}
+                          >
                            {['AI', 'LLM', 'SGE'].map((tag, i) => (
                              <motion.span
                                key={tag}
@@ -531,12 +567,26 @@ export default function About() {
                        </div>
                      </motion.div>
                      
-                     <motion.div
-                       className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"
-                       initial={{ opacity: 0, y: 20 }}
-                       whileInView={{ opacity: 1, y: 0 }}
-                       transition={{ delay: 1, duration: 0.8 }}
-                     >
+                                         <motion.div
+                      className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"
+                      initial={{ opacity: 0, y: 100, scale: 0.9 }}
+                      animate={{
+                        y: textVisible ? 0 : 100,
+                        scale: textVisible ? 1 : 0.9,
+                        opacity: textVisible ? 1 : 0
+                      }}
+                      style={{
+                        y: useTransform(textEntranceY, (value) => value * 0.2),
+                      }}
+                      transition={{ 
+                        delay: 0.7, 
+                        duration: 1.3, 
+                        ease: [0.22, 1, 0.36, 1],
+                        type: "spring",
+                        stiffness: 80,
+                        damping: 18
+                      }}
+                    >
                        {[
                          { icon: faRobot, text: 'AI Integration', color: 'blue' },
                          { icon: faLightbulb, text: 'Smart Strategy', color: 'cyan' },
@@ -569,17 +619,33 @@ export default function About() {
                        ))}
                      </motion.div>
                      
-                     <motion.p 
-                       className="text-gray-200 leading-relaxed text-lg group-hover:text-white transition-colors duration-700"
-                       style={{
-                         x: useTransform(smoothMouseX, [-50, 50], [-2, 2]),
-                       }}
-                       initial={{ opacity: 0 }}
-                       whileInView={{ opacity: 1 }}
-                       transition={{ delay: 1.2, duration: 1 }}
-                     >
-                       I&apos;m a forward-thinking SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
-                     </motion.p>
+                                         <motion.p 
+                      className="text-gray-200 leading-relaxed text-lg group-hover:text-white transition-colors duration-700"
+                      style={{
+                        x: textEntranceX,
+                        y: textEntranceY,
+                      }}
+                      initial={{ opacity: 0, x: -500, y: -200 }}
+                      whileInView={{ opacity: 1 }}
+                      onViewportEnter={() => setTextVisible(true)}
+                      onViewportLeave={() => setTextVisible(false)}
+                      animate={{
+                        x: textVisible ? 0 : -500,
+                        y: textVisible ? 0 : -200,
+                        opacity: textVisible ? 1 : 0
+                      }}
+                      transition={{ 
+                        delay: 0.5, 
+                        duration: 1.5, 
+                        ease: [0.22, 1, 0.36, 1],
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 20
+                      }}
+                      viewport={{ once: false, margin: "-100px" }}
+                    >
+                      I&apos;m a forward-thinking SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
+                    </motion.p>
                    </div>
                  </motion.div>
                </motion.div>

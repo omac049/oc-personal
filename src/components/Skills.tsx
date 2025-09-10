@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { skillsData } from '@/data/skills';
 import SkillModal from './SkillModal';
+import AlgorithmBackground from './AlgorithmBackground';
 import { useRef, useState } from 'react';
 
 const iconMap: { [key: string]: typeof faSearch } = {
@@ -56,7 +57,10 @@ export default function Skills() {
   };
 
   return (
-    <section ref={containerRef} id="skills" className="min-h-screen bg-slate-800 relative overflow-hidden">
+    <section ref={containerRef} id="skills" className="min-h-screen bg-slate-900 relative overflow-hidden">
+      {/* Global Algorithm Background */}
+      <AlgorithmBackground opacity="opacity-5" />
+      
       {/* Minimal Elegant Background */}
       <motion.div 
         className="absolute inset-0 z-0"

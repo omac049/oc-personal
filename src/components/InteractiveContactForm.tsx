@@ -3,55 +3,61 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane, faCheck, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faRocket, faUser, faEnvelope, faComment } from '@fortawesome/free-solid-svg-icons';
+import { socialsData } from '@/data/socials';
 
 interface FormData {
   name: string;
   email: string;
-  subject: string;
   message: string;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
 }
 
 export default function InteractiveContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    subject: '',
     message: ''
   });
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [currentStep, setCurrentStep] = useState(0);
 
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
+  const steps = [
+    { field: 'name', label: 'What should I call you?', icon: faUser, placeholder: 'Your name' },
+    { field: 'email', label: 'How can I reach you?', icon: faEnvelope, placeholder: 'your.email@example.com' },
+    { field: 'message', label: 'Tell me about your project', icon: faComment, placeholder: 'Describe your SEO goals, project timeline, budget, or any questions you have...' }
+  ];
 
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+  const validateStep = (step: number): boolean => {
+    const field = steps[step].field as keyof FormData;
+    const value = formData[field];
+    
+    if (!value.trim()) {
+      setErrors({ [field]: 'This field is required' });
+      return false;
     }
-    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    
+    if (field === 'email' && !/\S+@\S+\.\S+/.test(value)) {
+      setErrors({ email: 'Please enter a valid email address' });
+      return false;
+    }
+    
+    setErrors({});
+    return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!validateForm()) return;
+  const handleNext = () => {
+    if (validateStep(currentStep)) {
+      if (currentStep < steps.length - 1) {
+        setCurrentStep(currentStep + 1);
+      } else {
+        handleSubmit();
+      }
+    }
+  };
 
+  const handleSubmit = async () => {
     setIsSubmitting(true);
     
     // Simulate form submission
@@ -63,8 +69,9 @@ export default function InteractiveContactForm() {
     // Reset form after success
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+      setFormData({ name: '', email: '', message: '' });
+      setCurrentStep(0);
+    }, 4000);
   };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
@@ -74,250 +81,242 @@ export default function InteractiveContactForm() {
     }
   };
 
-  const inputVariants = {
-    focused: {
-      scale: 1.02,
-      boxShadow: "0 10px 25px rgba(13, 148, 136, 0.15)",
-      borderColor: "rgba(13, 148, 136, 0.5)",
-    },
-    unfocused: {
-      scale: 1,
-      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
-      borderColor: "rgba(209, 213, 219, 1)",
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      if (steps[currentStep].field !== 'message') {
+        handleNext();
+      }
     }
   };
 
+  if (isSubmitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="text-center py-12 max-w-md mx-auto"
+      >
+        <motion.div
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ delay: 0.2, type: "spring", bounce: 0.6 }}
+          className="w-20 h-20 bg-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl"
+        >
+          <FontAwesomeIcon icon={faRocket} className="text-white text-2xl" />
+        </motion.div>
+        
+        <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="text-2xl font-bold text-white mb-4"
+        >
+          Message Launched! 🚀
+        </motion.h3>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="text-slate-300"
+        >
+          Thanks {formData.name}! I&apos;ll get back to you within 24 hours.
+        </motion.p>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
       className="max-w-2xl mx-auto"
     >
-      <AnimatePresence mode="wait">
-        {!isSubmitted ? (
-          <motion.form
-            key="form"
-            onSubmit={handleSubmit}
-            className="space-y-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-          >
-            {/* Name and Email Row */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <motion.div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Name *</label>
-                <motion.input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                  onFocus={() => setFocusedField('name')}
-                  onBlur={() => setFocusedField(null)}
-                  variants={inputVariants}
-                  animate={focusedField === 'name' ? 'focused' : 'unfocused'}
-                  className={`w-full px-4 py-3 rounded-xl border-2 bg-white/80 backdrop-blur-sm focus:outline-none transition-all duration-300 ${
-                    errors.name ? 'border-red-400' : 'border-gray-300'
-                  }`}
-                  placeholder="Your full name"
-                />
-                <AnimatePresence>
-                  {errors.name && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="text-red-500 text-sm flex items-center space-x-1"
-                    >
-                      <FontAwesomeIcon icon={faExclamationTriangle} className="w-3 h-3" />
-                      <span>{errors.name}</span>
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+      {/* Creative Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-8"
+      >
+        <h3 className="text-2xl font-bold text-white mb-2">
+          Let&apos;s Start Something Amazing
+        </h3>
+        <p className="text-slate-300">
+          Just a few quick questions to get the conversation started
+        </p>
+        
+        {/* Progress Indicator */}
+        <div className="flex justify-center space-x-2 mt-6">
+          {steps.map((_, index) => (
+            <motion.div
+              key={index}
+              className={`h-1 rounded-full transition-all duration-500 ${
+                index <= currentStep 
+                  ? 'bg-blue-700' 
+                  : 'bg-slate-600'
+              }`}
+              initial={{ width: 20 }}
+              animate={{ 
+                width: index === currentStep ? 40 : 20,
+              }}
+            />
+          ))}
+        </div>
+      </motion.div>
 
-              <motion.div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Email *</label>
-                <motion.input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
-                  onFocus={() => setFocusedField('email')}
-                  onBlur={() => setFocusedField(null)}
-                  variants={inputVariants}
-                  animate={focusedField === 'email' ? 'focused' : 'unfocused'}
-                  className={`w-full px-4 py-3 rounded-xl border-2 bg-white/80 backdrop-blur-sm focus:outline-none transition-all duration-300 ${
-                    errors.email ? 'border-red-400' : 'border-gray-300'
-                  }`}
-                  placeholder="your.email@example.com"
+      {/* Main Form Container */}
+      <motion.div
+        className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 shadow-2xl"
+        whileHover={{ borderColor: 'rgba(59, 130, 246, 0.3)' }}
+        transition={{ duration: 0.3 }}
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStep}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-6"
+          >
+            {/* Step Header */}
+            <div className="flex items-center space-x-4">
+                             <motion.div
+                 initial={{ scale: 0 }}
+                 animate={{ scale: 1 }}
+                 transition={{ delay: 0.1 }}
+                 className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center"
+               >
+                <FontAwesomeIcon 
+                  icon={steps[currentStep].icon} 
+                  className="text-white text-lg" 
                 />
-                <AnimatePresence>
-                  {errors.email && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="text-red-500 text-sm flex items-center space-x-1"
-                    >
-                      <FontAwesomeIcon icon={faExclamationTriangle} className="w-3 h-3" />
-                      <span>{errors.email}</span>
-                    </motion.p>
-                  )}
-                </AnimatePresence>
               </motion.div>
+              <div>
+                <h4 className="text-xl font-semibold text-white">
+                  {steps[currentStep].label}
+                </h4>
+                <p className="text-slate-400 text-sm">
+                  Step {currentStep + 1} of {steps.length}
+                </p>
+              </div>
             </div>
 
-            {/* Subject */}
-            <motion.div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Subject *</label>
-              <motion.input
-                type="text"
-                value={formData.subject}
-                onChange={(e) => handleInputChange('subject', e.target.value)}
-                onFocus={() => setFocusedField('subject')}
-                onBlur={() => setFocusedField(null)}
-                variants={inputVariants}
-                animate={focusedField === 'subject' ? 'focused' : 'unfocused'}
-                className={`w-full px-4 py-3 rounded-xl border-2 bg-white/80 backdrop-blur-sm focus:outline-none transition-all duration-300 ${
-                  errors.subject ? 'border-red-400' : 'border-gray-300'
-                }`}
-                placeholder="What's this about?"
-              />
+            {/* Input Field */}
+            <div className="space-y-3">
+              {steps[currentStep].field === 'message' ? (
+                <motion.textarea
+                  value={formData[steps[currentStep].field as keyof FormData]}
+                  onChange={(e) => handleInputChange(steps[currentStep].field as keyof FormData, e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder={steps[currentStep].placeholder}
+                  rows={4}
+                  className="w-full px-4 py-4 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none"
+                  autoFocus
+                />
+              ) : (
+                <motion.input
+                  type={steps[currentStep].field === 'email' ? 'email' : 'text'}
+                  value={formData[steps[currentStep].field as keyof FormData]}
+                  onChange={(e) => handleInputChange(steps[currentStep].field as keyof FormData, e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder={steps[currentStep].placeholder}
+                  className="w-full px-4 py-4 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-lg"
+                  autoFocus
+                />
+              )}
+              
+              {/* Error Message */}
               <AnimatePresence>
-                {errors.subject && (
+                {errors[steps[currentStep].field as keyof FormData] && (
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="text-red-500 text-sm flex items-center space-x-1"
+                    className="text-red-400 text-sm flex items-center space-x-2"
                   >
-                    <FontAwesomeIcon icon={faExclamationTriangle} className="w-3 h-3" />
-                    <span>{errors.subject}</span>
+                    <span>⚠️</span>
+                    <span>{errors[steps[currentStep].field as keyof FormData]}</span>
                   </motion.p>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
 
-            {/* Message */}
-            <motion.div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Message *</label>
-              <motion.textarea
-                value={formData.message}
-                onChange={(e) => handleInputChange('message', e.target.value)}
-                onFocus={() => setFocusedField('message')}
-                onBlur={() => setFocusedField(null)}
-                variants={inputVariants}
-                animate={focusedField === 'message' ? 'focused' : 'unfocused'}
-                rows={5}
-                className={`w-full px-4 py-3 rounded-xl border-2 bg-white/80 backdrop-blur-sm focus:outline-none resize-none transition-all duration-300 ${
-                  errors.message ? 'border-red-400' : 'border-gray-300'
-                }`}
-                placeholder="Tell me about your project or how I can help..."
-              />
-              <AnimatePresence>
-                {errors.message && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="text-red-500 text-sm flex items-center space-x-1"
-                  >
-                    <FontAwesomeIcon icon={faExclamationTriangle} className="w-3 h-3" />
-                    <span>{errors.message}</span>
-                  </motion.p>
-                )}
-              </AnimatePresence>
-            </motion.div>
+            {/* Navigation */}
+            <div className="flex items-center justify-between pt-4">
+              <motion.button
+                type="button"
+                onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
+                disabled={currentStep === 0}
+                className="px-6 py-2 text-slate-400 hover:text-white transition-colors duration-300 disabled:opacity-30 disabled:hover:text-slate-400"
+                whileHover={{ x: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ← Back
+              </motion.button>
 
-            {/* Submit Button */}
-            <motion.button
-              type="submit"
-              disabled={isSubmitting}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-70 relative overflow-hidden"
-            >
-              <AnimatePresence mode="wait">
+                             <motion.button
+                 type="button"
+                 onClick={handleNext}
+                 disabled={isSubmitting}
+                 className="bg-blue-700 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-70 flex items-center space-x-2"
+                 whileHover={{ scale: 1.02 }}
+                 whileTap={{ scale: 0.98 }}
+               >
                 {isSubmitting ? (
-                  <motion.div
-                    key="loading"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="flex items-center justify-center space-x-2"
-                  >
+                  <>
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                      className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
                     />
                     <span>Sending...</span>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="send"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="flex items-center justify-center space-x-2"
-                  >
+                  </>
+                ) : currentStep === steps.length - 1 ? (
+                  <>
                     <FontAwesomeIcon icon={faPaperPlane} />
-                    <span>Send Message</span>
-                  </motion.div>
+                    <span>Launch Message</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Continue</span>
+                    <span>→</span>
+                  </>
                 )}
-              </AnimatePresence>
+              </motion.button>
+            </div>
 
-              {/* Shimmer effect */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                initial={{ x: '-100%' }}
-                animate={{ x: '100%' }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                  ease: "easeInOut"
-                }}
-              />
-            </motion.button>
-          </motion.form>
-        ) : (
-          <motion.div
-            key="success"
-            initial={{ opacity: 0, scale: 0.8, y: 50 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="text-center py-16"
-          >
+            {/* Helpful Tip */}
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring", bounce: 0.6 }}
-              className="w-20 h-20 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="text-center pt-4 border-t border-slate-700"
             >
-              <FontAwesomeIcon icon={faCheck} className="text-white text-2xl" />
+              <p className="text-slate-400 text-sm">
+                💡 Press Enter to continue, or use the Continue button
+              </p>
             </motion.div>
-            
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-2xl font-bold text-gray-900 mb-4"
-            >
-              Message Sent Successfully!
-            </motion.h3>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-gray-600"
-            >
-              Thank you for reaching out. I&apos;ll get back to you soon!
-            </motion.p>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Quick Contact Alternative */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="text-center mt-6"
+      >
+        <p className="text-slate-400 text-sm mb-2">Prefer a quick chat?</p>
+        <a
+          href={`mailto:${socialsData.email}`}
+          className="text-amber-400 hover:text-amber-300 transition-colors duration-300 font-medium"
+        >
+          Drop me an email directly →
+        </a>
+      </motion.div>
     </motion.div>
   );
 }

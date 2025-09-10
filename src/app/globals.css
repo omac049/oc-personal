@@ -19,6 +19,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -26,6 +30,37 @@ body {
   /* Prevent hydration flicker */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Force site to load from top */
+  overflow-x: hidden;
+}
+
+/* Force scroll to top on page load */
+html, body {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
+/* Ensure hero loads immediately visible at top */
+#hero {
+  position: relative;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Prevent any initial layout shifts */
+main {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Ensure content loads top to bottom */
+section {
+  position: relative;
+  width: 100%;
 }
 
 /* Modern Interactive Background Patterns */

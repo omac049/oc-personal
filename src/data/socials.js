@@ -1,6 +1,6 @@
 export const socialsData = {
-  email: "omar@omar-corral.com",
-  phone: "+1 (555) 123-4567", // Placeholder - can be updated
+  email: "omar.seogears@gmail.com",
+  phone: null, // Privacy - phone number removed
   social: [
     {
       name: "LinkedIn",
@@ -20,12 +20,7 @@ export const socialsData = {
       icon: "instagram",
       platform: "instagram"
     },
-    {
-      name: "Twitter",
-      url: "https://twitter.com/omarrcorral",
-      icon: "twitter",
-      platform: "twitter"
-    },
+
     {
       name: "GitHub",
       url: "https://github.com/omac049",
@@ -37,6 +32,6 @@ export const socialsData = {
     title: "Let's Work Together",
     subtitle: "Ready to boost your organic visibility and drive meaningful growth?",
     buttonText: "Get In Touch",
-    email: "omar@omar-corral.com"
+    email: "omar.seogears@gmail.com"
   }
 };

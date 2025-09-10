@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { experienceData } from '@/data/experience';
+import AlgorithmBackground from './AlgorithmBackground';
 
 export default function Experience() {
   const containerRef = useRef<HTMLElement>(null);
@@ -15,7 +16,10 @@ export default function Experience() {
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
 
   return (
-    <section ref={containerRef} id="experience" className="min-h-screen bg-slate-700 relative overflow-hidden">
+    <section ref={containerRef} id="experience" className="min-h-screen bg-slate-900 relative overflow-hidden">
+      {/* Global Algorithm Background */}
+      <AlgorithmBackground opacity="opacity-5" />
+      
       {/* Minimal Elegant Background */}
       <motion.div 
         className="absolute inset-0 z-0"

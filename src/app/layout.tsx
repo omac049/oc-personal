@@ -5,8 +5,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import ScrollProgress from '@/components/ScrollProgress';
 import FloatingNav from '@/components/FloatingNav';
-import InteractiveParticles from '@/components/InteractiveParticles';
 import MonogramLogo from '@/components/MonogramLogo';
+import ScrollToTop from '@/components/ScrollToTop';
 
 config.autoAddCss = false;
 
@@ -60,14 +60,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900`}
       >
+        <ScrollToTop />
         <MonogramLogo />
         <ScrollProgress />
         <FloatingNav />
-        <InteractiveParticles />
         {children}
       </body>
     </html>
