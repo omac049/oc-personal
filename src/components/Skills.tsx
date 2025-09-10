@@ -297,7 +297,7 @@ export default function Skills() {
 
     return (
       <motion.div
-        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-30"
+        className="fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[60]"
         initial={{ opacity: 0, y: 100, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 100, scale: 0.9 }}
