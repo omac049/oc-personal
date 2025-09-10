@@ -8,9 +8,8 @@ import {
   faAtom, faHeart, faRocket, faMagic
 } from '@fortawesome/free-solid-svg-icons';
 import SkillModal from './SkillModal';
+import AlgorithmBackground from './AlgorithmBackground';
 import { useRef, useState, useEffect, useCallback } from 'react';
-
-
 
 // Creative skill universe data with magical SEO themes
 const skillUniverse = [
@@ -105,7 +104,7 @@ export default function Skills() {
   } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [hoveredPlanet, setHoveredPlanet] = useState<string | null>(null);
+  const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -154,10 +153,10 @@ export default function Skills() {
             ease: "easeInOut"
           }}
         >
-                     <FontAwesomeIcon 
-             icon={[faWandSparkles, faGem, faStar, faAtom][Math.floor(Math.random() * 4)]} 
-             className="text-blue-400 opacity-30 text-xs" 
-           />
+          <FontAwesomeIcon 
+            icon={[faWandSparkles, faGem, faStar, faAtom][Math.floor(Math.random() * 4)]} 
+            className="text-blue-400 opacity-30 text-xs" 
+          />
         </motion.div>
       ))}
     </div>
@@ -166,7 +165,7 @@ export default function Skills() {
   // Interactive Skill Planet
   const SkillPlanet = ({ skill, index }: { skill: typeof skillUniverse[0], index: number }) => {
     const planetSize = skill.size === 'large' ? 'w-24 h-24' : skill.size === 'medium' ? 'w-16 h-16' : 'w-12 h-12';
-    const isHovered = hoveredPlanet === skill.id;
+    const isSelected = selectedPlanet === skill.id;
     
     return (
       <motion.div
@@ -196,27 +195,20 @@ export default function Skills() {
           }
         }}
         whileHover={{ 
-          scale: 1.3,
-          zIndex: 10
+          scale: 1.2,
+          zIndex: 5
         }}
-        onHoverStart={() => setHoveredPlanet(skill.id)}
-        onHoverEnd={() => setHoveredPlanet(null)}
+        whileTap={{ scale: 0.95 }}
         onClick={() => {
-          // Create a mock skill object for the modal
-          const mockSkill = {
-            name: skill.name,
-            icon: 'robot', // Default icon
-            proficiency: 95 // Default high proficiency
-          };
-          openSkillModal(mockSkill);
+          setSelectedPlanet(isSelected ? null : skill.id);
         }}
       >
         {/* Planet Glow Effect */}
         <motion.div
           className={`absolute inset-0 ${planetSize} rounded-full bg-gradient-to-br ${skill.color} opacity-20 blur-xl`}
           animate={{
-            scale: isHovered ? [1, 1.5, 1] : [1, 1.2, 1],
-            opacity: isHovered ? [0.2, 0.6, 0.2] : [0.1, 0.3, 0.1]
+            scale: isSelected ? [1, 1.5, 1] : [1, 1.2, 1],
+            opacity: isSelected ? [0.3, 0.7, 0.3] : [0.1, 0.3, 0.1]
           }}
           transition={{
             duration: 2,
@@ -227,10 +219,10 @@ export default function Skills() {
 
         {/* Main Planet */}
         <motion.div
-          className={`relative ${planetSize} bg-gradient-to-br ${skill.color} rounded-full flex items-center justify-center shadow-2xl border-2 border-white/20 backdrop-blur-sm`}
+          className={`relative ${planetSize} bg-gradient-to-br ${skill.color} rounded-full flex items-center justify-center shadow-2xl border-2 ${isSelected ? 'border-white/60' : 'border-white/20'} backdrop-blur-sm`}
           animate={{
-            boxShadow: isHovered 
-              ? ["0 0 20px rgba(255,255,255,0.3)", "0 0 40px rgba(255,255,255,0.6)", "0 0 20px rgba(255,255,255,0.3)"]
+            boxShadow: isSelected 
+              ? ["0 0 30px rgba(255,255,255,0.5)", "0 0 50px rgba(255,255,255,0.8)", "0 0 30px rgba(255,255,255,0.5)"]
               : ["0 0 10px rgba(255,255,255,0.1)", "0 0 20px rgba(255,255,255,0.3)", "0 0 10px rgba(255,255,255,0.1)"]
           }}
           transition={{
@@ -247,7 +239,7 @@ export default function Skills() {
 
         {/* Orbital Ring */}
         <motion.div
-          className="absolute inset-0 rounded-full border border-white/10"
+          className={`absolute inset-0 rounded-full border ${isSelected ? 'border-white/40' : 'border-white/10'}`}
           style={{
             width: `${parseInt(planetSize.split(' ')[0].replace('w-', '')) * 8}px`,
             height: `${parseInt(planetSize.split(' ')[0].replace('w-', '')) * 8}px`,
@@ -257,7 +249,7 @@ export default function Skills() {
           }}
           animate={{
             rotate: 360,
-            opacity: isHovered ? 0.6 : 0.2
+            opacity: isSelected ? 0.8 : 0.2
           }}
           transition={{
             rotate: {
@@ -271,64 +263,8 @@ export default function Skills() {
           }}
         />
 
-        {/* Floating Skill Details */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              className="absolute -top-20 left-1/2 transform -translate-x-1/2 bg-slate-900/95 backdrop-blur-lg rounded-2xl px-6 py-4 border-2 border-white/30 shadow-2xl z-20 min-w-[280px]"
-              initial={{ opacity: 0, y: 15, scale: 0.85 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 15, scale: 0.85 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              style={{
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95))',
-                boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1)'
-              }}
-            >
-              <div className="text-center">
-                <h4 className="text-white font-semibold text-lg mb-2 tracking-wide">{skill.name}</h4>
-                <p className="text-gray-100 text-sm mb-4 leading-relaxed font-medium opacity-90">{skill.description}</p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {skill.skills.slice(0, 3).map((skillName, i) => (
-                    <motion.span 
-                      key={i} 
-                      className={`text-sm bg-gradient-to-r ${skill.color} text-white px-3 py-1.5 rounded-full font-medium shadow-lg backdrop-blur-sm border border-white/20`}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: i * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {skillName}
-                    </motion.span>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Enhanced Tooltip Arrow */}
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2">
-                <div className="w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-slate-900/95" />
-                <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-5 border-r-5 border-t-5 border-transparent border-t-white/30" />
-              </div>
-
-              {/* Subtle glow effect */}
-              <motion.div
-                className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${skill.color} opacity-20 blur-sm -z-10`}
-                animate={{
-                  opacity: [0.1, 0.3, 0.1],
-                  scale: [1, 1.02, 1]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Particle Trail */}
-        {isHovered && [...Array(3)].map((_, i) => (
+        {/* Selection Particles */}
+        {isSelected && [...Array(6)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full"
@@ -337,19 +273,135 @@ export default function Skills() {
               top: '50%'
             }}
             animate={{
-              x: [0, Math.cos((skill.orbit + i * 120) * Math.PI / 180) * 40],
-              y: [0, Math.sin((skill.orbit + i * 120) * Math.PI / 180) * 40],
+              x: [0, Math.cos((i * 60) * Math.PI / 180) * 60],
+              y: [0, Math.sin((i * 60) * Math.PI / 180) * 60],
               opacity: [1, 0],
               scale: [1, 0]
             }}
             transition={{
-              duration: 1,
+              duration: 1.5,
               repeat: Infinity,
-              delay: i * 0.3,
+              delay: i * 0.2,
               ease: "easeOut"
             }}
           />
         ))}
+      </motion.div>
+    );
+  };
+
+  // Upright Skill Card
+  const SkillCard = () => {
+    const selectedSkillData = skillUniverse.find(skill => skill.id === selectedPlanet);
+    if (!selectedSkillData) return null;
+
+    return (
+      <motion.div
+        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-30"
+        initial={{ opacity: 0, y: 100, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 100, scale: 0.9 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div 
+          className="bg-slate-900/95 backdrop-blur-lg rounded-3xl p-8 border-2 border-white/30 shadow-2xl min-w-[400px] max-w-[500px]"
+          style={{
+            background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95))',
+            boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.1)'
+          }}
+        >
+          {/* Card Header */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <div className={`w-16 h-16 bg-gradient-to-br ${selectedSkillData.color} rounded-2xl flex items-center justify-center shadow-xl`}>
+                <FontAwesomeIcon 
+                  icon={selectedSkillData.icon} 
+                  className="text-white text-2xl" 
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-white mb-1">{selectedSkillData.name}</h3>
+                <p className="text-gray-300 text-sm opacity-80">Expert Level Mastery</p>
+              </div>
+            </div>
+            <motion.button
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center text-gray-300 hover:text-white"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setSelectedPlanet(null)}
+            >
+              ✕
+            </motion.button>
+          </div>
+
+          {/* Card Description */}
+          <p className="text-gray-100 text-lg leading-relaxed mb-6 font-medium">
+            {selectedSkillData.description}
+          </p>
+
+          {/* Skills Grid */}
+          <div className="space-y-3">
+            <h4 className="text-white font-semibold text-sm uppercase tracking-wide opacity-80">
+              Core Capabilities
+            </h4>
+            <div className="grid grid-cols-2 gap-3">
+              {selectedSkillData.skills.map((skillName, i) => (
+                <motion.div
+                  key={i}
+                  className={`bg-gradient-to-r ${selectedSkillData.color} text-white px-4 py-3 rounded-xl font-medium shadow-lg backdrop-blur-sm border border-white/20 text-center`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                >
+                  {skillName}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-4 mt-8">
+            <motion.button
+              className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg"
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const mockSkill = {
+                  name: selectedSkillData.name,
+                  icon: 'robot',
+                  proficiency: 95
+                };
+                openSkillModal(mockSkill);
+                setSelectedPlanet(null);
+              }}
+            >
+              View Details
+                          </motion.button>
+              <motion.button
+                className="flex-1 bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl font-semibold transition-all duration-300 border border-white/20"
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Let&apos;s Discuss
+              </motion.button>
+          </div>
+
+          {/* Subtle glow effect */}
+          <motion.div
+            className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${selectedSkillData.color} opacity-10 blur-sm -z-10`}
+            animate={{
+              opacity: [0.05, 0.15, 0.05],
+              scale: [1, 1.02, 1]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </div>
       </motion.div>
     );
   };
@@ -412,8 +464,8 @@ export default function Skills() {
         <FontAwesomeIcon icon={faInfinity} className="text-amber-400 text-2xl" />
       </motion.div>
 
-             {/* Orbiting Elements */}
-       {[faWandSparkles, faGem, faStar].map((icon, i) => (
+      {/* Orbiting Elements */}
+      {[faWandSparkles, faGem, faStar].map((icon, i) => (
         <motion.div
           key={i}
           className="absolute w-4 h-4 flex items-center justify-center"
@@ -462,6 +514,9 @@ export default function Skills() {
 
   return (
     <section ref={containerRef} id="skills" className="min-h-screen bg-slate-900 relative overflow-hidden">
+      {/* Algorithm Background */}
+      <AlgorithmBackground opacity="opacity-10" />
+
       {/* Animated Background */}
       <motion.div 
         className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
@@ -516,7 +571,7 @@ export default function Skills() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             Explore the constellation of expertise that powers exceptional SEO results. 
-            Each skill planet represents mastery in action.
+            Click on each skill planet to discover the magic within.
           </motion.p>
         </motion.div>
 
@@ -557,7 +612,7 @@ export default function Skills() {
                 strokeDasharray="5,5"
                 animate={{
                   strokeDashoffset: [0, -20],
-                  opacity: hoveredPlanet ? 0.8 : 0.3
+                  opacity: selectedPlanet ? 0.8 : 0.3
                 }}
                 transition={{
                   strokeDashoffset: {
@@ -594,7 +649,7 @@ export default function Skills() {
             }}
           >
             <FontAwesomeIcon icon={faHeart} className="text-pink-400 text-lg" />
-            Hover over each skill planet to discover the magic within
+            Click on each skill planet to discover the magic within
             <FontAwesomeIcon icon={faWandSparkles} className="text-amber-400 text-lg" />
           </motion.p>
 
@@ -629,6 +684,11 @@ export default function Skills() {
           </motion.button>
         </motion.div>
       </div>
+
+      {/* Upright Skill Card */}
+      <AnimatePresence>
+        {selectedPlanet && <SkillCard />}
+      </AnimatePresence>
 
       {/* Skill Detail Modal */}
       <SkillModal 
