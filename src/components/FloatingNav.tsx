@@ -69,7 +69,7 @@ export default function FloatingNav() {
         scale: isVisible ? 1 : 0.8
       }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], type: "spring", bounce: 0.2 }}
-      className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-40 ${isVisible ? 'pointer-events-auto' : 'pointer-events-none'}`}
+      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40"
     >
       <motion.div 
         className="bg-slate-900/80 backdrop-blur-xl border border-blue-500/30 rounded-2xl p-3 shadow-2xl mx-auto"
