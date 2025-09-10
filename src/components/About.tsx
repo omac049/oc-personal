@@ -77,28 +77,98 @@ export default function About() {
 
   return (
     <section ref={containerRef} id="about" className="min-h-screen modern-about-bg relative overflow-hidden">
-      {/* Modern Geometric Background Elements */}
+      {/* Enhanced Interactive Background Elements */}
       <motion.div 
         className="absolute inset-0 z-0"
         style={{ y: parallaxY, x: parallaxX }}
       >
-        {/* Large geometric shapes */}
+        {/* Morphing geometric shapes */}
         <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-purple-500/5 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-blue-500/15 to-purple-500/8 rounded-full blur-3xl"
           animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360]
+            scale: [1, 1.3, 0.8, 1.2, 1],
+            rotate: [0, 180, 270, 360],
+            borderRadius: ['50%', '30%', '60%', '40%', '50%']
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-purple-500/12 to-green-500/6 blur-3xl"
+          animate={{ 
+            scale: [1.2, 0.9, 1.4, 1],
+            rotate: [360, 180, 90, 0],
+            borderRadius: ['40%', '70%', '30%', '50%', '40%']
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+        />
+        
+        {/* Floating orbs with mouse interaction */}
+        <motion.div
+          className="absolute top-1/4 left-1/3 w-32 h-32 bg-gradient-to-r from-cyan-400/20 to-blue-500/15 rounded-full blur-2xl"
+          animate={{
+            y: [0, -30, 20, -10, 0],
+            x: [0, 15, -20, 10, 0],
+            scale: [1, 1.2, 0.9, 1.1, 1]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            x: useTransform(smoothMouseX, [-100, 100], [-20, 20]),
+            y: useTransform(smoothMouseY, [-100, 100], [-15, 15]),
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-1/3 right-1/4 w-40 h-40 bg-gradient-to-r from-orange-400/18 to-red-500/12 rounded-full blur-2xl"
+          animate={{
+            y: [0, 25, -15, 30, 0],
+            x: [0, -20, 25, -10, 0],
+            scale: [1.1, 0.8, 1.3, 0.9, 1.1]
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            x: useTransform(smoothMouseX, [-100, 100], [15, -15]),
+            y: useTransform(smoothMouseY, [-100, 100], [10, -10]),
+          }}
+        />
+
+        {/* Dynamic mesh grid */}
+        <motion.div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(96, 165, 246, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(96, 165, 246, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px',
+          }}
+          animate={{
+            backgroundPosition: ['0px 0px', '60px 60px', '0px 0px'],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
-        <motion.div
-          className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-purple-500/10 to-green-500/5 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        />
+
+        {/* Particle system */}
+        {Array.from({ length: 12 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white/30 rounded-full"
+            style={{
+              left: `${20 + (i * 7)}%`,
+              top: `${15 + (i * 5)}%`,
+            }}
+            animate={{
+              opacity: [0, 1, 0],
+              scale: [0, 1.5, 0],
+              y: [0, -100, -200],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeOut"
+            }}
+          />
+        ))}
       </motion.div>
 
       {/* Mouse-Reactive Floating Elements - Repositioned to avoid conflicts */}
@@ -330,69 +400,185 @@ export default function About() {
              transition={{ duration: 1.2, delay: 0.5 }}
              viewport={{ once: true }}
            >
-             {/* Interactive Content Blocks */}
-             <div className="space-y-12">
-               {/* AI Expertise Block */}
+             {/* Creative Interactive Content Blocks */}
+             <div className="space-y-16">
+               {/* AI Expertise Block - Creative Card Design */}
                <motion.div
-                 className="relative group cursor-pointer"
-                 initial={{ opacity: 0, y: 60 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 1, delay: 0.2 }}
+                 className="relative group cursor-pointer perspective-1000"
+                 initial={{ opacity: 0, y: 80, rotateX: 30 }}
+                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                 transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                  viewport={{ once: true }}
                  style={{
-                   x: useTransform(smoothMouseX, [-100, 100], [-8, 8]),
-                   rotateY: useTransform(smoothMouseX, [-100, 100], [-2, 2]),
+                   x: useTransform(smoothMouseX, [-100, 100], [-12, 12]),
+                   rotateY: useTransform(smoothMouseX, [-100, 100], [-3, 3]),
                  }}
-                 whileHover={{ scale: 1.02, z: 20 }}
+                 whileHover={{ scale: 1.03, z: 50, rotateX: -5 }}
                >
                  <motion.div 
-                   className="bg-gradient-to-br from-blue-500/10 to-purple-500/5 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/20 relative overflow-hidden"
+                   className="relative bg-gradient-to-br from-blue-500/15 to-purple-500/8 backdrop-blur-2xl rounded-[2rem] p-10 border border-blue-500/30 overflow-hidden transform-gpu"
                    whileHover={{ 
-                     boxShadow: "0 30px 60px rgba(59, 130, 246, 0.2)",
-                     borderColor: "rgba(59, 130, 246, 0.4)"
+                     boxShadow: "0 40px 80px rgba(59, 130, 246, 0.3), 0 0 100px rgba(139, 92, 246, 0.2)",
+                     borderColor: "rgba(59, 130, 246, 0.6)"
                    }}
                  >
-                   {/* Animated icon */}
+                   {/* Dynamic corner accents */}
                    <motion.div
-                     className="absolute top-6 right-6 w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center"
-                     animate={{ rotate: [0, 360] }}
-                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                     whileHover={{ scale: 1.2 }}
-                   >
-                     <FontAwesomeIcon icon={faBrain} className="text-blue-400 text-lg" />
-                   </motion.div>
-
-                   {/* Moving background pattern */}
-                   <motion.div
-                     className="absolute inset-0 opacity-10"
+                     className="absolute top-0 left-0 w-20 h-20 bg-blue-400/20 rounded-br-full"
                      animate={{
-                       background: [
-                         'radial-gradient(circle at 0% 0%, #3b82f6, transparent)',
-                         'radial-gradient(circle at 100% 100%, #3b82f6, transparent)',
-                         'radial-gradient(circle at 0% 0%, #3b82f6, transparent)',
-                       ]
+                       scale: [1, 1.2, 1],
+                       opacity: [0.2, 0.4, 0.2]
                      }}
-                     transition={{ duration: 8, repeat: Infinity }}
+                     transition={{ duration: 3, repeat: Infinity }}
+                   />
+                   <motion.div
+                     className="absolute bottom-0 right-0 w-16 h-16 bg-purple-400/20 rounded-tl-full"
+                     animate={{
+                       scale: [1.2, 1, 1.2],
+                       opacity: [0.4, 0.2, 0.4]
+                     }}
+                     transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
                    />
 
-                   <div className="relative z-10">
-                     <motion.h3 
-                       className="text-2xl font-bold text-white mb-4 flex items-center gap-3"
-                       whileHover={{ x: 5 }}
+                   {/* Floating icon with orbit animation */}
+                   <motion.div
+                     className="absolute top-8 right-8 w-16 h-16"
+                     animate={{ rotate: [0, 360] }}
+                     transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                   >
+                     <motion.div
+                       className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg"
+                       whileHover={{ scale: 1.3, rotate: 180 }}
+                       animate={{
+                         boxShadow: [
+                           '0 0 20px rgba(59, 130, 246, 0.5)',
+                           '0 0 40px rgba(6, 182, 212, 0.7)',
+                           '0 0 20px rgba(59, 130, 246, 0.5)'
+                         ]
+                       }}
+                       transition={{ 
+                         boxShadow: { duration: 2, repeat: Infinity },
+                         scale: { duration: 0.3 },
+                         rotate: { duration: 0.6 }
+                       }}
                      >
-                       <motion.span
-                         className="w-2 h-2 bg-blue-400 rounded-full"
-                         animate={{ scale: [1, 1.5, 1] }}
-                         transition={{ duration: 2, repeat: Infinity }}
+                       <FontAwesomeIcon icon={faBrain} className="text-white text-lg" />
+                     </motion.div>
+                   </motion.div>
+
+                   {/* Animated background waves */}
+                   <motion.div
+                     className="absolute inset-0 opacity-[0.07]"
+                     animate={{
+                       background: [
+                         'conic-gradient(from 0deg at 20% 20%, #3b82f6, #8b5cf6, #06b6d4, #3b82f6)',
+                         'conic-gradient(from 180deg at 80% 80%, #8b5cf6, #06b6d4, #3b82f6, #8b5cf6)',
+                         'conic-gradient(from 360deg at 20% 20%, #06b6d4, #3b82f6, #8b5cf6, #06b6d4)',
+                       ]
+                     }}
+                     transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                   />
+
+                   {/* Content with staggered animations */}
+                   <div className="relative z-10">
+                     <motion.div
+                       className="flex items-start gap-4 mb-6"
+                       initial={{ opacity: 0, x: -30 }}
+                       whileInView={{ opacity: 1, x: 0 }}
+                       transition={{ delay: 0.4, duration: 0.8 }}
+                     >
+                       <motion.div
+                         className="w-1 h-16 bg-gradient-to-b from-blue-400 via-cyan-400 to-purple-400 rounded-full"
+                         initial={{ scaleY: 0 }}
+                         whileInView={{ scaleY: 1 }}
+                         transition={{ delay: 0.6, duration: 1 }}
                        />
-                       AI-Powered SEO Innovation
-                     </motion.h3>
+                       <div>
+                         <motion.h3 
+                           className="text-3xl font-black text-white mb-2 bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent"
+                           whileHover={{ scale: 1.05 }}
+                           style={{
+                             x: useTransform(smoothMouseX, [-50, 50], [-2, 2]),
+                           }}
+                         >
+                           AI-Powered SEO Innovation
+                         </motion.h3>
+                         <motion.div
+                           className="flex gap-2 mb-4"
+                           initial={{ opacity: 0 }}
+                           whileInView={{ opacity: 1 }}
+                           transition={{ delay: 0.8, duration: 0.6 }}
+                         >
+                           {['AI', 'LLM', 'SGE'].map((tag, i) => (
+                             <motion.span
+                               key={tag}
+                               className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-400/30"
+                               whileHover={{ scale: 1.1, backgroundColor: 'rgba(59, 130, 246, 0.3)' }}
+                               animate={{
+                                 borderColor: [
+                                   'rgba(59, 130, 246, 0.3)',
+                                   'rgba(6, 182, 212, 0.5)',
+                                   'rgba(59, 130, 246, 0.3)'
+                                 ]
+                               }}
+                               transition={{ 
+                                 borderColor: { duration: 2, repeat: Infinity, delay: i * 0.3 },
+                                 scale: { duration: 0.2 }
+                               }}
+                             >
+                               {tag}
+                             </motion.span>
+                           ))}
+                         </motion.div>
+                       </div>
+                     </motion.div>
+                     
+                     <motion.div
+                       className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"
+                       initial={{ opacity: 0, y: 20 }}
+                       whileInView={{ opacity: 1, y: 0 }}
+                       transition={{ delay: 1, duration: 0.8 }}
+                     >
+                       {[
+                         { icon: faRobot, text: 'AI Integration', color: 'blue' },
+                         { icon: faLightbulb, text: 'Smart Strategy', color: 'cyan' },
+                         { icon: faChartLine, text: 'Data-Driven', color: 'purple' }
+                       ].map((item, i) => (
+                         <motion.div
+                           key={i}
+                           className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10"
+                           whileHover={{ 
+                             backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                             scale: 1.05 
+                           }}
+                           animate={{
+                             borderColor: [
+                               'rgba(255, 255, 255, 0.1)',
+                               `rgba(${item.color === 'blue' ? '59, 130, 246' : item.color === 'cyan' ? '6, 182, 212' : '139, 92, 246'}, 0.3)`,
+                               'rgba(255, 255, 255, 0.1)'
+                             ]
+                           }}
+                           transition={{ 
+                             borderColor: { duration: 3, repeat: Infinity, delay: i * 0.5 }
+                           }}
+                         >
+                           <FontAwesomeIcon 
+                             icon={item.icon} 
+                             className={`text-${item.color}-400 text-sm`} 
+                           />
+                           <span className="text-gray-300 text-sm font-medium">{item.text}</span>
+                         </motion.div>
+                       ))}
+                     </motion.div>
                      
                      <motion.p 
-                       className="text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-500"
+                       className="text-gray-200 leading-relaxed text-lg group-hover:text-white transition-colors duration-700"
                        style={{
-                         x: useTransform(smoothMouseX, [-50, 50], [-3, 3]),
+                         x: useTransform(smoothMouseX, [-50, 50], [-2, 2]),
                        }}
+                       initial={{ opacity: 0 }}
+                       whileInView={{ opacity: 1 }}
+                       transition={{ delay: 1.2, duration: 1 }}
                      >
                        I'm a forward-thinking SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
                      </motion.p>
