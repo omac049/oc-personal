@@ -68,9 +68,10 @@ export default function Contact() {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
           className="mb-12"
+          suppressHydrationWarning
         >
           <h3 className="text-2xl font-bold mb-8">Connect With Me</h3>
-          <div className="flex justify-center space-x-6">
+          <div className="flex justify-center space-x-6" suppressHydrationWarning>
             {socialsData.social.map((social, index) => (
               <motion.a
                 key={index}
@@ -84,6 +85,7 @@ export default function Contact() {
                 viewport={{ once: true }}
                 className="w-12 h-12 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300"
                 aria-label={social.name}
+                suppressHydrationWarning
               >
                 <FontAwesomeIcon 
                   icon={iconMap[social.platform]} 
