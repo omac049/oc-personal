@@ -94,7 +94,7 @@ export default function FloatingNav() {
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`relative p-3 rounded-xl transition-all duration-300 cursor-pointer ${
+              className={`relative p-3 rounded-xl transition-all duration-300 ${
                 activeSection === item.id
                   ? 'text-white bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg'
                   : 'text-gray-300 hover:text-white hover:bg-white/10'
