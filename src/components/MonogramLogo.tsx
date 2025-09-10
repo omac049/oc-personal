@@ -1,250 +1,170 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function MonogramLogo() {
   const [isHovered, setIsHovered] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const containerVariants = {
     initial: { 
       opacity: 0, 
-      scale: 0.3, 
-      y: -50,
-      rotateY: -180 
+      scale: 0.9, 
+      y: -20
     },
     animate: { 
       opacity: 1, 
       scale: 1, 
-      y: 0,
-      rotateY: 0
-    }
-  };
-
-  const letterVariants = {
-    initial: { 
-      opacity: 0, 
-      scale: 0.5, 
-      rotateX: -90,
-      y: 20 
-    },
-    animate: { 
-      opacity: 1, 
-      scale: 1, 
-      rotateX: 0,
       y: 0
     }
   };
 
-  const glowVariants = {
-    initial: { opacity: 0, scale: 0.8 },
-    animate: {
-      opacity: [0.3, 0.6, 0.3],
-      scale: [0.8, 1.1, 0.8]
-    }
-  };
+  if (!mounted) return null;
 
   return (
     <motion.div
-      className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50"
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
       variants={containerVariants}
       initial="initial"
       animate="animate"
       transition={{
-        duration: 1.2,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        staggerChildren: 0.2
+        duration: 0.8,
+        ease: [0.23, 1, 0.32, 1],
+        delay: 0.2
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Animated Background Glow */}
+      {/* Modern Container */}
       <motion.div
-        className="absolute inset-0 rounded-full"
-        variants={glowVariants}
-        animate="animate"
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        style={{
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(139, 92, 246, 0.2) 50%, transparent 70%)',
-          filter: 'blur(8px)',
-          transform: 'scale(1.5)'
-        }}
-      />
-
-      {/* Main Monogram Container */}
-      <motion.div
-        className="relative w-16 h-16 bg-slate-800/80 backdrop-blur-lg border border-white/20 rounded-full flex items-center justify-center overflow-hidden"
+        className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl px-4 py-2.5 flex items-center justify-center"
         whileHover={{
-          scale: 1.1,
-          borderColor: 'rgba(59, 130, 246, 0.6)',
-          boxShadow: '0 0 30px rgba(59, 130, 246, 0.4)'
+          scale: 1.05,
+          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+          borderColor: 'rgba(59, 130, 246, 0.3)'
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ 
+          duration: 0.4,
+          ease: [0.23, 1, 0.32, 1]
+        }}
       >
-        {/* Rotating Background Pattern */}
+        {/* Subtle Background Gradient */}
         <motion.div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 rounded-2xl opacity-20"
           animate={{
-            rotate: 360
+            background: [
+              'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)',
+              'linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
+              'linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)'
+            ]
           }}
           transition={{
-            duration: 20,
+            duration: 8,
             repeat: Infinity,
             ease: "linear"
           }}
-        >
-          <div className="w-full h-full bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400" 
-               style={{
-                 background: 'conic-gradient(from 0deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6)'
-               }}
-          />
-        </motion.div>
+        />
 
-        {/* Letter O */}
-        <motion.div
-          className="relative z-10 flex items-center justify-center"
-          variants={letterVariants}
-          transition={{
-            duration: 0.8,
-            ease: [0.25, 0.46, 0.45, 0.94]
-          }}
-        >
+        {/* Modern Typography */}
+        <div className="relative flex items-center space-x-0.5">
           <motion.span
-            className="text-white font-light text-lg tracking-wider"
+            className="text-white font-medium text-xl tracking-tight"
             animate={isHovered ? {
-              scale: [1, 1.2, 1],
-              rotateY: [0, 180, 360],
+              scale: [1, 1.1, 1],
               color: ['#ffffff', '#60a5fa', '#ffffff']
-            } : {
-              scale: [1, 1.05, 1],
-            }}
-            transition={isHovered ? {
-              duration: 1.5,
-              ease: "easeInOut"
-            } : {
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
+            } : {}}
+            transition={{
+              duration: 0.6,
+              ease: [0.23, 1, 0.32, 1]
             }}
           >
             O
           </motion.span>
-        </motion.div>
-
-        {/* Letter C */}
-        <motion.div
-          className="relative z-10 flex items-center justify-center -ml-1"
-          variants={letterVariants}
-          transition={{
-            duration: 0.8,
-            ease: [0.25, 0.46, 0.45, 0.94],
-            delay: 0.1
-          }}
-        >
-          <motion.span
-            className="text-white font-light text-lg tracking-wider"
-            animate={isHovered ? {
-              scale: [1, 1.2, 1],
-              rotateY: [0, -180, -360],
-              color: ['#ffffff', '#a78bfa', '#ffffff']
-            } : {
-              scale: [1, 1.05, 1],
+          
+          <motion.div
+            className="w-0.5 h-4 bg-gradient-to-b from-blue-400 to-purple-400 mx-1 rounded-full"
+            animate={{
+              scaleY: isHovered ? [1, 1.5, 1] : [1, 1.2, 1],
+              opacity: [0.5, 1, 0.5]
             }}
-            transition={isHovered ? {
-              duration: 1.5,
-              ease: "easeInOut",
-              delay: 0.1
-            } : {
-              duration: 2,
+            transition={{
+              duration: isHovered ? 0.6 : 2,
               repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.2
+              ease: "easeInOut"
+            }}
+          />
+          
+          <motion.span
+            className="text-white font-medium text-xl tracking-tight"
+            animate={isHovered ? {
+              scale: [1, 1.1, 1],
+              color: ['#ffffff', '#a78bfa', '#ffffff']
+            } : {}}
+            transition={{
+              duration: 0.6,
+              ease: [0.23, 1, 0.32, 1],
+              delay: 0.1
             }}
           >
             C
           </motion.span>
-        </motion.div>
+        </div>
 
-        {/* Pulse Ring Effect */}
+        {/* Minimal Accent Line */}
         <motion.div
-          className="absolute inset-0 rounded-full border-2 border-white/30"
+          className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent rounded-full"
           animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.5, 0, 0.5]
+            width: isHovered ? "100%" : "40%",
+            opacity: isHovered ? 1 : 0.6
           }}
           transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeOut"
+            duration: 0.4,
+            ease: [0.23, 1, 0.32, 1]
           }}
         />
 
-        {/* Sparkle Effects */}
-        {[...Array(3)].map((_, i) => (
+        {/* Corner Indicators */}
+        {[...Array(2)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            style={{
-              top: `${20 + i * 20}%`,
-              left: `${15 + i * 25}%`
-            }}
+            className={`absolute w-1 h-1 bg-blue-400 rounded-full ${
+              i === 0 ? 'top-1 left-1' : 'bottom-1 right-1'
+            }`}
             animate={{
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
-              rotate: [0, 180, 360]
+              opacity: [0.3, 1, 0.3],
+              scale: [0.8, 1.2, 0.8]
             }}
             transition={{
-              duration: 2,
+              duration: 3,
               repeat: Infinity,
-              delay: i * 0.4,
+              delay: i * 1.5,
               ease: "easeInOut"
             }}
           />
         ))}
       </motion.div>
 
-      {/* Floating Particles */}
-      {[...Array(4)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-60"
-          style={{
-            top: `${Math.random() * 60 + 10}%`,
-            left: `${Math.random() * 60 + 20}%`
-          }}
-          animate={{
-            y: [-10, -30, -10],
-            x: [0, Math.random() * 20 - 10, 0],
-            opacity: [0.6, 0, 0.6],
-            scale: [0.5, 1, 0.5]
-          }}
-          transition={{
-            duration: 4 + Math.random() * 2,
-            repeat: Infinity,
-            delay: i * 0.5,
-            ease: "easeInOut"
-          }}
-        />
-      ))}
-
-      {/* Interactive Tooltip */}
+      {/* Modern Tooltip */}
       <motion.div
-        className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap border border-blue-500/30"
-        initial={{ opacity: 0, y: 10, scale: 0.8 }}
+        className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-slate-900/95 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-xl border border-white/10"
+        initial={{ opacity: 0, y: 8, scale: 0.95 }}
         animate={{ 
           opacity: isHovered ? 1 : 0,
-          y: isHovered ? 0 : 10,
-          scale: isHovered ? 1 : 0.8
+          y: isHovered ? 0 : 8,
+          scale: isHovered ? 1 : 0.95
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ 
+          duration: 0.3,
+          ease: [0.23, 1, 0.32, 1]
+        }}
         style={{ pointerEvents: 'none' }}
       >
-        Omar Corral
-        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-900 rotate-45 border-l border-t border-blue-500/30"></div>
+        <span className="font-medium">Omar Corral</span>
       </motion.div>
     </motion.div>
   );
