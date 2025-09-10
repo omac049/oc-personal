@@ -246,7 +246,7 @@ export default function About() {
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               />
 
-              {/* Profile Image Placeholder - Modern Design */}
+              {/* Omar's Professional Headshot */}
               <motion.div 
                 className="relative w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 p-1"
                 animate={{
@@ -258,20 +258,38 @@ export default function About() {
                   ]
                 }}
                 transition={{ duration: 4, repeat: Infinity }}
+                whileHover={{ scale: 1.05 }}
               >
-                <div className="w-full h-full bg-slate-800 rounded-xl flex items-center justify-center">
-                  <motion.div
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  >
-                    <FontAwesomeIcon icon={faRocket} className="text-white text-6xl" />
-                  </motion.div>
+                <motion.div 
+                  className="w-full h-full rounded-xl overflow-hidden bg-white relative"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src="/omar.jpeg"
+                    alt="Omar Corral - AI-Powered SEO Specialist"
+                    className="w-full h-full object-cover object-center"
+                    style={{
+                      filter: 'brightness(1.1) contrast(1.05) saturate(1.1)'
+                    }}
+                  />
                   
-                  {/* Overlay for future photo */}
-                  <div className="absolute inset-0 rounded-xl bg-black/20 flex items-center justify-center">
-                    <span className="text-white/50 text-sm font-medium">Omar's Photo</span>
-                  </div>
-                </div>
+                  {/* Professional overlay gradient */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-blue-900/20 via-transparent to-purple-900/10"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  {/* Subtle glow effect on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-xl"
+                    initial={{ boxShadow: 'inset 0 0 0 0 rgba(255, 255, 255, 0)' }}
+                    whileHover={{ boxShadow: 'inset 0 0 20px 0 rgba(255, 255, 255, 0.1)' }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.div>
               </motion.div>
 
               {/* Professional Info */}
