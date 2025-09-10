@@ -130,14 +130,23 @@ export default function FloatingNav() {
                 <motion.div
                   layoutId="activeIndicator"
                   className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   style={{ zIndex: -1 }}
                   animate={{
                     boxShadow: [
                       '0 0 20px rgba(59, 130, 246, 0.5)',
-                      '0 0 30px rgba(139, 92, 246, 0.6)',
-                      '0 0 20px rgba(59, 130, 246, 0.5)'
+                      '0 0 30px rgba(139, 92, 246, 0.6)'
                     ]
+                  }}
+                  transition={{
+                    // Layout transition for smooth indicator movement
+                    layout: { type: "spring", bounce: 0.2, duration: 0.6 },
+                    // BoxShadow animation transition
+                    boxShadow: { 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      repeatType: "reverse",
+                      ease: "easeInOut"
+                    }
                   }}
                 />
               )}
