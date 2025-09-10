@@ -33,6 +33,11 @@ body {
   background: linear-gradient(135deg, #065f46 0%, #0f766e 50%, #475569 100%);
 }
 
+/* Custom gradient utilities */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
 .jade-pattern {
   background-image: 
     radial-gradient(circle at 25% 25%, rgba(6, 95, 70, 0.1) 0%, transparent 50%),
