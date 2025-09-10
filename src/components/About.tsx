@@ -405,7 +405,7 @@ export default function About() {
                {/* AI Expertise Block - Creative Card Design */}
                <motion.div
                  className="relative group cursor-pointer perspective-1000"
-                 initial={{ opacity: 0, y: 80, rotateX: 30 }}
+                 initial={{ opacity: 0, y: 80, rotateX: -30 }}
                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                  transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                  viewport={{ once: true }}
@@ -586,70 +586,151 @@ export default function About() {
                  </motion.div>
                </motion.div>
 
-               {/* LLM Specialization Block */}
+               {/* LLM Specialization Block - Creative Design */}
                <motion.div
-                 className="relative group cursor-pointer"
-                 initial={{ opacity: 0, y: 60 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 1, delay: 0.4 }}
+                 className="relative group cursor-pointer perspective-1000"
+                 initial={{ opacity: 0, y: 80, rotateX: -30 }}
+                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                 transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                  viewport={{ once: true }}
                  style={{
-                   x: useTransform(smoothMouseX, [-100, 100], [6, -6]),
-                   rotateY: useTransform(smoothMouseX, [-100, 100], [2, -2]),
+                   x: useTransform(smoothMouseX, [-100, 100], [8, -8]),
+                   rotateY: useTransform(smoothMouseX, [-100, 100], [3, -3]),
                  }}
-                 whileHover={{ scale: 1.02, z: 20 }}
+                 whileHover={{ scale: 1.03, z: 50, rotateX: 5 }}
                >
                  <motion.div 
-                   className="bg-gradient-to-br from-purple-500/10 to-green-500/5 backdrop-blur-xl rounded-3xl p-8 border border-purple-500/20 relative overflow-hidden"
+                   className="relative bg-gradient-to-br from-purple-500/15 to-green-500/8 backdrop-blur-2xl rounded-[2rem] p-10 border border-purple-500/30 overflow-hidden transform-gpu"
                    whileHover={{ 
-                     boxShadow: "0 30px 60px rgba(139, 92, 246, 0.2)",
-                     borderColor: "rgba(139, 92, 246, 0.4)"
+                     boxShadow: "0 40px 80px rgba(139, 92, 246, 0.3), 0 0 100px rgba(34, 197, 94, 0.2)",
+                     borderColor: "rgba(139, 92, 246, 0.6)"
                    }}
                  >
-                   {/* Animated icon */}
+                   {/* Dynamic corner accents */}
                    <motion.div
-                     className="absolute top-6 right-6 w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center"
-                     animate={{ 
-                       scale: [1, 1.1, 1],
-                       rotate: [0, 180, 360]
-                     }}
-                     transition={{ duration: 15, repeat: Infinity }}
-                     whileHover={{ scale: 1.2 }}
-                   >
-                     <FontAwesomeIcon icon={faRobot} className="text-purple-400 text-lg" />
-                   </motion.div>
-
-                   {/* Moving background pattern */}
-                   <motion.div
-                     className="absolute inset-0 opacity-10"
+                     className="absolute top-0 right-0 w-24 h-24 bg-purple-400/20 rounded-bl-full"
                      animate={{
-                       background: [
-                         'radial-gradient(circle at 100% 0%, #8b5cf6, transparent)',
-                         'radial-gradient(circle at 0% 100%, #8b5cf6, transparent)',
-                         'radial-gradient(circle at 100% 0%, #8b5cf6, transparent)',
-                       ]
+                       scale: [1.2, 1, 1.2],
+                       opacity: [0.3, 0.5, 0.3]
                      }}
-                     transition={{ duration: 10, repeat: Infinity }}
+                     transition={{ duration: 3.5, repeat: Infinity }}
+                   />
+                   <motion.div
+                     className="absolute bottom-0 left-0 w-18 h-18 bg-green-400/20 rounded-tr-full"
+                     animate={{
+                       scale: [1, 1.3, 1],
+                       opacity: [0.5, 0.3, 0.5]
+                     }}
+                     transition={{ duration: 3.5, repeat: Infinity, delay: 1.7 }}
                    />
 
-                   <div className="relative z-10">
-                     <motion.h3 
-                       className="text-2xl font-bold text-white mb-4 flex items-center gap-3"
-                       whileHover={{ x: 5 }}
+                   {/* Floating icon with complex animation */}
+                   <motion.div
+                     className="absolute top-8 right-8 w-16 h-16"
+                     animate={{ 
+                       rotate: [0, 180, 360],
+                       scale: [1, 1.1, 1]
+                     }}
+                     transition={{ 
+                       rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                       scale: { duration: 3, repeat: Infinity }
+                     }}
+                   >
+                     <motion.div
+                       className="w-12 h-12 bg-gradient-to-r from-purple-500 to-green-400 rounded-2xl flex items-center justify-center shadow-lg"
+                       whileHover={{ scale: 1.3, rotate: -180 }}
+                       animate={{
+                         boxShadow: [
+                           '0 0 20px rgba(139, 92, 246, 0.5)',
+                           '0 0 40px rgba(34, 197, 94, 0.7)',
+                           '0 0 20px rgba(139, 92, 246, 0.5)'
+                         ]
+                       }}
+                       transition={{ 
+                         boxShadow: { duration: 2.5, repeat: Infinity },
+                         scale: { duration: 0.3 },
+                         rotate: { duration: 0.6 }
+                       }}
                      >
-                       <motion.span
-                         className="w-2 h-2 bg-purple-400 rounded-full"
-                         animate={{ scale: [1, 1.5, 1] }}
-                         transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                       <FontAwesomeIcon icon={faRobot} className="text-white text-lg" />
+                     </motion.div>
+                   </motion.div>
+
+                   {/* Animated background waves */}
+                   <motion.div
+                     className="absolute inset-0 opacity-[0.06]"
+                     animate={{
+                       background: [
+                         'conic-gradient(from 90deg at 80% 20%, #8b5cf6, #22c55e, #06b6d4, #8b5cf6)',
+                         'conic-gradient(from 270deg at 20% 80%, #22c55e, #06b6d4, #8b5cf6, #22c55e)',
+                         'conic-gradient(from 450deg at 80% 20%, #06b6d4, #8b5cf6, #22c55e, #06b6d4)',
+                       ]
+                     }}
+                     transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+                   />
+
+                   {/* Content with staggered animations */}
+                   <div className="relative z-10">
+                     <motion.div
+                       className="flex items-start gap-4 mb-6"
+                       initial={{ opacity: 0, x: 30 }}
+                       whileInView={{ opacity: 1, x: 0 }}
+                       transition={{ delay: 0.6, duration: 0.8 }}
+                     >
+                       <div>
+                         <motion.h3 
+                           className="text-3xl font-black text-white mb-2 bg-gradient-to-r from-purple-400 via-green-300 to-cyan-400 bg-clip-text text-transparent"
+                           whileHover={{ scale: 1.05 }}
+                           style={{
+                             x: useTransform(smoothMouseX, [-50, 50], [2, -2]),
+                           }}
+                         >
+                           LLM & AI Tools Mastery
+                         </motion.h3>
+                         <motion.div
+                           className="flex gap-2 mb-4"
+                           initial={{ opacity: 0 }}
+                           whileInView={{ opacity: 1 }}
+                           transition={{ delay: 1, duration: 0.6 }}
+                         >
+                           {['ChatGPT', 'Claude', 'Tools'].map((tag, i) => (
+                             <motion.span
+                               key={tag}
+                               className="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full border border-purple-400/30"
+                               whileHover={{ scale: 1.1, backgroundColor: 'rgba(139, 92, 246, 0.3)' }}
+                               animate={{
+                                 borderColor: [
+                                   'rgba(139, 92, 246, 0.3)',
+                                   'rgba(34, 197, 94, 0.5)',
+                                   'rgba(139, 92, 246, 0.3)'
+                                 ]
+                               }}
+                               transition={{ 
+                                 borderColor: { duration: 2.5, repeat: Infinity, delay: i * 0.4 },
+                                 scale: { duration: 0.2 }
+                               }}
+                             >
+                               {tag}
+                             </motion.span>
+                           ))}
+                         </motion.div>
+                       </div>
+                       <motion.div
+                         className="w-1 h-16 bg-gradient-to-b from-purple-400 via-green-400 to-cyan-400 rounded-full ml-auto"
+                         initial={{ scaleY: 0 }}
+                         whileInView={{ scaleY: 1 }}
+                         transition={{ delay: 0.8, duration: 1 }}
                        />
-                       LLM & AI Tools Mastery
-                     </motion.h3>
+                     </motion.div>
                      
                      <motion.p 
-                       className="text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-500"
+                       className="text-gray-200 leading-relaxed text-lg group-hover:text-white transition-colors duration-700"
                        style={{
-                         x: useTransform(smoothMouseX, [-50, 50], [3, -3]),
+                         x: useTransform(smoothMouseX, [-50, 50], [2, -2]),
                        }}
+                       initial={{ opacity: 0 }}
+                       whileInView={{ opacity: 1 }}
+                       transition={{ delay: 1.4, duration: 1 }}
                      >
                        I specialize in leveraging Large Language Models and AI tools like ChatGPT, Claude, and custom AI solutions to enhance SEO performance. From AI-powered keyword research and automated content optimization to prompt engineering for SEO-focused content creation, I stay at the forefront of the AI revolution in search marketing.
                      </motion.p>
@@ -657,73 +738,151 @@ export default function About() {
                  </motion.div>
                </motion.div>
 
-               {/* Technical Excellence Block */}
+               {/* Technical Excellence Block - Creative Design */}
                <motion.div
-                 className="relative group cursor-pointer"
-                 initial={{ opacity: 0, y: 60 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 1, delay: 0.6 }}
+                 className="relative group cursor-pointer perspective-1000"
+                 initial={{ opacity: 0, y: 80, rotateX: 30 }}
+                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                 transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
                  viewport={{ once: true }}
                  style={{
-                   x: useTransform(smoothMouseX, [-100, 100], [-4, 4]),
-                   rotateY: useTransform(smoothMouseX, [-100, 100], [-1, 1]),
+                   x: useTransform(smoothMouseX, [-100, 100], [-10, 10]),
+                   rotateY: useTransform(smoothMouseX, [-100, 100], [-2, 2]),
                  }}
-                 whileHover={{ scale: 1.02, z: 20 }}
+                 whileHover={{ scale: 1.03, z: 50, rotateX: -5 }}
                >
                  <motion.div 
-                   className="bg-gradient-to-br from-green-500/10 to-yellow-500/5 backdrop-blur-xl rounded-3xl p-8 border border-green-500/20 relative overflow-hidden"
+                   className="relative bg-gradient-to-br from-green-500/15 to-yellow-500/8 backdrop-blur-2xl rounded-[2rem] p-10 border border-green-500/30 overflow-hidden transform-gpu"
                    whileHover={{ 
-                     boxShadow: "0 30px 60px rgba(34, 197, 94, 0.2)",
-                     borderColor: "rgba(34, 197, 94, 0.4)"
+                     boxShadow: "0 40px 80px rgba(34, 197, 94, 0.3), 0 0 100px rgba(251, 191, 36, 0.2)",
+                     borderColor: "rgba(34, 197, 94, 0.6)"
                    }}
                  >
-                   {/* Animated icon */}
+                   {/* Dynamic corner accents */}
                    <motion.div
-                     className="absolute top-6 right-6 w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center"
+                     className="absolute top-0 left-0 w-22 h-22 bg-green-400/20 rounded-br-full"
+                     animate={{
+                       scale: [1, 1.4, 1],
+                       opacity: [0.2, 0.5, 0.2]
+                     }}
+                     transition={{ duration: 4, repeat: Infinity }}
+                   />
+                   <motion.div
+                     className="absolute bottom-0 right-0 w-20 h-20 bg-yellow-400/20 rounded-tl-full"
+                     animate={{
+                       scale: [1.3, 1, 1.3],
+                       opacity: [0.5, 0.2, 0.5]
+                     }}
+                     transition={{ duration: 4, repeat: Infinity, delay: 2 }}
+                   />
+
+                   {/* Floating icon with technical animation */}
+                   <motion.div
+                     className="absolute top-8 right-8 w-16 h-16"
                      animate={{ 
-                       y: [0, -5, 0],
+                       y: [0, -8, 0],
                        rotate: [0, 360]
                      }}
                      transition={{ 
                        y: { duration: 3, repeat: Infinity },
-                       rotate: { duration: 25, repeat: Infinity, ease: "linear" }
+                       rotate: { duration: 20, repeat: Infinity, ease: "linear" }
                      }}
-                     whileHover={{ scale: 1.2 }}
                    >
-                     <FontAwesomeIcon icon={faCog} className="text-green-400 text-lg" />
+                     <motion.div
+                       className="w-12 h-12 bg-gradient-to-r from-green-500 to-yellow-400 rounded-2xl flex items-center justify-center shadow-lg"
+                       whileHover={{ scale: 1.3, rotate: 360 }}
+                       animate={{
+                         boxShadow: [
+                           '0 0 20px rgba(34, 197, 94, 0.5)',
+                           '0 0 40px rgba(251, 191, 36, 0.7)',
+                           '0 0 20px rgba(34, 197, 94, 0.5)'
+                         ]
+                       }}
+                       transition={{ 
+                         boxShadow: { duration: 3, repeat: Infinity },
+                         scale: { duration: 0.3 },
+                         rotate: { duration: 0.8 }
+                       }}
+                     >
+                       <FontAwesomeIcon icon={faCog} className="text-white text-lg" />
+                     </motion.div>
                    </motion.div>
 
-                   {/* Moving background pattern */}
+                   {/* Animated background waves */}
                    <motion.div
-                     className="absolute inset-0 opacity-10"
+                     className="absolute inset-0 opacity-[0.05]"
                      animate={{
                        background: [
-                         'radial-gradient(circle at 50% 0%, #22c55e, transparent)',
-                         'radial-gradient(circle at 50% 100%, #22c55e, transparent)',
-                         'radial-gradient(circle at 50% 0%, #22c55e, transparent)',
+                         'conic-gradient(from 180deg at 50% 20%, #22c55e, #eab308, #06b6d4, #22c55e)',
+                         'conic-gradient(from 360deg at 50% 80%, #eab308, #06b6d4, #22c55e, #eab308)',
+                         'conic-gradient(from 540deg at 50% 20%, #06b6d4, #22c55e, #eab308, #06b6d4)',
                        ]
                      }}
-                     transition={{ duration: 12, repeat: Infinity }}
+                     transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
                    />
 
+                   {/* Content with staggered animations */}
                    <div className="relative z-10">
-                     <motion.h3 
-                       className="text-2xl font-bold text-white mb-4 flex items-center gap-3"
-                       whileHover={{ x: 5 }}
+                     <motion.div
+                       className="flex items-start gap-4 mb-6"
+                       initial={{ opacity: 0, x: -20 }}
+                       whileInView={{ opacity: 1, x: 0 }}
+                       transition={{ delay: 0.8, duration: 0.8 }}
                      >
-                       <motion.span
-                         className="w-2 h-2 bg-green-400 rounded-full"
-                         animate={{ scale: [1, 1.5, 1] }}
-                         transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                       <motion.div
+                         className="w-1 h-16 bg-gradient-to-b from-green-400 via-yellow-400 to-orange-400 rounded-full"
+                         initial={{ scaleY: 0 }}
+                         whileInView={{ scaleY: 1 }}
+                         transition={{ delay: 1, duration: 1 }}
                        />
-                       Technical Excellence & Strategy
-                     </motion.h3>
+                       <div>
+                         <motion.h3 
+                           className="text-3xl font-black text-white mb-2 bg-gradient-to-r from-green-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent"
+                           whileHover={{ scale: 1.05 }}
+                           style={{
+                             x: useTransform(smoothMouseX, [-50, 50], [-1, 1]),
+                           }}
+                         >
+                           Technical Excellence & Strategy
+                         </motion.h3>
+                         <motion.div
+                           className="flex gap-2 mb-4"
+                           initial={{ opacity: 0 }}
+                           whileInView={{ opacity: 1 }}
+                           transition={{ delay: 1.2, duration: 0.6 }}
+                         >
+                           {['Analytics', 'Audits', 'Schema'].map((tag, i) => (
+                             <motion.span
+                               key={tag}
+                               className="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full border border-green-400/30"
+                               whileHover={{ scale: 1.1, backgroundColor: 'rgba(34, 197, 94, 0.3)' }}
+                               animate={{
+                                 borderColor: [
+                                   'rgba(34, 197, 94, 0.3)',
+                                   'rgba(251, 191, 36, 0.5)',
+                                   'rgba(34, 197, 94, 0.3)'
+                                 ]
+                               }}
+                               transition={{ 
+                                 borderColor: { duration: 3, repeat: Infinity, delay: i * 0.5 },
+                                 scale: { duration: 0.2 }
+                               }}
+                             >
+                               {tag}
+                             </motion.span>
+                           ))}
+                         </motion.div>
+                       </div>
+                     </motion.div>
                      
                      <motion.p 
-                       className="text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-500"
+                       className="text-gray-200 leading-relaxed text-lg group-hover:text-white transition-colors duration-700"
                        style={{
-                         x: useTransform(smoothMouseX, [-50, 50], [-2, 2]),
+                         x: useTransform(smoothMouseX, [-50, 50], [-1, 1]),
                        }}
+                       initial={{ opacity: 0 }}
+                       whileInView={{ opacity: 1 }}
+                       transition={{ delay: 1.6, duration: 1 }}
                      >
                        My expertise extends beyond traditional SEO to include LLM content optimization, AI-assisted technical audits, automated schema markup generation, and developing strategies that perform well in both traditional search results and AI-powered search experiences. I use industry-leading tools including Google Search Console, Google Analytics, SEMrush, Moz, Ahrefs, alongside AI platforms to deliver comprehensive solutions.
                      </motion.p>
@@ -731,70 +890,151 @@ export default function About() {
                  </motion.div>
                </motion.div>
 
-               {/* Future-Forward Commitment Block */}
+               {/* Future-Forward Commitment Block - Creative Design */}
                <motion.div
-                 className="relative group cursor-pointer"
-                 initial={{ opacity: 0, y: 60 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 1, delay: 0.8 }}
+                 className="relative group cursor-pointer perspective-1000"
+                 initial={{ opacity: 0, y: 80, rotateX: -30 }}
+                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                 transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
                  viewport={{ once: true }}
                  style={{
-                   x: useTransform(smoothMouseX, [-100, 100], [5, -5]),
-                   rotateY: useTransform(smoothMouseX, [-100, 100], [1.5, -1.5]),
+                   x: useTransform(smoothMouseX, [-100, 100], [6, -6]),
+                   rotateY: useTransform(smoothMouseX, [-100, 100], [2.5, -2.5]),
                  }}
-                 whileHover={{ scale: 1.02, z: 20 }}
+                 whileHover={{ scale: 1.03, z: 50, rotateX: 5 }}
                >
                  <motion.div 
-                   className="bg-gradient-to-br from-orange-500/10 to-red-500/5 backdrop-blur-xl rounded-3xl p-8 border border-orange-500/20 relative overflow-hidden"
+                   className="relative bg-gradient-to-br from-orange-500/15 to-red-500/8 backdrop-blur-2xl rounded-[2rem] p-10 border border-orange-500/30 overflow-hidden transform-gpu"
                    whileHover={{ 
-                     boxShadow: "0 30px 60px rgba(249, 115, 22, 0.2)",
-                     borderColor: "rgba(249, 115, 22, 0.4)"
+                     boxShadow: "0 40px 80px rgba(249, 115, 22, 0.3), 0 0 100px rgba(239, 68, 68, 0.2)",
+                     borderColor: "rgba(249, 115, 22, 0.6)"
                    }}
                  >
-                   {/* Animated icon */}
+                   {/* Dynamic corner accents */}
                    <motion.div
-                     className="absolute top-6 right-6 w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center"
+                     className="absolute top-0 right-0 w-28 h-28 bg-orange-400/20 rounded-bl-full"
+                     animate={{
+                       scale: [1.1, 1.5, 1.1],
+                       opacity: [0.25, 0.45, 0.25]
+                     }}
+                     transition={{ duration: 4.5, repeat: Infinity }}
+                   />
+                   <motion.div
+                     className="absolute bottom-0 left-0 w-24 h-24 bg-red-400/20 rounded-tr-full"
+                     animate={{
+                       scale: [1.4, 1, 1.4],
+                       opacity: [0.45, 0.25, 0.45]
+                     }}
+                     transition={{ duration: 4.5, repeat: Infinity, delay: 2.25 }}
+                   />
+
+                   {/* Floating icon with rocket animation */}
+                   <motion.div
+                     className="absolute top-8 right-8 w-16 h-16"
                      animate={{ 
                        scale: [1, 1.2, 1],
                        rotate: [0, -180, 0]
                      }}
-                     transition={{ duration: 8, repeat: Infinity }}
-                     whileHover={{ scale: 1.2 }}
+                     transition={{ 
+                       scale: { duration: 2, repeat: Infinity },
+                       rotate: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+                     }}
                    >
-                     <FontAwesomeIcon icon={faRocket} className="text-orange-400 text-lg" />
+                     <motion.div
+                       className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-400 rounded-2xl flex items-center justify-center shadow-lg"
+                       whileHover={{ scale: 1.3, rotate: 360 }}
+                       animate={{
+                         boxShadow: [
+                           '0 0 20px rgba(249, 115, 22, 0.5)',
+                           '0 0 40px rgba(239, 68, 68, 0.7)',
+                           '0 0 20px rgba(249, 115, 22, 0.5)'
+                         ]
+                       }}
+                       transition={{ 
+                         boxShadow: { duration: 3.5, repeat: Infinity },
+                         scale: { duration: 0.3 },
+                         rotate: { duration: 1 }
+                       }}
+                     >
+                       <FontAwesomeIcon icon={faRocket} className="text-white text-lg" />
+                     </motion.div>
                    </motion.div>
 
-                   {/* Moving background pattern */}
+                   {/* Animated background waves */}
                    <motion.div
-                     className="absolute inset-0 opacity-10"
+                     className="absolute inset-0 opacity-[0.04]"
                      animate={{
                        background: [
-                         'radial-gradient(circle at 0% 50%, #f97316, transparent)',
-                         'radial-gradient(circle at 100% 50%, #f97316, transparent)',
-                         'radial-gradient(circle at 0% 50%, #f97316, transparent)',
+                         'conic-gradient(from 270deg at 20% 50%, #f97316, #ef4444, #06b6d4, #f97316)',
+                         'conic-gradient(from 450deg at 80% 50%, #ef4444, #06b6d4, #f97316, #ef4444)',
+                         'conic-gradient(from 630deg at 20% 50%, #06b6d4, #f97316, #ef4444, #06b6d4)',
                        ]
                      }}
-                     transition={{ duration: 14, repeat: Infinity }}
+                     transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
                    />
 
+                   {/* Content with staggered animations */}
                    <div className="relative z-10">
-                     <motion.h3 
-                       className="text-2xl font-bold text-white mb-4 flex items-center gap-3"
-                       whileHover={{ x: 5 }}
+                     <motion.div
+                       className="flex items-start gap-4 mb-6"
+                       initial={{ opacity: 0, x: 25 }}
+                       whileInView={{ opacity: 1, x: 0 }}
+                       transition={{ delay: 1, duration: 0.8 }}
                      >
-                       <motion.span
-                         className="w-2 h-2 bg-orange-400 rounded-full"
-                         animate={{ scale: [1, 1.5, 1] }}
-                         transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+                       <div>
+                         <motion.h3 
+                           className="text-3xl font-black text-white mb-2 bg-gradient-to-r from-orange-400 via-red-300 to-pink-400 bg-clip-text text-transparent"
+                           whileHover={{ scale: 1.05 }}
+                           style={{
+                             x: useTransform(smoothMouseX, [-50, 50], [1, -1]),
+                           }}
+                         >
+                           Future-Proofing Your Business
+                         </motion.h3>
+                         <motion.div
+                           className="flex gap-2 mb-4"
+                           initial={{ opacity: 0 }}
+                           whileInView={{ opacity: 1 }}
+                           transition={{ delay: 1.4, duration: 0.6 }}
+                         >
+                           {['Innovation', 'Strategy', 'Growth'].map((tag, i) => (
+                             <motion.span
+                               key={tag}
+                               className="px-3 py-1 bg-orange-500/20 text-orange-300 text-sm rounded-full border border-orange-400/30"
+                               whileHover={{ scale: 1.1, backgroundColor: 'rgba(249, 115, 22, 0.3)' }}
+                               animate={{
+                                 borderColor: [
+                                   'rgba(249, 115, 22, 0.3)',
+                                   'rgba(239, 68, 68, 0.5)',
+                                   'rgba(249, 115, 22, 0.3)'
+                                 ]
+                               }}
+                               transition={{ 
+                                 borderColor: { duration: 3.5, repeat: Infinity, delay: i * 0.6 },
+                                 scale: { duration: 0.2 }
+                               }}
+                             >
+                               {tag}
+                             </motion.span>
+                           ))}
+                         </motion.div>
+                       </div>
+                       <motion.div
+                         className="w-1 h-16 bg-gradient-to-b from-orange-400 via-red-400 to-pink-400 rounded-full ml-auto"
+                         initial={{ scaleY: 0 }}
+                         whileInView={{ scaleY: 1 }}
+                         transition={{ delay: 1.2, duration: 1 }}
                        />
-                       Future-Proofing Your Business
-                     </motion.h3>
+                     </motion.div>
                      
                      <motion.p 
-                       className="text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-500"
+                       className="text-gray-200 leading-relaxed text-lg group-hover:text-white transition-colors duration-700"
                        style={{
-                         x: useTransform(smoothMouseX, [-50, 50], [2, -2]),
+                         x: useTransform(smoothMouseX, [-50, 50], [1, -1]),
                        }}
+                       initial={{ opacity: 0 }}
+                       whileInView={{ opacity: 1 }}
+                       transition={{ delay: 1.8, duration: 1 }}
                      >
                        Whether it's optimizing content for AI search engines, implementing AI-driven SEO workflows, or developing LLM-enhanced content strategies, I'm committed to delivering cutting-edge results that future-proof your business in the evolving search landscape.
                      </motion.p>
