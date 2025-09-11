@@ -51,10 +51,10 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-12 lg:mb-20 px-4"
         >
           <motion.h2 
-            className="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 sm:mb-6 tracking-tight"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -84,7 +84,7 @@ export default function Experience() {
           />
           
           <motion.p 
-            className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed font-light"
+            className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
@@ -96,14 +96,14 @@ export default function Experience() {
         <div className="relative">
           {/* Modern Timeline line */}
           <motion.div 
-            className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-400/60 via-purple-400/40 to-cyan-400/60"
+            className="absolute left-6 sm:left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-400/60 via-purple-400/40 to-cyan-400/60"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             transition={{ duration: 1.5, delay: 0.5 }}
             viewport={{ once: true }}
           />
 
-          <div className="space-y-16">
+          <div className="space-y-12 lg:space-y-16">
             {experienceData.timeline.map((job, index) => (
               <motion.div
                 key={job.id}
@@ -129,7 +129,7 @@ export default function Experience() {
               >
                 {/* Modern Timeline dot */}
                 <motion.div 
-                  className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-1/2 w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full border-2 border-slate-900 shadow-lg z-20"
+                  className="absolute left-6 sm:left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-1/2 w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full border-2 border-slate-900 shadow-lg z-20"
                   whileHover={{
                     scale: 1.4,
                     boxShadow: "0 0 20px rgba(59, 130, 246, 0.6)",
@@ -150,7 +150,7 @@ export default function Experience() {
                 {/* Modern Content Card */}
                 <motion.div 
                   className={`w-full md:w-5/12 ${
-                    index % 2 === 0 ? 'md:pr-12 pl-20 md:pl-0' : 'md:pl-12 pl-20 md:pr-0'
+                    index % 2 === 0 ? 'md:pr-12 pl-16 sm:pl-20 md:pl-0' : 'md:pl-12 pl-16 sm:pl-20 md:pr-0'
                   }`}
                   whileHover={{ 
                     y: -4,
@@ -158,7 +158,7 @@ export default function Experience() {
                   }}
                 >
                   <motion.div 
-                    className="relative p-8 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300"
+                    className="relative p-4 sm:p-6 lg:p-8 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300"
                     whileHover={{
                       boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)"
                     }}
@@ -171,7 +171,7 @@ export default function Experience() {
                     <div className="relative z-10">
                       <motion.div className="mb-6">
                         <motion.h3 
-                          className="text-2xl font-medium text-white mb-3"
+                          className="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3"
                           initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.15 + 0.2, duration: 0.6 }}
@@ -187,16 +187,16 @@ export default function Experience() {
                           transition={{ delay: index * 0.15 + 0.3 }}
                           viewport={{ once: true }}
                         >
-                          <h4 className="text-lg font-medium text-blue-400 hover:text-blue-300 transition-colors">
+                          <h4 className="text-base sm:text-lg font-medium text-blue-400 hover:text-blue-300 transition-colors">
                             {job.company}
                           </h4>
-                          <span className="text-sm text-gray-400">
+                          <span className="text-xs sm:text-sm text-gray-400">
                             {job.location}
                           </span>
                         </motion.div>
                         
                         <motion.span 
-                          className="text-sm font-medium text-purple-300 bg-purple-500/20 px-3 py-1 rounded-full inline-block"
+                          className="text-xs sm:text-sm font-medium text-purple-300 bg-purple-500/20 px-2 sm:px-3 py-1 rounded-full inline-block"
                           initial={{ scale: 0, opacity: 0 }}
                           whileInView={{ scale: 1, opacity: 1 }}
                           transition={{ 
@@ -216,7 +216,7 @@ export default function Experience() {
                       </motion.div>
                       
                       <motion.p 
-                        className="text-gray-300 mb-6 leading-relaxed"
+                        className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.5, duration: 0.6 }}
@@ -232,7 +232,7 @@ export default function Experience() {
                         transition={{ delay: index * 0.15 + 0.6, duration: 0.6 }}
                         viewport={{ once: true }}
                       >
-                        <h5 className="font-medium text-white mb-4">Key Achievements:</h5>
+                        <h5 className="text-sm sm:text-base font-medium text-white mb-3 sm:mb-4">Key Achievements:</h5>
                         <ul className="space-y-3">
                           {job.achievements.map((achievement, achIndex) => (
                             <motion.li 
@@ -265,12 +265,12 @@ export default function Experience() {
                         transition={{ delay: index * 0.15 + 0.8, duration: 0.6 }}
                         viewport={{ once: true }}
                       >
-                        <h5 className="font-medium text-white mb-4">Technologies & Skills:</h5>
+                        <h5 className="text-sm sm:text-base font-medium text-white mb-3 sm:mb-4">Technologies & Skills:</h5>
                         <div className="flex flex-wrap gap-2">
                           {job.technologies.map((tech, techIndex) => (
                             <motion.span
                               key={techIndex}
-                              className="bg-white/10 hover:bg-blue-500/20 text-gray-300 hover:text-blue-300 text-xs px-3 py-1.5 rounded-full font-medium transition-all duration-200 border border-white/5 hover:border-blue-400/30"
+                              className="bg-white/10 hover:bg-blue-500/20 text-gray-300 hover:text-blue-300 text-xs px-2 sm:px-3 py-1 sm:py-1.5 rounded-full font-medium transition-all duration-200 border border-white/5 hover:border-blue-400/30"
                               initial={{ opacity: 0, scale: 0.8 }}
                               whileInView={{ opacity: 1, scale: 1 }}
                               transition={{ 

@@ -33,7 +33,7 @@ export default function MonogramLogo() {
 
   return (
     <motion.div
-      className="fixed top-6 left-6 z-50 cursor-pointer"
+      className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 cursor-pointer"
       variants={containerVariants}
       initial="initial"
       animate="animate"
@@ -46,9 +46,9 @@ export default function MonogramLogo() {
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
-      {/* Elegant Monogram Container */}
+      {/* Elegant Monogram Container - Responsive sizing */}
       <motion.div 
-        className="relative w-20 h-20 flex items-center justify-center"
+        className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center"
         whileHover={{ scale: 1.08 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
@@ -80,12 +80,12 @@ export default function MonogramLogo() {
           }}
         />
 
-        {/* Premium Monogram SVG */}
+        {/* Premium Monogram SVG - Responsive sizing */}
         <motion.svg
-          width="80"
-          height="80"
+          width="64"
+          height="64"
           viewBox="0 0 80 80"
-          className="relative z-10"
+          className="relative z-10 w-16 h-16 sm:w-20 sm:h-20"
         >
           {/* Letter "O" - Elegant and Modern */}
           <motion.g transform="translate(12, 15)">
@@ -259,9 +259,9 @@ export default function MonogramLogo() {
         </motion.div>
       </motion.div>
 
-      {/* Refined Tooltip */}
+      {/* Refined Tooltip - Hidden on mobile, shown only on larger screens */}
       <motion.div
-        className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-600 text-white text-sm px-4 py-2 rounded-xl shadow-xl whitespace-nowrap"
+        className="hidden sm:block absolute -bottom-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-600 text-white text-sm px-4 py-2 rounded-xl shadow-xl whitespace-nowrap"
         initial={{ opacity: 0, y: 8, scale: 0.9 }}
         animate={{ 
           opacity: isHovered ? 1 : 0,

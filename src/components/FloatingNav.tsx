@@ -69,23 +69,23 @@ export default function FloatingNav() {
         scale: isVisible ? 1 : 0.8
       }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], type: "spring", bounce: 0.2 }}
-      className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50"
+      className="fixed bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-50 px-4 sm:px-0"
       style={{
         pointerEvents: isVisible ? 'auto' : 'none'
       }}
     >
       <motion.div 
-        className="bg-slate-800 border border-slate-600 rounded-2xl p-3 shadow-xl"
+        className="bg-slate-800 border border-slate-600 rounded-2xl p-2 sm:p-3 shadow-xl backdrop-blur-sm"
         whileHover={{ 
           scale: 1.02
         }}
       >
-        <div className="flex items-center justify-center space-x-2">
+        <div className="flex items-center justify-center space-x-1 sm:space-x-2">
           {navItems.map((item, index) => (
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`relative p-3 rounded-xl transition-all duration-300 ${
+              className={`relative p-2 sm:p-3 rounded-xl transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center ${
                 activeSection === item.id
                   ? 'text-white bg-blue-600'
                   : 'text-gray-300 hover:text-white hover:bg-slate-700'

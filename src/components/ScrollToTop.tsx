@@ -4,29 +4,43 @@ import { useEffect } from 'react';
 
 export default function ScrollToTop() {
   useEffect(() => {
-    // Force scroll to top immediately on component mount
-    window.scrollTo(0, 0);
+    // Immediate scroll to top - no delay, no animation initially
+    const scrollToTopImmediate = () => {
+      // Use both methods to ensure compatibility across browsers
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    };
     
-    // Disable automatic scroll restoration
+    // Execute immediately when component mounts
+    scrollToTopImmediate();
+    
+    // Disable browser scroll restoration immediately
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
-    
-    // Additional safety measure - force scroll after a brief delay
-    const timeoutId = setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 50);
 
-    // Prevent any scroll restoration on page refresh
-    const handleBeforeUnload = () => {
-      window.scrollTo(0, 0);
+    // Prevent any scroll restoration on page load
+    const handleLoad = () => {
+      scrollToTopImmediate();
     };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    // Ensure we're at top even after hydration and router changes
+    const handlePageShow = (e: PageTransitionEvent) => {
+      // Handle back/forward button navigation
+      if (e.persisted) {
+        scrollToTopImmediate();
+      }
+    };
 
+    // Add event listeners
+    window.addEventListener('load', handleLoad);
+    window.addEventListener('pageshow', handlePageShow);
+
+    // Cleanup
     return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('load', handleLoad);
+      window.removeEventListener('pageshow', handlePageShow);
     };
   }, []);
 

@@ -21,6 +21,8 @@
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: none;
+  scroll-padding-top: 0;
 }
 
 body {
@@ -32,13 +34,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* Force site to load from top */
   overflow-x: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+  /* Improve mobile responsiveness */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  /* Improve touch scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Force scroll to top on page load */
-html, body {
-  scroll-behavior: smooth;
-  overscroll-behavior: none;
-}
+
 
 /* Ensure hero loads immediately visible at top */
 #hero {
@@ -46,6 +52,7 @@ html, body {
   top: 0;
   left: 0;
   min-height: 100vh;
+  min-height: 100dvh; /* Use dynamic viewport height on mobile */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,12 +62,16 @@ html, body {
 main {
   position: relative;
   min-height: 100vh;
+  top: 0;
 }
 
 /* Ensure content loads top to bottom */
 section {
   position: relative;
   width: 100%;
+  /* Improve mobile scrolling performance */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* Modern Interactive Background Patterns */
@@ -113,9 +124,33 @@ section {
   animation: gradient-shift 3s ease-in-out infinite;
 }
 
-/* Smooth transitions for better UX */
+/* Smooth transitions for better UX - Reduced for mobile performance */
 * {
   transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Improve mobile tap targets */
+@media (max-width: 768px) {
+  button, 
+  a, 
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Optimize fonts for mobile */
+  * {
+    text-rendering: optimizeSpeed;
+  }
 }
 
 /* Custom scrollbar with jade theme */
