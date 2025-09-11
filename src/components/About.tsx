@@ -282,10 +282,11 @@ export default function About() {
                   transition={{ duration: 0.3 }}
                 >
                   <Image
-                    src="https://media.licdn.com/dms/image/v2/C4E03AQFSbqu1dYqIfQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1592950261941?e=1760572800&v=beta&t=Iwd5Dt6WeeGm5dR87fRLSggJZVgeDbO8enrBvt64SY4"
-                    alt="Omar Corral - AI-Powered SEO Specialist"
+                    src="/omar.jpeg"
+                    alt="Omar Corral - AI-Powered SEO Specialist & LLM Optimization Expert"
                     fill
                     className="object-cover object-center"
+                    priority
                     style={{
                       filter: 'brightness(1.1) contrast(1.05) saturate(1.1)'
                     }}
