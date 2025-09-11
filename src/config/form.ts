@@ -2,8 +2,8 @@
 export const formConfig = {
   // Formspree configuration
   formspree: {
-    endpoint: process.env.NEXT_PUBLIC_FORMSPREE_ID || 'YOUR_FORMSPREE_ID',
-    url: `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID || 'YOUR_FORMSPREE_ID'}`,
+    endpoint: process.env.NEXT_PUBLIC_FORMSPREE_ID || 'myzdvywz',
+    url: `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID || 'myzdvywz'}`,
   },
   
   // Email settings
