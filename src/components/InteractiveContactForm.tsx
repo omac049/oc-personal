@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faRocket, faUser, faEnvelope, faComment } from '@fortawesome/free-solid-svg-icons';
+import { formConfig } from '@/config/form';
 
 interface FormData {
   name: string;
@@ -59,18 +60,42 @@ export default function InteractiveContactForm() {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after success
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-      setCurrentStep(0);
-    }, 4000);
+    try {
+      // Real email submission via Formspree
+      const response = await fetch(formConfig.formspree.url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `${formConfig.email.subject} - ${formData.name}`,
+          _replyto: formData.email,
+          _to: formConfig.email.to,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        
+        // Reset form after success
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: '', email: '', message: '' });
+          setCurrentStep(0);
+        }, 4000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setIsSubmitting(false);
+      // You could add error state handling here
+      alert('Sorry, there was an error sending your message. Please try emailing directly.');
+    }
   };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
