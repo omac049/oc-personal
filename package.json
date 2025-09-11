@@ -2,14 +2,17 @@
   "name": "oc-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://omac049.github.io/oc-personal",
+  "homepage": "https://omar-corral.com",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build --turbopack", 
+    "build:production": "NODE_ENV=production next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "export": "next build && next export",
+    "deploy": "npm run build:production",
+    "serve": "npx serve@latest out",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.1",
@@ -19,7 +22,8 @@
     "framer-motion": "^12.23.12",
     "next": "15.5.2",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "web-vitals": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

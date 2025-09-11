@@ -1,117 +1,192 @@
-# Deployment Guide
+# 🚀 GitHub Pages Deployment Guide for omar-corral.com
 
-## 🎉 Your portfolio is ready!
+## Prerequisites
 
-Your Omar Corral portfolio website has been successfully created with all the components and features outlined in the README.
+1. ✅ Custom domain: `omar-corral.com` 
+2. ✅ GitHub repository: `omac049/oc-personal`
+3. ✅ Next.js static export configuration
+4. ✅ GitHub Actions workflow
+5. ✅ CNAME file for custom domain
 
-## 📁 Project Structure
+## Deployment Steps
 
+### 1. Repository Setup
+- Ensure the main branch is set as the source for GitHub Pages
+- Enable GitHub Pages in repository settings
+- Set custom domain to `omar-corral.com`
+
+### 2. DNS Configuration
+Configure your domain registrar to point to GitHub Pages:
+
+**A Records (IPv4):**
 ```
-oc-portfolio/
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx       # SEO metadata and Font Awesome config
-│   │   └── page.tsx         # Main page with all sections
-│   ├── components/
-│   │   ├── Hero.tsx         # Hero section with animations
-│   │   ├── About.tsx        # About section with stats
-│   │   ├── Skills.tsx       # Skills with progress bars
-│   │   ├── Experience.tsx   # Timeline of work experience
-│   │   └── Contact.tsx      # Contact form and social links
-│   └── data/
-│       ├── hero.js          # Hero content
-│       ├── about.js         # About content and stats
-│       ├── skills.js        # Skills and proficiency levels
-│       ├── experience.js    # Work experience timeline
-│       └── socials.js       # Contact info and social links
-├── next.config.ts           # GitHub Pages configuration
-├── package.json             # Dependencies and scripts
-└── .nojekyll               # For GitHub Pages compatibility
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
 ```
 
-## 🚀 Pushing to GitHub
-
-1. **If you haven't set up SSH keys, use HTTPS instead:**
-   ```bash
-   git remote set-url origin https://github.com/omac049/oc-personal.git
-   git push -u origin main
-   ```
-
-2. **Or set up your SSH keys and push:**
-   ```bash
-   git push -u origin main
-   ```
-
-## 🌐 Deploying to GitHub Pages
-
-1. **Enable GitHub Pages:**
-   - Go to your repository on GitHub
-   - Click Settings → Pages
-   - Source: Deploy from a branch
-   - Branch: Select "gh-pages" (will be created after first deployment)
-   - Folder: / (root)
-
-2. **Deploy using the configured scripts:**
-   ```bash
-   npm run deploy
-   ```
-
-3. **Your site will be available at:**
-   `https://omac049.github.io/oc-personal`
-
-## 🔧 Development Commands
-
-- **Start development server:** `npm run dev`
-- **Build for production:** `npm run build`
-- **Deploy to GitHub Pages:** `npm run deploy`
-- **Lint code:** `npm run lint`
-
-## ✨ Features Included
-
-- ✅ Modern responsive design with Tailwind CSS
-- ✅ Smooth animations with Framer Motion
-- ✅ Font Awesome icons
-- ✅ SEO optimized with proper metadata
-- ✅ Static export ready for GitHub Pages
-- ✅ Professional sections: Hero, About, Skills, Experience, Contact
-- ✅ TypeScript for better development experience
-
-## 🎨 Customization
-
-You can easily customize the content by editing the files in `src/data/`:
-
-- `hero.js` - Update your headline and tagline
-- `about.js` - Modify your story and achievements
-- `skills.js` - Add/remove skills and adjust proficiency levels
-- `experience.js` - Update your work history
-- `socials.js` - Change contact information and social links
-
-## 🖼️ Adding Images
-
-Place images in the `public/` directory and reference them in your data files:
-
-```javascript
-// Example in hero.js
-backgroundImage: "/images/hero-background.jpg"
-
-// Example in about.js  
-image: "/images/omar-profile.jpg"
+**AAAA Records (IPv6):**
+```
+2606:50c0:8000::153
+2606:50c0:8001::153
+2606:50c0:8002::153
+2606:50c0:8003::153
 ```
 
-## 🌍 Custom Domain (omar-corral.com)
+**Or use CNAME record:**
+```
+CNAME: omac049.github.io
+```
 
-To use your custom domain:
+### 3. GitHub Pages Settings
+1. Go to repository Settings > Pages
+2. Source: Deploy from a branch
+3. Branch: `gh-pages` (created by GitHub Actions)
+4. Custom domain: `omar-corral.com`
+5. Enforce HTTPS: ✅ Enabled
 
-1. Add `CNAME` file in the `public/` directory with content: `omar-corral.com`
-2. Configure DNS records as outlined in the main README
-3. In GitHub Pages settings, add your custom domain
+### 4. Analytics Setup (Required for Production)
+Update `src/data/seo.ts` with real analytics IDs:
 
-## 🚀 Next Steps
+```typescript
+analytics: {
+  googleAnalytics: "G-YOUR-ACTUAL-ID",
+  googleTagManager: "GTM-YOUR-ID", 
+  googleSearchConsole: "google-site-verification=YOUR-CODE",
+  bingWebmaster: "msvalidate.01=YOUR-BING-CODE",
+  facebookPixel: "YOUR-PIXEL-ID"
+}
+```
 
-1. Push your code to GitHub
-2. Deploy to GitHub Pages
-3. Add your professional photos
-4. Customize the content to match your preferences
-5. Set up your custom domain
+### 5. SEO Verification Setup
 
-Your portfolio is now ready to showcase your SEO and digital marketing expertise! 🎉
+**Google Search Console:**
+1. Add property for `omar-corral.com`
+2. Use HTML tag verification method
+3. Add verification code to `googleSearchConsole` in seo.ts
+4. Submit sitemap: `https://omar-corral.com/sitemap.xml`
+
+**Bing Webmaster Tools:**
+1. Add site `omar-corral.com`
+2. Use meta tag verification
+3. Add verification code to `bingWebmaster` in seo.ts
+
+### 6. Testing Checklist
+
+**Before Deployment:**
+- [ ] Run `npm run build` locally without errors
+- [ ] Test all routes in development (`npm run dev`)
+- [ ] Verify all SEO metadata is correct
+- [ ] Check all external links work
+- [ ] Validate structured data with Google Rich Results Test
+
+**After Deployment:**
+- [ ] Site accessible at `https://omar-corral.com`
+- [ ] All pages load correctly
+- [ ] Sitemap accessible: `/sitemap.xml`
+- [ ] Robots.txt accessible: `/robots.txt`
+- [ ] RSS feed accessible: `/rss.xml`
+- [ ] Web manifest accessible: `/manifest.json`
+- [ ] HTTPS certificate working
+- [ ] Mobile-friendly test passes
+- [ ] Core Web Vitals are green
+- [ ] Structured data validates
+- [ ] Analytics tracking works
+
+## Automatic Deployment
+
+The site automatically deploys when:
+- Pushing to the `main` branch
+- Pull request is merged to `main`
+
+**Workflow location:** `.github/workflows/deploy.yml`
+
+## Manual Deployment
+
+If needed, trigger manual deployment:
+
+```bash
+# Build and test locally
+npm run build:production
+npm run serve
+
+# Force workflow run
+git commit --allow-empty -m "Force deployment"
+git push origin main
+```
+
+## Performance Monitoring
+
+**Tools to check after deployment:**
+1. [Google PageSpeed Insights](https://pagespeed.web.dev/)
+2. [GTmetrix](https://gtmetrix.com/)
+3. [Google Rich Results Test](https://search.google.com/test/rich-results)
+4. [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
+5. [Schema.org Validator](https://validator.schema.org/)
+
+## SEO Submission Checklist
+
+**Search Engines:**
+- [ ] Submit to Google Search Console
+- [ ] Submit to Bing Webmaster Tools
+- [ ] Submit sitemap to both platforms
+- [ ] Request indexing for main pages
+
+**Social Platforms:**
+- [ ] Test Open Graph with Facebook Debugger
+- [ ] Test Twitter Cards with Twitter Card Validator
+- [ ] Update LinkedIn profile with website URL
+
+## Monitoring & Maintenance
+
+**Weekly:**
+- Check Google Search Console for crawl errors
+- Monitor Core Web Vitals performance
+- Review analytics for traffic patterns
+
+**Monthly:**
+- Update sitemap if content changes
+- Review and update meta descriptions
+- Check for broken links
+- Update structured data if services change
+
+## Troubleshooting
+
+**Common Issues:**
+
+1. **Site not loading:**
+   - Check DNS propagation (use whatsmydns.net)
+   - Verify CNAME file contains only `omar-corral.com`
+   - Check GitHub Pages settings
+
+2. **Build failing:**
+   - Check GitHub Actions logs
+   - Verify Node.js version compatibility
+   - Test build locally first
+
+3. **SEO issues:**
+   - Validate all URLs use https://omar-corral.com
+   - Check robots.txt is accessible
+   - Verify sitemap.xml loads correctly
+
+4. **Analytics not working:**
+   - Confirm analytics IDs are correct
+   - Check browser dev tools for tracking
+   - Verify domain matches analytics property
+
+## Production URLs
+
+- **Main Site:** https://omar-corral.com
+- **Sitemap:** https://omar-corral.com/sitemap.xml
+- **Robots:** https://omar-corral.com/robots.txt
+- **RSS Feed:** https://omar-corral.com/rss.xml
+- **Manifest:** https://omar-corral.com/manifest.json
+
+## Support
+
+For deployment issues:
+1. Check GitHub Actions workflow logs
+2. Review Next.js build output
+3. Test locally with `npm run build && npm run serve`
+4. Verify DNS configuration with domain registrar

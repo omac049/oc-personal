@@ -7,52 +7,28 @@ import ScrollProgress from '@/components/ScrollProgress';
 import FloatingNav from '@/components/FloatingNav';
 import MonogramLogo from '@/components/MonogramLogo';
 import ScrollToTop from '@/components/ScrollToTop';
+import StructuredData from '@/components/StructuredData';
+import Analytics from '@/components/Analytics';
+import { generateMetadata as createSEOMetadata } from '@/utils/seo';
 
 config.autoAddCss = false;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: 'swap',
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap',
+  preload: false,
 });
 
-export const metadata: Metadata = {
-  title: "Omar Corral - SEO Specialist & Digital Marketing Strategist",
-  description: "Expert SEO specialist and digital marketing strategist helping businesses grow through data-driven strategies, advanced analytics, and cutting-edge digital marketing techniques.",
-  keywords: ["SEO", "Digital Marketing", "Search Engine Optimization", "Omar Corral", "SEO Manager", "Technical SEO", "Content Strategy"],
-  authors: [{ name: "Omar Corral" }],
-  creator: "Omar Corral",
-  icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
-    ],
-    apple: { url: '/apple-touch-icon.png', sizes: '180x180' },
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://omar-corral.com",
-    title: "Omar Corral - SEO Specialist & Digital Marketing Strategist",
-    description: "Expert SEO specialist and digital marketing strategist helping businesses grow through data-driven strategies.",
-    siteName: "Omar Corral Portfolio",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Omar Corral - SEO Specialist & Digital Marketing Strategist",
-    description: "Expert SEO specialist and digital marketing strategist helping businesses grow through data-driven strategies.",
-    creator: "@omarrcorral",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+// Generate comprehensive SEO metadata
+export const metadata: Metadata = createSEOMetadata();
 
 export default function RootLayout({
   children,
@@ -60,15 +36,104 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Critical resource hints for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
+        
+        {/* DNS prefetch for third-party domains */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="//connect.facebook.net" />
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+        
+        {/* Preload critical CSS and fonts */}
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" />
+        
+        {/* Resource hints for better loading */}
+        <link rel="prefetch" href="/sitemap.xml" />
+        <link rel="prefetch" href="/robots.txt" />
+        
+        {/* Structured Data */}
+        <StructuredData type="all" />
+        
+        {/* FAQ Structured Data for Featured Snippets */}
+        <StructuredData 
+          type="all"
+          customData={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is AI-powered SEO and how does it work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "AI-powered SEO combines traditional search engine optimization with artificial intelligence technologies like ChatGPT, Claude, and machine learning algorithms. It involves using AI tools for keyword research, content optimization, prompt engineering for SEO-focused content creation, and leveraging Large Language Models (LLMs) to understand search intent and create more effective SEO strategies."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do you optimize content for Search Generative Experience (SGE)?",
+                "acceptedAnswer": {
+                  "@type": "Answer", 
+                  "text": "SGE optimization involves creating content that answers questions directly and comprehensively, using structured data markup, optimizing for conversational queries, and ensuring content provides immediate value. I focus on featured snippet optimization, question-based content structure, and implementing schema markup that helps AI search engines understand and present your content effectively."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What makes your SEO approach different from traditional SEO?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "My approach integrates cutting-edge AI technologies with proven SEO fundamentals. I specialize in LLM content optimization, prompt engineering for SEO, AI-driven keyword research, and optimizing for both traditional search engines and AI-powered search experiences."
+                }
+              }
+            ]
+          }}
+        />
+        
+        {/* Analytics & Tracking */}
+        <Analytics />
+        
+        {/* Critical resources preload */}
+        <link
+          rel="preload"
+          href="https://fonts.gstatic.com/s/geist/v1/UcCO3FwjIWiKaKZjkQ.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900`}
+        itemScope
+        itemType="https://schema.org/WebPage"
       >
+        {/* Enhanced UI Components */}
         <ScrollToTop />
         <MonogramLogo />
         <ScrollProgress />
         <FloatingNav />
-        {children}
+        
+        {/* Main Content with Semantic Structure */}
+        <div id="root" role="main" aria-label="Main content">
+          {children}
+        </div>
+        
+        {/* Skip Link for Accessibility */}
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded"
+          aria-label="Skip to main content"
+        >
+          Skip to main content
+        </a>
       </body>
     </html>
   );
