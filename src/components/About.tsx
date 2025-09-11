@@ -9,8 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faRocket, 
   faBrain, 
-  faChartLine, 
-  faLightbulb,
   faCog,
   faRobot,
   faStar,
@@ -367,7 +365,7 @@ export default function About() {
                            transition={{ delay: 0.7, duration: 0.6 }}
                            viewport={{ once: true }}
                         >
-                          {['AI', 'LLM', 'SGE'].map((tag, i) => (
+                          {['AI', 'LLM', 'SGE'].map((tag) => (
                             <span
                               key={tag}
                               className="px-3 py-1 bg-blue-500/15 text-blue-300 text-sm rounded-full border border-blue-400/20"
@@ -452,7 +450,7 @@ export default function About() {
                            transition={{ delay: 0.9, duration: 0.6 }}
                            viewport={{ once: true }}
                         >
-                          {['ChatGPT', 'Claude', 'Tools'].map((tag, i) => (
+                          {['ChatGPT', 'Claude', 'Tools'].map((tag) => (
                             <span
                               key={tag}
                               className="px-3 py-1 bg-purple-500/15 text-purple-300 text-sm rounded-full border border-purple-400/20"
@@ -557,7 +555,7 @@ export default function About() {
                            transition={{ delay: 1.1, duration: 0.6 }}
                            viewport={{ once: true }}
                         >
-                          {['Analytics', 'Audits', 'Schema'].map((tag, i) => (
+                          {['Analytics', 'Audits', 'Schema'].map((tag) => (
                             <span
                               key={tag}
                               className="px-3 py-1 bg-green-500/15 text-green-300 text-sm rounded-full border border-green-400/20"
@@ -648,7 +646,7 @@ export default function About() {
                            transition={{ delay: 1.3, duration: 0.6 }}
                            viewport={{ once: true }}
                         >
-                          {['Innovation', 'Strategy', 'Growth'].map((tag, i) => (
+                          {['Innovation', 'Strategy', 'Growth'].map((tag) => (
                             <span
                               key={tag}
                               className="px-3 py-1 bg-orange-500/15 text-orange-300 text-sm rounded-full border border-orange-400/20"

@@ -1,12 +1,12 @@
 'use client';
 
-import { motion, useScroll, useTransform, AnimatePresence, useAnimationControls } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faCog, faBrain, faChartLine, faGlobe, faShoppingCart, faLightbulb,
   faCrown, faInfinity, faWandMagicSparkles, faWandSparkles, faGem, faStar,
-  faAtom, faHeart, faRocket, faMagic, faPlay, faPause, faEye, faEyeSlash,
-  faSearchPlus, faSearchMinus, faExpand, faCompress, faBars, faCube
+  faHeart, faRocket, faMagic, faPlay, faPause, faEye, faEyeSlash,
+  faExpand, faCompress, faBars, faCube
 } from '@fortawesome/free-solid-svg-icons';
 import SkillModal from './SkillModal';
 import AlgorithmBackground from './AlgorithmBackground';
@@ -373,10 +373,9 @@ export default function Skills() {
   );
 
   // PROPER ORBITAL MECHANICS - Planets Actually Orbit Around the Sun
-  const SkillPlanet = ({ skill, index }: { skill: typeof skillUniverse[0], index: number }) => {
+  const SkillPlanet = ({ skill }: { skill: typeof skillUniverse[0] }) => {
     const basePlanetSize = skill.size === 'large' ? 24 : skill.size === 'medium' ? 18 : 14;
     const actualPlanetSize = basePlanetSize * planetSize;
-    const planetSizeClass = `w-${Math.round(actualPlanetSize)} h-${Math.round(actualPlanetSize)}`;
     const iconSize = skill.size === 'large' ? 'text-2xl' : skill.size === 'medium' ? 'text-xl' : 'text-lg';
     const isSelected = selectedPlanet === skill.id;
     
@@ -1093,8 +1092,8 @@ export default function Skills() {
           <SEOSun />
 
           {/* Skill Planets */}
-          {skillUniverse.map((skill, index) => (
-            <SkillPlanet key={skill.id} skill={skill} index={index} />
+          {skillUniverse.map((skill) => (
+            <SkillPlanet key={skill.id} skill={skill} />
           ))}
 
           {/* Aligned Circular Asteroid Belt */}
