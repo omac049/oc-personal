@@ -4,7 +4,6 @@ import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import ScrollRocket from '@/components/ScrollRocket';
-import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
 import FAQSection from '@/components/FAQSection';
 
 export default function Home() {
@@ -18,8 +17,7 @@ export default function Home() {
         Skip to main content
       </a>
 
-      {/* Breadcrumb Navigation for SEO and UX */}
-      <BreadcrumbNavigation />
+
 
       {/* Main Content with Enhanced Semantics */}
       <main 

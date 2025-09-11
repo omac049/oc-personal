@@ -3,13 +3,14 @@
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faCog, faBriefcase, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUser, faCog, faBriefcase, faQuestionCircle, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const navItems = [
   { id: 'hero', label: 'Home', icon: faHome },
   { id: 'about', label: 'About', icon: faUser },
   { id: 'skills', label: 'Skills', icon: faCog },
   { id: 'experience', label: 'Experience', icon: faBriefcase },
+  { id: 'faq', label: 'FAQ', icon: faQuestionCircle },
   { id: 'contact', label: 'Contact', icon: faEnvelope },
 ];
 
@@ -72,7 +73,7 @@ export default function FloatingNav() {
         scale: (isVisible && !hideInContact) ? 1 : 0.8
       }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], type: "spring", bounce: 0.2 }}
-      className="fixed bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-50 px-2 sm:px-4 lg:px-0 w-full max-w-sm sm:max-w-md lg:max-w-lg"
+      className="fixed bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-50 px-2 sm:px-4 lg:px-0 w-full max-w-md sm:max-w-lg lg:max-w-xl"
       style={{
         pointerEvents: (isVisible && !hideInContact) ? 'auto' : 'none'
       }}
@@ -83,12 +84,12 @@ export default function FloatingNav() {
           scale: 1.02
         }}
       >
-        <div className="flex items-center justify-center space-x-1 sm:space-x-2 lg:space-x-3">
+        <div className="flex items-center justify-center space-x-1 sm:space-x-1.5 lg:space-x-2">
           {navItems.map((item, index) => (
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`relative p-2.5 sm:p-3 lg:p-3.5 rounded-xl transition-all duration-300 min-w-[52px] min-h-[52px] sm:min-w-[56px] sm:min-h-[56px] lg:min-w-[60px] lg:min-h-[60px] flex items-center justify-center flex-1 max-w-[60px] ${
+              className={`relative p-2 sm:p-2.5 lg:p-3 rounded-xl transition-all duration-300 min-w-[48px] min-h-[48px] sm:min-w-[52px] sm:min-h-[52px] lg:min-w-[56px] lg:min-h-[56px] flex items-center justify-center flex-1 max-w-[56px] ${
                 activeSection === item.id
                   ? 'text-white bg-blue-600 shadow-lg'
                   : 'text-gray-300 hover:text-white hover:bg-slate-700'
