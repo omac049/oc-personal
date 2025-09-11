@@ -1,5 +1,6 @@
 import Script from 'next/script';
 import { generateAllStructuredData, generateStructuredData } from '@/utils/seo';
+import { enhancedSEOData, navigationSchema, performanceSchema } from '@/data/enhanced-seo';
 
 interface StructuredDataProps {
   type?: 'all' | 'person' | 'website' | 'organization' | 'breadcrumb';
@@ -13,8 +14,23 @@ export default function StructuredData({ type = 'all', customData }: StructuredD
   if (type === 'all') {
     const allStructuredData = generateAllStructuredData();
     
+    // Enhanced structured data for better search engine rendering
+    const enhancedSchemas = [
+      enhancedSEOData.breadcrumb,
+      enhancedSEOData.faq,
+      enhancedSEOData.howTo,
+      enhancedSEOData.article,
+      enhancedSEOData.service,
+      enhancedSEOData.aggregateRating,
+      enhancedSEOData.course,
+      enhancedSEOData.jobPosting,
+      navigationSchema,
+      performanceSchema
+    ];
+    
     return (
       <>
+        {/* Standard structured data */}
         {allStructuredData.map((data, index) => (
           <Script
             key={index}
@@ -26,6 +42,20 @@ export default function StructuredData({ type = 'all', customData }: StructuredD
             }}
           />
         ))}
+        
+        {/* Enhanced SEO structured data */}
+        {enhancedSchemas.map((schema, index) => (
+          <Script
+            key={`enhanced-${index}`}
+            id={`enhanced-structured-data-${index}`}
+            type="application/ld+json"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(schema, null, 0),
+            }}
+          />
+        ))}
+        
         {customData && (
           <Script
             id="custom-structured-data"

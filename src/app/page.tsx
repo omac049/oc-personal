@@ -4,10 +4,23 @@ import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import ScrollRocket from '@/components/ScrollRocket';
+import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import FAQSection from '@/components/FAQSection';
 
 export default function Home() {
   return (
     <>
+      {/* Skip Navigation for Accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md"
+      >
+        Skip to main content
+      </a>
+
+      {/* Breadcrumb Navigation for SEO and UX */}
+      <BreadcrumbNavigation />
+
       {/* Main Content with Enhanced Semantics */}
       <main 
         id="main-content"
@@ -20,28 +33,79 @@ export default function Home() {
         {/* Enhanced Scroll Component */}
         <ScrollRocket />
         
+        {/* Page Header with Hidden H1 for SEO */}
+        <header className="sr-only">
+          <h1 itemProp="name">
+            Omar Corral - AI-Powered SEO Specialist & LLM Optimization Expert in Phoenix, Arizona
+          </h1>
+          <p itemProp="description">
+            Professional SEO specialist combining traditional search engine optimization with cutting-edge AI technologies including ChatGPT, Claude, and Search Generative Experience (SGE) strategies.
+          </p>
+        </header>
+        
         {/* Hero Section - Primary Landing */}
-        <section aria-label="Introduction and overview">
+        <section 
+          id="hero" 
+          aria-labelledby="hero-heading"
+          aria-label="Introduction and overview"
+          itemScope
+          itemType="https://schema.org/WebPageElement"
+        >
           <Hero />
         </section>
         
         {/* About Section - Professional Background */}
-        <section aria-label="Professional background and expertise">
+        <section 
+          id="about" 
+          aria-labelledby="about-heading"
+          aria-label="Professional background and expertise"
+          itemScope
+          itemType="https://schema.org/AboutPage"
+        >
           <About />
         </section>
         
         {/* Skills Section - Technical Expertise */}
-        <section aria-label="Technical skills and specializations">
+        <section 
+          id="skills" 
+          aria-labelledby="skills-heading"
+          aria-label="Technical skills and specializations"
+          itemScope
+          itemType="https://schema.org/ItemList"
+        >
           <Skills />
         </section>
         
         {/* Experience Section - Work History */}
-        <section aria-label="Professional experience and achievements">
+        <section 
+          id="experience" 
+          aria-labelledby="experience-heading"
+          aria-label="Professional experience and achievements"
+          itemScope
+          itemType="https://schema.org/WorkHistory"
+        >
           <Experience />
         </section>
         
+        {/* FAQ Section - Frequently Asked Questions */}
+        <section 
+          id="faq" 
+          aria-labelledby="faq-heading"
+          aria-label="Frequently asked questions about AI-powered SEO services"
+          itemScope
+          itemType="https://schema.org/FAQPage"
+        >
+          <FAQSection />
+        </section>
+        
         {/* Contact Section - Communication */}
-        <section aria-label="Contact information and communication options">
+        <section 
+          id="contact" 
+          aria-labelledby="contact-heading"
+          aria-label="Contact information and communication options"
+          itemScope
+          itemType="https://schema.org/ContactPage"
+        >
           <Contact />
         </section>
       </main>
