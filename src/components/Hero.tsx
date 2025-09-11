@@ -5,6 +5,7 @@ import { useRef, useEffect } from 'react';
 import { heroData } from '@/data/hero';
 import AnimatedText from './AnimatedText';
 import AlgorithmBackground from './AlgorithmBackground';
+import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faSearch, 
@@ -43,6 +44,8 @@ const seoIcons = [
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
+  const deviceInfo = useDeviceDetection();
+  const animConfig = getAnimationConfig(deviceInfo);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -75,73 +78,98 @@ export default function Hero() {
       id="hero"
       ref={containerRef}
       className="min-h-screen flex items-center justify-center bg-slate-900 text-white relative overflow-hidden"
+      suppressHydrationWarning
     >
       {/* Global Algorithm Background */}
       <AlgorithmBackground opacity="opacity-10" />
 
-      {/* Interactive SEO Icons - Hidden on mobile, reduced on tablet, full on desktop */}
-      <div className="hidden lg:block">
-        {seoIcons.map((seoIcon, index) => (
-          <motion.div
-            key={index}
-            className={`absolute z-20 ${seoIcon.color} opacity-70 hover:opacity-100 transition-opacity duration-300 group`}
-            style={{
-              ...seoIcon.position,
-              transform: `translateY(${index * 2}px)`,
-            }}
-            whileHover={{ 
-              scale: 1.8,
-              rotate: 360,
-              transition: { duration: 0.4 }
-            }}
-            animate={{ 
-              y: [0, -15, 0],
-              rotate: [0, 5, -5, 0],
-            }}
-            transition={{ 
-              duration: 4 + index * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: index * 0.2
-            }}
-          >
-            <div className="relative">
+      {/* Performance-Aware Interactive SEO Icons */}
+      {animConfig.enableComplexAnimations && (
+        <div className="hidden lg:block">
+          {seoIcons.map((seoIcon, index) => (
+            <motion.div
+              key={index}
+              className={`absolute z-20 ${seoIcon.color} opacity-70 hover:opacity-100 transition-opacity duration-300 group`}
+              style={{
+                ...seoIcon.position,
+                transform: `translateY(${index * 2}px)`,
+              }}
+              whileHover={{ 
+                scale: 1.8,
+                rotate: 360,
+                transition: { duration: 0.4 }
+              }}
+              animate={{ 
+                y: [0, -15, 0],
+                rotate: [0, 5, -5, 0],
+              }}
+              transition={{ 
+                duration: 4 + index * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: index * 0.2
+              }}
+            >
+              <div className="relative">
+                <FontAwesomeIcon 
+                  icon={seoIcon.icon} 
+                  className="w-6 h-6 md:w-8 md:h-8 drop-shadow-lg filter" 
+                />
+                
+                {/* Floating Tooltip */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                  whileHover={{ opacity: 1, scale: 1, y: 0 }}
+                  className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-slate-800/90 text-white text-xs rounded-lg whitespace-nowrap backdrop-blur-sm pointer-events-none border border-slate-700/50"
+                >
+                  {seoIcon.label}
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800/90"></div>
+                </motion.div>
+                
+                {/* Pulse Ring Effect */}
+                <motion.div
+                  className="absolute inset-0 border-2 border-current rounded-full opacity-30"
+                  animate={{ 
+                    scale: [1, 2, 1],
+                    opacity: [0.3, 0, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.3,
+                    ease: "easeOut"
+                  }}
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      )}
+      
+      {/* Minimal mobile/tablet version */}
+      {!animConfig.enableComplexAnimations && (
+        <div className="hidden md:block lg:hidden">
+          {seoIcons.slice(0, 6).map((seoIcon, index) => (
+            <div
+              key={`static-${index}`}
+              className={`absolute z-20 ${seoIcon.color} opacity-40`}
+              style={{
+                top: seoIcon.position.top,
+                right: index % 2 === 0 ? '10%' : undefined,
+                left: index % 2 === 1 ? '10%' : undefined,
+              }}
+            >
               <FontAwesomeIcon 
                 icon={seoIcon.icon} 
-                className="w-6 h-6 md:w-8 md:h-8 drop-shadow-lg filter" 
-              />
-              
-              {/* Floating Tooltip */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                whileHover={{ opacity: 1, scale: 1, y: 0 }}
-                className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-slate-800/90 text-white text-xs rounded-lg whitespace-nowrap backdrop-blur-sm pointer-events-none border border-slate-700/50"
-              >
-                {seoIcon.label}
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800/90"></div>
-              </motion.div>
-              
-              {/* Pulse Ring Effect */}
-              <motion.div
-                className="absolute inset-0 border-2 border-current rounded-full opacity-30"
-                animate={{ 
-                  scale: [1, 2, 1],
-                  opacity: [0.3, 0, 0.3]
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: index * 0.3,
-                  ease: "easeOut"
-                }}
+                className="w-5 h-5" 
               />
             </div>
-          </motion.div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
       
-      {/* Simplified mobile version with fewer icons */}
-      <div className="block lg:hidden">
+      {/* Simplified mobile version with minimal animations */}
+      <div className="block md:hidden">
         {seoIcons.slice(0, 4).map((seoIcon, index) => (
           <motion.div
             key={`mobile-${index}`}
@@ -151,16 +179,16 @@ export default function Hero() {
               right: index % 2 === 0 ? '10%' : undefined,
               left: index % 2 === 1 ? '10%' : undefined,
             }}
-            animate={{ 
+            animate={animConfig.enableBackgroundAnimations ? { 
               y: [0, -10, 0],
               opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{ 
+            } : {}}
+            transition={animConfig.enableBackgroundAnimations ? { 
               duration: 3 + index * 0.5,
               repeat: Infinity,
               ease: "easeInOut",
               delay: index * 0.5
-            }}
+            } : {}}
           >
             <FontAwesomeIcon 
               icon={seoIcon.icon} 
@@ -185,11 +213,11 @@ export default function Hero() {
             duration: 0.6, 
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mb-6"
+          className="mb-4 sm:mb-6"
         >
           <AnimatedText
             text={heroData.name}
-            className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight px-2"
             stagger={0.03}
             delay={0.1}
             as="h1"
@@ -204,11 +232,11 @@ export default function Hero() {
             delay: 0.2,
             ease: [0.22, 1, 0.36, 1]
           }}
-          className="mb-8"
+          className="mb-6 sm:mb-8"
         >
           <AnimatedText
             text={heroData.headline}
-            className="text-xl sm:text-2xl md:text-3xl font-light text-slate-300"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-slate-300 px-2"
             stagger={0.01}
             delay={0.3}
             as="h2"
@@ -223,9 +251,9 @@ export default function Hero() {
             delay: 0.4,
             ease: [0.22, 1, 0.36, 1]
           }}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
-          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed px-4">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed px-4 sm:px-6">
             {heroData.subheading}
           </p>
         </motion.div>
@@ -247,7 +275,7 @@ export default function Hero() {
               y: -5
             }}
             whileTap={{ scale: 0.95 }}
-            className="group inline-block bg-blue-700 hover:bg-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-500 shadow-lg hover:shadow-xl relative overflow-hidden min-w-[44px] min-h-[44px]"
+            className="group inline-block bg-blue-700 hover:bg-blue-600 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full text-sm sm:text-base lg:text-lg font-semibold transition-all duration-500 shadow-lg hover:shadow-xl relative overflow-hidden min-w-[48px] min-h-[48px] sm:min-w-[52px] sm:min-h-[52px]"
           >
               {/* Floating Icons around button */}
               <motion.div

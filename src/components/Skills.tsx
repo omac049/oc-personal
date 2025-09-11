@@ -11,6 +11,7 @@ import {
 import SkillModal from './SkillModal';
 import AlgorithmBackground from './AlgorithmBackground';
 import { useRef, useState, useEffect, useCallback } from 'react';
+import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
 
 // Enhanced skill universe data with realistic orbital mechanics
 const skillUniverse = [
@@ -132,6 +133,10 @@ export default function Skills() {
   const [showRings, setShowRings] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   
+  // Device detection for performance optimization
+  const deviceInfo = useDeviceDetection();
+  const animConfig = getAnimationConfig(deviceInfo);
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -168,116 +173,147 @@ export default function Skills() {
     setTimeout(() => setSelectedSkill(null), 300);
   }, []);
 
-  // Simplified Space Background - Optimized for Performance
-  const SpaceBackground = () => (
-    <div className="absolute inset-0 overflow-hidden">
-      {/* Site-consistent gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900" />
-      
-      {/* Reduced stars for better performance */}
-      {[...Array(80)].map((_, i) => (
-        <motion.div
-          key={`star-${i}`}
-          className="absolute rounded-full bg-white/60"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: `${Math.random() * 2 + 1}px`,
-            height: `${Math.random() * 2 + 1}px`,
-          }}
-          animate={{
-            opacity: [0.3, 0.8, 0.3],
-            scale: [0.8, 1.2, 0.8],
-          }}
-          transition={{
-            duration: Math.random() * 4 + 3,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-            ease: "easeInOut"
-          }}
-        />
-      ))}
+  // Performance-Aware Space Background
+  const SpaceBackground = () => {
+    // Return minimal background for mobile/low-performance devices
+    if (!animConfig.enableBackgroundAnimations) {
+      return (
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900" />
+          {/* Minimal static stars */}
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={`static-star-${i}`}
+              className="absolute w-1 h-1 bg-white/40 rounded-full"
+              style={{
+                left: `${10 + i * 8}%`,
+                top: `${15 + (i % 4) * 20}%`,
+              }}
+            />
+          ))}
+        </div>
+      );
+    }
 
-      {/* Simplified nebula effect */}
-      <motion.div
-        className="absolute inset-0 opacity-20"
-        animate={{
-          background: [
-            'radial-gradient(ellipse at 30% 40%, rgba(96, 165, 246, 0.1) 0%, transparent 60%)',
-            'radial-gradient(ellipse at 70% 60%, rgba(139, 92, 246, 0.15) 0%, transparent 60%)',
-            'radial-gradient(ellipse at 30% 40%, rgba(96, 165, 246, 0.1) 0%, transparent 60%)',
-          ]
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-
-      {/* Reduced cosmic dust */}
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={`dust-${i}`}
-          className="absolute rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-sm"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: `${Math.random() * 4 + 2}px`,
-            height: `${Math.random() * 4 + 2}px`,
-          }}
-          animate={{
-            x: [0, Math.random() * 60 - 30],
-            y: [0, Math.random() * 60 - 30],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: Math.random() * 8 + 8,
-            repeat: Infinity,
-            delay: Math.random() * 4,
-            ease: "easeInOut"
-          }}
-        />
-      ))}
-    </div>
-  );
-
-  // Simplified Cosmic Particles - Performance Optimized
-  const CosmicParticles = () => (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -40, 0],
-            x: [0, Math.random() * 20 - 10, 0],
-            rotate: [0, 180],
-            opacity: [0.4, 0.8, 0.4],
-            scale: [0.5, 1.2, 0.5]
-          }}
-          transition={{
-            duration: Math.random() * 6 + 6,
-            repeat: Infinity,
-            delay: Math.random() * 3,
-            ease: "easeInOut"
-          }}
-        >
-          <FontAwesomeIcon 
-            icon={[faWandSparkles, faGem, faStar][Math.floor(Math.random() * 3)]} 
-            className="text-blue-300/60 text-sm" 
+    return (
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Site-consistent gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900" />
+        
+        {/* Adaptive star count based on device */}
+        {[...Array(deviceInfo.isTablet ? 40 : 80)].map((_, i) => (
+          <motion.div
+            key={`star-${i}`}
+            className="absolute rounded-full bg-white/60"
             style={{
-              filter: 'drop-shadow(0 0 6px rgba(59, 130, 246, 0.4))',
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 2 + 1}px`,
+              height: `${Math.random() * 2 + 1}px`,
+            }}
+            animate={{
+              opacity: [0.3, 0.8, 0.3],
+              scale: [0.8, 1.2, 0.8],
+            }}
+            transition={{
+              duration: Math.random() * 4 + 3,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "easeInOut"
             }}
           />
-        </motion.div>
-      ))}
-    </div>
-  );
+        ))}
+
+        {/* Simplified nebula effect - only on desktop */}
+        {animConfig.enableComplexAnimations && (
+          <motion.div
+            className="absolute inset-0 opacity-20"
+            animate={{
+              background: [
+                'radial-gradient(ellipse at 30% 40%, rgba(96, 165, 246, 0.1) 0%, transparent 60%)',
+                'radial-gradient(ellipse at 70% 60%, rgba(139, 92, 246, 0.15) 0%, transparent 60%)',
+                'radial-gradient(ellipse at 30% 40%, rgba(96, 165, 246, 0.1) 0%, transparent 60%)',
+              ]
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        )}
+
+        {/* Adaptive cosmic dust */}
+        {animConfig.particleCount > 0 && [...Array(animConfig.particleCount)].map((_, i) => (
+          <motion.div
+            key={`dust-${i}`}
+            className="absolute rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-sm"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+            }}
+            animate={{
+              x: [0, Math.random() * 60 - 30],
+              y: [0, Math.random() * 60 - 30],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: Math.random() * 8 + 8,
+              repeat: Infinity,
+              delay: Math.random() * 4,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+    );
+  };
+
+  // Performance-Aware Cosmic Particles
+  const CosmicParticles = () => {
+    // Skip particles entirely on mobile/low-performance devices
+    if (!animConfig.enableParticles) {
+      return null;
+    }
+
+    return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(animConfig.particleCount)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -40, 0],
+              x: [0, Math.random() * 20 - 10, 0],
+              rotate: [0, 180],
+              opacity: [0.4, 0.8, 0.4],
+              scale: [0.5, 1.2, 0.5]
+            }}
+            transition={{
+              duration: Math.random() * 6 + 6,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: "easeInOut"
+            }}
+          >
+            <FontAwesomeIcon 
+              icon={[faWandSparkles, faGem, faStar][Math.floor(Math.random() * 3)]} 
+              className="text-blue-300/60 text-sm" 
+              style={{
+                filter: 'drop-shadow(0 0 6px rgba(59, 130, 246, 0.4))',
+              }}
+            />
+          </motion.div>
+        ))}
+      </div>
+    );
+  };
 
   // Aligned Circular Orbital Rings - Perfect Match with Planet Paths
   const OrbitalRings = () => (
@@ -997,7 +1033,7 @@ export default function Skills() {
 
   if (!mounted) {
     return (
-      <section ref={containerRef} id="skills" className="min-h-screen bg-slate-900 relative overflow-hidden">
+      <section ref={containerRef} id="skills" className="min-h-screen bg-slate-900 relative overflow-hidden" suppressHydrationWarning>
         <AlgorithmBackground opacity="opacity-5" />
         <div className="max-w-7xl mx-auto px-6 relative z-10 py-20">
           <div className="text-center">
@@ -1017,7 +1053,7 @@ export default function Skills() {
   }
 
   return (
-    <section ref={containerRef} id="skills" className="min-h-screen bg-slate-900 relative overflow-hidden">
+    <section ref={containerRef} id="skills" className="min-h-screen bg-slate-900 relative overflow-hidden" suppressHydrationWarning>
       {/* Site-consistent Algorithm Background */}
       <AlgorithmBackground opacity="opacity-5" />
       
@@ -1027,17 +1063,17 @@ export default function Skills() {
       {/* Simplified Cosmic Particles */}
       <CosmicParticles />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 py-20">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 relative z-10 py-12 sm:py-16 lg:py-20">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
           <motion.h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-4 sm:mb-6 tracking-tight px-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white mb-3 sm:mb-4 lg:mb-6 tracking-tight px-2 sm:px-4"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -1153,9 +1189,9 @@ export default function Skills() {
           </motion.div>
         </motion.div>
         
-        {/* Mobile Grid Layout - Shown only on mobile */}
+        {/* Enhanced Mobile Grid Layout - Shown only on mobile */}
         <motion.div
-          className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 px-4"
+          className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 px-2 sm:px-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -1164,7 +1200,7 @@ export default function Skills() {
           {skillUniverse.map((skill, index) => (
             <motion.div
               key={skill.id}
-              className="bg-white/8 backdrop-blur-xl rounded-2xl p-6 border border-white/15 hover:border-white/30 transition-all duration-300 group cursor-pointer"
+              className="bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-5 md:p-6 border border-white/15 hover:border-white/30 transition-all duration-300 group cursor-pointer min-h-[140px] sm:min-h-[160px]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -1173,24 +1209,24 @@ export default function Skills() {
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedPlanet(selectedPlanet === skill.id ? null : skill.id)}
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div className={`w-12 h-12 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center shadow-lg`}>
+              <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0`}>
                   <FontAwesomeIcon 
                     icon={skill.icon} 
-                    className="text-white text-lg" 
+                    className="text-white text-base sm:text-lg" 
                   />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-white mb-1">{skill.name}</h3>
-                  <p className="text-gray-300 text-sm">{skill.description}</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base sm:text-lg font-semibold text-white mb-1 leading-tight">{skill.name}</h3>
+                  <p className="text-gray-300 text-xs sm:text-sm leading-tight line-clamp-2">{skill.description}</p>
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                 {skill.skills.slice(0, 4).map((skillName, i) => (
                   <div
                     key={i}
-                    className={`bg-gradient-to-r ${skill.color} text-white px-2 py-1 rounded-lg text-xs font-medium text-center opacity-80`}
+                    className={`bg-gradient-to-r ${skill.color} text-white px-1.5 sm:px-2 py-1 rounded-lg text-xs font-medium text-center opacity-80 leading-tight`}
                   >
                     {skillName}
                   </div>
@@ -1198,7 +1234,7 @@ export default function Skills() {
               </div>
               
               {skill.skills.length > 4 && (
-                <div className="text-center mt-2">
+                <div className="text-center mt-1.5 sm:mt-2">
                   <span className="text-gray-400 text-xs">+{skill.skills.length - 4} more</span>
                 </div>
               )}
@@ -1208,14 +1244,14 @@ export default function Skills() {
 
         {/* Interaction Hint */}
         <motion.div
-          className="text-center mt-12 lg:mt-16"
+          className="text-center mt-8 sm:mt-12 lg:mt-16 px-2 sm:px-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           viewport={{ once: true }}
         >
           <motion.p
-            className="text-gray-300 text-base lg:text-lg mb-6 lg:mb-8 flex items-center justify-center gap-3 font-medium px-4"
+            className="text-gray-300 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 lg:mb-8 flex items-center justify-center gap-2 sm:gap-3 font-medium flex-wrap"
             animate={{
               opacity: [0.7, 1, 0.7],
             }}
@@ -1225,15 +1261,15 @@ export default function Skills() {
               ease: "easeInOut"
             }}
           >
-            <FontAwesomeIcon icon={faHeart} className="text-pink-400" />
+            <FontAwesomeIcon icon={faHeart} className="text-pink-400 text-sm sm:text-base" />
             <span className="hidden lg:inline">Click on skill planets to explore orbital expertise</span>
-            <span className="lg:hidden">Tap on skills to explore expertise</span>
-            <FontAwesomeIcon icon={faWandSparkles} className="text-amber-400" />
+            <span className="lg:hidden text-center">Tap on skills to explore expertise</span>
+            <FontAwesomeIcon icon={faWandSparkles} className="text-amber-400 text-sm sm:text-base" />
           </motion.p>
 
           {/* Call to Action */}
           <motion.button
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-6 py-3 rounded-full font-semibold shadow-xl transition-all duration-300 flex items-center gap-2 mx-auto min-w-[44px] min-h-[44px]"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-full font-semibold shadow-xl transition-all duration-300 flex items-center gap-2 mx-auto min-w-[48px] min-h-[48px] sm:min-w-[52px] sm:min-h-[52px] text-sm sm:text-base"
             whileHover={{ 
               scale: 1.05, 
               y: -2,
@@ -1241,10 +1277,10 @@ export default function Skills() {
             whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <FontAwesomeIcon icon={faRocket} />
+            <FontAwesomeIcon icon={faRocket} className="text-sm sm:text-base" />
             <span className="hidden sm:inline">Launch Your SEO Journey</span>
             <span className="sm:hidden">Get Started</span>
-            <FontAwesomeIcon icon={faMagic} />
+            <FontAwesomeIcon icon={faMagic} className="text-sm sm:text-base" />
           </motion.button>
         </motion.div>
       </div>
@@ -1261,9 +1297,11 @@ export default function Skills() {
         onClose={closeSkillModal}
       />
 
-      {/* SEO Solar System Control Panel */}
-      <ControlPanel />
-      <ControlToggle />
+      {/* SEO Solar System Control Panel - Desktop Only */}
+      <div className="hidden lg:block">
+        <ControlPanel />
+        <ControlToggle />
+      </div>
     </section>
   );
 }

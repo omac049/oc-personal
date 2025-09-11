@@ -167,7 +167,7 @@ export default function InteractiveContactForm() {
 
       {/* Main Form Container */}
       <motion.div
-        className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 shadow-2xl"
+        className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-2xl"
         whileHover={{ borderColor: 'rgba(59, 130, 246, 0.3)' }}
         transition={{ duration: 0.3 }}
       >
@@ -181,23 +181,23 @@ export default function InteractiveContactForm() {
             className="space-y-6"
           >
             {/* Step Header */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3 sm:space-x-4">
                              <motion.div
                  initial={{ scale: 0 }}
                  animate={{ scale: 1 }}
                  transition={{ delay: 0.1 }}
-                 className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center"
+                 className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0"
                >
                 <FontAwesomeIcon 
                   icon={steps[currentStep].icon} 
-                  className="text-white text-lg" 
+                  className="text-white text-base sm:text-lg" 
                 />
               </motion.div>
-              <div>
-                <h4 className="text-xl font-semibold text-white">
+              <div className="flex-1 min-w-0">
+                <h4 className="text-lg sm:text-xl font-semibold text-white leading-tight">
                   {steps[currentStep].label}
                 </h4>
-                <p className="text-slate-400 text-sm">
+                <p className="text-slate-400 text-xs sm:text-sm">
                   Step {currentStep + 1} of {steps.length}
                 </p>
               </div>
@@ -244,12 +244,12 @@ export default function InteractiveContactForm() {
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-between pt-4">
+            <div className="flex items-center justify-between pt-3 sm:pt-4 gap-2">
               <motion.button
                 type="button"
                 onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
                 disabled={currentStep === 0}
-                className="px-6 py-2 text-slate-400 hover:text-white transition-colors duration-300 disabled:opacity-30 disabled:hover:text-slate-400"
+                className="px-4 sm:px-6 py-2 sm:py-3 text-slate-400 hover:text-white transition-colors duration-300 disabled:opacity-30 disabled:hover:text-slate-400 min-h-[44px] text-sm sm:text-base rounded-lg"
                 whileHover={{ x: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -260,7 +260,7 @@ export default function InteractiveContactForm() {
                  type="button"
                  onClick={handleNext}
                  disabled={isSubmitting}
-                 className="bg-blue-700 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-70 flex items-center space-x-2"
+                 className="bg-blue-700 hover:bg-blue-600 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-70 flex items-center space-x-2 min-h-[48px] text-sm sm:text-base"
                  whileHover={{ scale: 1.02 }}
                  whileTap={{ scale: 0.98 }}
                >

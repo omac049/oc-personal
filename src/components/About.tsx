@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from 'react';
 import { aboutData } from '@/data/about';
 import Image from 'next/image';
 import AlgorithmBackground from './AlgorithmBackground';
+import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faRocket, 
@@ -22,6 +23,8 @@ import {
 export default function About() {
   const containerRef = useRef<HTMLElement>(null);
   const [selectedStat, setSelectedStat] = useState<number | null>(null);
+  const deviceInfo = useDeviceDetection();
+  const animConfig = getAnimationConfig(deviceInfo);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -33,11 +36,17 @@ export default function About() {
   const smoothMouseX = useSpring(mouseX, { damping: 30, stiffness: 200 });
   const smoothMouseY = useSpring(mouseY, { damping: 30, stiffness: 200 });
 
-  // Parallax transforms based on scroll and mouse
+  // Parallax transforms based on scroll and mouse - Always call hooks
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);
   const parallaxX = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
   const mouseParallaxX = useTransform(smoothMouseX, [-200, 200], [-50, 50]);
   const mouseParallaxY = useTransform(smoothMouseY, [-200, 200], [-30, 30]);
+  
+  // Content block mouse transforms - Always call hooks
+  const contentTransform1 = useTransform(smoothMouseX, [-100, 100], [-5, 5]);
+  const contentTransform2 = useTransform(smoothMouseX, [-100, 100], [5, -5]);
+  const contentTransform3 = useTransform(smoothMouseX, [-100, 100], [-3, 3]);
+  const contentTransform4 = useTransform(smoothMouseX, [-100, 100], [3, -3]);
 
   // Modern floating elements
   const modernElements = [
@@ -68,7 +77,7 @@ export default function About() {
   }, [mouseX, mouseY]);
 
   return (
-    <section ref={containerRef} id="about" className="min-h-screen bg-slate-900 relative overflow-hidden">
+    <section ref={containerRef} id="about" className="min-h-screen bg-slate-900 relative overflow-hidden" suppressHydrationWarning>
       {/* Global Algorithm Background */}
       <AlgorithmBackground opacity="opacity-5" />
       
@@ -112,8 +121,8 @@ export default function About() {
         />
       </motion.div>
 
-      {/* Simplified Mouse-Reactive Floating Elements */}
-      {modernElements.map((element, index) => (
+      {/* Performance-Aware Floating Elements */}
+      {animConfig.enableBackgroundAnimations && modernElements.map((element, index) => (
         <motion.div
           key={index}
           className="absolute z-5 pointer-events-none"
@@ -144,26 +153,50 @@ export default function About() {
           </motion.div>
         </motion.div>
       ))}
+      
+      {/* Static elements for mobile */}
+      {!animConfig.enableBackgroundAnimations && modernElements.slice(0, 4).map((element, index) => (
+        <div
+          key={`static-${index}`}
+          className="absolute z-5 pointer-events-none opacity-20"
+          style={{
+            ...element.position,
+          }}
+        >
+          <div
+            className={`${element.size} rounded-lg backdrop-blur-sm flex items-center justify-center`}
+            style={{ 
+              backgroundColor: `${element.color}20`
+            }}
+          >
+            <FontAwesomeIcon 
+              icon={element.icon} 
+              className="w-full h-full p-1"
+              style={{ color: element.color }}
+            />
+          </div>
+        </div>
+      ))}
 
-      <div className="max-w-7xl mx-auto px-6 relative z-30 pt-20 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
         {/* Modern Hero Header */}
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-32"
+          className="text-center mb-16 sm:mb-24 lg:mb-32"
         >
           {/* Title Section */}
           <motion.div 
-            className="relative inline-block mb-16"
+            className="relative inline-block mb-8 sm:mb-12 lg:mb-16"
             style={{
               x: mouseParallaxX,
               y: mouseParallaxY,
             }}
           >
             <motion.h2 
-              className="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 sm:mb-6 tracking-tight px-2"
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               }}
@@ -206,18 +239,18 @@ export default function About() {
           </motion.div>
         </motion.div>
 
-        {/* Modern Layout Grid - Mobile optimized */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+        {/* Modern Layout Grid - Enhanced Mobile optimized */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 items-start">
           {/* Profile Section - Simplified Design */}
           <motion.div 
-            className="lg:col-span-2 order-1 lg:order-none"
+            className="lg:col-span-2 order-1 lg:order-none px-2 sm:px-0"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.3 }}
             viewport={{ once: true }}
           >
             <motion.div
-              className="relative bg-white/8 backdrop-blur-xl rounded-3xl p-8 border border-white/15 overflow-hidden"
+              className="relative bg-white/8 backdrop-blur-xl rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/15 overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.4 }}
               style={{
@@ -238,9 +271,9 @@ export default function About() {
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               />
 
-              {/* Omar's Professional Headshot - Responsive sizing */}
+              {/* Omar's Professional Headshot - Enhanced responsive sizing */}
               <motion.div 
-                className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 p-1"
+                className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 xl:w-48 xl:h-48 mx-auto mb-4 sm:mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 p-1"
                 whileHover={{ scale: 1.05 }}
               >
                 <motion.div 
@@ -301,16 +334,16 @@ export default function About() {
                              {/* AI Expertise Block */}
                <motion.div
                  className="relative group"
-                 initial={{ opacity: 0, x: 300 }}
+                 initial={{ opacity: 0, x: deviceInfo.isMobile ? 50 : 300 }}
                  whileInView={{ opacity: 1, x: 0 }}
-                 transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                 viewport={{ once: true, margin: "-100px" }}
-                 whileHover={{ scale: 1.02, x: -10 }}
+                 transition={{ duration: deviceInfo.isMobile ? 0.6 : 1, delay: deviceInfo.isMobile ? 0.1 : 0.2, ease: [0.22, 1, 0.36, 1] }}
+                 viewport={{ once: true, margin: deviceInfo.isMobile ? "-50px" : "-100px" }}
+                 whileHover={{ scale: deviceInfo.isMobile ? 1.01 : 1.02, x: deviceInfo.isMobile ? 0 : -10 }}
               >
                 <motion.div 
-                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-8 border border-blue-500/20 overflow-hidden"
+                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-blue-500/20 overflow-hidden"
                   style={{
-                    x: useTransform(smoothMouseX, [-100, 100], [-5, 5]),
+                    x: animConfig.enableComplexAnimations ? contentTransform1 : 0,
                   }}
                 >
                   {/* Simplified corner accent */}
@@ -336,9 +369,9 @@ export default function About() {
                    <div className="relative z-10">
                                           <motion.div
                         className="flex items-start gap-4 mb-6"
-                        initial={{ opacity: 0, x: 200 }}
+                        initial={{ opacity: 0, x: deviceInfo.isMobile ? 30 : 200 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4, duration: 0.8 }}
+                        transition={{ delay: deviceInfo.isMobile ? 0.2 : 0.4, duration: deviceInfo.isMobile ? 0.5 : 0.8 }}
                         viewport={{ once: true }}
                      >
                       <motion.div
@@ -377,11 +410,11 @@ export default function About() {
                       </div>
                     </motion.div>
                     
-                                         <motion.p 
+                                                                                          <motion.p 
                        className="text-gray-200 leading-relaxed text-sm sm:text-base"
-                       initial={{ opacity: 0, x: 250 }}
+                       initial={{ opacity: 0, x: deviceInfo.isMobile ? 20 : 250 }}
                        whileInView={{ opacity: 1, x: 0 }}
-                       transition={{ delay: 0.9, duration: 1 }}
+                       transition={{ delay: deviceInfo.isMobile ? 0.3 : 0.9, duration: deviceInfo.isMobile ? 0.5 : 1 }}
                        viewport={{ once: true }}
                     >
                       I&apos;m a forward-thinking SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
@@ -393,16 +426,16 @@ export default function About() {
                              {/* LLM Specialization Block */}
                <motion.div
                  className="relative group"
-                 initial={{ opacity: 0, x: 300 }}
+                 initial={{ opacity: 0, x: deviceInfo.isMobile ? 50 : 300 }}
                  whileInView={{ opacity: 1, x: 0 }}
-                 transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                 viewport={{ once: true, margin: "-100px" }}
-                 whileHover={{ scale: 1.02, x: -10 }}
+                 transition={{ duration: deviceInfo.isMobile ? 0.6 : 1, delay: deviceInfo.isMobile ? 0.2 : 0.4, ease: [0.22, 1, 0.36, 1] }}
+                 viewport={{ once: true, margin: deviceInfo.isMobile ? "-50px" : "-100px" }}
+                 whileHover={{ scale: deviceInfo.isMobile ? 1.01 : 1.02, x: deviceInfo.isMobile ? 0 : -10 }}
               >
                 <motion.div 
-                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-8 border border-purple-500/20 overflow-hidden"
+                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-purple-500/20 overflow-hidden"
                   style={{
-                    x: useTransform(smoothMouseX, [-100, 100], [5, -5]),
+                    x: animConfig.enableComplexAnimations ? contentTransform2 : 0,
                   }}
                 >
                   {/* Simplified corner accent */}
@@ -485,16 +518,16 @@ export default function About() {
                              {/* Technical Excellence Block */}
                <motion.div
                  className="relative group"
-                 initial={{ opacity: 0, x: 300 }}
+                 initial={{ opacity: 0, x: deviceInfo.isMobile ? 50 : 300 }}
                  whileInView={{ opacity: 1, x: 0 }}
-                 transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                 viewport={{ once: true, margin: "-100px" }}
-                 whileHover={{ scale: 1.02, x: -10 }}
+                 transition={{ duration: deviceInfo.isMobile ? 0.6 : 1, delay: deviceInfo.isMobile ? 0.3 : 0.6, ease: [0.22, 1, 0.36, 1] }}
+                 viewport={{ once: true, margin: deviceInfo.isMobile ? "-50px" : "-100px" }}
+                 whileHover={{ scale: deviceInfo.isMobile ? 1.01 : 1.02, x: deviceInfo.isMobile ? 0 : -10 }}
               >
                 <motion.div 
-                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-8 border border-green-500/20 overflow-hidden"
+                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-green-500/20 overflow-hidden"
                   style={{
-                    x: useTransform(smoothMouseX, [-100, 100], [-3, 3]),
+                    x: animConfig.enableComplexAnimations ? contentTransform3 : 0,
                   }}
                 >
                   {/* Simplified corner accent */}
@@ -583,16 +616,16 @@ export default function About() {
                              {/* Future-Forward Commitment Block */}
                <motion.div
                  className="relative group"
-                 initial={{ opacity: 0, x: 300 }}
+                 initial={{ opacity: 0, x: deviceInfo.isMobile ? 50 : 300 }}
                  whileInView={{ opacity: 1, x: 0 }}
-                 transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                 viewport={{ once: true, margin: "-100px" }}
-                 whileHover={{ scale: 1.02, x: -10 }}
+                 transition={{ duration: deviceInfo.isMobile ? 0.6 : 1, delay: deviceInfo.isMobile ? 0.4 : 0.8, ease: [0.22, 1, 0.36, 1] }}
+                 viewport={{ once: true, margin: deviceInfo.isMobile ? "-50px" : "-100px" }}
+                 whileHover={{ scale: deviceInfo.isMobile ? 1.01 : 1.02, x: deviceInfo.isMobile ? 0 : -10 }}
               >
                 <motion.div 
-                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-8 border border-orange-500/20 overflow-hidden"
+                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-orange-500/20 overflow-hidden"
                   style={{
-                    x: useTransform(smoothMouseX, [-100, 100], [3, -3]),
+                    x: animConfig.enableComplexAnimations ? contentTransform4 : 0,
                   }}
                 >
                   {/* Simplified corner accent */}

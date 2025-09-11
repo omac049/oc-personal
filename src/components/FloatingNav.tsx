@@ -69,29 +69,29 @@ export default function FloatingNav() {
         scale: isVisible ? 1 : 0.8
       }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], type: "spring", bounce: 0.2 }}
-      className="fixed bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-50 px-4 sm:px-0"
+      className="fixed bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-50 px-2 sm:px-4 lg:px-0 w-full max-w-sm sm:max-w-md lg:max-w-lg"
       style={{
         pointerEvents: isVisible ? 'auto' : 'none'
       }}
     >
       <motion.div 
-        className="bg-slate-800 border border-slate-600 rounded-2xl p-2 sm:p-3 shadow-xl backdrop-blur-sm"
+        className="bg-slate-800/95 border border-slate-600/80 rounded-2xl p-2 sm:p-2.5 lg:p-3 shadow-2xl backdrop-blur-md mx-auto"
         whileHover={{ 
           scale: 1.02
         }}
       >
-        <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+        <div className="flex items-center justify-center space-x-1 sm:space-x-2 lg:space-x-3">
           {navItems.map((item, index) => (
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`relative p-2 sm:p-3 rounded-xl transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center ${
+              className={`relative p-2.5 sm:p-3 lg:p-3.5 rounded-xl transition-all duration-300 min-w-[52px] min-h-[52px] sm:min-w-[56px] sm:min-h-[56px] lg:min-w-[60px] lg:min-h-[60px] flex items-center justify-center flex-1 max-w-[60px] ${
                 activeSection === item.id
-                  ? 'text-white bg-blue-600'
+                  ? 'text-white bg-blue-600 shadow-lg'
                   : 'text-gray-300 hover:text-white hover:bg-slate-700'
               }`}
               whileHover={{ 
-                scale: 1.1,
+                scale: 1.05,
                 y: -2
               }}
               whileTap={{ scale: 0.95 }}
@@ -103,13 +103,13 @@ export default function FloatingNav() {
                 bounce: 0.3
               }}
             >
-              <FontAwesomeIcon icon={item.icon} className="w-4 h-4" />
+              <FontAwesomeIcon icon={item.icon} className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
               
-              {/* Simple Tooltip */}
+              {/* Simple Tooltip - Hidden on mobile for better UX */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileHover={{ opacity: 1, y: 0 }}
-                className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-slate-700 text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none"
+                className="hidden sm:block absolute -top-12 left-1/2 transform -translate-x-1/2 bg-slate-700 text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none z-50"
               >
                 {item.label}
               </motion.div>

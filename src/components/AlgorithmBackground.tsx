@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode } from '@fortawesome/free-solid-svg-icons';
+import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
 
 // Algorithm visualization data structures
 const algorithmNodes = [
@@ -37,24 +38,57 @@ export default function AlgorithmBackground({
   className = '' 
 }: AlgorithmBackgroundProps) {
   const [algorithmStep, setAlgorithmStep] = useState(0);
+  const deviceInfo = useDeviceDetection();
+  const animConfig = getAnimationConfig(deviceInfo);
   
   const { scrollYProgress } = useScroll();
+  
+  // Always call hooks - React requirement
+  const parallaxY1 = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
+  const parallaxY2 = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
+  const parallaxY3 = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
 
-  // Algorithm simulation
+  // Algorithm simulation - only on desktop for performance
   useEffect(() => {
+    if (!animConfig.enableBackgroundAnimations) {
+      return;
+    }
+    
     const interval = setInterval(() => {
       setAlgorithmStep(prev => (prev + 1) % 8);
-    }, 2000);
+    }, 3000); // Slower on mobile/tablet
     return () => clearInterval(interval);
-  }, []);
+  }, [animConfig.enableBackgroundAnimations]);
+
+  // Return static background for mobile/low-performance devices
+  if (!animConfig.enableBackgroundAnimations) {
+    return (
+      <div className={`absolute inset-0 ${opacity} ${className}`} suppressHydrationWarning>
+        {/* Simple static pattern for mobile */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-2 h-2 bg-blue-400 rounded-full"></div>
+          <div className="absolute top-40 right-32 w-1 h-1 bg-amber-400 rounded-full"></div>
+          <div className="absolute bottom-40 left-32 w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+          <div className="absolute bottom-20 right-20 w-2 h-2 bg-amber-500 rounded-full"></div>
+          {/* Minimal static code elements */}
+          <div className="absolute top-1/3 left-10 text-blue-700/20 font-mono text-xs">
+            SEO.optimize()
+          </div>
+          <div className="absolute bottom-1/3 right-10 text-amber-400/20 font-mono text-xs">
+            analytics.track()
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <>
+    <div suppressHydrationWarning>
       {/* Working Algorithm Background */}
       <motion.div
         className={`absolute inset-0 ${opacity} ${className}`}
         style={{ 
-          y: useTransform(scrollYProgress, [0, 1], ['0%', '25%'])
+          y: parallaxY1
         }}
       >
         <svg className="w-full h-full" viewBox="0 0 1200 800">
@@ -194,7 +228,7 @@ export default function AlgorithmBackground({
       {/* Floating Code Execution */}
       <motion.div
         className={`absolute inset-0 opacity-20 ${className}`}
-        style={{ y: useTransform(scrollYProgress, [0, 1], ['0%', '15%']) }}
+        style={{ y: parallaxY2 }}
       >
         {codeSnippets.map((snippet, i) => (
           <motion.div
@@ -226,7 +260,7 @@ export default function AlgorithmBackground({
       {/* Data Flow Connections */}
       <motion.div
         className={`absolute inset-0 opacity-30 ${className}`}
-        style={{ y: useTransform(scrollYProgress, [0, 1], ['0%', '40%']) }}
+        style={{ y: parallaxY3 }}
       >
         <svg className="w-full h-full" viewBox="0 0 1200 800">
           {/* Data flow paths */}
@@ -281,6 +315,6 @@ export default function AlgorithmBackground({
           />
         </svg>
       </motion.div>
-    </>
+    </div>
   );
 }

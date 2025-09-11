@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'fram
 import { useRef, useEffect } from 'react';
 import { experienceData } from '@/data/experience';
 import AlgorithmBackground from './AlgorithmBackground';
+import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faBriefcase, faCalendarAlt, faRocket, faTrophy, faChartLine,
@@ -30,6 +31,9 @@ const professionalElements = [
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const deviceInfo = useDeviceDetection();
+  const animConfig = getAnimationConfig(deviceInfo);
+  
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -69,6 +73,7 @@ const Experience = () => {
       ref={sectionRef}
       id="experience" 
       className="min-h-screen py-20 bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900 relative overflow-hidden"
+      suppressHydrationWarning
     >
       {/* Algorithm Background */}
       <AlgorithmBackground opacity="opacity-5" />
