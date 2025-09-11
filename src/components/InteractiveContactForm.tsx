@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faRocket, faUser, faEnvelope, faComment } from '@fortawesome/free-solid-svg-icons';
-import { socialsData } from '@/data/socials';
 
 interface FormData {
   name: string;
@@ -287,35 +286,8 @@ export default function InteractiveContactForm() {
               </motion.button>
             </div>
 
-            {/* Helpful Tip */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="text-center pt-4 border-t border-slate-700"
-            >
-              <p className="text-slate-400 text-sm">
-                💡 Press Enter to continue, or use the Continue button
-              </p>
-            </motion.div>
           </motion.div>
         </AnimatePresence>
-      </motion.div>
-
-      {/* Quick Contact Alternative */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="text-center mt-6"
-      >
-        <p className="text-slate-400 text-sm mb-2">Prefer a quick chat?</p>
-        <a
-          href={`mailto:${socialsData.email}`}
-          className="text-amber-400 hover:text-amber-300 transition-colors duration-300 font-medium"
-        >
-          Drop me an email directly →
-        </a>
       </motion.div>
     </motion.div>
   );
