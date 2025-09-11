@@ -19,7 +19,7 @@ const iconMap: { [key: string]: typeof faLinkedin } = {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-8 sm:py-12 lg:py-16 xl:py-20 bg-slate-900 text-white relative overflow-hidden">
+    <section id="contact" className="py-8 sm:py-12 lg:py-16 xl:py-20 pb-20 sm:pb-24 lg:pb-28 bg-slate-900 text-white relative overflow-hidden">
       {/* Global Algorithm Background */}
       <AlgorithmBackground opacity="opacity-5" />
       

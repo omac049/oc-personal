@@ -16,6 +16,7 @@ const navItems = [
 export default function FloatingNav() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isVisible, setIsVisible] = useState(false);
+  const [hideInContact, setHideInContact] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -36,6 +37,8 @@ export default function FloatingNav() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
+          // Hide navigation when in contact section to prevent overlap with form
+          setHideInContact(entry.target.id === 'contact');
         }
       });
     };
@@ -64,14 +67,14 @@ export default function FloatingNav() {
     <motion.nav
       initial={{ opacity: 0, y: 50, scale: 0.8 }}
       animate={{ 
-        opacity: isVisible ? 1 : 0,
-        y: isVisible ? 0 : 50,
-        scale: isVisible ? 1 : 0.8
+        opacity: (isVisible && !hideInContact) ? 1 : 0,
+        y: (isVisible && !hideInContact) ? 0 : 50,
+        scale: (isVisible && !hideInContact) ? 1 : 0.8
       }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], type: "spring", bounce: 0.2 }}
       className="fixed bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-50 px-2 sm:px-4 lg:px-0 w-full max-w-sm sm:max-w-md lg:max-w-lg"
       style={{
-        pointerEvents: isVisible ? 'auto' : 'none'
+        pointerEvents: (isVisible && !hideInContact) ? 'auto' : 'none'
       }}
     >
       <motion.div 
