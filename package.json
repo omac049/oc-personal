@@ -4,9 +4,9 @@
   "private": true,
   "homepage": "https://omar-corral.com",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack", 
-    "build:production": "NODE_ENV=production next build --turbopack",
+    "dev": "next dev",
+    "build": "next build", 
+    "build:production": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "eslint",
     "export": "next build && next export",

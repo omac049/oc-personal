@@ -51,10 +51,10 @@ export const enhancedSEOData = {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is AI-powered SEO and how does it work?",
+        "name": "What is AI-enhanced SEO and how does it work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "AI-powered SEO combines traditional search engine optimization with artificial intelligence technologies like ChatGPT, Claude, and machine learning algorithms. It involves using AI for keyword research, content optimization, technical audits, and adapting strategies for Search Generative Experience (SGE)."
+          "text": "AI-enhanced SEO combines traditional search engine optimization with artificial intelligence technologies like ChatGPT, Claude, and machine learning algorithms. It involves using AI tools for keyword research, content optimization, technical audits, and adapting strategies for Search Generative Experience (SGE)."
         }
       },
       {
@@ -96,7 +96,7 @@ export const enhancedSEOData = {
   howTo: {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "How to Implement AI-Powered SEO Strategy",
+    "name": "How to Implement AI-Enhanced SEO Strategy",
     "description": "Step-by-step guide to implementing artificial intelligence in your SEO strategy",
     "totalTime": "PT4H",
     "estimatedCost": {
@@ -164,8 +164,8 @@ export const enhancedSEOData = {
   article: {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "AI-Powered SEO Specialist: Combining Traditional SEO with Artificial Intelligence",
-    "description": "Professional portfolio showcasing AI-powered SEO expertise, LLM optimization, and Search Generative Experience strategies.",
+    "headline": "SEO Specialist: Combining Traditional SEO with Artificial Intelligence",
+    "description": "Professional portfolio showcasing AI-enhanced SEO expertise, LLM optimization, and Search Generative Experience strategies.",
     "image": "https://omar-corral.com/omar-social-card.jpg",
     "author": {
       "@type": "Person",
@@ -207,7 +207,7 @@ export const enhancedSEOData = {
   service: {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AI-Powered SEO Consulting",
+    "name": "AI-Enhanced SEO Consulting",
     "description": "Comprehensive SEO services combining traditional optimization with artificial intelligence technologies for enhanced search performance.",
     "provider": {
       "@type": "Person",
@@ -265,7 +265,7 @@ export const enhancedSEOData = {
   course: {
     "@context": "https://schema.org",
     "@type": "Course",
-    "name": "AI-Powered SEO Strategies",
+    "name": "AI-Enhanced SEO Strategies",
     "description": "Learn how to integrate artificial intelligence into your SEO workflow for better results.",
     "provider": {
       "@type": "Person",
@@ -286,7 +286,7 @@ export const enhancedSEOData = {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     "title": "SEO Consulting Services Available",
-    "description": "Professional SEO consulting services available for businesses looking to improve their search engine visibility with AI-powered strategies.",
+    "description": "Professional SEO consulting services available for businesses looking to improve their search engine visibility with AI-enhanced strategies.",
     "hiringOrganization": {
       "@type": "Organization",
       "name": "Omar Corral SEO Consulting"
@@ -350,7 +350,7 @@ export const navigationSchema = {
 export const performanceSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Omar Corral - AI-Powered SEO Specialist",
+  "name": "Omar Corral - SEO Specialist & AI Marketing Expert",
   "url": "https://omar-corral.com/",
   "potentialAction": {
     "@type": "SearchAction",

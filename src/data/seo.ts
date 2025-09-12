@@ -2,7 +2,7 @@ export const seoData = {
   // Personal Information
   personal: {
     name: "Omar Corral",
-    jobTitle: "AI-Powered SEO Specialist & Digital Marketing Strategist",
+    jobTitle: "SEO Specialist & AI-Enhanced Digital Marketing Strategist",
     email: "omar@omarrcorral.com",
     phone: "+1-555-SEO-GURU", // Replace with actual number
     location: {
@@ -21,7 +21,7 @@ export const seoData = {
 
   // Website Information
   website: {
-    name: "Omar Corral - AI-Powered SEO Portfolio",
+    name: "Omar Corral - SEO Specialist & AI Marketing Expert",
     url: "https://omar-corral.com",
     domain: "omar-corral.com",
     logo: "https://omar-corral.com/logo.png",
@@ -33,8 +33,8 @@ export const seoData = {
 
   // SEO Metadata
   meta: {
-    title: "Omar Corral - AI-Powered SEO Specialist & Digital Marketing Expert",
-    description: "Expert SEO specialist combining traditional search optimization with cutting-edge AI technologies. Specializing in LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) strategies for maximum visibility and growth.",
+    title: "Omar Corral - SEO Specialist & AI-Enhanced Digital Marketing Expert",
+    description: "Human SEO specialist expertly combining traditional search optimization with cutting-edge AI technologies. Specializing in LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) strategies for maximum visibility and growth.",
     keywords: [
       // Primary Keywords
       "AI SEO specialist",
@@ -95,15 +95,15 @@ export const seoData = {
     type: "website",
     locale: "en_US",
     url: "https://omar-corral.com",
-    siteName: "Omar Corral - AI-Powered SEO Portfolio",
-    title: "Omar Corral - AI-Powered SEO Specialist & Digital Marketing Expert",
+    siteName: "Omar Corral - SEO Specialist & AI Marketing Expert",
+    title: "Omar Corral - SEO Specialist & AI-Enhanced Digital Marketing Expert",
     description: "Expert SEO specialist combining traditional search optimization with cutting-edge AI technologies for maximum visibility and growth.",
     images: [
       {
         url: "https://omar-corral.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Omar Corral - AI-Powered SEO Specialist",
+        alt: "Omar Corral - SEO Specialist & AI Marketing Expert",
         type: "image/jpeg"
       },
       {
@@ -121,10 +121,10 @@ export const seoData = {
     card: "summary_large_image",
     site: "@omarrcorral",
     creator: "@omarrcorral", 
-    title: "Omar Corral - AI-Powered SEO Specialist & Digital Marketing Expert",
+    title: "Omar Corral - SEO Specialist & AI-Enhanced Digital Marketing Expert",
     description: "Expert SEO specialist combining traditional search optimization with cutting-edge AI technologies.",
     image: "https://omar-corral.com/twitter-card.jpg",
-    imageAlt: "Omar Corral - AI-Powered SEO Specialist"
+          imageAlt: "Omar Corral - SEO Specialist & AI Marketing Expert"
   },
 
   // Structured Data (Schema.org)
@@ -141,7 +141,7 @@ export const seoData = {
         "width": 300,
         "height": 300
       },
-      "jobTitle": "AI-Powered SEO Specialist",
+      "jobTitle": "SEO Specialist & AI Marketing Expert",
       "worksFor": {
         "@type": "Organization",
         "name": "Independent Consultant",
@@ -182,7 +182,7 @@ export const seoData = {
       "@type": "WebSite", 
       "@id": "https://omar-corral.com#website",
       "url": "https://omar-corral.com",
-      "name": "Omar Corral - AI-Powered SEO Portfolio",
+      "name": "Omar Corral - SEO Specialist & AI Marketing Expert",
       "description": "Expert SEO specialist combining traditional search optimization with cutting-edge AI technologies.",
       "publisher": {
         "@id": "https://omar-corral.com#person"
@@ -206,7 +206,7 @@ export const seoData = {
       "url": "https://omar-corral.com",
       "logo": "https://omar-corral.com/logo.png",
       "image": "https://omar-corral.com/omar-corral-consulting.jpg",
-      "description": "AI-powered SEO consulting services specializing in LLM optimization and Search Generative Experience strategies.",
+      "description": "Professional SEO consulting services leveraging AI technologies for LLM optimization and Search Generative Experience strategies.",
       "founder": {
         "@id": "https://omar-corral.com#person"
       },
@@ -230,7 +230,7 @@ export const seoData = {
       },
       "serviceType": [
         "Search Engine Optimization",
-        "AI-Powered Digital Marketing",
+        "AI-Enhanced Digital Marketing",
         "LLM Content Optimization", 
         "Technical SEO Audits",
         "Content Strategy",
@@ -244,7 +244,7 @@ export const seoData = {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "AI-Powered SEO Consultation",
+              "name": "AI-Enhanced SEO Consultation",
               "description": "Comprehensive SEO strategy using artificial intelligence and machine learning technologies"
             },
             "category": "SEO Consulting"

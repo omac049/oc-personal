@@ -44,23 +44,55 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
       siteName: seoData.openGraph.siteName,
       title: seoData.openGraph.title,
       description: seoData.openGraph.description,
-      images: seoData.openGraph.images.map(img => ({
-        url: img.url,
-        width: img.width,
-        height: img.height,
-        alt: img.alt,
-        type: img.type,
-      })),
+      determiner: 'the',
+      images: [
+        {
+          url: '/opengraph-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'Omar Corral - AI-Powered SEO Specialist in Phoenix, Arizona',
+          type: 'image/png',
+        },
+        ...seoData.openGraph.images.map(img => ({
+          url: img.url,
+          width: img.width,
+          height: img.height,
+          alt: img.alt,
+          type: img.type,
+        })),
+      ],
+      videos: [
+        {
+          url: 'https://omar-corral.com/seo-video-intro.mp4',
+          width: 1280,
+          height: 720,
+          type: 'video/mp4',
+        },
+      ],
+      audio: [
+        {
+          url: 'https://omar-corral.com/seo-podcast-intro.mp3',
+          type: 'audio/mpeg',
+        },
+      ],
     },
 
     // Twitter
     twitter: {
-      card: seoData.twitter.card as 'summary_large_image',
+      card: 'summary_large_image',
       site: seoData.twitter.site,
       creator: seoData.twitter.creator,
       title: seoData.twitter.title,
       description: seoData.twitter.description,
-      images: [seoData.twitter.image],
+      images: [
+        {
+          url: '/twitter-image.png',
+          alt: 'Omar Corral - AI-Powered SEO Specialist & LLM Optimization Expert',
+          width: 1200,
+          height: 600,
+        },
+        seoData.twitter.image
+      ],
     },
 
     // Icons and manifest
@@ -92,9 +124,28 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
       languages: Object.fromEntries(
         seoData.technical.hreflang.map(item => [item.lang, item.href])
       ),
+      media: {
+        'only screen and (max-width: 600px)': 'https://omar-corral.com/mobile',
+        'only screen and (min-width: 601px)': 'https://omar-corral.com',
+      },
+      types: {
+        'application/rss+xml': 'https://omar-corral.com/rss.xml',
+        'application/atom+xml': 'https://omar-corral.com/atom.xml',
+      },
     },
+    archives: ['https://omar-corral.com/blog/archive'],
+    assets: ['https://omar-corral.com/assets'],
+    bookmarks: ['https://omar-corral.com/bookmarks'],
     other: {
       'fb:app_id': seoData.analytics.facebookPixel,
+      'apple-mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-status-bar-style': 'black-translucent',
+      'format-detection': 'telephone=yes, email=yes, address=yes',
+      'mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-title': 'Omar SEO',
+      'application-name': 'Omar Corral SEO',
+      'msapplication-TileColor': '#0f172a',
+      'msapplication-TileImage': '/mstile-144x144.png',
     },
   };
 

@@ -1,6 +1,6 @@
 export const aboutData = {
   title: "About Omar",
-  content: `I'm a forward-thinking SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
+  content: `I'm a forward-thinking human SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
 
 I specialize in leveraging Large Language Models and AI tools like ChatGPT, Claude, and custom AI solutions to enhance SEO performance. From AI-powered keyword research and automated content optimization to prompt engineering for SEO-focused content creation, I stay at the forefront of the AI revolution in search marketing.
 
@@ -11,7 +11,7 @@ Whether it's optimizing content for AI search engines, implementing AI-driven SE
   stats: [
     {
       number: "31%",
-      label: "Increase in organic sessions with AI-driven SEO"
+      label: "Increase in organic sessions with AI-enhanced SEO"
     },
     {
       number: "95%",
@@ -19,7 +19,7 @@ Whether it's optimizing content for AI search engines, implementing AI-driven SE
     },
     {
       number: "10+",
-      label: "Years mastering traditional & AI-powered SEO"
+      label: "Years mastering traditional & AI-enhanced SEO"
     }
   ]
 };
