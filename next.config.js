@@ -10,7 +10,7 @@ const nextConfig = {
   assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
   basePath: process.env.NODE_ENV === 'production' ? '' : '',
   
-  // Experimental features for better SEO
+  // Enhanced SEO and crawlability features
   experimental: {
     scrollRestoration: true,
   },
@@ -20,10 +20,15 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Performance optimizations
+  // Performance and SEO optimizations
   poweredByHeader: false,
   generateEtags: false,
   compress: true,
+  
+  // Generate additional static content for crawlers
+  env: {
+    GENERATE_STATIC_CONTENT: 'true',
+  },
 };
 
 module.exports = nextConfig;

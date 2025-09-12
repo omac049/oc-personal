@@ -9,6 +9,7 @@ import MonogramLogo from '@/components/MonogramLogo';
 import ScrollToTop from '@/components/ScrollToTop';
 import StructuredData from '@/components/StructuredData';
 import Analytics from '@/components/Analytics';
+import StaticContent from '@/components/StaticContent';
 import { generateMetadata as createSEOMetadata } from '@/utils/seo';
 
 config.autoAddCss = false;
@@ -120,6 +121,9 @@ export default function RootLayout({
         <MonogramLogo />
         <ScrollProgress />
         <FloatingNav />
+        
+        {/* Static Content for Crawlers and No-JS Users */}
+        <StaticContent />
         
         {/* Main Content with Semantic Structure */}
         <div id="root" role="main" aria-label="Main content">
