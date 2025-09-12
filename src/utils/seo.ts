@@ -9,7 +9,7 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
     metadataBase: new URL(seoData.website.url),
     title: {
       default: seoData.meta.title,
-      template: '%s | Omar Corral - AI-Powered SEO Specialist'
+      template: '%s | Omar Corral - SEO Specialist & AI Marketing Expert'
     },
     description: seoData.meta.description,
     keywords: seoData.meta.keywords,
@@ -50,7 +50,7 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
           url: '/opengraph-image.png',
           width: 1200,
           height: 630,
-          alt: 'Omar Corral - AI-Powered SEO Specialist in Phoenix, Arizona',
+          alt: 'Omar Corral - SEO Specialist & AI Marketing Expert in Phoenix, Arizona',
           type: 'image/png',
         },
         ...seoData.openGraph.images.map(img => ({
@@ -87,7 +87,7 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
       images: [
         {
           url: '/twitter-image.png',
-          alt: 'Omar Corral - AI-Powered SEO Specialist & LLM Optimization Expert',
+          alt: 'Omar Corral - SEO Specialist & AI Marketing Expert',
           width: 1200,
           height: 600,
         },

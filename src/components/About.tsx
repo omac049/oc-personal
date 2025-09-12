@@ -283,7 +283,7 @@ export default function About() {
                 >
                   <Image
                     src="/omar.jpeg"
-                    alt="Omar Corral - AI-Powered SEO Specialist & LLM Optimization Expert"
+                    alt="Omar Corral - SEO Specialist & AI Marketing Expert"
                     fill
                     className="object-cover object-center"
                     priority
@@ -301,7 +301,7 @@ export default function About() {
                 >
                   Omar Corral
                 </motion.h3>
-                <p className="text-blue-200 mb-4 text-sm sm:text-base">AI-Powered SEO Specialist</p>
+                <p className="text-blue-200 mb-4 text-sm sm:text-base">SEO Specialist & AI Marketing Expert</p>
                 
                 {/* Skill badges */}
                 <div className="flex flex-wrap gap-2 justify-center">

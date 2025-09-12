@@ -24,7 +24,7 @@ export default function Home() {
         id="main-content"
         className="min-h-screen relative bg-slate-900"
         role="main"
-        aria-label="Omar Corral - AI-Powered SEO Specialist Portfolio"
+        aria-label="Omar Corral - SEO Specialist & AI Marketing Expert Portfolio"
         itemScope
         itemType="https://schema.org/Person"
       >
@@ -34,7 +34,7 @@ export default function Home() {
         {/* Page Header with Hidden H1 for SEO */}
         <header className="sr-only">
           <h1 itemProp="name">
-            Omar Corral - AI-Powered SEO Specialist & LLM Optimization Expert in Phoenix, Arizona
+            Omar Corral - SEO Specialist & AI-Enhanced Digital Marketing Expert in Phoenix, Arizona
           </h1>
           <p itemProp="description">
             Professional SEO specialist combining traditional search engine optimization with cutting-edge AI technologies including ChatGPT, Claude, and Search Generative Experience (SGE) strategies.
@@ -110,10 +110,10 @@ export default function Home() {
 
       {/* Hidden SEO Content for Crawlers */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Omar Corral - AI-Powered SEO Specialist & Digital Marketing Expert</h1>
+        <h1>Omar Corral - SEO Specialist & AI-Enhanced Digital Marketing Expert</h1>
         <h2>Professional Services</h2>
         <ul>
-          <li>AI-Powered Search Engine Optimization</li>
+          <li>AI-Enhanced Search Engine Optimization</li>
           <li>Large Language Model (LLM) Content Optimization</li>
           <li>Search Generative Experience (SGE) Strategies</li>
           <li>Technical SEO Audits and Implementation</li>

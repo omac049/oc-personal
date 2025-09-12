@@ -5,7 +5,7 @@ export const skillsSchema = {
   "hasCredential": [
     {
       "@type": "EducationalOccupationalCredential",
-      "name": "AI-Powered SEO Specialist Certification",
+      "name": "SEO Specialist & AI Marketing Expert Certification",
       "description": "Advanced certification in AI-driven search engine optimization strategies",
       "credentialCategory": "Professional Certification",
       "recognizedBy": {
