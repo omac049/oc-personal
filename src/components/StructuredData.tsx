@@ -1,4 +1,4 @@
-import Script from 'next/script';
+
 import { generateAllStructuredData, generateStructuredData } from '@/utils/seo';
 import { enhancedSEOData, navigationSchema, performanceSchema } from '@/data/enhanced-seo';
 
@@ -32,39 +32,36 @@ export default function StructuredData({ type = 'all', customData }: StructuredD
       <>
         {/* Standard structured data */}
         {allStructuredData.map((data, index) => (
-          <Script
+          <script
             key={index}
             id={`structured-data-${index}`}
             type="application/ld+json"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: data,
-            }}
-          />
+            suppressHydrationWarning
+          >
+            {data}
+          </script>
         ))}
         
         {/* Enhanced SEO structured data */}
         {enhancedSchemas.map((schema, index) => (
-          <Script
+          <script
             key={`enhanced-${index}`}
             id={`enhanced-structured-data-${index}`}
             type="application/ld+json"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(schema, null, 0),
-            }}
-          />
+            suppressHydrationWarning
+          >
+            {JSON.stringify(schema, null, 0)}
+          </script>
         ))}
         
         {customData && (
-          <Script
+          <script
             id="custom-structured-data"
             type="application/ld+json"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(customData, null, 0),
-            }}
-          />
+            suppressHydrationWarning
+          >
+            {JSON.stringify(customData, null, 0)}
+          </script>
         )}
       </>
     );
@@ -73,13 +70,12 @@ export default function StructuredData({ type = 'all', customData }: StructuredD
   const structuredData = generateStructuredData(type);
 
   return (
-    <Script
+    <script
       id={`structured-data-${type}`}
       type="application/ld+json"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: structuredData,
-      }}
-    />
+      suppressHydrationWarning
+    >
+      {structuredData}
+    </script>
   );
 }

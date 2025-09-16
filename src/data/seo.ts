@@ -374,7 +374,7 @@ export const seoData = {
   security: {
     contentSecurityPolicy: {
       "default-src": "'self'",
-      "script-src": "'self' 'unsafe-inline' 'unsafe-eval' *.google.com *.googletagmanager.com *.google-analytics.com",
+      "script-src": "'self' 'unsafe-inline' *.google.com *.googletagmanager.com *.google-analytics.com",
       "style-src": "'self' 'unsafe-inline' fonts.googleapis.com",
       "font-src": "'self' fonts.gstatic.com",
       "img-src": "'self' data: *.google.com *.google-analytics.com *.googletagmanager.com",
