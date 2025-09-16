@@ -53,9 +53,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//connect.facebook.net" />
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
         
-        {/* Preload critical CSS and fonts */}
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" />
+        {/* Fonts are optimized by Next.js automatically */}
         
         {/* Resource hints for better loading */}
         <link rel="prefetch" href="/sitemap.xml" />
@@ -102,14 +100,7 @@ export default function RootLayout({
         {/* Analytics & Tracking */}
         <Analytics />
         
-        {/* Critical resources preload */}
-        <link
-          rel="preload"
-          href="https://fonts.gstatic.com/s/geist/v1/UcCO3FwjIWiKaKZjkQ.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        {/* Font loading is handled by Next.js font optimization */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900`}

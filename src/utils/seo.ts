@@ -391,7 +391,6 @@ export function generatePreloadHints(): Array<{ href: string; as: string; type?:
     { href: '/styles/critical.css', as: 'style' },
     
     // Fonts
-    { href: 'https://fonts.gstatic.com/s/geist/v1/UcCm3FwjIWiKaKZbGQ.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
     
     // Critical images
     { href: '/omar-corral-hero.jpg', as: 'image' },

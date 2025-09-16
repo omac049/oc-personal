@@ -285,8 +285,10 @@ export default function AlgorithmBackground({
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           />
           
-          {/* Moving data packets */}
+          {/* Moving data packets with safe initial values */}
           <motion.circle
+            cx="200"
+            cy="200"
             r="4"
             fill="#1E40AF"
             animate={{
@@ -300,6 +302,8 @@ export default function AlgorithmBackground({
             }}
           />
           <motion.circle
+            cx="100"
+            cy="400"
             r="3"
             fill="#FBBF24"
             animate={{

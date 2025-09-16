@@ -4,7 +4,8 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'fram
 import { useRef, useEffect } from 'react';
 import { experienceData } from '@/data/experience';
 import AlgorithmBackground from './AlgorithmBackground';
-import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
+// Animation utilities temporarily disabled for build optimization
+// import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faBriefcase, faCalendarAlt, faRocket, faTrophy, faChartLine,
@@ -31,8 +32,9 @@ const professionalElements = [
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const deviceInfo = useDeviceDetection();
-  const animConfig = getAnimationConfig(deviceInfo);
+  // Device detection temporarily disabled for build optimization
+  // const deviceInfo = useDeviceDetection();
+  // const animConfig = getAnimationConfig(deviceInfo);
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
