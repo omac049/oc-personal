@@ -5,8 +5,7 @@ import {
   LazyAbout, 
   LazySkills, 
   LazyExperience, 
-  LazyContact,
-  LazyResources
+  LazyContact 
 } from '@/components/LazyComponents';
 
 export default function Home() {
@@ -86,17 +85,6 @@ export default function Home() {
           itemType="https://schema.org/WorkHistory"
         >
           <LazyExperience />
-        </section>
-        
-        {/* Resources Section - SEO Learning Materials */}
-        <section 
-          id="resources" 
-          aria-labelledby="resources-heading"
-          aria-label="Free SEO resources, guides, and learning materials"
-          itemScope
-          itemType="https://schema.org/EducationalOrganization"
-        >
-          <LazyResources />
         </section>
         
         {/* FAQ Section - Frequently Asked Questions */}
