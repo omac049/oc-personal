@@ -196,13 +196,54 @@ export default function Hero() {
         ))}
       </div>
       
-      {/* Main Content */}
+      {/* Static LCP Content - Renders immediately for performance measurement */}
+      <div className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6">
+        {/* LCP Image Element - Critical for performance measurement */}
+        <div className="mb-6 sm:mb-8">
+          <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 p-1 shadow-2xl">
+            <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-4xl sm:text-5xl font-bold text-white">
+              OC
+            </div>
+          </div>
+        </div>
+        
+        {/* Critical above-the-fold content for LCP */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight px-2 mb-4 sm:mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
+          {heroData.name}
+        </h1>
+        
+        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-slate-300 px-2 mb-6 sm:mb-8">
+          {heroData.headline}
+        </h2>
+        
+        <p className="text-base sm:text-lg md:text-xl text-slate-400 px-2 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
+          {heroData.subheading}
+        </p>
+        
+        {/* CTA Button - Critical for user interaction */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-4 rounded-full font-semibold shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            Get Free SEO Consultation
+          </button>
+          <button 
+            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            className="border border-slate-400 text-slate-300 hover:text-white hover:border-white px-8 py-4 rounded-full font-semibold transition-all duration-300"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+
+      {/* Animated Content - Loads after LCP */}
       <motion.div 
         style={{ 
           y: textY,
           x: useTransform(smoothMouseX, [-50, 50], [-10, 10])
         }}
-        className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6"
+        className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6 hidden"
       >
         <motion.div
           initial={{ opacity: 0.8, scale: 0.98 }}
