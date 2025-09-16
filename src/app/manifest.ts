@@ -59,39 +59,40 @@ export default function manifest(): MetadataRoute.Manifest {
         short_name: 'Contact',
         description: 'Get in touch for SEO consultation',
         url: '/#contact',
-        icons: [{ src: '/contact-icon.png', sizes: '96x96' }],
+        icons: [{ src: '/favicon-32x32.png', sizes: '32x32' }],
       },
       {
         name: 'SEO Services',
         short_name: 'Services',
         description: 'View AI-enhanced SEO services',
         url: '/#skills',
-        icons: [{ src: '/services-icon.png', sizes: '96x96' }],
+        icons: [{ src: '/favicon-32x32.png', sizes: '32x32' }],
       },
       {
         name: 'FAQ',
         short_name: 'FAQ',
         description: 'Frequently asked questions about AI SEO',
         url: '/#faq',
-        icons: [{ src: '/faq-icon.png', sizes: '96x96' }],
+        icons: [{ src: '/favicon-32x32.png', sizes: '32x32' }],
       },
     ],
-    screenshots: [
-      {
-        src: '/screenshot-desktop.png',
-        sizes: '1280x720',
-        type: 'image/png',
-        form_factor: 'wide',
-        label: 'Omar Corral SEO Portfolio - Desktop View',
-      },
-      {
-        src: '/screenshot-mobile.png',
-        sizes: '375x667',
-        type: 'image/png',
-        form_factor: 'narrow',
-        label: 'Omar Corral SEO Portfolio - Mobile View',
-      },
-    ],
+    // Screenshots removed until actual images are available
+    // screenshots: [
+    //   {
+    //     src: '/screenshot-desktop.png',
+    //     sizes: '1280x720',
+    //     type: 'image/png',
+    //     form_factor: 'wide',
+    //     label: 'Omar Corral SEO Portfolio - Desktop View',
+    //   },
+    //   {
+    //     src: '/screenshot-mobile.png',
+    //     sizes: '375x667',
+    //     type: 'image/png',
+    //     form_factor: 'narrow',
+    //     label: 'Omar Corral SEO Portfolio - Mobile View',
+    //   },
+    // ],
     related_applications: [
       {
         platform: 'web',
