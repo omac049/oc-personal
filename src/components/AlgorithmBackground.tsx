@@ -113,11 +113,11 @@ export default function AlgorithmBackground({
             />
 
             {/* Tree nodes */}
-            {algorithmNodes.filter(node => node.type === 'tree').slice(0, 3).map((node) => ( // Limit tree nodes
+            {algorithmNodes.filter(node => node.type === 'tree' && node.x && node.y).slice(0, 3).map((node) => ( // Limit tree nodes with safety check
               <motion.g key={node.id}>
                 <motion.circle
-                  cx={node.x}
-                  cy={node.y}
+                  cx={node.x || 0}
+                  cy={node.y || 0}
                   r="20"
                   fill="currentColor"
                   initial={{ scale: 0 }}
@@ -180,11 +180,11 @@ export default function AlgorithmBackground({
 
           {/* Network Graph - SEO Link Structure */}
           <g className="text-blue-600 fill-current">
-            {algorithmNodes.filter(node => node.type === 'graph').slice(0, 3).map((node, index) => ( // Limit graph nodes
+            {algorithmNodes.filter(node => node.type === 'graph' && node.x && node.y).slice(0, 3).map((node, index) => ( // Limit graph nodes with safety check
               <motion.g key={node.id}>
                 <motion.circle
-                  cx={node.x}
-                  cy={node.y}
+                  cx={node.x || 0}
+                  cy={node.y || 0}
                   r="15"
                   fill="currentColor"
                   initial={{ scale: 0 }}
@@ -285,38 +285,50 @@ export default function AlgorithmBackground({
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           />
           
-          {/* Moving data packets with safe initial values */}
-          <motion.circle
-            cx="200"
-            cy="200"
-            r="4"
-            fill="#1E40AF"
-            animate={{
-              cx: [200, 400, 600, 800, 1000, 200],
-              cy: [200, 100, 200, 150, 200, 200]
-            }}
-            transition={{ 
-              duration: 6, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-          />
-          <motion.circle
-            cx="100"
-            cy="400"
-            r="3"
-            fill="#FBBF24"
-            animate={{
-              cx: [100, 300, 500, 800, 1100, 100],
-              cy: [400, 300, 400, 450, 500, 400]
-            }}
-            transition={{ 
-              duration: 8, 
-              repeat: Infinity, 
-              ease: "easeInOut",
-              delay: 2
-            }}
-          />
+          {/* Moving data packets with safe initial values and performance optimization */}
+          {animConfig.enableComplexAnimations ? (
+            <>
+              <motion.circle
+                cx="200"
+                cy="200"
+                r="4"
+                fill="#1E40AF"
+                initial={{ cx: 200, cy: 200 }}
+                animate={{
+                  cx: [200, 400, 600, 800, 1000, 200],
+                  cy: [200, 100, 200, 150, 200, 200]
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              />
+              <motion.circle
+                cx="100"
+                cy="400"
+                r="3"
+                fill="#FBBF24"
+                initial={{ cx: 100, cy: 400 }}
+                animate={{
+                  cx: [100, 300, 500, 800, 1100, 100],
+                  cy: [400, 300, 400, 450, 500, 400]
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 2
+                }}
+              />
+            </>
+          ) : (
+            <>
+              {/* Static circles for low-end devices */}
+              <circle cx="200" cy="200" r="4" fill="#1E40AF" opacity="0.6" />
+              <circle cx="100" cy="400" r="3" fill="#FBBF24" opacity="0.6" />
+            </>
+          )}
         </svg>
       </motion.div>
     </div>
