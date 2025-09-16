@@ -70,6 +70,26 @@ export const LazyContact = dynamic(() => import('./Contact'), {
   ssr: false,
 });
 
+export const LazyResources = dynamic(() => import('./Resources'), {
+  loading: () => (
+    <div className="min-h-screen flex items-center justify-center bg-slate-900">
+      <div className="text-center">
+        <div className="animate-pulse max-w-4xl mx-auto">
+          <div className="h-8 bg-slate-700 rounded w-64 mx-auto mb-6"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="h-48 bg-slate-700 rounded-xl"></div>
+            <div className="h-48 bg-slate-700 rounded-xl"></div>
+            <div className="h-48 bg-slate-700 rounded-xl"></div>
+            <div className="h-48 bg-slate-700 rounded-xl"></div>
+          </div>
+          <div className="h-32 bg-slate-700 rounded-xl"></div>
+        </div>
+      </div>
+    </div>
+  ),
+  ssr: false,
+});
+
 // Lazy load background components that are resource-intensive
 export const LazyAlgorithmBackground = dynamic(() => import('./AlgorithmBackground'), {
   loading: () => <div className="absolute inset-0 bg-slate-900/50"></div>,

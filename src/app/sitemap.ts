@@ -33,6 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/#resources`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/#faq`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
@@ -47,6 +53,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Static pages for enhanced crawlability
     {
       url: `${baseUrl}/services`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/resources`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
