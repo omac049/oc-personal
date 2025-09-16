@@ -86,7 +86,7 @@ export default function Hero() {
       {/* Performance-Aware Interactive SEO Icons */}
       {animConfig.enableComplexAnimations && (
         <div className="hidden lg:block">
-          {seoIcons.map((seoIcon, index) => (
+          {seoIcons.slice(0, 6).map((seoIcon, index) => ( // Limit to 6 icons for performance
             <motion.div
               key={index}
               className={`absolute z-20 ${seoIcon.color} opacity-70 hover:opacity-100 transition-opacity duration-300 group`}
@@ -95,19 +95,17 @@ export default function Hero() {
                 transform: `translateY(${index * 2}px)`,
               }}
               whileHover={{ 
-                scale: 1.8,
-                rotate: 360,
-                transition: { duration: 0.4 }
+                scale: 1.3, // Reduced animation intensity
+                transition: { duration: 0.2 }
               }}
               animate={{ 
-                y: [0, -15, 0],
-                rotate: [0, 5, -5, 0],
+                y: [0, -8, 0], // Reduced movement
               }}
               transition={{ 
-                duration: 4 + index * 0.5,
+                duration: 6 + index * 0.3, // Slower animations
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: index * 0.2
+                delay: index * 0.4
               }}
             >
               <div className="relative">

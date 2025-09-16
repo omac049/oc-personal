@@ -53,6 +53,10 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//connect.facebook.net" />
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
         
+        {/* Performance hints */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
         {/* Fonts are optimized by Next.js automatically */}
         
         {/* Resource hints for better loading */}

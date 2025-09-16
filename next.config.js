@@ -13,12 +13,29 @@ const nextConfig = {
   // Enhanced SEO and crawlability features
   experimental: {
     scrollRestoration: true,
+    // Enable modern bundling optimizations
+    esmExternals: true,
   },
 
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+    // Remove React DevTools in production
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
+
+  // Performance optimizations (swcMinify is default in Next.js 13+)
+  
+  // Bundle analyzer (optional - enable when needed)
+  // webpack: (config, { isServer }) => {
+  //   if (!isServer) {
+  //     config.resolve.fallback = {
+  //       ...config.resolve.fallback,
+  //       fs: false,
+  //     };
+  //   }
+  //   return config;
+  // },
 
   // Performance and SEO optimizations
   poweredByHeader: false,

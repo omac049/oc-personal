@@ -113,7 +113,7 @@ export default function AlgorithmBackground({
             />
 
             {/* Tree nodes */}
-            {algorithmNodes.filter(node => node.type === 'tree').map((node) => (
+            {algorithmNodes.filter(node => node.type === 'tree').slice(0, 3).map((node) => ( // Limit tree nodes
               <motion.g key={node.id}>
                 <motion.circle
                   cx={node.x}
@@ -142,7 +142,7 @@ export default function AlgorithmBackground({
 
           {/* Sorting Algorithm Visualization */}
           <g className="text-amber-400 fill-current">
-            {algorithmNodes.filter(node => node.type === 'array').map((node, index) => (
+            {algorithmNodes.filter(node => node.type === 'array').slice(0, 4).map((node, index) => ( // Limit array nodes
               <motion.g key={node.id}>
                 <motion.rect
                   x={node.x - 15}
@@ -180,7 +180,7 @@ export default function AlgorithmBackground({
 
           {/* Network Graph - SEO Link Structure */}
           <g className="text-blue-600 fill-current">
-            {algorithmNodes.filter(node => node.type === 'graph').map((node, index) => (
+            {algorithmNodes.filter(node => node.type === 'graph').slice(0, 3).map((node, index) => ( // Limit graph nodes
               <motion.g key={node.id}>
                 <motion.circle
                   cx={node.x}
@@ -230,7 +230,7 @@ export default function AlgorithmBackground({
         className={`absolute inset-0 opacity-20 ${className}`}
         style={{ y: parallaxY2 }}
       >
-        {codeSnippets.map((snippet, i) => (
+        {codeSnippets.slice(0, 3).map((snippet, i) => ( // Limit code snippets for performance
           <motion.div
             key={`code-${i}`}
             className="absolute text-blue-700/60 font-mono text-sm select-none bg-slate-800/30 px-2 py-1 rounded border border-blue-700/20"

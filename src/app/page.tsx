@@ -1,10 +1,12 @@
 import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Experience from '@/components/Experience';
-import Contact from '@/components/Contact';
 import ScrollRocket from '@/components/ScrollRocket';
 import FAQSection from '@/components/FAQSection';
+import { 
+  LazyAbout, 
+  LazySkills, 
+  LazyExperience, 
+  LazyContact 
+} from '@/components/LazyComponents';
 
 export default function Home() {
   return (
@@ -60,7 +62,7 @@ export default function Home() {
           itemScope
           itemType="https://schema.org/AboutPage"
         >
-          <About />
+          <LazyAbout />
         </section>
         
         {/* Skills Section - Technical Expertise */}
@@ -71,7 +73,7 @@ export default function Home() {
           itemScope
           itemType="https://schema.org/ItemList"
         >
-          <Skills />
+          <LazySkills />
         </section>
         
         {/* Experience Section - Work History */}
@@ -82,7 +84,7 @@ export default function Home() {
           itemScope
           itemType="https://schema.org/WorkHistory"
         >
-          <Experience />
+          <LazyExperience />
         </section>
         
         {/* FAQ Section - Frequently Asked Questions */}
@@ -104,7 +106,7 @@ export default function Home() {
           itemScope
           itemType="https://schema.org/ContactPage"
         >
-          <Contact />
+          <LazyContact />
         </section>
       </main>
 
