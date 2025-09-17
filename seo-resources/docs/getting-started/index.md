@@ -399,7 +399,7 @@ Focus on earning high-quality, relevant backlinks rather than purchasing cheap, 
 
 Ready to dive deeper? Here's your learning path:
 
-1. **[Essential SEO Tools](../tools)** - Discover the tools that will accelerate your SEO success
+1. **[Essential SEO Tools](/docs/tools/)** - Discover the tools that will accelerate your SEO success
 2. **Keyword Research** *(Coming Soon)* - Learn to find and target the right keywords
 3. **Technical SEO Fundamentals** *(Coming Soon)* - Optimize your website's technical foundation
 4. **Content Optimization** *(Coming Soon)* - Create content that ranks and converts

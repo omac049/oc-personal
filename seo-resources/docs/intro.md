@@ -37,10 +37,10 @@ This resource center provides everything you need to understand and implement ef
 
 ## 📚 **Resource Categories**
 
-### [🎓 Getting Started](getting-started)
+### [🎓 Getting Started](/docs/getting-started/)
 Perfect for SEO beginners. Learn the fundamentals of search engine optimization.
 
-### [🛠️ Tools & Resources](tools)
+### [🛠️ Tools & Resources](/docs/tools/)
 Discover the best free and premium SEO tools to enhance your workflow.
 
 ### 🔍 **Keyword Research** *(Coming Soon)*
@@ -69,8 +69,8 @@ Created by **Omar Corral**, an SEO specialist with expertise in:
 
 ## 🚀 **Getting Started**
 
-1. **New to SEO?** Start with our [Getting Started Guide](getting-started)
-2. **Looking for tools?** Check out our [Tools & Resources](tools) section
+1. **New to SEO?** Start with our [Getting Started Guide](/docs/getting-started/)
+2. **Looking for tools?** Check out our [Tools & Resources](/docs/tools/) section
 3. **Have some experience?** More advanced guides coming soon!
 4. **Need quick reference?** Checklists and templates coming soon!
 
