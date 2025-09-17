@@ -62,7 +62,7 @@ const config: Config = {
           customCss: './src/css/custom.css',
         },
         gtag: {
-          trackingID: 'G-XXXXXXXXXX', // Replace with your Google Analytics ID
+          trackingID: 'G-XXXXXXXXXX', // Replace with your actual Google Analytics ID
           anonymizeIP: true,
         },
         sitemap: {
@@ -183,25 +183,78 @@ const config: Config = {
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
+    
+    // Enhanced metadata for better search indexing
+    metadata: [
+      {
+        name: 'keywords',
+        content: 'SEO, search engine optimization, authority, relevance, experience, technical SEO, content optimization, link building, Core Web Vitals, mobile SEO, keyword research, SEO tools, SEO guide, SEO tutorial, Omar Corral'
+      },
+      {
+        name: 'description',
+        content: 'Comprehensive SEO resource center covering the three pillars of SEO: Authority, Relevance, and Experience. Learn modern SEO techniques, tools, and best practices.'
+      },
+      {
+        property: 'og:type',
+        content: 'website'
+      },
+      {
+        property: 'og:site_name',
+        content: 'SEO Resource Center by Omar Corral'
+      }
+    ],
     algolia: {
       // The application ID provided by Algolia
       appId: 'ZLQ21UNSR7',
       // Public API key: it is safe to commit it
       apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
       indexName: 'seo-resources',
-      // Optional: see doc section below
+      
+      // Enhanced contextual search for better relevance
       contextualSearch: true,
-      // Optional: Specify domains where the navigation should occur through window.location instead on history.push
+      
+      // External URL handling
       externalUrlRegex: 'external\\.com|domain\\.com',
-      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl
+      
+      // URL path replacement for proper routing
       replaceSearchResultPathname: {
         from: '/docs/', // or as RegExp: /\/docs\//
         to: '/',
       },
-      // Optional: Algolia search parameters
-      searchParameters: {},
-      // Optional: path for search page that enabled by default (`false` to disable it)
+      
+      // Enhanced search parameters for better results
+      searchParameters: {
+        // Highlight matching terms in search results
+        highlightPreTag: '<mark>',
+        highlightPostTag: '</mark>',
+        
+        // Number of results per page
+        hitsPerPage: 20,
+        
+        // Enable faceted search for content filtering
+        facetFilters: [],
+        
+        // Add analytics tags for search tracking
+        analyticsTags: ['seo-resources', 'docusaurus'],
+        
+        // Enable advanced query syntax
+        advancedSyntax: true,
+        
+        // Improve typo tolerance for better user experience
+        typoTolerance: 'min',
+        
+        // Remove stop words for cleaner results
+        removeStopWords: true,
+        
+        // Set query language for better relevance
+        queryLanguages: ['en'],
+      },
+      
+      // Enhanced search page with better UX
       searchPagePath: 'search',
+      
+      // Add insights for search analytics
+      insights: true,
     },
   } satisfies Preset.ThemeConfig,
 };
