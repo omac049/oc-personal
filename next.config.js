@@ -26,16 +26,22 @@ const nextConfig = {
 
   // Performance optimizations (swcMinify is default in Next.js 13+)
   
-  // Bundle analyzer (optional - enable when needed)
-  // webpack: (config, { isServer }) => {
-  //   if (!isServer) {
-  //     config.resolve.fallback = {
-  //       ...config.resolve.fallback,
-  //       fs: false,
-  //     };
-  //   }
-  //   return config;
-  // },
+  // Webpack configuration to ignore seo-resources directory
+  webpack: (config, { isServer }) => {
+    // Ignore seo-resources directory during build to prevent conflicts
+    config.watchOptions = {
+      ...config.watchOptions,
+      ignored: ['**/seo-resources/**', '**/node_modules/**'],
+    };
+    
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    return config;
+  },
 
   // Performance and SEO optimizations
   poweredByHeader: false,
