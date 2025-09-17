@@ -4,6 +4,7 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faCog, faBriefcase, faQuestionCircle, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import SearchButton from './SearchButton';
 
 const navItems = [
   { id: 'hero', label: 'Home', icon: faHome },
@@ -85,6 +86,9 @@ export default function FloatingNav() {
         }}
       >
         <div className="flex items-center justify-center space-x-1 sm:space-x-1.5 lg:space-x-2">
+          {/* Search Button */}
+          <SearchButton className="p-2 sm:p-2.5 lg:p-3 rounded-xl transition-all duration-300 min-w-[48px] min-h-[48px] sm:min-w-[52px] sm:min-h-[52px] lg:min-w-[56px] lg:min-h-[56px] flex items-center justify-center text-gray-300 hover:text-white hover:bg-slate-700" />
+          
           {navItems.map((item, index) => (
             <motion.button
               key={item.id}

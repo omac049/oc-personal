@@ -60,7 +60,7 @@ export default function RootLayout({
         {/* Content Security Policy - Strict policy to prevent external script injection */}
         <meta 
           httpEquiv="Content-Security-Policy" 
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'sha256-*' *.google.com *.googletagmanager.com *.google-analytics.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' data: fonts.gstatic.com; img-src 'self' data: *.google.com *.google-analytics.com *.googletagmanager.com; connect-src 'self' *.google-analytics.com *.google.com *.googletagmanager.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'sha256-*' *.google.com *.googletagmanager.com *.google-analytics.com *.algolia.net *.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com *.jsdelivr.net https://cdn.jsdelivr.net; font-src 'self' data: fonts.gstatic.com; img-src 'self' data: *.google.com *.google-analytics.com *.googletagmanager.com; connect-src 'self' *.google-analytics.com *.google.com *.googletagmanager.com *.algolia.net *.algolianet.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
         />
         
         {/* Algolia site verification for search functionality */}
