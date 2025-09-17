@@ -176,9 +176,9 @@ const config: Config = {
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: 'YOUR_APP_ID',
+      appId: 'ZLQ21UNSR7',
       // Public API key: it is safe to commit it
-      apiKey: 'YOUR_SEARCH_API_KEY',
+      apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
       indexName: 'seo-resources',
       // Optional: see doc section below
       contextualSearch: true,
