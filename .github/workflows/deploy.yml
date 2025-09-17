@@ -35,6 +35,17 @@ jobs:
       - name: Build with Next.js
         run: npm run build
 
+      - name: Build Docusaurus site
+        run: |
+          cd ../seo-resources
+          npm ci
+          npm run build
+
+      - name: Copy Docusaurus build to Next.js output
+        run: |
+          mkdir -p ./out/seo-resources
+          cp -r ../seo-resources/build/* ./out/seo-resources/
+
       - name: Create .nojekyll file
         run: touch ./out/.nojekyll
 
