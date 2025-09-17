@@ -1,6 +1,7 @@
 import Hero from '@/components/Hero';
 import ScrollRocket from '@/components/ScrollRocket';
 import FAQSection from '@/components/FAQSection';
+import SEOResourcesCTA from '@/components/SEOResourcesCTA';
 import { 
   LazyAbout, 
   LazySkills, 
@@ -86,6 +87,9 @@ export default function Home() {
         >
           <LazyExperience />
         </section>
+        
+        {/* SEO Resources CTA - Link to Resource Center */}
+        <SEOResourcesCTA />
         
         {/* FAQ Section - Frequently Asked Questions */}
         <section 
