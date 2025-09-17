@@ -8,16 +8,276 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #ffffff, #e2e8f0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.heroStats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #60a5fa;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  margin-top: 0.5rem;
 }
 
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Features Section */
+.features {
+  padding: 4rem 0;
+  background-color: #f8fafc;
+}
+
+.featureCard {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  height: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.featureContent h3 {
+  color: #1e293b;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.featureContent p {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Quick Tips Section */
+.quickTips {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: white;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.sectionHeader p {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+}
+
+.tipCard {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.tipCard:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.tipIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tipCard h4 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.tipCard p {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+}
+
+.ctaContent {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ctaIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.ctaContent h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.ctaContent p {
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 3rem 0;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+  
+  .heroStats {
+    gap: 2rem;
+  }
+  
+  .statNumber {
+    font-size: 2rem;
+  }
+  
+  .features,
+  .quickTips,
+  .ctaSection {
+    padding: 3rem 0;
+  }
+  
+  .sectionHeader h2 {
+    font-size: 2rem;
+  }
+  
+  .ctaContent h2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroStats {
+    gap: 1.5rem;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .featureCard,
+  .tipCard {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Button Overrides */
+.buttons .button,
+.ctaButtons .button {
+  border-radius: 2rem;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.buttons .button:hover,
+.ctaButtons .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
