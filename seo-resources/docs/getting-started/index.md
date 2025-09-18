@@ -261,51 +261,59 @@ Think of SEO like nutrition for your body - you need the right balance of three 
 
 Neglect any one of these pillars, and your SEO performance will suffer. Master all three, and you'll build a sustainable foundation for long-term search success.
 
-```mermaid
-flowchart TD
-    A["🏆 SEO SUCCESS<br/>The Ultimate Goal"] --> B["🎯 AUTHORITY<br/>Do You Matter?"]
-    A --> C["📊 RELEVANCE<br/>Do You Answer Intent?"] 
-    A --> D["⚡ EXPERIENCE<br/>Do Users Love Your Site?"]
+<div className="seo-pillars-visual">
+  <div className="pillars-header">
+    <h3>🏆 SEO SUCCESS</h3>
+    <p>Built on Three Fundamental Pillars</p>
+  </div>
+  
+  <div className="pillars-container">
+    <div className="pillar authority-pillar">
+      <div className="pillar-header">
+        <h4>🎯 AUTHORITY</h4>
+        <p className="pillar-question">Do You Matter in Your Space?</p>
+      </div>
+      <div className="pillar-items">
+        <div className="pillar-item">🔗 Strategic Link Building</div>
+        <div className="pillar-item">🏅 E-A-T Expertise & Trust</div>
+        <div className="pillar-item">📝 Expert Content Creation</div>
+        <div className="pillar-item">📈 Industry Recognition</div>
+      </div>
+    </div>
     
-    B --> B1["🔗 Strategic<br/>Link Building"]
-    B --> B2["🏅 E-A-T<br/>Expertise & Trust"]
-    B --> B3["📝 Expert<br/>Content Creation"]
-    B --> B4["📈 Industry<br/>Recognition"]
+    <div className="pillar relevance-pillar">
+      <div className="pillar-header">
+        <h4>📊 RELEVANCE</h4>
+        <p className="pillar-question">Do You Answer Search Intent?</p>
+      </div>
+      <div className="pillar-items">
+        <div className="pillar-item">🎯 Search Intent Optimization</div>
+        <div className="pillar-item">🔍 Advanced Keywords</div>
+        <div className="pillar-item">📚 Content Depth & Quality</div>
+        <div className="pillar-item">🔄 Freshness & Updates</div>
+      </div>
+    </div>
     
-    C --> C1["🎯 Search Intent<br/>Optimization"]
-    C --> C2["🔍 Advanced<br/>Keywords"]
-    C --> C3["📚 Content<br/>Depth & Quality"]
-    C --> C4["🔄 Freshness<br/>& Updates"]
-    
-    D --> D1["⚡ Core Web<br/>Vitals"]
-    D --> D2["📱 Mobile-First<br/>Excellence"]
-    D --> D3["🛠️ Technical<br/>Foundation"]
-    D --> D4["👤 User Experience<br/>Signals"]
-    
-    %% Enhanced styling with better contrast and readability
-    style A fill:#1a237e,stroke:#000,stroke-width:3px,color:#fff
-    style B fill:#0d47a1,stroke:#000,stroke-width:2px,color:#fff
-    style C fill:#e65100,stroke:#000,stroke-width:2px,color:#fff
-    style D fill:#4a148c,stroke:#000,stroke-width:2px,color:#fff
-    
-    %% Authority styling (Blue theme)
-    style B1 fill:#1976d2,stroke:#0d47a1,stroke-width:2px,color:#fff
-    style B2 fill:#1976d2,stroke:#0d47a1,stroke-width:2px,color:#fff
-    style B3 fill:#1976d2,stroke:#0d47a1,stroke-width:2px,color:#fff
-    style B4 fill:#1976d2,stroke:#0d47a1,stroke-width:2px,color:#fff
-    
-    %% Relevance styling (Orange theme)
-    style C1 fill:#f57c00,stroke:#e65100,stroke-width:2px,color:#fff
-    style C2 fill:#f57c00,stroke:#e65100,stroke-width:2px,color:#fff
-    style C3 fill:#f57c00,stroke:#e65100,stroke-width:2px,color:#fff
-    style C4 fill:#f57c00,stroke:#e65100,stroke-width:2px,color:#fff
-    
-    %% Experience styling (Purple theme)
-    style D1 fill:#7b1fa2,stroke:#4a148c,stroke-width:2px,color:#fff
-    style D2 fill:#7b1fa2,stroke:#4a148c,stroke-width:2px,color:#fff
-    style D3 fill:#7b1fa2,stroke:#4a148c,stroke-width:2px,color:#fff
-    style D4 fill:#7b1fa2,stroke:#4a148c,stroke-width:2px,color:#fff
-```
+    <div className="pillar experience-pillar">
+      <div className="pillar-header">
+        <h4>⚡ EXPERIENCE</h4>
+        <p className="pillar-question">Do Users Love Your Site?</p>
+      </div>
+      <div className="pillar-items">
+        <div className="pillar-item">⚡ Core Web Vitals</div>
+        <div className="pillar-item">📱 Mobile-First Excellence</div>
+        <div className="pillar-item">🛠️ Technical Foundation</div>
+        <div className="pillar-item">👤 User Experience Signals</div>
+      </div>
+    </div>
+  </div>
+  
+  <div className="pillars-footer">
+    <div className="synergy-message">
+      <strong>🔄 The Synergy Effect:</strong> When all three pillars work together, you create an unstoppable SEO foundation that performs today and adapts to future algorithm changes.
+    </div>
+  </div>
+</div>
 
 ### 1. **Authority** 🎯
 *"Do you matter in your space?"*
