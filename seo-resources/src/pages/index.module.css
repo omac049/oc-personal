@@ -38,6 +38,35 @@
   line-height: 1.6;
 }
 
+.heroHighlights {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.highlightItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.highlightIcon {
+  font-size: 1.2rem;
+}
+
+.highlightItem span:last-child {
+  color: #e2e8f0;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
 .heroStats {
   display: flex;
   justify-content: center;
@@ -110,6 +139,106 @@
   color: #64748b;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+}
+
+/* Feature Color Variants */
+.featureblue {
+  border-top: 4px solid #3b82f6;
+}
+
+.featureblue:hover {
+  border-color: #2563eb;
+  box-shadow: 0 10px 25px -3px rgba(59, 130, 246, 0.3);
+}
+
+.featureorange {
+  border-top: 4px solid #f59e0b;
+}
+
+.featureorange:hover {
+  border-color: #d97706;
+  box-shadow: 0 10px 25px -3px rgba(245, 158, 11, 0.3);
+}
+
+.featurepurple {
+  border-top: 4px solid #8b5cf6;
+}
+
+.featurepurple:hover {
+  border-color: #7c3aed;
+  box-shadow: 0 10px 25px -3px rgba(139, 92, 246, 0.3);
+}
+
+.buttonblue {
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+.buttonorange {
+  background: #f59e0b !important;
+  border-color: #f59e0b !important;
+}
+
+.buttonpurple {
+  background: #8b5cf6 !important;
+  border-color: #8b5cf6 !important;
+}
+
+/* Knowledge Showcase Section */
+.knowledgeShowcase {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.frameworkCard {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  height: 100%;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.frameworkCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -4px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.frameworkCard h3 {
+  color: #1e293b;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.frameworkDescription {
+  color: #64748b;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.frameworkItems {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.frameworkItems li {
+  color: #475569;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  padding-left: 0;
+  font-size: 0.95rem;
+}
+
+.frameworkItems li::before {
+  content: '✓';
+  color: #22c55e;
+  font-weight: bold;
+  margin-right: 0.5rem;
 }
 
 /* Quick Tips Section */
@@ -247,6 +376,18 @@
 }
 
 @media screen and (max-width: 768px) {
+  .heroHighlights {
+    gap: 1rem;
+  }
+  
+  .highlightItem {
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .highlightItem span:last-child {
+    font-size: 0.8rem;
+  }
+  
   .heroStats {
     gap: 1.5rem;
   }
@@ -262,8 +403,13 @@
   }
   
   .featureCard,
-  .tipCard {
+  .tipCard,
+  .frameworkCard {
     margin-bottom: 2rem;
+  }
+  
+  .knowledgeShowcase {
+    padding: 3rem 0;
   }
 }
 

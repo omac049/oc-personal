@@ -11,32 +11,56 @@ function SEOResourcesHero() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <div className={styles.heroContent}>
-          <div className={styles.heroIcon}>📚</div>
+          <div className={styles.heroIcon}>🎯</div>
           <Heading as="h1" className={styles.heroTitle}>
-            SEO Resource Center
+            Modern SEO Mastery
           </Heading>
           <p className={styles.heroSubtitle}>
-            Your comprehensive guide to mastering search engine optimization from beginner to expert level
+            Master the Three Pillars of SEO: Authority, Relevance, and Experience. 
+            From search intent optimization to Core Web Vitals—everything you need for SEO success.
           </p>
+          <div className={styles.heroHighlights}>
+            <div className={styles.highlightItem}>
+              <span className={styles.highlightIcon}>🏗️</span>
+              <span>Three Pillars Framework</span>
+            </div>
+            <div className={styles.highlightItem}>
+              <span className={styles.highlightIcon}>🔍</span>
+              <span>Search Intent Mastery</span>
+            </div>
+            <div className={styles.highlightItem}>
+              <span className={styles.highlightIcon}>⚡</span>
+              <span>Core Web Vitals</span>
+            </div>
+            <div className={styles.highlightItem}>
+              <span className={styles.highlightIcon}>🤖</span>
+              <span>AI-Era SEO</span>
+            </div>
+          </div>
           <div className={styles.heroStats}>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>20+</div>
-              <div className={styles.statLabel}>Comprehensive Guides</div>
+              <div className={styles.statNumber}>3</div>
+              <div className={styles.statLabel}>Core SEO Pillars</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>50+</div>
-              <div className={styles.statLabel}>Free SEO Tools</div>
+              <div className={styles.statNumber}>4</div>
+              <div className={styles.statLabel}>Search Intent Types</div>
             </div>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>100%</div>
-              <div className={styles.statLabel}>Free Access</div>
+              <div className={styles.statLabel}>Expert-Level Content</div>
             </div>
           </div>
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
               to="/docs/getting-started">
-              Get Started with SEO - 5min ⏱️
+              🚀 Start Your SEO Journey
+            </Link>
+            <Link
+              className="button button--outline button--secondary button--lg"
+              to="/docs/getting-started#%EF%B8%8F-the-three-pillars-of-seo">
+              📚 Explore Three Pillars
             </Link>
           </div>
         </div>
@@ -48,40 +72,43 @@ function SEOResourcesHero() {
 function SEOResourcesFeatures() {
   const features = [
     {
-      title: '🎓 For Beginners',
-      icon: '🚀',
-      description: (
-        <>
-          SEO fundamentals, keyword research basics, on-page optimization essentials, 
-          and technical SEO foundations to get you started.
-        </>
-      ),
-      link: '/docs/getting-started',
-      linkText: 'Start Learning'
-    },
-    {
-      title: '📈 For Intermediate Users',
-      icon: '⚡',
-      description: (
-        <>
-          Advanced keyword strategies, content optimization techniques, link building 
-          best practices, and performance monitoring.
-        </>
-      ),
-      link: '/docs/tools',
-      linkText: 'Explore Tools'
-    },
-    {
-      title: '🔬 For Advanced Practitioners',
+      title: 'Authority: Do You Matter?',
       icon: '🎯',
       description: (
         <>
-          AI-enhanced SEO strategies, enterprise approaches, international SEO, 
-          and Search Generative Experience (SGE) optimization.
+          Master strategic link building, E-A-T optimization, and expert content creation. 
+          Learn how Google's PageRank algorithm determines which sites deserve to rank.
         </>
       ),
-      link: '/docs',
-      linkText: 'Advanced Topics'
+      link: '/docs/getting-started#%EF%B8%8F-the-three-pillars-of-seo',
+      linkText: 'Master Authority',
+      color: 'blue'
+    },
+    {
+      title: 'Relevance: Answer Search Intent',
+      icon: '🔍',
+      description: (
+        <>
+          Understand the 4 types of search intent, the 3Cs framework, and SERP feature optimization. 
+          Create content that perfectly matches what users are actually searching for.
+        </>
+      ),
+      link: '/docs/getting-started#-understanding-search-intent',
+      linkText: 'Optimize Intent',
+      color: 'orange'
+    },
+    {
+      title: 'Experience: Delight Users & Bots',
+      icon: '⚡',
+      description: (
+        <>
+          Excel at Core Web Vitals, mobile-first excellence, and technical SEO foundations. 
+          Ensure both users and search bots have an exceptional experience on your site.
+        </>
+      ),
+      link: '/docs/getting-started#%EF%B8%8F-the-three-pillars-of-seo',
+      linkText: 'Perfect Experience',
+      color: 'purple'
     },
   ];
 
@@ -91,13 +118,13 @@ function SEOResourcesFeatures() {
         <div className="row">
           {features.map((feature, idx) => (
             <div key={idx} className={clsx('col col--4')}>
-              <div className={styles.featureCard}>
+              <div className={clsx(styles.featureCard, styles[`feature${feature.color}`])}>
                 <div className={styles.featureIcon}>{feature.icon}</div>
                 <div className={styles.featureContent}>
                   <Heading as="h3">{feature.title}</Heading>
                   <p>{feature.description}</p>
                   <Link
-                    className="button button--primary button--sm"
+                    className={clsx("button button--primary button--sm", styles[`button${feature.color}`])}
                     to={feature.link}>
                     {feature.linkText}
                   </Link>
@@ -114,24 +141,24 @@ function SEOResourcesFeatures() {
 function SEOQuickTips() {
   const tips = [
     {
+      icon: '🎯',
+      tip: 'Match Search Intent Precisely',
+      description: 'Use the 3Cs framework: analyze content type, format, and angle of top-ranking pages'
+    },
+    {
+      icon: '⚡',
+      tip: 'Optimize Core Web Vitals',
+      description: 'LCP under 2.5s, FID under 100ms, CLS under 0.1 for superior user experience'
+    },
+    {
+      icon: '🏗️',
+      tip: 'Build Authority Through E-A-T',
+      description: 'Demonstrate expertise, authoritativeness, and trustworthiness in your content'
+    },
+    {
       icon: '🔍',
-      tip: 'Focus on long-tail keywords',
-      description: 'Target specific phrases your audience actually searches for'
-    },
-    {
-      icon: '📊',
-      tip: 'Monitor Core Web Vitals',
-      description: 'Page speed and user experience directly impact rankings'
-    },
-    {
-      icon: '💡',
-      tip: 'Create valuable content',
-      description: 'Answer real questions your audience is asking'
-    },
-    {
-      icon: '📱',
-      tip: 'Optimize for mobile-first',
-      description: 'Google uses mobile version for indexing and ranking'
+      tip: 'Leverage SERP Features',
+      description: 'Optimize for featured snippets, People Also Ask, and knowledge panels'
     }
   ];
 
@@ -139,8 +166,8 @@ function SEOQuickTips() {
     <section className={styles.quickTips}>
       <div className="container">
         <div className={styles.sectionHeader}>
-          <Heading as="h2">Quick SEO Tips for Beginners</Heading>
-          <p>Essential SEO principles every website owner should know</p>
+          <Heading as="h2">Expert SEO Insights</Heading>
+          <p>Advanced techniques that separate professionals from beginners</p>
         </div>
         <div className="row">
           {tips.map((tip, idx) => (
@@ -158,27 +185,81 @@ function SEOQuickTips() {
   );
 }
 
+function SEOKnowledgeShowcase() {
+  const frameworks = [
+    {
+      title: "The Three Pillars Framework",
+      description: "Revolutionary approach to modern SEO",
+      items: ["Authority Building", "Relevance Optimization", "Experience Excellence"],
+      link: "/docs/getting-started#%EF%B8%8F-the-three-pillars-of-seo"
+    },
+    {
+      title: "Search Intent Mastery",
+      description: "Complete guide to understanding user intent",
+      items: ["4 Intent Types", "3Cs Analysis", "SERP Features"],
+      link: "/docs/getting-started#-understanding-search-intent"
+    },
+    {
+      title: "Technical Excellence",
+      description: "Advanced crawling, indexing, and ranking insights",
+      items: ["Core Web Vitals", "Mobile-First", "Schema Markup"],
+      link: "/docs/getting-started#-how-search-engines-work"
+    }
+  ];
+
+  return (
+    <section className={styles.knowledgeShowcase}>
+      <div className="container">
+        <div className={styles.sectionHeader}>
+          <Heading as="h2">🧠 Deep SEO Knowledge Base</Heading>
+          <p>Comprehensive frameworks and methodologies developed through years of SEO expertise</p>
+        </div>
+        <div className="row">
+          {frameworks.map((framework, idx) => (
+            <div key={idx} className="col col--4">
+              <div className={styles.frameworkCard}>
+                <h3>{framework.title}</h3>
+                <p className={styles.frameworkDescription}>{framework.description}</p>
+                <ul className={styles.frameworkItems}>
+                  {framework.items.map((item, itemIdx) => (
+                    <li key={itemIdx}>✓ {item}</li>
+                  ))}
+                </ul>
+                <Link
+                  className="button button--outline button--primary"
+                  to={framework.link}>
+                  Learn More
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function SEOResourcesCTA() {
   return (
     <section className={styles.ctaSection}>
       <div className="container">
         <div className={styles.ctaContent}>
           <div className={styles.ctaIcon}>🚀</div>
-          <Heading as="h2">Ready to Master SEO?</Heading>
+          <Heading as="h2">Ready to Implement Modern SEO?</Heading>
           <p>
-            While these resources are comprehensive, sometimes you need expert guidance 
-            tailored to your specific situation.
+            These advanced frameworks and methodologies represent cutting-edge SEO knowledge. 
+            Get personalized implementation guidance for your specific situation.
           </p>
           <div className={styles.ctaButtons}>
             <Link
               className="button button--primary button--lg"
               href="https://omar-corral.com/services">
-              Get Professional SEO Services
+              Get Expert SEO Services
             </Link>
             <Link
               className="button button--secondary button--lg"
               href="https://omar-corral.com/#contact">
-              Schedule Free Consultation
+              Schedule Strategy Call
             </Link>
           </div>
         </div>
@@ -191,11 +272,12 @@ export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="Comprehensive SEO guides, tools, and best practices for beginners and experts. Learn search engine optimization from Omar Corral, SEO specialist in Phoenix, Arizona.">
+      title="Modern SEO Mastery | Expert Resource Center"
+      description="Master the Three Pillars of SEO: Authority, Relevance, and Experience. Expert-level search intent optimization, Core Web Vitals, and modern SEO frameworks by Omar Corral.">
       <SEOResourcesHero />
       <main>
         <SEOResourcesFeatures />
+        <SEOKnowledgeShowcase />
         <SEOQuickTips />
         <SEOResourcesCTA />
       </main>
