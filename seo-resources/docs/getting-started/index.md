@@ -497,27 +497,298 @@ Focus on these three pillars, and you'll build an SEO strategy that not only ran
 
 ## 🔍 Understanding Search Intent
 
-Modern SEO focuses on matching **user intent** rather than just keywords:
+**Search intent** is the primary goal a user has when typing a query into a search engine. Modern SEO has evolved far beyond simple keyword matching—**Google's algorithms now prioritize understanding the *why* behind every search**.
 
-### **Informational Intent**
-Users seeking information or answers
-- *Example*: "how to do keyword research"
-- *Content type*: Guides, tutorials, blog posts
+Understanding and aligning with search intent is crucial because:
+- **85% of searches** have clear intent signals that Google recognizes
+- **Mismatched intent** can result in high bounce rates and poor rankings
+- **Intent-optimized content** receives 3x more engagement than keyword-stuffed content
 
-### **Navigational Intent**
-Users looking for a specific website or page
-- *Example*: "Google Search Console login"
-- *Content type*: Brand pages, specific tools
+<div className="search-intent-visual">
+  <div className="intent-header">
+    <h3>🎯 The Four Types of Search Intent</h3>
+    <p>Every search query falls into one of these categories</p>
+  </div>
+  
+  <div className="intent-grid">
+    <div className="intent-card informational">
+      <div className="intent-icon">📚</div>
+      <h4>INFORMATIONAL</h4>
+      <p className="intent-subtitle">"I want to know..."</p>
+      <div className="intent-details">
+        <div className="intent-purpose">
+          <strong>Purpose:</strong> Learning, understanding, researching
+        </div>
+        <div className="intent-examples">
+          <strong>Examples:</strong>
+          <ul>
+            <li>"How does SEO work?"</li>
+            <li>"What is PageRank algorithm?"</li>
+            <li>"SEO best practices 2024"</li>
+            <li>"Core Web Vitals explained"</li>
+          </ul>
+        </div>
+        <div className="intent-content">
+          <strong>Content Types:</strong>
+          <span className="content-tags">
+            <span className="tag">How-to Guides</span>
+            <span className="tag">Tutorials</span>
+            <span className="tag">Explainers</span>
+            <span className="tag">Research</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="intent-card navigational">
+      <div className="intent-icon">🧭</div>
+      <h4>NAVIGATIONAL</h4>
+      <p className="intent-subtitle">"I want to go..."</p>
+      <div className="intent-details">
+        <div className="intent-purpose">
+          <strong>Purpose:</strong> Finding a specific website or page
+        </div>
+        <div className="intent-examples">
+          <strong>Examples:</strong>
+          <ul>
+            <li>"Google Search Console"</li>
+            <li>"Ahrefs login"</li>
+            <li>"Omar Corral SEO services"</li>
+            <li>"Facebook business page"</li>
+          </ul>
+        </div>
+        <div className="intent-content">
+          <strong>Content Types:</strong>
+          <span className="content-tags">
+            <span className="tag">Brand Pages</span>
+            <span className="tag">Tool Access</span>
+            <span className="tag">Company Info</span>
+            <span className="tag">Contact Pages</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="intent-card commercial">
+      <div className="intent-icon">🛍️</div>
+      <h4>COMMERCIAL</h4>
+      <p className="intent-subtitle">"I want to compare..."</p>
+      <div className="intent-details">
+        <div className="intent-purpose">
+          <strong>Purpose:</strong> Researching before purchasing
+        </div>
+        <div className="intent-examples">
+          <strong>Examples:</strong>
+          <ul>
+            <li>"Best SEO tools 2024"</li>
+            <li>"Ahrefs vs SEMrush comparison"</li>
+            <li>"Top SEO agencies reviews"</li>
+            <li>"WordPress SEO plugins"</li>
+          </ul>
+        </div>
+        <div className="intent-content">
+          <strong>Content Types:</strong>
+          <span className="content-tags">
+            <span className="tag">Reviews</span>
+            <span className="tag">Comparisons</span>
+            <span className="tag">Top Lists</span>
+            <span className="tag">Buyers Guides</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="intent-card transactional">
+      <div className="intent-icon">💳</div>
+      <h4>TRANSACTIONAL</h4>
+      <p className="intent-subtitle">"I want to buy/do..."</p>
+      <div className="intent-details">
+        <div className="intent-purpose">
+          <strong>Purpose:</strong> Ready to take action or purchase
+        </div>
+        <div className="intent-examples">
+          <strong>Examples:</strong>
+          <ul>
+            <li>"Hire SEO consultant"</li>
+            <li>"Buy Ahrefs subscription"</li>
+            <li>"SEO audit service pricing"</li>
+            <li>"Book SEO consultation"</li>
+          </ul>
+        </div>
+        <div className="intent-content">
+          <strong>Content Types:</strong>
+          <span className="content-tags">
+            <span className="tag">Service Pages</span>
+            <span className="tag">Product Pages</span>
+            <span className="tag">Pricing</span>
+            <span className="tag">Contact Forms</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-### **Commercial Intent**
-Users researching products or services
-- *Example*: "best SEO tools 2024"
-- *Content type*: Reviews, comparisons, lists
+### 🎯 **The 3Cs of Search Intent Analysis**
 
-### **Transactional Intent**
-Users ready to make a purchase or take action
-- *Example*: "hire SEO consultant"
-- *Content type*: Service pages, product pages
+To optimize content for search intent, follow the **3Cs framework**:
+
+#### **1. Content Type** 📋
+*What format do top-ranking pages use?*
+
+<div className="content-analysis">
+  <div className="analysis-row">
+    <div className="analysis-label">Blog Posts</div>
+    <div className="analysis-arrow">→</div>
+    <div className="analysis-result">Informational intent dominant</div>
+  </div>
+  <div className="analysis-row">
+    <div className="analysis-label">Product Pages</div>
+    <div className="analysis-arrow">→</div>
+    <div className="analysis-result">Transactional intent likely</div>
+  </div>
+  <div className="analysis-row">
+    <div className="analysis-label">Company Pages</div>
+    <div className="analysis-arrow">→</div>
+    <div className="analysis-result">Navigational intent present</div>
+  </div>
+  <div className="analysis-row">
+    <div className="analysis-label">Comparison Lists</div>
+    <div className="analysis-arrow">→</div>
+    <div className="analysis-result">Commercial intent strong</div>
+  </div>
+</div>
+
+#### **2. Content Format** 🎨
+*How is the content structured and presented?*
+
+- **How-to Guides** → Step-by-step informational content
+- **Listicles** → "Best of" or comparison content
+- **Reviews** → Commercial investigation content
+- **Landing Pages** → Transactional content
+
+#### **3. Content Angle** 💡
+*What unique value proposition do top pages offer?*
+
+- **For Beginners** → Educational angle
+- **Expert Level** → Advanced insights
+- **Cost-Effective** → Budget-conscious angle
+- **Latest/2024** → Freshness angle
+
+### 📊 **Search Intent in Action: SERP Features**
+
+Different search intents trigger different SERP features:
+
+<div className="serp-features-grid">
+  <div className="serp-feature">
+    <h4>📚 Informational Queries</h4>
+    <ul>
+      <li>✅ Featured Snippets</li>
+      <li>✅ People Also Ask</li>
+      <li>✅ Knowledge Panels</li>
+      <li>✅ Related Searches</li>
+    </ul>
+  </div>
+  
+  <div className="serp-feature">
+    <h4>🧭 Navigational Queries</h4>
+    <ul>
+      <li>✅ Knowledge Panels</li>
+      <li>✅ Sitelinks</li>
+      <li>✅ Brand Information</li>
+      <li>✅ Social Media Links</li>
+    </ul>
+  </div>
+  
+  <div className="serp-feature">
+    <h4>🛍️ Commercial Queries</h4>
+    <ul>
+      <li>✅ Shopping Results</li>
+      <li>✅ Review Stars</li>
+      <li>✅ Price Comparisons</li>
+      <li>✅ Local Pack</li>
+    </ul>
+  </div>
+  
+  <div className="serp-feature">
+    <h4>💳 Transactional Queries</h4>
+    <ul>
+      <li>✅ Shopping Ads</li>
+      <li>✅ Local Results</li>
+      <li>✅ Price Information</li>
+      <li>✅ Contact Information</li>
+    </ul>
+  </div>
+</div>
+
+### 🎯 **Optimizing Content for Search Intent**
+
+#### **Step 1: Intent Research**
+```
+1. Analyze top 10 results for your target keyword
+2. Identify the dominant content type and format
+3. Note common SERP features
+4. Understand the searcher's goal
+```
+
+#### **Step 2: Content Alignment**
+- **Match the format** that Google rewards for that query
+- **Address the specific need** behind the search
+- **Include relevant keywords** naturally within the content
+- **Optimize for SERP features** that appear for your intent type
+
+#### **Step 3: Intent Validation**
+Use these metrics to validate intent alignment:
+- **Low bounce rate** (users find what they need)
+- **High dwell time** (content satisfies intent)
+- **Strong CTR** (title/meta match intent)
+- **Conversion goals met** (users complete desired actions)
+
+### 🚨 **Common Search Intent Mistakes**
+
+<div className="mistake-cards">
+  <div className="mistake-card">
+    <div className="mistake-title">❌ Intent Mismatch</div>
+    <div className="mistake-description">Creating product pages for informational queries</div>
+    <div className="mistake-solution">✅ Solution: Match content type to search intent</div>
+  </div>
+  
+  <div className="mistake-card">
+    <div className="mistake-title">❌ Keyword Stuffing</div>
+    <div className="mistake-description">Focusing on keywords instead of user needs</div>
+    <div className="mistake-solution">✅ Solution: Write for intent, include keywords naturally</div>
+  </div>
+  
+  <div className="mistake-card">
+    <div className="mistake-title">❌ Generic Content</div>
+    <div className="mistake-description">One-size-fits-all content for different intents</div>
+    <div className="mistake-solution">✅ Solution: Create intent-specific content for each keyword cluster</div>
+  </div>
+</div>
+
+### 📈 **Advanced Intent Optimization**
+
+#### **Mixed Intent Keywords**
+Some keywords have multiple intents. Handle these by:
+- **Creating comprehensive content** that addresses multiple intents
+- **Using clear section headers** for different intent types
+- **Including relevant CTAs** for each intent pathway
+
+#### **Intent-Based Content Clusters**
+Organize your content strategy around intent:
+- **Informational Hub** → Educational content that builds authority
+- **Commercial Pages** → Comparison and review content
+- **Transactional Funnel** → Service/product pages with clear CTAs
+
+### 💡 **Pro Tips for Intent Optimization**
+
+1. **Study your competitors**: What content types rank for your target keywords?
+2. **Use intent-based keywords**: Include natural language queries and questions
+3. **Optimize for voice search**: Conversational queries often reveal clear intent
+4. **Monitor user behavior**: Use analytics to validate intent alignment
+5. **Update regularly**: Search intent can evolve; keep content current
+
+**Remember**: Perfect keyword rankings mean nothing if you're not satisfying search intent. Focus on understanding and serving user needs, and rankings will follow naturally.
 
 ## 📊 Key SEO Metrics to Track
 
