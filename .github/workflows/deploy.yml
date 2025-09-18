@@ -1,10 +1,9 @@
-name: Deploy Next.js to GitHub Pages
+name: Deploy Portfolio & SEO Resource Center
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
@@ -24,7 +23,7 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install main site dependencies
         run: npm ci
 
       - name: Setup Pages
@@ -32,19 +31,29 @@ jobs:
         with:
           static_site_generator: next
 
-      - name: Build with Next.js
+      - name: Build Next.js main site
         run: npm run build
 
-      - name: Build Docusaurus site
+      - name: Install SEO Resources dependencies
         run: |
           cd seo-resources
           npm ci
-          npm run build
 
-      - name: Copy Docusaurus build to Next.js output
+      - name: Build SEO Resource Center
         run: |
+          cd seo-resources
+          NODE_ENV=production npm run build
+
+      - name: Prepare combined deployment
+        run: |
+          echo "Creating combined site structure..."
           mkdir -p ./out/seo-resources
+          
+          # Copy SEO resources to subdirectory
           cp -r ./seo-resources/build/* ./out/seo-resources/
+          
+          # Ensure proper routing
+          echo "SEO Resource Center deployed at: https://omar-corral.com/seo-resources/"
 
       - name: Create .nojekyll file
         run: touch ./out/.nojekyll

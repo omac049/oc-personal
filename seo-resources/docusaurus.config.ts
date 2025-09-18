@@ -23,8 +23,8 @@ const config: Config = {
   // Set the production url of your site here
   url: 'https://omar-corral.com',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/seo-resources/',
+  // Using environment variable for flexible deployment
+  baseUrl: process.env.NODE_ENV === 'development' ? '/' : '/seo-resources/',
   
   // Ensure proper trailing slash handling
   trailingSlash: false,
