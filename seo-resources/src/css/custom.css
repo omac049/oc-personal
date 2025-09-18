@@ -131,10 +131,56 @@
   color: var(--ifm-color-primary);
 }
 
-/* Mermaid Diagram Enhancements for Search Content */
+/* Enhanced Mermaid Diagram Styling */
 .mermaid {
   text-align: center;
-  margin: 2rem 0;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .mermaid {
+  background: var(--ifm-color-emphasis-200);
+  border-color: var(--ifm-color-emphasis-400);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Mermaid SVG Enhancement */
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  font-family: var(--ifm-font-family-base);
+}
+
+/* Improve Mermaid text readability */
+.mermaid .node text {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-anchor: middle !important;
+}
+
+.mermaid .edgeLabel {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+/* Responsive Mermaid diagrams */
+@media (max-width: 768px) {
+  .mermaid {
+    margin: 2rem 0;
+    padding: 1rem;
+  }
+  
+  .mermaid .node text {
+    font-size: 12px !important;
+  }
+  
+  .mermaid .edgeLabel {
+    font-size: 10px !important;
+  }
 }
 
 /* Three Pillars Content Styling */

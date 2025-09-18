@@ -262,30 +262,49 @@ Think of SEO like nutrition for your body - you need the right balance of three 
 Neglect any one of these pillars, and your SEO performance will suffer. Master all three, and you'll build a sustainable foundation for long-term search success.
 
 ```mermaid
-graph TB
-    A[🏆 SEO Success] --> B[🎯 Authority]
-    A --> C[📊 Relevance] 
-    A --> D[⚡ Experience]
+flowchart TD
+    A["🏆 SEO SUCCESS<br/>The Ultimate Goal"] --> B["🎯 AUTHORITY<br/>Do You Matter?"]
+    A --> C["📊 RELEVANCE<br/>Do You Answer Intent?"] 
+    A --> D["⚡ EXPERIENCE<br/>Do Users Love Your Site?"]
     
-    B --> B1[🔗 Quality Backlinks]
-    B --> B2[📈 Domain Authority]
-    B --> B3[🏅 E-A-T Signals]
-    B --> B4[📝 Expert Content]
+    B --> B1["🔗 Strategic<br/>Link Building"]
+    B --> B2["🏅 E-A-T<br/>Expertise & Trust"]
+    B --> B3["📝 Expert<br/>Content Creation"]
+    B --> B4["📈 Industry<br/>Recognition"]
     
-    C --> C1[🎯 Search Intent Match]
-    C --> C2[🔍 Keyword Optimization]
-    C --> C3[📚 Content Depth]
-    C --> C4[🔄 Content Freshness]
+    C --> C1["🎯 Search Intent<br/>Optimization"]
+    C --> C2["🔍 Advanced<br/>Keywords"]
+    C --> C3["📚 Content<br/>Depth & Quality"]
+    C --> C4["🔄 Freshness<br/>& Updates"]
     
-    D --> D1[⚡ Core Web Vitals]
-    D --> D2[📱 Mobile Experience]
-    D --> D3[🛠️ Technical Health]
-    D --> D4[👤 User Satisfaction]
+    D --> D1["⚡ Core Web<br/>Vitals"]
+    D --> D2["📱 Mobile-First<br/>Excellence"]
+    D --> D3["🛠️ Technical<br/>Foundation"]
+    D --> D4["👤 User Experience<br/>Signals"]
     
-    style A fill:#4caf50
-    style B fill:#2196f3
-    style C fill:#ff9800
-    style D fill:#9c27b0
+    %% Enhanced styling with better contrast and readability
+    style A fill:#1a237e,stroke:#000,stroke-width:3px,color:#fff
+    style B fill:#0d47a1,stroke:#000,stroke-width:2px,color:#fff
+    style C fill:#e65100,stroke:#000,stroke-width:2px,color:#fff
+    style D fill:#4a148c,stroke:#000,stroke-width:2px,color:#fff
+    
+    %% Authority styling (Blue theme)
+    style B1 fill:#1976d2,stroke:#0d47a1,stroke-width:2px,color:#fff
+    style B2 fill:#1976d2,stroke:#0d47a1,stroke-width:2px,color:#fff
+    style B3 fill:#1976d2,stroke:#0d47a1,stroke-width:2px,color:#fff
+    style B4 fill:#1976d2,stroke:#0d47a1,stroke-width:2px,color:#fff
+    
+    %% Relevance styling (Orange theme)
+    style C1 fill:#f57c00,stroke:#e65100,stroke-width:2px,color:#fff
+    style C2 fill:#f57c00,stroke:#e65100,stroke-width:2px,color:#fff
+    style C3 fill:#f57c00,stroke:#e65100,stroke-width:2px,color:#fff
+    style C4 fill:#f57c00,stroke:#e65100,stroke-width:2px,color:#fff
+    
+    %% Experience styling (Purple theme)
+    style D1 fill:#7b1fa2,stroke:#4a148c,stroke-width:2px,color:#fff
+    style D2 fill:#7b1fa2,stroke:#4a148c,stroke-width:2px,color:#fff
+    style D3 fill:#7b1fa2,stroke:#4a148c,stroke-width:2px,color:#fff
+    style D4 fill:#7b1fa2,stroke:#4a148c,stroke-width:2px,color:#fff
 ```
 
 ### 1. **Authority** 🎯
