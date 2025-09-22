@@ -133,50 +133,25 @@ Edit these files to personalize your portfolio. The components import these modu
 
 ## Deployment
 
-### Deploying to GitHub Pages
+For complete deployment instructions including both the portfolio and SEO Resource Center, please refer to our comprehensive **[Deployment Guide](./DEPLOYMENT_GUIDE.md)**.
 
-1. **Configure Next.js for static export**  
-   In `next.config.js`, add:
-   ```js
-   const isProd = process.env.NODE_ENV === 'production';
+The deployment guide covers:
+- **Automated deployment** via GitHub Actions
+- **Manual deployment** options
+- **Custom domain setup** (omar-corral.com)
+- **SEO Resources integration** 
+- **Performance monitoring**
+- **Troubleshooting** common deployment issues
 
-   const nextConfig = {
-     output: 'export',
-     assetPrefix: isProd ? '/<repository-name>/' : '',
-     basePath: isProd ? '/<repository-name>' : '',
-   };
+**Quick Start:**
+```bash
+# Push to main branch for automatic deployment
+git add .
+git commit -m "Your changes"
+git push origin main
+```
 
-   export default nextConfig;
-   ```
-   Replace `<repository-name>` with your GitHub repository name.
-
-2. **Update `package.json`**  
-   Add the homepage and deployment scripts:
-   ```json
-   "homepage": "https://<github-username>.github.io/<repository-name>",
-   "scripts": {
-     "dev": "next dev",
-     "build": "next build",
-     "start": "next start",
-     "predeploy": "npm run build",
-     "deploy": "gh-pages -d out"
-   }
-   ```
-   Replace `<github-username>` and `<repository-name>` accordingly.
-
-3. **Deploy the site**  
-   ```bash
-   npm run predeploy
-   npm run deploy
-   ```
-
-4. **Enable GitHub Pages**  
-   On GitHub, navigate to **Settings > Pages**, select the `gh-pages` branch, and set the root (`/`) as the source.
-
-5. **Add `.nojekyll` file**  
-   Ensure a `.nojekyll` file exists at the root of the `gh-pages` branch to prevent Jekyll processing.
-
-Your site will be live at `https://<github-username>.github.io/<repository-name>`.
+Both the main portfolio and SEO Resource Center deploy automatically when you push to the `main` branch.
 
 ### Custom Domain Setup
 

@@ -1,6 +1,8 @@
 # 🚀 Deployment Guide - Omar Corral Portfolio & SEO Resource Center
 
-This guide covers the improved deployment process for both the main portfolio site and the SEO Resource Center.
+**📋 CONSOLIDATED DEPLOYMENT GUIDE** - This is the official, unified deployment documentation for both sites.
+
+This guide covers the complete deployment process for both the main portfolio site and the SEO Resource Center.
 
 ## 📋 Overview
 

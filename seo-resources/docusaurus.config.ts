@@ -61,10 +61,11 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        gtag: {
-          trackingID: 'G-XXXXXXXXXX', // Replace with your actual Google Analytics ID
-          anonymizeIP: true,
-        },
+        // Google Analytics - Disabled until real tracking ID is provided
+        // gtag: {
+        //   trackingID: 'G-XXXXXXXXXX', // TODO: Replace with actual Google Analytics ID
+        //   anonymizeIP: true,
+        // },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,

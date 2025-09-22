@@ -17,6 +17,11 @@ const sidebars: SidebarsConfig = {
       label: '🎓 Getting Started',
       items: [
         'getting-started/index',
+        'getting-started/seo-fundamentals',
+        'getting-started/how-search-engines-work',
+        'getting-started/seo-pillars',
+        'getting-started/search-intent-optimization',
+        'getting-started/measuring-success',
       ],
     },
     {
@@ -26,7 +31,32 @@ const sidebars: SidebarsConfig = {
         'tools/index',
       ],
     },
-    // Additional categories will be added as we create more content
+    {
+      type: 'category',
+      label: '🔍 Keyword Research',
+      items: [
+        'keyword-research/index',
+        'keyword-research/fundamentals',
+        'keyword-research/tools-and-techniques',
+        'keyword-research/long-tail-keywords',
+        'keyword-research/local-keyword-research',
+      ],
+    },
+    {
+      type: 'category',
+      label: '⚙️ Technical SEO',
+      items: [
+        'technical-seo/index',
+        'technical-seo/core-web-vitals',
+        'technical-seo/crawlability',
+        'technical-seo/mobile-optimization',
+        'technical-seo/structured-data',
+      ],
+    },
+    // Coming Soon Sections - Will be added as content is created:
+    // ✏️ Content Optimization  
+    // 📋 SEO Checklists
+    // 🔗 Link Building
   ],
 };
 
