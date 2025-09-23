@@ -218,15 +218,13 @@ const config: Config = {
         content: 'SEO Resource Center by Omar Corral'
       }
     ],
-    // Algolia search configuration - Temporarily disabled while setting up index
-    // Will be re-enabled once the Algolia index is properly created and crawled
-    /*
+    // Algolia search configuration - RESTORED with correct index name
     algolia: {
       // The application ID provided by Algolia
       appId: 'ZLQ21UNSR7',
       // Public API key: it is safe to commit it
       apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
-      indexName: 'seo-resources',
+      indexName: 'omar_corral_com_zlq21unsr7_pages',
       
       // Enhanced contextual search for better relevance
       contextualSearch: true,
@@ -274,7 +272,6 @@ const config: Config = {
       // Add insights for search analytics
       insights: true,
     },
-    */
   } satisfies Preset.ThemeConfig,
 };
 
