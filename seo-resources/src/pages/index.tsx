@@ -59,7 +59,7 @@ function SEOResourcesHero() {
             </Link>
             <Link
               className="button button--outline button--secondary button--lg"
-              to="/docs/getting-started#%EF%B8%8F-the-three-pillars-of-seo">
+              to="/docs/getting-started/seo-pillars">
               📚 Explore Three Pillars
             </Link>
           </div>
@@ -80,7 +80,7 @@ function SEOResourcesFeatures() {
           Learn how Google's PageRank algorithm determines which sites deserve to rank.
         </>
       ),
-      link: '/docs/getting-started#%EF%B8%8F-the-three-pillars-of-seo',
+      link: '/docs/getting-started/seo-pillars',
       linkText: 'Master Authority',
       color: 'blue'
     },
@@ -93,7 +93,7 @@ function SEOResourcesFeatures() {
           Create content that perfectly matches what users are actually searching for.
         </>
       ),
-      link: '/docs/getting-started#-understanding-search-intent',
+      link: '/docs/getting-started/search-intent-optimization',
       linkText: 'Optimize Intent',
       color: 'orange'
     },
@@ -106,7 +106,7 @@ function SEOResourcesFeatures() {
           Ensure both users and search bots have an exceptional experience on your site.
         </>
       ),
-      link: '/docs/getting-started#%EF%B8%8F-the-three-pillars-of-seo',
+      link: '/docs/getting-started/seo-pillars',
       linkText: 'Perfect Experience',
       color: 'purple'
     },
@@ -191,19 +191,19 @@ function SEOKnowledgeShowcase() {
       title: "The Three Pillars Framework",
       description: "Revolutionary approach to modern SEO",
       items: ["Authority Building", "Relevance Optimization", "Experience Excellence"],
-      link: "/docs/getting-started#%EF%B8%8F-the-three-pillars-of-seo"
+      link: "/docs/getting-started/seo-pillars"
     },
     {
       title: "Search Intent Mastery",
       description: "Complete guide to understanding user intent",
       items: ["4 Intent Types", "3Cs Analysis", "SERP Features"],
-      link: "/docs/getting-started#-understanding-search-intent"
+      link: "/docs/getting-started/search-intent-optimization"
     },
     {
       title: "Technical Excellence",
       description: "Advanced crawling, indexing, and ranking insights",
       items: ["Core Web Vitals", "Mobile-First", "Schema Markup"],
-      link: "/docs/getting-started#-how-search-engines-work"
+      link: "/docs/getting-started/how-search-engines-work"
     }
   ];
 

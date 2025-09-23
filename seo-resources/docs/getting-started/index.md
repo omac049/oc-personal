@@ -205,8 +205,8 @@ timeline
 Once you've mastered the fundamentals, continue your SEO education with:
 
 ### **🛠️ Essential Tools**
-**[Explore SEO Tools →](../tools/)**  
-Discover the free and premium tools that will accelerate your SEO success.
+**[Get Professional SEO Tools Recommendations →](https://omar-corral.com/#contact)**  
+Contact Omar for personalized recommendations on the best free and premium SEO tools for your specific needs.
 
 ### **📚 Advanced Topics** *(Coming Soon)*
 - **Keyword Research Mastery**: Advanced strategies for finding and targeting keywords

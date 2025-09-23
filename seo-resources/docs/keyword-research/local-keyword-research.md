@@ -576,7 +576,7 @@ Ready to move beyond keyword research? The next crucial step is:
 **[Technical SEO →](../technical-seo/)** *(Coming Soon)*
 *Ensure your website can actually rank for all those keywords you've researched.*
 
-**[Content Optimization →](../content-optimization/)** *(Coming Soon)*
+**[Content Optimization →](https://omar-corral.com/#contact)** - *Coming Soon - Contact for early access*
 *Create content that perfectly matches keyword intent and drives conversions.*
 
 ---

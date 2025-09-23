@@ -20,6 +20,19 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        language: ["en"],
+      },
+    ],
+  ],
+
   // Set the production url of your site here
   url: 'https://omar-corral.com',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -204,6 +217,9 @@ const config: Config = {
         content: 'SEO Resource Center by Omar Corral'
       }
     ],
+    // Algolia search configuration - Temporarily disabled while setting up index
+    // Will be re-enabled once the Algolia index is properly created and crawled
+    /*
     algolia: {
       // The application ID provided by Algolia
       appId: 'ZLQ21UNSR7',
@@ -257,6 +273,7 @@ const config: Config = {
       // Add insights for search analytics
       insights: true,
     },
+    */
   } satisfies Preset.ThemeConfig,
 };
 
