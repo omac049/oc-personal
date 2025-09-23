@@ -218,17 +218,32 @@ const config: Config = {
         content: 'SEO Resource Center by Omar Corral'
       }
     ],
-    // Algolia search configuration - WITH CORRECT URL REPLACEMENT
+    // Algolia search configuration - WORKS FOR BOTH DEV AND PRODUCTION
     algolia: {
       appId: 'ZLQ21UNSR7',
       apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
       indexName: 'omar_corral_com_zlq21unsr7_pages',
       
-      // URL path replacement for proper routing
-      replaceSearchResultPathname: {
-        from: '/seo-resources/', 
+      // URL path replacement for proper routing in both environments
+      // Development: /seo-resources/docs/ -> /docs/
+      // Production: /seo-resources/docs/ -> /seo-resources/docs/ (no change needed)
+      replaceSearchResultPathname: process.env.NODE_ENV === 'development' ? {
+        from: '/seo-resources/',
         to: '/',
+      } : {
+        from: '/seo-resources/',
+        to: '/seo-resources/',
       },
+      
+      // Enhanced search parameters
+      searchParameters: {
+        hitsPerPage: 10,
+        highlightPreTag: '<mark>',
+        highlightPostTag: '</mark>',
+      },
+      
+      // Better contextual search
+      contextualSearch: true,
     },
   } satisfies Preset.ThemeConfig,
 };
