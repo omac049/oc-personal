@@ -233,10 +233,12 @@ const config: Config = {
       externalUrlRegex: 'external\\.com|domain\\.com',
       
       // URL path replacement for proper routing
-      replaceSearchResultPathname: {
-        from: '/docs/', // or as RegExp: /\/docs\//
+      // In development: convert /seo-resources/docs/ to /docs/
+      // In production: no replacement needed (URLs match)
+      replaceSearchResultPathname: process.env.NODE_ENV === 'development' ? {
+        from: '/seo-resources/',
         to: '/',
-      },
+      } : undefined,
       
       // Enhanced search parameters for better results
       searchParameters: {
