@@ -218,61 +218,11 @@ const config: Config = {
         content: 'SEO Resource Center by Omar Corral'
       }
     ],
-    // Algolia search configuration - RESTORED with correct index name
+    // Algolia search configuration - MINIMAL for debugging
     algolia: {
-      // The application ID provided by Algolia
       appId: 'ZLQ21UNSR7',
-      // Public API key: it is safe to commit it
       apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
       indexName: 'omar_corral_com_zlq21unsr7_pages',
-      
-      // Enhanced contextual search for better relevance
-      contextualSearch: true,
-      
-      // External URL handling
-      externalUrlRegex: 'external\\.com|domain\\.com',
-      
-      // URL path replacement for proper routing
-      // In development: convert /seo-resources/docs/ to /docs/
-      // In production: no replacement needed (URLs match)
-      replaceSearchResultPathname: process.env.NODE_ENV === 'development' ? {
-        from: '/seo-resources/',
-        to: '/',
-      } : undefined,
-      
-      // Enhanced search parameters for better results
-      searchParameters: {
-        // Highlight matching terms in search results
-        highlightPreTag: '<mark>',
-        highlightPostTag: '</mark>',
-        
-        // Number of results per page
-        hitsPerPage: 20,
-        
-        // Enable faceted search for content filtering
-        facetFilters: [],
-        
-        // Add analytics tags for search tracking
-        analyticsTags: ['seo-resources', 'docusaurus'],
-        
-        // Enable advanced query syntax
-        advancedSyntax: true,
-        
-        // Improve typo tolerance for better user experience
-        typoTolerance: 'min',
-        
-        // Remove stop words for cleaner results
-        removeStopWords: true,
-        
-        // Set query language for better relevance
-        queryLanguages: ['en'],
-      },
-      
-      // Enhanced search page with better UX
-      searchPagePath: 'search',
-      
-      // Add insights for search analytics
-      insights: true,
     },
   } satisfies Preset.ThemeConfig,
 };
