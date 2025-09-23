@@ -218,11 +218,17 @@ const config: Config = {
         content: 'SEO Resource Center by Omar Corral'
       }
     ],
-    // Algolia search configuration - MINIMAL for debugging
+    // Algolia search configuration - WITH CORRECT URL REPLACEMENT
     algolia: {
       appId: 'ZLQ21UNSR7',
       apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
       indexName: 'omar_corral_com_zlq21unsr7_pages',
+      
+      // URL path replacement for proper routing
+      replaceSearchResultPathname: {
+        from: '/seo-resources/', 
+        to: '/',
+      },
     },
   } satisfies Preset.ThemeConfig,
 };
