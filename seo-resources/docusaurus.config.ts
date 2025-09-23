@@ -20,18 +20,19 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
-  plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexDocs: true,
-        indexBlog: false,
-        indexPages: false,
-        language: ["en"],
-      },
-    ],
-  ],
+  // Plugins temporarily disabled due to production build issues
+  // plugins: [
+  //   [
+  //     require.resolve("@easyops-cn/docusaurus-search-local"),
+  //     {
+  //       hashed: true,
+  //       indexDocs: true,
+  //       indexBlog: false,
+  //       indexPages: false,
+  //       language: ["en"],
+  //     },
+  //   ],
+  // ],
 
   // Set the production url of your site here
   url: 'https://omar-corral.com',

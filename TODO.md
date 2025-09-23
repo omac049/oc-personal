@@ -18,12 +18,13 @@
   - [x] Added TODO comment for actual GA4 tracking ID replacement
   - [x] Temporarily disabled gtag to prevent runtime errors
   - [ ] Test analytics integration (pending real GA4 ID)
-- [x] **Update Algolia Search** ✅ **COMPLETED**
-  - [x] Verify search indexing is working (Local search implemented as working solution)
-  - [x] Test search functionality on development site (Fully functional with local search)
+- [ ] **Search Functionality** ⚠️ **IN PROGRESS**
+  - [x] Test search functionality on development site (Working locally)
   - [x] Create comprehensive Algolia setup guide for future transition
-  - [ ] **Future Enhancement**: Apply for Algolia DocSearch program
-  - [ ] **Future Enhancement**: Transition to Algolia when approved
+  - [ ] **URGENT**: Fix production build error with local search plugin
+  - [ ] **OPTION 1**: Apply for Algolia DocSearch program (Recommended)
+  - [ ] **OPTION 2**: Find production-compatible local search solution
+  - [x] Temporarily disable search plugin to fix deployment
 - [x] **Complete missing assets**
   - [x] Add proper favicon to `seo-resources/static/img/` (already exists)
   - [x] Create social media card image (`seo-social-card.jpg`) (renamed from existing)
