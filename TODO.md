@@ -33,9 +33,12 @@
     - [x] Development: /seo-resources/ → / (localhost:3000)
     - [x] Production: /seo-resources/ → /seo-resources/ (omar-corral.com)
   - [x] **Enhanced search features**: Advanced highlighting, contextual search, improved UX
-  - [x] **NEW: Local search plugin activated** with enhanced configuration
+  - [x] **NEW: Dual search strategy implemented** (Algolia primary, local fallback)
   - [x] **NEW: Custom search styling** with improved visual design
   - [x] **NEW: Comprehensive search documentation** with troubleshooting guide
+  - [x] **FIX: Production build compatibility** - Local search plugin disabled for CI/CD
+  - [x] **FIX: Enhanced GitHub workflow** with error handling and debugging
+  - [x] **NEW: Workflow documentation** with comprehensive troubleshooting guide
 - [x] **Complete missing assets**
   - [x] Add proper favicon to `seo-resources/static/img/` (already exists)
   - [x] Create social media card image (`seo-social-card.jpg`) (renamed from existing)
