@@ -75,11 +75,11 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        // Google Analytics - Disabled until real tracking ID is provided
-        // gtag: {
-        //   trackingID: 'G-XXXXXXXXXX', // TODO: Replace with actual Google Analytics ID
-        //   anonymizeIP: true,
-        // },
+        // Google Analytics - GA4 Tracking Implementation
+        gtag: {
+          trackingID: 'G-2GXQ6627P1',
+          anonymizeIP: true, // Privacy compliance
+        },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
