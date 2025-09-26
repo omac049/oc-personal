@@ -20,23 +20,25 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
-  // Local search plugin as fallback while Algolia index is updated
-  plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexDocs: true,
-        indexBlog: false,
-        indexPages: true, // Enable page indexing for better coverage
-        language: ["en"],
-        highlightSearchTermsOnTargetPage: true,
-        searchResultLimits: 8,
-        searchResultContextMaxLength: 50,
-        explicitSearchResultPath: true,
-      },
-    ],
-  ],
+  // Local search plugin temporarily disabled due to production build compatibility issues
+  // Works in development but causes Node.js compatibility errors in GitHub Actions
+  // Falling back to Algolia search which is stable and working
+  // plugins: [
+  //   [
+  //     require.resolve("@easyops-cn/docusaurus-search-local"),
+  //     {
+  //       hashed: true,
+  //       indexDocs: true,
+  //       indexBlog: false,
+  //       indexPages: true,
+  //       language: ["en"],
+  //       highlightSearchTermsOnTargetPage: true,
+  //       searchResultLimits: 8,
+  //       searchResultContextMaxLength: 50,
+  //       explicitSearchResultPath: true,
+  //     },
+  //   ],
+  // ],
 
   // Set the production url of your site here
   url: 'https://omar-corral.com',
