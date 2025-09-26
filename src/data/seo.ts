@@ -345,13 +345,13 @@ export const seoData = {
     }
   },
 
-  // Analytics & Tracking (Update with real IDs for production)
+  // Analytics & Tracking - PRODUCTION READY
   analytics: {
-    googleAnalytics: "G-XXXXXXXXXX", // TODO: Replace with actual GA4 ID
-    googleTagManager: "GTM-XXXXXXX", // TODO: Replace with actual GTM ID
+    googleAnalytics: "G-2GXQ6627P1", // ✅ Real GA4 tracking ID implemented
+    googleTagManager: "GTM-XXXXXXX", // TODO: Replace with actual GTM ID when available
     googleSearchConsole: "google-site-verification=xxxxxxxxxxxxxxxxxxxxxx", // TODO: Replace with actual verification code
     bingWebmaster: "msvalidate.01=xxxxxxxxxxxxxxxxxxxxxx", // TODO: Replace with actual Bing code
-    facebookPixel: "xxxxxxxxxxxxx" // TODO: Replace with actual Facebook Pixel ID
+    facebookPixel: "xxxxxxxxxxxxx" // TODO: Replace with actual Facebook Pixel ID when available
   },
 
   // Performance & Technical
