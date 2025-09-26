@@ -23,8 +23,22 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ./node_modules
+            ./seo-resources/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install main site dependencies
-        run: npm ci
+        run: |
+          echo "Installing main site dependencies..."
+          npm ci
+          echo "Main site dependencies installed successfully ✅"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -32,31 +46,89 @@ jobs:
           static_site_generator: next
 
       - name: Build Next.js main site
-        run: npm run build
+        run: |
+          echo "Building Next.js main site..."
+          npm run build
+          echo "Main site build completed successfully ✅"
 
       - name: Install SEO Resources dependencies
         run: |
+          echo "Installing SEO Resources dependencies..."
           cd seo-resources
           npm ci
+          echo "SEO Resources dependencies installed successfully ✅"
 
       - name: Build SEO Resource Center
         run: |
+          echo "Building SEO Resource Center..."
           cd seo-resources
           NODE_ENV=production npm run build
+          echo "SEO Resource Center build completed successfully ✅"
+          
+          # Verify build output
+          if [ -d "build" ]; then
+            echo "Build directory exists ✅"
+            ls -la build/
+          else
+            echo "❌ Build directory not found!"
+            exit 1
+          fi
 
       - name: Prepare combined deployment
         run: |
           echo "Creating combined site structure..."
+          
+          # Verify main site build exists (Next.js creates ./out directory)
+          if [ ! -d "./out" ]; then
+            echo "❌ Main site build directory ./out not found!"
+            ls -la ./
+            exit 1
+          else
+            echo "Main site build directory found ✅"
+          fi
+          
+          # Create subdirectory for SEO resources
           mkdir -p ./out/seo-resources
+          echo "Created SEO resources subdirectory ✅"
+          
+          # Verify SEO resources build exists
+          if [ ! -d "./seo-resources/build" ]; then
+            echo "❌ SEO resources build directory not found!"
+            ls -la ./seo-resources/
+            exit 1
+          else
+            echo "SEO resources build directory found ✅"
+          fi
           
           # Copy SEO resources to subdirectory
+          echo "Copying SEO resources to deployment directory..."
           cp -r ./seo-resources/build/* ./out/seo-resources/
           
-          # Ensure proper routing
-          echo "SEO Resource Center deployed at: https://omar-corral.com/seo-resources/"
+          # Verify SEO resources were copied successfully
+          if [ -f "./out/seo-resources/index.html" ]; then
+            echo "SEO resources copied successfully ✅"
+          else
+            echo "❌ SEO resources copy failed!"
+            ls -la ./out/seo-resources/
+            exit 1
+          fi
+          
+          # Show final deployment structure
+          echo "Final deployment structure:"
+          echo "Main site files:"
+          ls -la ./out/*.html || echo "No HTML files in root"
+          echo "SEO resources files:"
+          ls -la ./out/seo-resources/*.html || echo "No HTML files in seo-resources"
+          
+          echo "🚀 Combined deployment ready!"
+          echo "📍 Main site: https://omar-corral.com"
+          echo "📚 SEO Resource Center: https://omar-corral.com/seo-resources/"
 
       - name: Create .nojekyll file
-        run: touch ./out/.nojekyll
+        run: |
+          echo "Creating .nojekyll file to disable Jekyll processing..."
+          touch ./out/.nojekyll
+          echo ".nojekyll file created ✅"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -80,3 +152,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        
+      - name: Deployment success notification
+        run: |
+          echo "🚀 Deployment completed successfully!"
+          echo "🌐 Main site: https://omar-corral.com"
+          echo "📚 SEO Resource Center: https://omar-corral.com/seo-resources/"
