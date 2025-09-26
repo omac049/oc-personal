@@ -53,8 +53,18 @@ const sidebars: SidebarsConfig = {
         'technical-seo/structured-data',
       ],
     },
+    {
+      type: 'category',
+      label: '✏️ Content Optimization',
+      items: [
+        'content-optimization/index',
+        'content-optimization/on-page-seo',
+        'content-optimization/content-strategy',
+        'content-optimization/user-experience',
+        'content-optimization/content-auditing',
+      ],
+    },
     // Coming Soon Sections - Will be added as content is created:
-    // ✏️ Content Optimization  
     // 📋 SEO Checklists
     // 🔗 Link Building
   ],

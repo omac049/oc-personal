@@ -20,19 +20,23 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
-  // Plugins temporarily disabled due to production build issues
-  // plugins: [
-  //   [
-  //     require.resolve("@easyops-cn/docusaurus-search-local"),
-  //     {
-  //       hashed: true,
-  //       indexDocs: true,
-  //       indexBlog: false,
-  //       indexPages: false,
-  //       language: ["en"],
-  //     },
-  //   ],
-  // ],
+  // Local search plugin as fallback while Algolia index is updated
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: true, // Enable page indexing for better coverage
+        language: ["en"],
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 8,
+        searchResultContextMaxLength: 50,
+        explicitSearchResultPath: true,
+      },
+    ],
+  ],
 
   // Set the production url of your site here
   url: 'https://omar-corral.com',
@@ -218,15 +222,13 @@ const config: Config = {
         content: 'SEO Resource Center by Omar Corral'
       }
     ],
-    // Algolia search configuration - WORKS FOR BOTH DEV AND PRODUCTION
+    // Algolia search configuration - ENHANCED FOR BETTER RESULTS
     algolia: {
       appId: 'ZLQ21UNSR7',
       apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
       indexName: 'omar_corral_com_zlq21unsr7_pages',
       
       // URL path replacement for proper routing in both environments
-      // Development: /seo-resources/docs/ -> /docs/
-      // Production: /seo-resources/docs/ -> /seo-resources/docs/ (no change needed)
       replaceSearchResultPathname: process.env.NODE_ENV === 'development' ? {
         from: '/seo-resources/',
         to: '/',
@@ -235,15 +237,27 @@ const config: Config = {
         to: '/seo-resources/',
       },
       
-      // Enhanced search parameters
+      // Enhanced search parameters for better user experience
       searchParameters: {
-        hitsPerPage: 10,
-        highlightPreTag: '<mark>',
+        hitsPerPage: 12,
+        highlightPreTag: '<mark class="search-highlight">',
         highlightPostTag: '</mark>',
+        // Add faceting for better categorization
+        facetFilters: [],
+        // Enable typo tolerance
+        typoTolerance: 'min',
+        // Search in title, headings, and content
+        attributesToRetrieve: ['title', 'content', 'hierarchy'],
+        // Prioritize exact matches
+        exactOnSingleWordQuery: 'attribute',
       },
       
-      // Better contextual search
+      // Better contextual search and debugging
       contextualSearch: true,
+      searchPagePath: 'search',
+      
+      // Enhanced insights for debugging
+      insights: false, // Can be enabled for analytics
     },
   } satisfies Preset.ThemeConfig,
 };
