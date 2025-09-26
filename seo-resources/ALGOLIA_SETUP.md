@@ -186,3 +186,11 @@ Once Algolia is set up, you'll have access to:
    - [ ] Transition to Algolia DocSearch
    - [ ] Set up search analytics tracking
    - [ ] Optimize search configuration based on usage data
+
+## 🚨 **URGENT: Current Search Issue**
+
+**Status**: ❌ Search returning "No results for 'seo'" on production site  
+**Cause**: Algolia index is stale and doesn't include new Content Optimization content  
+**Action Required**: Request Algolia re-crawl immediately
+
+**See detailed troubleshooting**: [SEARCH_TROUBLESHOOTING_GUIDE.md](./SEARCH_TROUBLESHOOTING_GUIDE.md)

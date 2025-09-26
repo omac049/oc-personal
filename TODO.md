@@ -39,6 +39,9 @@
   - [x] **FIX: Production build compatibility** - Local search plugin disabled for CI/CD
   - [x] **FIX: Enhanced GitHub workflow** with error handling and debugging
   - [x] **NEW: Workflow documentation** with comprehensive troubleshooting guide
+  - [ ] **URGENT: Fix Algolia search index** - Currently returning no results for "seo"
+  - [x] **NEW: Search troubleshooting documentation** with diagnostic tools
+  - [x] **NEW: Algolia diagnostic script** for browser console testing
 - [x] **Complete missing assets**
   - [x] Add proper favicon to `seo-resources/static/img/` (already exists)
   - [x] Create social media card image (`seo-social-card.jpg`) (renamed from existing)
