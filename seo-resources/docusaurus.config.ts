@@ -17,28 +17,30 @@ const config: Config = {
   // Markdown configuration for Mermaid diagrams
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
   themes: ['@docusaurus/theme-mermaid'],
 
-  // Local search plugin temporarily disabled due to production build compatibility issues
-  // Works in development but causes Node.js compatibility errors in GitHub Actions
-  // Falling back to Algolia search which is stable and working
-  // plugins: [
-  //   [
-  //     require.resolve("@easyops-cn/docusaurus-search-local"),
-  //     {
-  //       hashed: true,
-  //       indexDocs: true,
-  //       indexBlog: false,
-  //       indexPages: true,
-  //       language: ["en"],
-  //       highlightSearchTermsOnTargetPage: true,
-  //       searchResultLimits: 8,
-  //       searchResultContextMaxLength: 50,
-  //       explicitSearchResultPath: true,
-  //     },
-  //   ],
-  // ],
+  // TEMPORARY: Using local search while waiting for Algolia crawler reconfiguration
+  // Algolia index structure is incompatible - needs official Docusaurus v3 crawler config
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: true,
+        language: ["en"],
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 8,
+        searchResultContextMaxLength: 50,
+        explicitSearchResultPath: true,
+      },
+    ],
+  ],
 
   // Set the production url of your site here
   url: 'https://omar-corral.com',
@@ -55,7 +57,6 @@ const config: Config = {
   projectName: 'oc-personal', // Usually your repo name.
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -224,43 +225,40 @@ const config: Config = {
         content: 'SEO Resource Center by Omar Corral'
       }
     ],
-    // Algolia search configuration - ENHANCED FOR BETTER RESULTS
-    algolia: {
-      appId: 'ZLQ21UNSR7',
-      apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
-      indexName: 'omar_corral_com_zlq21unsr7_pages',
-      
-      // URL path replacement for proper routing in both environments
-      replaceSearchResultPathname: process.env.NODE_ENV === 'development' ? {
-        from: '/seo-resources/',
-        to: '/',
-      } : {
-        from: '/seo-resources/',
-        to: '/seo-resources/',
-      },
-      
-      // Enhanced search parameters for better user experience
-      searchParameters: {
-        hitsPerPage: 12,
-        highlightPreTag: '<mark class="search-highlight">',
-        highlightPostTag: '</mark>',
-        // Add faceting for better categorization
-        facetFilters: [],
-        // Enable typo tolerance
-        typoTolerance: 'min',
-        // Search in title, headings, and content
-        attributesToRetrieve: ['title', 'content', 'hierarchy'],
-        // Prioritize exact matches
-        exactOnSingleWordQuery: 'attribute',
-      },
-      
-      // Better contextual search and debugging
-      contextualSearch: true,
-      searchPagePath: 'search',
-      
-      // Enhanced insights for debugging
-      insights: false, // Can be enabled for analytics
-    },
+    // ALGOLIA TEMPORARILY DISABLED - INDEX CONFIGURATION ISSUE
+    // Your current Algolia index is missing required Docusaurus v3 structure:
+    // - Missing: hierarchy.lvl0, lvl1, lvl2 (causes runtime crashes)  
+    // - Missing: docusaurus_tag, language, version, type (prevents contextual search)
+    //
+    // SOLUTION (per official docs): https://docusaurus.io/docs/search#algolia-index-configuration
+    // 1. Contact Algolia support to request official "Docusaurus v3 crawler configuration"
+    // 2. Delete your current index through Algolia UI
+    // 3. Trigger new crawl with proper configuration
+    // 4. Verify index has required fields: docusaurus_tag, language, lang, version, type
+    // 5. Uncomment algolia config below and disable local search plugin above
+    //
+    // algolia: {
+    //   // The application ID provided by Algolia
+    //   appId: 'ZLQ21UNSR7',
+    //   // Public API key: it is safe to commit it
+    //   apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
+    //   indexName: 'omar_corral_com_zlq21unsr7_pages',
+    //   // Optional: Replace parts of the item URLs from Algolia
+    //   replaceSearchResultPathname: {
+    //     from: '/seo-resources/',
+    //     to: process.env.NODE_ENV === 'development' ? '/' : '/seo-resources/',
+    //   },
+    //   // Optional: Algolia search parameters
+    //   searchParameters: {
+    //     hitsPerPage: 10,
+    //     highlightPreTag: '<mark>',
+    //     highlightPostTag: '</mark>',
+    //   },
+    //   // Enable after crawler reconfiguration
+    //   contextualSearch: true,
+    //   searchPagePath: 'search',
+    //   insights: false,
+    // },
   } satisfies Preset.ThemeConfig,
 };
 
