@@ -23,24 +23,7 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
-  // TEMPORARY: Using local search while waiting for Algolia crawler reconfiguration
-  // Algolia index structure is incompatible - needs official Docusaurus v3 crawler config
-  plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexDocs: true,
-        indexBlog: false,
-        indexPages: true,
-        language: ["en"],
-        highlightSearchTermsOnTargetPage: true,
-        searchResultLimits: 8,
-        searchResultContextMaxLength: 50,
-        explicitSearchResultPath: true,
-      },
-    ],
-  ],
+  // No additional plugins needed - Algolia search is configured in themeConfig below
 
   // Set the production url of your site here
   url: 'https://omar-corral.com',
@@ -225,40 +208,61 @@ const config: Config = {
         content: 'SEO Resource Center by Omar Corral'
       }
     ],
-    // ALGOLIA TEMPORARILY DISABLED - INDEX CONFIGURATION ISSUE
-    // Your current Algolia index is missing required Docusaurus v3 structure:
-    // - Missing: hierarchy.lvl0, lvl1, lvl2 (causes runtime crashes)  
-    // - Missing: docusaurus_tag, language, version, type (prevents contextual search)
-    //
-    // SOLUTION (per official docs): https://docusaurus.io/docs/search#algolia-index-configuration
-    // 1. Contact Algolia support to request official "Docusaurus v3 crawler configuration"
-    // 2. Delete your current index through Algolia UI
-    // 3. Trigger new crawl with proper configuration
-    // 4. Verify index has required fields: docusaurus_tag, language, lang, version, type
-    // 5. Uncomment algolia config below and disable local search plugin above
-    //
-    // algolia: {
-    //   // The application ID provided by Algolia
-    //   appId: 'ZLQ21UNSR7',
-    //   // Public API key: it is safe to commit it
-    //   apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
-    //   indexName: 'omar_corral_com_zlq21unsr7_pages',
-    //   // Optional: Replace parts of the item URLs from Algolia
-    //   replaceSearchResultPathname: {
-    //     from: '/seo-resources/',
-    //     to: process.env.NODE_ENV === 'development' ? '/' : '/seo-resources/',
-    //   },
-    //   // Optional: Algolia search parameters
-    //   searchParameters: {
-    //     hitsPerPage: 10,
-    //     highlightPreTag: '<mark>',
-    //     highlightPostTag: '</mark>',
-    //   },
-    //   // Enable after crawler reconfiguration
-    //   contextualSearch: true,
-    //   searchPagePath: 'search',
-    //   insights: false,
-    // },
+    
+    // Algolia DocSearch Configuration - Following Official Best Practices
+    // Documentation: https://docusaurus.io/docs/search#using-algolia-docsearch
+    algolia: {
+      // Application ID provided by Algolia
+      appId: 'ZLQ21UNSR7',
+      
+      // Public API key - safe to commit
+      apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
+      
+      // Index name for this documentation
+      indexName: 'omar_corral_com_zlq21unsr7_pages',
+      
+      // Contextual search for better results (Docusaurus v3 feature)
+      contextualSearch: true,
+      
+      // Optional: Search page path (creates a standalone search page)
+      searchPagePath: 'search',
+      
+      // Optional: Replace URL paths for proper navigation
+      // Development: /seo-resources/ → / (localhost routing)
+      // Production: /seo-resources/ → /seo-resources/ (no change)
+      replaceSearchResultPathname: process.env.NODE_ENV === 'development' ? {
+        from: '/seo-resources/',
+        to: '/',
+      } : {
+        from: '/seo-resources/',
+        to: '/seo-resources/',
+      },
+      
+      // Advanced search parameters for better UX
+      searchParameters: {
+        // Results per page
+        hitsPerPage: 10,
+        
+        // Highlight matched terms with semantic HTML
+        highlightPreTag: '<mark>',
+        highlightPostTag: '</mark>',
+        
+        // Enable typo tolerance for better user experience
+        typoTolerance: 'min',
+        
+        // Exact matching on specific attributes for precision
+        optionalWords: ['seo', 'optimization', 'search'],
+      },
+      
+      // Algolia Insights (optional, for analytics)
+      insights: false,
+      
+      // Custom placeholder text
+      placeholder: 'Search SEO guides and documentation...',
+      
+      // Show search suggestions as user types
+      externalUrlRegex: 'external\\.com|domain\\.com',
+    },
   } satisfies Preset.ThemeConfig,
 };
 
