@@ -75,8 +75,17 @@ const sidebars: SidebarsConfig = {
         'checklists/local-seo-checklist',
       ],
     },
-    // Coming Soon Sections - Will be added as content is created:
-    // 🔗 Link Building
+    {
+      type: 'category',
+      label: '🔗 Link Building',
+      items: [
+        'link-building/index',
+        'link-building/fundamentals',
+        'link-building/strategies',
+        'link-building/outreach',
+        'link-building/measurement',
+      ],
+    },
   ],
 };
 
