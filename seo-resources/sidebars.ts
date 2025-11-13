@@ -64,8 +64,18 @@ const sidebars: SidebarsConfig = {
         'content-optimization/content-auditing',
       ],
     },
+    {
+      type: 'category',
+      label: '📋 SEO Checklists',
+      items: [
+        'checklists/index',
+        'checklists/technical-seo-checklist',
+        'checklists/on-page-checklist',
+        'checklists/content-audit-checklist',
+        'checklists/local-seo-checklist',
+      ],
+    },
     // Coming Soon Sections - Will be added as content is created:
-    // 📋 SEO Checklists
     // 🔗 Link Building
   ],
 };
