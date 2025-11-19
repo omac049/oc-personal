@@ -142,7 +142,7 @@ npm run test:links
 1. **Test locally** before pushing:
    ```bash
    # Test main site
-   npm run build && npm start
+   cd 
    
    # Test SEO resources
    cd seo-resources && npm run build:prod && npm run serve

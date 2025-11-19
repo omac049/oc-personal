@@ -1,0 +1,60 @@
+# Prevent indexing and crawling
+# Add X-Robots-Tag headers to all responses
+
+<IfModule mod_headers.c>
+    # Prevent search engine indexing
+    Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+    
+    # Prevent caching
+    Header set Cache-Control "no-cache, no-store, must-revalidate, private"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+    
+    # Additional privacy headers
+    Header set Referrer-Policy "no-referrer"
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Block common AI/LLM user agents
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Block OpenAI/ChatGPT
+    RewriteCond %{HTTP_USER_AGENT} GPTBot [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ChatGPT [NC,OR]
+    
+    # Block Anthropic/Claude
+    RewriteCond %{HTTP_USER_AGENT} anthropic [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} Claude [NC,OR]
+    
+    # Block Common Crawl (used by many AI models)
+    RewriteCond %{HTTP_USER_AGENT} CCBot [NC,OR]
+    
+    # Block Perplexity
+    RewriteCond %{HTTP_USER_AGENT} PerplexityBot [NC,OR]
+    
+    # Block Cohere
+    RewriteCond %{HTTP_USER_AGENT} cohere [NC,OR]
+    
+    # Block Google Extended (AI training)
+    RewriteCond %{HTTP_USER_AGENT} Google-Extended [NC,OR]
+    
+    # Block ByteDance/TikTok
+    RewriteCond %{HTTP_USER_AGENT} Bytespider [NC,OR]
+    
+    # Block Amazon
+    RewriteCond %{HTTP_USER_AGENT} Amazonbot [NC,OR]
+    
+    # Block Diffbot
+    RewriteCond %{HTTP_USER_AGENT} Diffbot [NC,OR]
+    
+    # Block Omgili
+    RewriteCond %{HTTP_USER_AGENT} Omgilibot [NC]
+    
+    # Return 403 Forbidden
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
