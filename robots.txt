@@ -1,0 +1,36 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: *.json$
+Disallow: /api/
+Disallow: /_next/
+Disallow: /out/
+Crawl-delay: 1
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+User-Agent: Bingbot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Crawl-delay: 1
+
+User-Agent: facebookexternalhit
+Allow: /
+
+User-Agent: Twitterbot
+Allow: /
+
+User-Agent: LinkedInBot
+Allow: /
+
+User-Agent: WhatsApp
+Allow: /
+
+Host: https://omar-corral.com
+Sitemap: https://omar-corral.com/sitemap.xml
+Sitemap: https://omar-corral.com/sitemap-images.xml
