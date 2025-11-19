@@ -92,7 +92,7 @@ Don't stuff keywords into your content. Modern SEO is about creating valuable, r
 
 While these resources are comprehensive, sometimes you need expert guidance tailored to your specific situation.
 
-**[Get Professional SEO Services →](https://omar-corral.com/services)**
+**[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
 
 **[Schedule a Free Consultation →](https://omar-corral.com/#contact)**
 

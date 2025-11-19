@@ -1211,6 +1211,6 @@ Complete your technical SEO journey:
 Mobile optimization requires specialized knowledge and testing across multiple devices. If you need expert assistance:
 
 - **[Schedule a Free Mobile SEO Audit →](https://omar-corral.com/#contact)**
-- **[Explore Mobile Optimization Services →](https://omar-corral.com/services)**
+- **[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
 
 *Let's work together to ensure your mobile experience drives both excellent search rankings and user satisfaction.*

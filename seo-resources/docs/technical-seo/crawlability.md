@@ -920,6 +920,6 @@ Continue your technical SEO journey:
 Crawlability issues can be complex and site-specific. If you need expert help optimizing your site's crawlability:
 
 - **[Schedule a Free Technical SEO Audit →](https://omar-corral.com/#contact)**
-- **[Explore Crawlability Optimization Services →](https://omar-corral.com/services)**
+- **[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
 
 *Let's work together to ensure search engines can easily discover, crawl, and index all your important content.*

@@ -154,10 +154,6 @@ const config: Config = {
               href: 'https://omar-corral.com',
             },
             {
-              label: 'SEO Services',
-              href: 'https://omar-corral.com/services',
-            },
-            {
               label: 'Contact',
               href: 'https://omar-corral.com/#contact',
             },

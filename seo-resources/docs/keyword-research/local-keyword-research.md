@@ -586,6 +586,6 @@ Ready to move beyond keyword research? The next crucial step is:
 Local keyword research and implementation can be complex, especially for multi-location businesses. If you need expert guidance:
 
 - **[Schedule a Free Local SEO Consultation →](https://omar-corral.com/#contact)**
-- **[Explore Local SEO Services →](https://omar-corral.com/services)**
+- **[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
 
 *Let's work together to dominate local search in your market and drive more qualified local customers to your business.*

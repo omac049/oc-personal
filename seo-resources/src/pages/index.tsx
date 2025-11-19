@@ -253,11 +253,6 @@ function SEOResourcesCTA() {
           <div className={styles.ctaButtons}>
             <Link
               className="button button--primary button--lg"
-              href="https://omar-corral.com/services">
-              Get Expert SEO Services
-            </Link>
-            <Link
-              className="button button--secondary button--lg"
               href="https://omar-corral.com/#contact">
               Schedule Strategy Call
             </Link>

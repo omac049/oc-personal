@@ -336,7 +336,7 @@ Selecting the right SEO tools can be overwhelming. Get personalized recommendati
 
 **[Schedule a Free Tool Consultation →](https://omar-corral.com/#contact)**
 
-**[Explore Professional SEO Services →](https://omar-corral.com/services)**
+**[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
 
 ---
 

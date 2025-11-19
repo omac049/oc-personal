@@ -1267,6 +1267,6 @@ You've completed the Technical SEO section! Continue your SEO journey:
 Structured data implementation can be complex and requires ongoing maintenance. If you need expert assistance:
 
 - **[Schedule a Free Schema Audit →](https://omar-corral.com/#contact)**
-- **[Explore Structured Data Services →](https://omar-corral.com/services)**
+- **[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
 
 *Let's work together to implement comprehensive structured data that enhances your search visibility and drives more qualified traffic to your business.*

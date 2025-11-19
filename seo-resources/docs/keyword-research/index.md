@@ -426,6 +426,6 @@ After completing keyword research, continue with:
 Keyword research can be time-consuming and complex. If you need expert help or want to accelerate your results:
 
 - **[Schedule a Free SEO Consultation →](https://omar-corral.com/#contact)**
-- **[Explore Professional SEO Services →](https://omar-corral.com/services)**
+- **[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
 
 *Let's work together to identify the keyword opportunities that will drive real business growth for your website.*

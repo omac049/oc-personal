@@ -783,6 +783,6 @@ Continue your technical SEO journey:
 Core Web Vitals optimization requires technical expertise and ongoing monitoring. If you need professional help:
 
 - **[Schedule a Free Performance Audit →](https://omar-corral.com/#contact)**
-- **[Explore Performance Optimization Services →](https://omar-corral.com/services)**
+- **[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
 
 *Let's work together to achieve excellent Core Web Vitals scores that improve both your search rankings and user experience.*

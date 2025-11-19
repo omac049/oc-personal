@@ -264,7 +264,7 @@ Track your progress as you complete each section:
 If you need personalized help or want to accelerate your results:
 
 - **[Schedule a Free SEO Consultation →](https://omar-corral.com/#contact)**
-- **[Explore Professional SEO Services →](https://omar-corral.com/services)**
+- **[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
 
 ---
 
