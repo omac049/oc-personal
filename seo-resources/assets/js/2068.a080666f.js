@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkseo_resources=self.webpackChunkseo_resources||[]).push([[2068],{2068:(e,s,r)=>{r.d(s,{createInfoServices:()=>c.v});var c=r(1366);r(5817)}}]);
