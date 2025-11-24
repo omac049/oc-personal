@@ -97,6 +97,11 @@ const config: Config = {
           label: 'SEO Guides',
         },
         {
+          to: '/search-ai',
+          label: 'AI Search',
+          position: 'right',
+        },
+        {
           href: 'https://omar-corral.com',
           label: 'Main Site',
           position: 'right',

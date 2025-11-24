@@ -93,6 +93,28 @@ The crawler config should include:
 4. Try searching for content (e.g., "SEO", "getting started")
 5. Verify results appear correctly
 
+## Quick Verification Steps
+
+Before troubleshooting, verify these basics:
+
+1. **Check Index Status**:
+   - Go to Algolia Dashboard → Search → Indices
+   - Find `omar_corral_com_zlq21unsr7_pages`
+   - **If 0 records**: Crawler hasn't run or failed - see troubleshooting below
+   - **If records exist**: Configuration issue - check index name matches
+
+2. **Test URL Extraction**:
+   - Go to Crawler → URL Tester
+   - Enter: `https://omar-corral.com/seo-resources/docs/getting-started`
+   - Click Test
+   - **If 0 records**: Selectors don't match HTML - update crawler config
+   - **If records extracted**: Config is correct, run crawler
+
+3. **Verify Configuration Match**:
+   - Crawler `indexName`: `omar_corral_com_zlq21unsr7_pages` ✅
+   - Docusaurus `indexName`: `omar_corral_com_zlq21unsr7_pages` ✅
+   - Both must match exactly!
+
 ## Troubleshooting
 
 ### Search Returns No Results
