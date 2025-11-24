@@ -67,30 +67,6 @@ Edit these files to personalize your portfolio. The components import these modu
 
 ---
 
-## Deployment
-
-For complete deployment instructions including both the portfolio and SEO Resource Center, please refer to our comprehensive **[Deployment Guide](./DEPLOYMENT_GUIDE.md)**.
-
-The deployment guide covers:
-- **Automated deployment** via GitHub Actions
-- **Manual deployment** options
-- **Custom domain setup** (omar-corral.com)
-- **SEO Resources integration** 
-- **Performance monitoring**
-- **Troubleshooting** common deployment issues
-
-**Quick Start:**
-```bash
-# Push to main branch for automatic deployment
-git add .
-git commit -m "Your changes"
-git push origin main
-```
-
-Both the main portfolio and SEO Resource Center deploy automatically when you push to the `main` branch.
-
----
-
 ## Design & Brand Guidelines
 
 For comprehensive design guidelines, color palettes, typography, components, and brand standards, please refer to the dedicated **[Brand Guide](./brand_guide.md)**.
@@ -104,19 +80,6 @@ The brand guide includes:
 - SEO and performance standards
 - Accessibility requirements
 - Implementation checklists
-
----
-
-## Contributing
-
-This portfolio represents Omar Corral's personal brand. Contributions are welcome to improve UI, performance, accessibility, or add new features. To contribute:
-
-1. Fork the repository.
-2. Create a new branch for your feature or fix.
-3. Commit your changes with clear messages.
-4. Open a pull request describing your changes.
-
-Please ensure code quality and consistency with the existing style.
 
 ---
 
