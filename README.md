@@ -53,27 +53,6 @@ This project leverages a modern frontend stack with the following key libraries 
 
 ---
 
-## Development Workflow
-
-- **Install dependencies**  
-  ```bash
-  npm install
-  ```
-
-- **Start development server**  
-  ```bash
-  npm run dev
-  ```  
-  Visit [http://localhost:3000](http://localhost:3000) to view the site. Hot reload is enabled for live updates.
-
-- **Build for production**  
-  ```bash
-  npm run build
-  ```  
-  Generates an optimized static export in the `out` directory.
-
----
-
 ## Customising Your Content
 
 Content is managed through data files in the `src/data` directory:
@@ -109,26 +88,6 @@ git push origin main
 ```
 
 Both the main portfolio and SEO Resource Center deploy automatically when you push to the `main` branch.
-
-### Custom Domain Setup
-
-1. **Add your domain in GitHub**  
-   In your repository's **Settings > Pages**, enter your custom domain (e.g., `omar-corral.com`) and save.
-
-2. **Configure DNS records**  
-   - For the apex domain (`omar-corral.com`), add A records pointing to GitHub Pages IPs:  
-     ```
-     185.199.108.153
-     185.199.109.153
-     185.199.110.153
-     185.199.111.153
-     ```
-   - For the `www` subdomain, add a CNAME record pointing to `<github-username>.github.io`.
-
-3. **Wait for DNS propagation** (up to 24 hours).
-
-4. **Enable HTTPS enforcement**  
-   After DNS updates, enable "Enforce HTTPS" in GitHub Pages settings.
 
 ---
 
