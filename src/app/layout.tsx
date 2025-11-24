@@ -72,43 +72,8 @@ export default function RootLayout({
         <link rel="prefetch" href="/sitemap.xml" />
         <link rel="prefetch" href="/robots.txt" />
         
-        {/* Structured Data */}
+        {/* Structured Data - includes FAQ schema from enhanced-seo.ts */}
         <StructuredData type="all" />
-        
-        {/* FAQ Structured Data for Featured Snippets */}
-        <StructuredData 
-          type="all"
-          customData={{
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is AI-powered SEO and how does it work?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "AI-powered SEO combines traditional search engine optimization with artificial intelligence technologies like ChatGPT, Claude, and machine learning algorithms. It involves using AI tools for keyword research, content optimization, prompt engineering for SEO-focused content creation, and leveraging Large Language Models (LLMs) to understand search intent and create more effective SEO strategies."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How do you optimize content for Search Generative Experience (SGE)?",
-                "acceptedAnswer": {
-                  "@type": "Answer", 
-                  "text": "SGE optimization involves creating content that answers questions directly and comprehensively, using structured data markup, optimizing for conversational queries, and ensuring content provides immediate value. I focus on featured snippet optimization, question-based content structure, and implementing schema markup that helps AI search engines understand and present your content effectively."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What makes your SEO approach different from traditional SEO?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "My approach integrates cutting-edge AI technologies with proven SEO fundamentals. I specialize in LLM content optimization, prompt engineering for SEO, AI-driven keyword research, and optimizing for both traditional search engines and AI-powered search experiences."
-                }
-              }
-            ]
-          }}
-        />
         
         {/* Analytics & Tracking */}
         <Analytics />

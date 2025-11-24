@@ -21,9 +21,7 @@ export default function StructuredData({ type = 'all', customData }: StructuredD
       enhancedSEOData.howTo,
       enhancedSEOData.article,
       enhancedSEOData.service,
-      enhancedSEOData.aggregateRating,
-      enhancedSEOData.course,
-      enhancedSEOData.jobPosting,
+      // Removed standalone aggregateRating, course, and jobPosting as they don't have actual content
       navigationSchema,
       performanceSchema
     ];

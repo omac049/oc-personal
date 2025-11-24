@@ -44,25 +44,25 @@ export const enhancedSEOData = {
     ]
   },
 
-  // FAQ Schema for rich snippets
+  // FAQ Schema for rich snippets - matches FAQSection.tsx content
   faq: {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is AI-enhanced SEO and how does it work?",
+        "name": "What is AI-powered SEO and how does it work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "AI-enhanced SEO combines traditional search engine optimization with artificial intelligence technologies like ChatGPT, Claude, and machine learning algorithms. It involves using AI tools for keyword research, content optimization, technical audits, and adapting strategies for Search Generative Experience (SGE)."
+          "text": "AI-powered SEO combines traditional search engine optimization with artificial intelligence technologies like ChatGPT, Claude, and machine learning algorithms. It involves using AI for keyword research, content optimization, technical audits, and adapting strategies for Search Generative Experience (SGE). This approach helps websites rank better in both traditional search results and AI-generated responses."
         }
       },
       {
-        "@type": "Question", 
+        "@type": "Question",
         "name": "How do you optimize content for Large Language Models (LLMs)?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "LLM optimization involves structuring content for AI understanding, using natural language patterns, implementing comprehensive schema markup, creating conversational content formats, and optimizing for featured snippets and voice search queries."
+          "text": "LLM optimization involves structuring content for AI understanding, using natural language patterns, implementing comprehensive schema markup, creating conversational content formats, and optimizing for featured snippets and voice search queries. I focus on making content that performs well in AI-powered search experiences while maintaining human readability."
         }
       },
       {
@@ -70,7 +70,7 @@ export const enhancedSEOData = {
         "name": "What is Search Generative Experience (SGE) optimization?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SGE optimization prepares websites for AI-powered search engines that generate contextual answers. This includes optimizing for conversational queries, structured data implementation, authoritative content creation, and ensuring content appears in AI-generated search responses."
+          "text": "SGE optimization prepares websites for AI-powered search engines that generate contextual answers. This includes optimizing for conversational queries, structured data implementation, authoritative content creation, and ensuring content appears in AI-generated search responses. It's essential for staying visible as search evolves."
         }
       },
       {
@@ -78,7 +78,7 @@ export const enhancedSEOData = {
         "name": "How long does it take to see SEO results?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SEO results typically begin showing within 3-6 months, with significant improvements visible in 6-12 months. AI-powered strategies can accelerate certain aspects like content optimization and technical fixes, but organic growth requires consistent effort over time."
+          "text": "SEO results typically begin showing within 3-6 months, with significant improvements visible in 6-12 months. AI-powered strategies can accelerate certain aspects like content optimization and technical fixes, but organic growth requires consistent effort over time. I provide monthly reports to track progress and adjust strategies."
         }
       },
       {
@@ -86,7 +86,15 @@ export const enhancedSEOData = {
         "name": "Do you provide local SEO services for Phoenix businesses?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, I specialize in local SEO for Phoenix, Arizona businesses. Services include Google Business Profile optimization, local keyword targeting, citation building, review management, and location-specific content strategies."
+          "text": "Yes, I specialize in local SEO for Phoenix, Arizona businesses. Services include Google Business Profile optimization, local keyword targeting, citation building, review management, and location-specific content strategies. I understand the Phoenix market and help businesses dominate local search results."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What tools do you use for AI-powered SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I use a combination of traditional SEO tools (Google Analytics, Search Console, SEMrush, Ahrefs) and AI-powered tools including ChatGPT, Claude, custom automation scripts, and advanced analytics platforms. This hybrid approach ensures comprehensive optimization for both traditional and AI-powered search."
         }
       }
     ]
@@ -203,7 +211,7 @@ export const enhancedSEOData = {
     ]
   },
 
-  // Professional Service Schema
+  // Professional Service Schema with embedded AggregateRating
   service: {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -217,6 +225,13 @@ export const enhancedSEOData = {
     "areaServed": {
       "@type": "Country",
       "name": "United States"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "47",
+      "bestRating": "5",
+      "worstRating": "1"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -245,20 +260,6 @@ export const enhancedSEOData = {
         }
       ]
     }
-  },
-
-  // Review Schema for testimonials
-  aggregateRating: {
-    "@context": "https://schema.org",
-    "@type": "AggregateRating",
-    "itemReviewed": {
-      "@type": "Service",
-      "name": "Omar Corral SEO Services"
-    },
-    "ratingValue": "4.9",
-    "ratingCount": "47",
-    "bestRating": "5",
-    "worstRating": "1"
   },
 
   // Course Schema for SEO training

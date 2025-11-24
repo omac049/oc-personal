@@ -53,6 +53,7 @@ export default function robots(): MetadataRoute.Robots {
     ],
     sitemap: [
       'https://omar-corral.com/sitemap.xml',
+      'https://omar-corral.com/seo-resources/sitemap.xml',
       'https://omar-corral.com/sitemap-images.xml',
     ],
     host: 'https://omar-corral.com',

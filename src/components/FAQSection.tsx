@@ -58,8 +58,6 @@ export default function FAQSection() {
   return (
     <section 
       className="py-16 bg-slate-800 relative overflow-hidden"
-      itemScope
-      itemType="https://schema.org/FAQPage"
       aria-labelledby="faq-heading"
     >
       {/* Background Pattern */}
