@@ -53,49 +53,6 @@ This project leverages a modern frontend stack with the following key libraries 
 
 ---
 
-## Project Setup & Structure
-
-### Initial Setup
-
-1. **Create the Next.js project**  
-   ```bash
-   npx create-next-app@latest oc-portfolio
-   ```
-   Choose TypeScript if preferred.
-
-2. **Add Tailwind CSS**  
-   ```bash
-   npm install -D tailwindcss postcss autoprefixer
-   npx tailwindcss init -p
-   ```
-   Configure `tailwind.config.js` to scan your `src` directory and add Tailwind directives to `styles/globals.css`:
-   ```css
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
-   ```
-
-3. **Install additional libraries**  
-   ```bash
-   npm install framer-motion @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
-   ```
-   Add other icon sets or utilities as needed.
-
-4. **Install gh-pages for deployment**  
-   ```bash
-   npm install --save-dev gh-pages
-   ```
-
-### Directory Structure
-
-- `src/pages` — Route components (pages).
-- `src/components` — Reusable UI components.
-- `src/data` — JSON or JavaScript modules containing site content (hero text, about info, skills, experience, socials).
-
-Populate the data files according to the content guidelines in the Customising Your Content section.
-
----
-
 ## Development Workflow
 
 - **Install dependencies**  
