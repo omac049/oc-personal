@@ -207,32 +207,31 @@ const config: Config = {
     
     // Algolia DocSearch Configuration - Following Official Best Practices
     // Documentation: https://docusaurus.io/docs/search#using-algolia-docsearch
+    // Crawler Config: See algolia-crawler-config.js for dashboard setup
     algolia: {
       // Application ID provided by Algolia
       appId: 'ZLQ21UNSR7',
       
-      // Public API key - safe to commit
+      // Public Search-Only API key - safe to commit
       apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
       
       // Index name for this documentation
       indexName: 'omar_corral_com_zlq21unsr7_pages',
       
       // Contextual search for better results (Docusaurus v3 feature)
+      // Provides better search results by considering page context
       contextualSearch: true,
       
-      // Optional: Search page path (creates a standalone search page)
+      // Optional: Search page path (creates a standalone search page at /search)
       searchPagePath: 'search',
       
-      // Optional: Replace URL paths for proper navigation
+      // Replace URL paths for proper navigation
       // Development: /seo-resources/ → / (localhost routing)
-      // Production: /seo-resources/ → /seo-resources/ (no change)
+      // Production: No replacement needed (undefined)
       replaceSearchResultPathname: process.env.NODE_ENV === 'development' ? {
         from: '/seo-resources/',
         to: '/',
-      } : {
-        from: '/seo-resources/',
-        to: '/seo-resources/',
-      },
+      } : undefined,
       
       // Advanced search parameters for better UX
       searchParameters: {
@@ -243,21 +242,23 @@ const config: Config = {
         highlightPreTag: '<mark>',
         highlightPostTag: '</mark>',
         
-        // Enable typo tolerance for better user experience
+        // Typo tolerance: 'min' = only allow 1 typo, 'true' = allow typos
         typoTolerance: 'min',
         
-        // Exact matching on specific attributes for precision
+        // Optional words that can be omitted from queries
         optionalWords: ['seo', 'optimization', 'search'],
       },
       
-      // Algolia Insights (optional, for analytics)
-      insights: false,
+      // Algolia Insights for search analytics (recommended)
+      // Tracks search queries and clicks for better understanding user behavior
+      insights: true,
       
       // Custom placeholder text
       placeholder: 'Search SEO guides and documentation...',
       
-      // Show search suggestions as user types
-      externalUrlRegex: 'external\\.com|domain\\.com',
+      // External URL regex - exclude external domains from search results
+      // Only include results from omar-corral.com domain
+      externalUrlRegex: '^https?://(?!omar-corral\\.com)',
     },
   } satisfies Preset.ThemeConfig,
 };
