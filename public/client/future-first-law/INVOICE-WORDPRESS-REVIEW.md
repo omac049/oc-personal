@@ -43,8 +43,12 @@ Website: omar-corral.com
 ## Payment Terms
 
 - **Payment Due:** Upon completion of review session
-- **Payment Method:** To be confirmed with client
 - **Report Delivery:** Within 48 hours of review completion
+
+## Payment Methods
+
+- **Quick Pay (Melio):** [Pay Online via Melio](https://app.melio.com/ar/meliome/pay/r/dSeesPwyd-oJ)
+- **Zelle:** Send payment to **4807295093**
 
 ---
 

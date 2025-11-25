@@ -47,6 +47,10 @@ Read-only assessment requiring WordPress Administrator access. No changes will b
 - Payment due upon completion of review
 - Report delivered within 48 hours of review
 
+**Payment Methods:**
+- **Quick Pay (Melio):** [Pay Online via Melio](https://app.melio.com/ar/meliome/pay/r/dSeesPwyd-oJ)
+- **Zelle:** Send payment to **4807295093**
+
 ---
 
 ## 📅 To Approve
@@ -54,6 +58,13 @@ Read-only assessment requiring WordPress Administrator access. No changes will b
 **Ready to proceed?** Simply approve this proposal and request an invoice. Once payment is confirmed, provide WordPress Administrator access and we'll schedule the 90-minute review session.
 
 You'll receive a comprehensive HTML assessment report within 48 hours of the review completion.
+
+### 💳 Payment Options
+
+After approval, you can pay immediately using either method:
+
+- **Quick Pay (Melio):** [Pay Online via Melio](https://app.melio.com/ar/meliome/pay/r/dSeesPwyd-oJ)
+- **Zelle:** Send payment to **4807295093**
 
 ---
 
