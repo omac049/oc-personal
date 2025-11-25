@@ -1,13 +1,24 @@
 # 🏛️ Future First Criminal Law - Project Files
 
 **Client:** Alicia Kea  
-**Project:** WordPress Theme Installation (Divi → Goldenblatt)  
-**Status:** Proposal Stage  
-**Date:** November 19, 2025
+**Date:** November 25, 2025
 
 ---
 
-## 📁 Project Files
+## 🆕 Current Project: WordPress Site Review
+
+### 🔍 **WORDPRESS-SITE-REVIEW-PROPOSAL.md** ⭐ **NEW**
+Comprehensive proposal for 90-minute WordPress site review and technical assessment
+
+### 🎨 **wordpress-site-review-proposal.html** ⭐ **NEW**
+Professional HTML proposal - Open in browser (password protected)
+
+### 💰 **INVOICE-WORDPRESS-REVIEW.md** ⭐ **NEW**
+Invoice for WordPress Site Review service ($150)
+
+---
+
+## 📁 Previous Project Files (Theme Installation)
 
 ### 📍 **START-HERE.md**
 Quick navigation guide - **Read this first!**
@@ -49,12 +60,16 @@ Visual ASCII diagram of project structure
 
 ---
 
-## 🎯 Project Overview
+## 🎯 Current Project Overview
 
-**Scope:** Install and customize Goldenblatt WordPress theme, adapting current site structure to fit new theme framework
+**Service:** WordPress Site Review & Technical Assessment  
+**Duration:** 90 minutes  
+**Investment:** $150  
+**Status:** Awaiting approval and invoice payment
 
+**Previous Project:** WordPress Theme Installation (Divi → Goldenblatt)  
 **Timeline:** 2-4 weeks  
-**Investment:** $1,200 - $1,500 (my services) + $79 theme license (purchased by you)
+**Investment:** $1,200 - $1,500 (my services) + $79 theme license
 
 ---
 
@@ -92,7 +107,17 @@ Visual ASCII diagram of project structure
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start - Current Project
+
+1. Open **wordpress-site-review-proposal.html** in browser (or review **WORDPRESS-SITE-REVIEW-PROPOSAL.md**)
+2. Review **INVOICE-WORDPRESS-REVIEW.md** for payment information
+3. Approve proposal and request invoice
+4. Provide WordPress Administrator access
+5. Schedule 90-minute review session
+
+---
+
+## 🚀 Quick Start - Previous Project
 
 1. Read **START-HERE.md** for orientation
 2. Review **PROJECT-SUMMARY.md** for overview
@@ -101,5 +126,6 @@ Visual ASCII diagram of project structure
 
 ---
 
-**Project Status:** Awaiting client review and approval
+**Current Project Status:** Awaiting approval and invoice payment  
+**Previous Project Status:** Awaiting client review and approval
 
