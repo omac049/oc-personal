@@ -1,0 +1,3410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress Site Assessment Report - Future First Criminal Law</title>
+    
+    <!-- Prevent Search Engine Indexing -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, nocache">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    
+    <!-- Prevent AI/LLM Scraping -->
+    <meta name="chatgpt" content="noindex, nofollow, nocache">
+    <meta name="claude" content="noindex, nofollow, nocache">
+    <meta name="bard" content="noindex, nofollow, nocache">
+    <meta name="perplexity" content="noindex, nofollow, nocache">
+    
+    <!-- Additional Privacy -->
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta name="referrer" content="no-referrer">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Sophisticated legal palette */
+            --navy-950: #0a1628;
+            --navy-900: #0f1d32;
+            --navy-800: #172942;
+            --navy-700: #1e3a5f;
+            --navy-600: #2563eb;
+            
+            /* Dark mode colors */
+            --dm-bg: #0f172a;
+            --dm-surface: #1e293b;
+            --dm-border: #334155;
+            
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-500: #64748b;
+            --slate-400: #94a3b8;
+            --slate-300: #cbd5e1;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+
+            --gold-500: #d4a853;
+            --gold-400: #e6be6a;
+            --gold-300: #f0d08a;
+            
+            --success: #10b981;
+            --success-bg: #ecfdf5;
+            --warning: #f59e0b;
+            --warning-bg: #fffbeb;
+            --error: #ef4444;
+            --error-bg: #fef2f2;
+
+            --text: var(--slate-800);
+            --text-muted: var(--slate-500);
+            --bg: var(--slate-50);
+            --white: #ffffff;
+            --border: var(--slate-200);
+
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.06);
+            --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.06);
+
+            --nav-width: 280px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            font-size: 15px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Global dark mode transition for all elements */
+        body.dark-mode *,
+        body.dark-mode *::before,
+        body.dark-mode *::after {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Reading Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-500), var(--gold-400));
+            z-index: 1001;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: var(--nav-width);
+            height: 100vh;
+            background: var(--navy-900);
+            padding: 24px 0;
+            overflow-y: auto;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 16px;
+        }
+
+        .sidebar-logo {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.75rem;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-section {
+            padding: 0 12px;
+            flex: 1;
+        }
+
+        .nav-section-title {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--slate-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 16px 12px 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            color: var(--slate-300);
+            text-decoration: none;
+            font-size: 0.875rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+            margin: 2px 0;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.06);
+            color: var(--white);
+        }
+
+        .nav-link.active {
+            background: rgba(212, 168, 83, 0.15);
+            color: var(--gold-400);
+        }
+
+        .nav-link-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+
+        .sidebar-footer {
+            padding: 16px 24px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin-top: auto;
+        }
+
+        .sidebar-footer-text {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: var(--navy-900);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            z-index: 1002;
+            box-shadow: var(--shadow-xl);
+            font-size: 1.25rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--nav-width);
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 50%, var(--navy-700) 100%);
+            padding: 80px 60px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(212, 168, 83, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.08);
+            color: var(--slate-300);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+            backdrop-filter: blur(8px);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 12px;
+            animation: fadeInUp 0.6s ease-out 0.1s backwards;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold-400);
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--slate-400);
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.6s ease-out 0.2s backwards;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            animation: fadeInUp 0.6s ease-out 0.3s backwards;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hero-meta-label {
+            font-size: 0.7rem;
+            color: var(--slate-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-meta-value {
+            font-size: 0.9rem;
+            color: var(--slate-300);
+        }
+
+        /* Dashboard Cards */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 0 60px;
+            margin-top: -40px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.6s ease-out 0.4s backwards;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-card.critical {
+            border-left: 4px solid var(--error);
+        }
+
+        .stat-card.warning {
+            border-left: 4px solid var(--warning);
+        }
+
+        .stat-card.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            margin-bottom: 12px;
+        }
+
+        .stat-card.critical .stat-icon {
+            background: var(--error-bg);
+        }
+
+        .stat-card.warning .stat-icon {
+            background: var(--warning-bg);
+        }
+
+        .stat-card.success .stat-icon {
+            background: var(--success-bg);
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px;
+        }
+
+        /* Section Styles */
+        section {
+            background: var(--white);
+            margin: 40px 60px;
+            padding: 40px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        section:first-of-type {
+            margin-top: 60px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--navy-800), var(--navy-900));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .section-title-group {
+            flex: 1;
+        }
+
+        h2 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--slate-900);
+            margin-bottom: 4px;
+        }
+
+        .section-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--slate-800);
+            margin: 28px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h3::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--gold-500);
+            border-radius: 2px;
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--slate-700);
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* Info Cards */
+        .card {
+            background: var(--slate-50);
+            padding: 20px 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            margin: 16px 0;
+        }
+
+        .card.critical {
+            background: var(--error-bg);
+            border-color: rgba(239, 68, 68, 0.2);
+            border-left: 4px solid var(--error);
+        }
+
+        .card.warning {
+            background: var(--warning-bg);
+            border-color: rgba(245, 158, 11, 0.2);
+            border-left: 4px solid var(--warning);
+        }
+
+        .card.success {
+            background: var(--success-bg);
+            border-color: rgba(16, 185, 129, 0.2);
+            border-left: 4px solid var(--success);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .card-icon {
+            font-size: 1.125rem;
+        }
+
+        /* Collapsible Sections */
+        .collapsible {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .collapsible-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: var(--slate-50);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--slate-800);
+            text-align: left;
+            transition: background 0.2s ease;
+        }
+
+        .collapsible-trigger:hover {
+            background: var(--slate-100);
+        }
+
+        .collapsible-trigger-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .collapsible-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible.open .collapsible-icon {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .collapsible.open .collapsible-content {
+            max-height: 2000px;
+        }
+
+        .collapsible-inner {
+            padding: 20px;
+            background: var(--white);
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 0.875rem;
+        }
+
+        th {
+            background: var(--slate-800);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        th:first-child {
+            border-radius: var(--radius-md) 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 var(--radius-md) 0 0;
+        }
+
+        tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: var(--slate-50);
+        }
+
+        tr:hover {
+            background: rgba(37, 99, 235, 0.04);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .badge.critical {
+            background: var(--error);
+            color: white;
+        }
+
+        .badge.warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .badge.success {
+            background: var(--success);
+            color: white;
+        }
+
+        .badge.neutral {
+            background: var(--slate-200);
+            color: var(--slate-600);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 12px 0 12px 24px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        li::marker {
+            color: var(--gold-500);
+        }
+
+        /* Links */
+        a {
+            color: var(--navy-600);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--navy-700);
+            text-decoration: underline;
+        }
+
+        /* Highlight Box */
+        .highlight {
+            background: linear-gradient(135deg, rgba(212, 168, 83, 0.08), rgba(212, 168, 83, 0.04));
+            border: 1px solid rgba(212, 168, 83, 0.25);
+            border-left: 4px solid var(--gold-500);
+            padding: 20px 24px;
+            border-radius: var(--radius-md);
+            margin: 20px 0;
+        }
+
+        .highlight strong {
+            color: var(--slate-800);
+        }
+
+        /* Action Checklist */
+        .action-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin: 10px 0;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .action-item:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-checkbox {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--slate-300);
+            border-radius: var(--radius-sm);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--slate-500);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-item:hover .action-checkbox {
+            border-color: var(--navy-600);
+            color: var(--navy-600);
+        }
+
+        .action-item.completed .action-checkbox {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .action-item.completed .action-checkbox .check-number {
+            display: none;
+        }
+
+        .action-item.completed .action-checkbox .check-icon {
+            display: block !important;
+        }
+
+        .action-item.completed .action-title {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .action-item.completed .action-desc {
+            color: var(--slate-400);
+        }
+
+        .action-item {
+            cursor: pointer;
+        }
+
+        .action-content {
+            flex: 1;
+        }
+
+        .action-title {
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 4px;
+        }
+
+        .action-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .action-meta {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .action-meta-item {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--slate-200);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 28px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -32px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--navy-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--navy-600);
+        }
+
+        .timeline-item.active .timeline-marker {
+            background: var(--navy-600);
+            color: white;
+        }
+
+        .timeline-content {
+            background: var(--slate-50);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 8px;
+        }
+
+        .timeline-text {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Comparison Table */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .comparison-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .comparison-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .comparison-card.recommended {
+            border: 2px solid var(--gold-500);
+        }
+
+        .comparison-header {
+            padding: 20px;
+            background: var(--slate-50);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .comparison-card.recommended .comparison-header {
+            background: linear-gradient(135deg, rgba(212, 168, 83, 0.1), rgba(212, 168, 83, 0.05));
+        }
+
+        .comparison-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gold-500);
+            margin-bottom: 8px;
+        }
+
+        .comparison-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--slate-800);
+        }
+
+        .comparison-body {
+            padding: 20px;
+        }
+
+        .comparison-stat {
+            text-align: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-stat:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+
+        .comparison-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-950);
+            color: var(--slate-400);
+            padding: 48px 60px;
+            margin-left: var(--nav-width);
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .footer-meta {
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-contact-item {
+            font-size: 0.875rem;
+            color: var(--slate-400);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--navy-900);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--navy-700);
+            transform: translateY(-2px);
+        }
+
+        /* Quick Actions Banner */
+        .quick-actions-banner {
+            background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
+            margin: 40px 60px 0;
+            padding: 32px;
+            border-radius: var(--radius-xl);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 32px;
+            align-items: center;
+            animation: fadeInUp 0.5s ease-out 0.5s backwards;
+        }
+
+        .quick-actions-content h3 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 0 0 8px;
+        }
+
+        .quick-actions-content h3::before {
+            display: none;
+        }
+
+        .quick-actions-content p {
+            color: var(--slate-400);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .quick-actions-stats {
+            display: flex;
+            gap: 24px;
+        }
+
+        .quick-stat {
+            text-align: center;
+            padding: 16px 24px;
+            background: rgba(255,255,255,0.08);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(8px);
+        }
+
+        .quick-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-400);
+            display: block;
+        }
+
+        .quick-stat-label {
+            font-size: 0.7rem;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 4px;
+        }
+
+        /* Reading Time Badge */
+        .reading-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.1);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--slate-300);
+            margin-left: 12px;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            margin: 8px 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .dark-mode-toggle-label {
+            font-size: 0.8rem;
+            color: var(--slate-400);
+        }
+
+        .dark-mode-toggle-switch {
+            width: 36px;
+            height: 20px;
+            background: var(--slate-600);
+            border-radius: 10px;
+            position: relative;
+            transition: background 0.2s ease;
+        }
+
+        .dark-mode-toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.2s ease;
+        }
+
+        body.dark-mode .dark-mode-toggle-switch {
+            background: var(--gold-500);
+        }
+
+        body.dark-mode .dark-mode-toggle-switch::after {
+            transform: translateX(16px);
+        }
+
+        /* ========================================
+           DARK MODE STYLES - Comprehensive
+           ======================================== */
+        
+        /* Base Variables Override */
+        body.dark-mode {
+            --bg: #0c1222;
+            --white: #151d2e;
+            --border: #2d3a4f;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Main Content Area */
+        body.dark-mode .main-content {
+            background: #0c1222;
+        }
+
+        /* Sections */
+        body.dark-mode section {
+            background: #151d2e;
+            border-color: #2d3a4f;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Typography */
+        body.dark-mode h2 {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode h3 {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode h3::before {
+            background: var(--gold-400);
+        }
+
+        body.dark-mode h4 {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode p {
+            color: #94a3b8;
+        }
+
+        body.dark-mode strong {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode li {
+            color: #94a3b8;
+        }
+
+        body.dark-mode li::marker {
+            color: var(--gold-400);
+        }
+
+        /* Links */
+        body.dark-mode a {
+            color: #60a5fa;
+        }
+
+        body.dark-mode a:hover {
+            color: #93c5fd;
+        }
+
+        /* Section Header */
+        body.dark-mode .section-header {
+            border-bottom-color: #2d3a4f;
+        }
+
+        body.dark-mode .section-subtitle {
+            color: #64748b;
+        }
+
+        body.dark-mode .section-icon {
+            background: linear-gradient(135deg, #1e3a5f, #0f1d32);
+        }
+
+        /* Cards */
+        body.dark-mode .card {
+            background: #1a2538;
+            border-color: #2d3a4f;
+        }
+
+        body.dark-mode .card.success {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        body.dark-mode .card.warning {
+            background: rgba(245, 158, 11, 0.12);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        body.dark-mode .card.critical {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        body.dark-mode .card-header h4 {
+            color: inherit;
+        }
+
+        /* Stat Cards (Dashboard) */
+        body.dark-mode .stat-card {
+            background: #151d2e;
+            border-color: #2d3a4f;
+        }
+
+        body.dark-mode .stat-card:hover {
+            background: #1a2538;
+        }
+
+        body.dark-mode .stat-value {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .stat-label {
+            color: #64748b;
+        }
+
+        body.dark-mode .stat-card.critical .stat-icon {
+            background: rgba(239, 68, 68, 0.15);
+        }
+
+        body.dark-mode .stat-card.warning .stat-icon {
+            background: rgba(245, 158, 11, 0.15);
+        }
+
+        body.dark-mode .stat-card.success .stat-icon {
+            background: rgba(16, 185, 129, 0.15);
+        }
+
+        /* Tables */
+        body.dark-mode .table-wrapper {
+            border-color: #2d3a4f;
+        }
+
+        body.dark-mode th {
+            background: #0f1d32;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode td {
+            color: #94a3b8;
+            border-bottom-color: #2d3a4f;
+        }
+
+        body.dark-mode td strong {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode tr {
+            border-bottom-color: #2d3a4f;
+        }
+
+        body.dark-mode tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        body.dark-mode tr:hover {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        /* Badges */
+        body.dark-mode .badge.success {
+            background: rgba(16, 185, 129, 0.9);
+        }
+
+        body.dark-mode .badge.warning {
+            background: rgba(245, 158, 11, 0.9);
+        }
+
+        body.dark-mode .badge.critical {
+            background: rgba(239, 68, 68, 0.9);
+        }
+
+        body.dark-mode .badge.neutral {
+            background: #374151;
+            color: #9ca3af;
+        }
+
+        /* Collapsible Sections */
+        body.dark-mode .collapsible {
+            border-color: #2d3a4f;
+        }
+
+        body.dark-mode .collapsible-trigger {
+            background: #1a2538;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .collapsible-trigger:hover {
+            background: #1f2d42;
+        }
+
+        body.dark-mode .collapsible-icon {
+            background: #151d2e;
+            border-color: #2d3a4f;
+            color: #94a3b8;
+        }
+
+        body.dark-mode .collapsible-inner {
+            background: #151d2e;
+        }
+
+        /* Action Items */
+        body.dark-mode .action-item {
+            background: #1a2538;
+            border-color: #2d3a4f;
+        }
+
+        body.dark-mode .action-item:hover {
+            background: #1f2d42;
+        }
+
+        body.dark-mode .action-title {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .action-desc {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .action-checkbox {
+            border-color: #475569;
+            color: #64748b;
+        }
+
+        body.dark-mode .action-item:hover .action-checkbox {
+            border-color: #60a5fa;
+            color: #60a5fa;
+        }
+
+        body.dark-mode .action-item.completed .action-title {
+            color: #64748b;
+        }
+
+        body.dark-mode .action-meta-item {
+            color: #64748b;
+        }
+
+        /* Progress Summary */
+        body.dark-mode .progress-summary {
+            background: #1a2538;
+        }
+
+        body.dark-mode .progress-bar-container {
+            background: #2d3a4f;
+        }
+
+        body.dark-mode .progress-text {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .progress-text strong {
+            color: #e2e8f0;
+        }
+
+        /* Timeline */
+        body.dark-mode .timeline::before {
+            background: #2d3a4f;
+        }
+
+        body.dark-mode .timeline-content {
+            background: #1a2538;
+            border-color: #2d3a4f;
+        }
+
+        body.dark-mode .timeline-title {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .timeline-text {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .timeline-marker {
+            background: #151d2e;
+            border-color: #60a5fa;
+            color: #60a5fa;
+        }
+
+        body.dark-mode .timeline-item.active .timeline-marker {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Comparison Cards */
+        body.dark-mode .comparison-card {
+            background: #151d2e;
+            border-color: #2d3a4f;
+        }
+
+        body.dark-mode .comparison-card:hover {
+            background: #1a2538;
+        }
+
+        body.dark-mode .comparison-card.recommended {
+            border-color: var(--gold-500);
+        }
+
+        body.dark-mode .comparison-header {
+            background: #1a2538;
+            border-bottom-color: #2d3a4f;
+        }
+
+        body.dark-mode .comparison-card.recommended .comparison-header {
+            background: rgba(212, 168, 83, 0.1);
+        }
+
+        body.dark-mode .comparison-title {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .comparison-stat {
+            border-bottom-color: #2d3a4f;
+        }
+
+        body.dark-mode .comparison-stat-value {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .comparison-stat-label {
+            color: #64748b;
+        }
+
+        body.dark-mode .comparison-features {
+            background: rgba(16, 185, 129, 0.08) !important;
+            border-top-color: #2d3a4f !important;
+        }
+
+        body.dark-mode .comparison-features strong {
+            color: var(--success);
+        }
+
+        body.dark-mode .comparison-features li {
+            color: #94a3b8;
+        }
+
+        /* Highlight Box */
+        body.dark-mode .highlight {
+            background: rgba(212, 168, 83, 0.1);
+            border-color: rgba(212, 168, 83, 0.3);
+        }
+
+        body.dark-mode .highlight strong {
+            color: #e2e8f0;
+        }
+
+        /* Quick Actions Banner */
+        body.dark-mode .quick-actions-banner {
+            background: linear-gradient(135deg, #0f1d32 0%, #172942 100%);
+        }
+
+        body.dark-mode .quick-stat {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* Section Divider */
+        body.dark-mode .section-divider {
+            color: #64748b;
+        }
+
+        body.dark-mode .section-divider::before,
+        body.dark-mode .section-divider::after {
+            background: linear-gradient(to right, transparent, #2d3a4f, transparent);
+        }
+
+        /* Footer */
+        body.dark-mode footer {
+            background: #070c14;
+        }
+
+        body.dark-mode .footer-title {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .footer-meta {
+            color: #64748b;
+        }
+
+        body.dark-mode .footer-contact {
+            border-top-color: #1e293b;
+        }
+
+        body.dark-mode .footer-contact-item {
+            color: #94a3b8;
+        }
+
+        /* Back to Top Button */
+        body.dark-mode .back-to-top {
+            background: #1e3a5f;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark-mode .back-to-top:hover {
+            background: #2563eb;
+        }
+
+        /* Tooltips */
+        body.dark-mode .tooltip {
+            border-bottom-color: #64748b;
+        }
+
+        body.dark-mode .tooltip::after {
+            background: #0f1d32;
+            border: 1px solid #2d3a4f;
+        }
+
+        body.dark-mode .tooltip::before {
+            border-top-color: #2d3a4f;
+        }
+
+        /* Mobile Menu Toggle */
+        body.dark-mode .mobile-menu-toggle {
+            background: #1e3a5f;
+        }
+
+        /* Scrollbar Styling for Dark Mode */
+        body.dark-mode ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        body.dark-mode ::-webkit-scrollbar-track {
+            background: #0c1222;
+        }
+
+        body.dark-mode ::-webkit-scrollbar-thumb {
+            background: #2d3a4f;
+            border-radius: 4px;
+        }
+
+        body.dark-mode ::-webkit-scrollbar-thumb:hover {
+            background: #3d4a5f;
+        }
+
+        /* Reading Time Badge */
+        body.dark-mode .reading-time {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Dark Mode Toggle Label Update */
+        body.dark-mode .dark-mode-toggle-label {
+            color: var(--slate-300);
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background: rgba(212, 168, 83, 0.1);
+            border-color: rgba(212, 168, 83, 0.2);
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 1px dotted var(--slate-400);
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-4px);
+            background: var(--navy-900);
+            color: var(--white);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 400;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 100;
+            max-width: 250px;
+            white-space: normal;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            border: 6px solid transparent;
+            border-top-color: var(--navy-900);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .tooltip:hover::after,
+        .tooltip:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .tooltip:hover::after {
+            transform: translateX(-50%) translateY(-8px);
+        }
+
+        .tooltip:hover::before {
+            transform: translateX(-50%) translateY(0);
+        }
+
+
+        /* Scroll Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Priority Indicator */
+        .priority-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .priority-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .priority-dot.critical { background: var(--error); }
+        .priority-dot.high { background: var(--warning); }
+        .priority-dot.medium { background: var(--success); }
+
+        .priority-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 40px 60px;
+            color: var(--slate-400);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--slate-300), transparent);
+        }
+
+        /* Progress Summary */
+        .progress-summary {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.04);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            height: 8px;
+            background: var(--slate-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), var(--gold-500));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Print Styles */
+        @media print {
+            .sidebar, .mobile-menu-toggle, .progress-bar, .back-to-top, .dark-mode-toggle {
+                display: none !important;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            section {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid var(--border);
+                margin: 20px;
+            }
+            .quick-actions-banner {
+                margin: 20px;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            footer {
+                margin-left: 0;
+            }
+            .hero {
+                padding: 40px 20px;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .dashboard {
+                padding: 0 20px;
+            }
+            .collapsible-content {
+                max-height: none !important;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            footer {
+                margin-left: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 60px 24px 50px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .dashboard {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 24px;
+            }
+
+            section {
+                margin: 24px;
+                padding: 24px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 40px 24px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .quick-actions-banner {
+                margin: 24px;
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .quick-actions-stats {
+                justify-content: center;
+            }
+
+            .back-to-top {
+                bottom: 90px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .table-wrapper {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 10px 12px;
+            }
+
+            .quick-actions-banner {
+                padding: 24px;
+            }
+
+            .quick-actions-stats {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .quick-stat {
+                padding: 12px 16px;
+            }
+
+            .section-divider {
+                margin: 24px;
+            }
+
+            .reading-time {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Reading Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">Future First Law</div>
+            <div class="sidebar-subtitle">Site Assessment Report</div>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title">Overview</div>
+            <a href="#hero" class="nav-link active">
+                <span class="nav-link-icon">📊</span>
+                Dashboard
+            </a>
+            <a href="#executive-summary" class="nav-link">
+                <span class="nav-link-icon">📋</span>
+                Executive Summary
+            </a>
+            <a href="#background" class="nav-link">
+                <span class="nav-link-icon">📁</span>
+                Project Background
+            </a>
+            
+            <div class="nav-section-title">Analysis</div>
+            <a href="#architecture" class="nav-link">
+                <span class="nav-link-icon">🏗️</span>
+                Site Architecture
+            </a>
+            <a href="#plugins" class="nav-link">
+                <span class="nav-link-icon">🔌</span>
+                Plugin Analysis
+            </a>
+            <a href="#content" class="nav-link">
+                <span class="nav-link-icon">📚</span>
+                Content Structure
+            </a>
+            <a href="#technical" class="nav-link">
+                <span class="nav-link-icon">🔧</span>
+                Technical Findings
+            </a>
+            
+            <div class="nav-section-title">Recommendations</div>
+            <a href="#actions" class="nav-link">
+                <span class="nav-link-icon">🎯</span>
+                Action Items
+            </a>
+            <a href="#roadmap" class="nav-link">
+                <span class="nav-link-icon">🗺️</span>
+                Roadmap
+            </a>
+            <a href="#themes" class="nav-link">
+                <span class="nav-link-icon">🎨</span>
+                Theme Options
+            </a>
+            <a href="#summary" class="nav-link">
+                <span class="nav-link-icon">✅</span>
+                Summary
+            </a>
+        </div>
+        
+        <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+            <span style="font-size: 0.9rem;">🌙</span>
+            <span class="dark-mode-toggle-label">Dark Mode</span>
+            <div class="dark-mode-toggle-switch"></div>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-footer-text">
+                Prepared by Omar Corral<br>
+                November 26, 2025
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+        ☰
+    </button>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        ↑
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <header class="hero" id="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>📊</span> WordPress Assessment
+                    <span class="reading-time">⏱️ ~12 min read</span>
+                </div>
+                <h1 class="hero-title">
+                    Site Assessment <em>Report</em>
+                </h1>
+                <p class="hero-description">
+                    A comprehensive analysis of the Future First Criminal Law WordPress website, identifying optimization opportunities and providing a prioritized roadmap for improvement.
+                </p>
+                <div class="hero-meta">
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-label">Website</span>
+                        <span class="hero-meta-value">futurefirst.law</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-label">Review Date</span>
+                        <span class="hero-meta-value">November 26, 2025</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-label">Reviewer</span>
+                        <span class="hero-meta-value">Omar Corral</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-label">WordPress</span>
+                        <span class="hero-meta-value">v6.8.3 ✓</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard">
+            <div class="stat-card critical">
+                <div class="stat-icon">🔴</div>
+                <div class="stat-value">2</div>
+                <div class="stat-label">Critical Issues</div>
+            </div>
+            <div class="stat-card warning">
+                <div class="stat-icon">🟡</div>
+                <div class="stat-value">3</div>
+                <div class="stat-label">Performance Concerns</div>
+            </div>
+            <div class="stat-card success">
+                <div class="stat-icon">🟢</div>
+                <div class="stat-value">30+</div>
+                <div class="stat-label">Plugins Analyzed</div>
+            </div>
+            <div class="stat-card success">
+                <div class="stat-icon">📄</div>
+                <div class="stat-value">147</div>
+                <div class="stat-label">Published Items</div>
+            </div>
+        </div>
+
+        <!-- Quick Actions Banner -->
+        <div class="quick-actions-banner">
+            <div class="quick-actions-content">
+                <h3>Ready to Get Started?</h3>
+                <p>Address critical issues first for immediate performance gains. Estimated total optimization time: 2-4 hours.</p>
+            </div>
+            <div class="quick-actions-stats">
+                <div class="quick-stat">
+                    <span class="quick-stat-value">~2 hrs</span>
+                    <span class="quick-stat-label">Critical Fixes</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="quick-stat-value">$800-1.2K</span>
+                    <span class="quick-stat-label">Est. Investment</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <section id="executive-summary">
+            <div class="section-header">
+                <div class="section-icon">📋</div>
+                <div class="section-title-group">
+                    <h2>Executive Summary</h2>
+                    <p class="section-subtitle">Quick overview of findings and recommendations</p>
+                </div>
+            </div>
+
+            <p style="font-size: 1.05rem; margin-bottom: 24px; color: var(--slate-600);">
+                This assessment identifies critical plugin conflicts, optimization opportunities, and provides a prioritized roadmap for site modernization and performance improvement.
+            </p>
+
+            <div class="card critical">
+                <div class="card-header">
+                    <span class="card-icon">🔴</span>
+                    <h4 style="color: var(--error); margin: 0;">Critical Issues Found</h4>
+                </div>
+                <ul>
+                    <li><strong>Caching Plugin Conflict:</strong> <span class="tooltip" data-tooltip="Caching stores copies of pages to serve them faster. Two caching plugins can conflict and slow down or break your site.">NitroPack and WP-Optimize</span> both handle caching — causing potential conflicts</li>
+                    <li><strong>Duplicate Backup Plugins:</strong> All-in-One WP Migration and UpdraftPlus both active — wasting resources</li>
+                </ul>
+            </div>
+
+            <div class="card warning">
+                <div class="card-header">
+                    <span class="card-icon">🟡</span>
+                    <h4 style="color: var(--warning); margin: 0;">Performance Concerns</h4>
+                </div>
+                <ul>
+                    <li>30+ plugins installed — some redundancy and potential conflicts</li>
+                    <li>Multiple tracking scripts may impact page load speed</li>
+                    <li>Code injection redundancy (3 plugins handling the same task)</li>
+                    <li>879 media files need compression optimization</li>
+                </ul>
+            </div>
+
+            <div class="card success">
+                <div class="card-header">
+                    <span class="card-icon">✅</span>
+                    <h4 style="color: var(--success); margin: 0;">Positive Findings</h4>
+                </div>
+                <ul>
+                    <li>WordPress 6.8.3 — current and secure</li>
+                    <li>Divi 4.27.4 — recent version with good customization</li>
+                    <li>Comprehensive SEO setup with RankMath</li>
+                    <li>Proper SMTP configuration for email delivery</li>
+                    <li>NitroPack provides comprehensive optimization capabilities</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">Overview Complete</div>
+
+        <!-- Project Background -->
+        <section id="background">
+            <div class="section-header">
+                <div class="section-icon">📁</div>
+                <div class="section-title-group">
+                    <h2>Project Background</h2>
+                    <p class="section-subtitle">How we arrived at this assessment</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h4>Original Request: Theme Modernization</h4>
+                <p style="margin-bottom: 15px;">The initial project goal was to modernize the Future First Criminal Law website with a new, more modern WordPress theme.</p>
+                
+                <p><strong>Original Theme Consideration:</strong></p>
+                <p style="margin-bottom: 10px;">
+                    <a href="https://goldenblatt.bold-themes.com/main-demo/home/home-02/" target="_blank">Goldenblatt by Bold Themes</a> — A visually striking law firm theme with modern design.
+                </p>
+                
+                <p><strong>Core Web Vitals Analysis Revealed:</strong></p>
+                <ul>
+                    <li>❌ Goldenblatt theme contains heavy animations and visual effects</li>
+                    <li>❌ These elements would likely <strong>slow down site performance</strong></li>
+                    <li>❌ Poor <span class="tooltip" data-tooltip="Core Web Vitals are Google's metrics for measuring user experience: loading speed, interactivity, and visual stability. They directly affect search rankings.">Core Web Vitals</span> (CWV) scores could negatively impact SEO rankings</li>
+                    <li>❌ Divi theme already resource-intensive — adding heavy animations would compound issues</li>
+                </ul>
+            </div>
+
+            <div class="card warning">
+                <h4>Strategic Pivot: Comprehensive Site Review</h4>
+                <p style="margin-bottom: 15px;">Rather than proceeding with a potentially problematic theme change, we pivoted to conduct a comprehensive site assessment to understand:</p>
+                <ul>
+                    <li>Current site architecture and performance baseline</li>
+                    <li>Existing plugin conflicts and optimization opportunities</li>
+                    <li>Whether Divi (current theme) could be optimized to meet performance goals</li>
+                    <li>What alternative themes would actually improve performance</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>This assessment provides the data needed to make an informed decision about the best path forward.</strong></p>
+            </div>
+
+            <div class="card success">
+                <h4>Alternative Theme Options Identified</h4>
+                <p style="margin-bottom: 15px;">Based on the CWV analysis, we identified two lighter, performance-focused alternatives:</p>
+                <ol>
+                    <li>
+                        <strong><a href="https://websitedemos.net/criminal-lawyer-04/" target="_blank">Criminal Lawyer 04</a></strong> — Purpose-built for criminal law firms
+                    </li>
+                    <li>
+                        <strong><a href="https://wpastra.com/website-templates/business/law-firm/" target="_blank">Astra Law Firm Template</a></strong> — Extremely lightweight, excellent Core Web Vitals
+                    </li>
+                </ol>
+                <p style="margin-top: 15px;">See the <strong>Theme Options</strong> section for detailed analysis.</p>
+            </div>
+        </section>
+
+        <!-- Site Architecture -->
+        <section id="architecture">
+            <div class="section-header">
+                <div class="section-icon">🏗️</div>
+                <div class="section-title-group">
+                    <h2>Site Architecture Analysis</h2>
+                    <p class="section-subtitle">Current configuration and structure</p>
+                </div>
+            </div>
+
+            <h3>Current Configuration</h3>
+            
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Component</th>
+                        <th>Details</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td><strong>WordPress Core</strong></td>
+                        <td>6.8.3</td>
+                        <td><span class="badge success">Current</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Active Theme</strong></td>
+                        <td>Divi 4.27.4</td>
+                        <td><span class="badge success">Current</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Plugins</strong></td>
+                        <td>30+</td>
+                        <td><span class="badge warning">High Count</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Published Pages</strong></td>
+                        <td>102</td>
+                        <td><span class="badge success">Well Structured</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Published Projects</strong></td>
+                        <td>36</td>
+                        <td><span class="badge success">Case Studies</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Blog Posts</strong></td>
+                        <td>9 published</td>
+                        <td><span class="badge neutral">Minimal Blog</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Media Attachments</strong></td>
+                        <td>879</td>
+                        <td><span class="badge warning">Needs Optimization</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Divi Layouts</strong></td>
+                        <td>149</td>
+                        <td><span class="badge success">Templates</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card success" style="margin-top: 24px;">
+                <h4>📊 Content Volume Analysis</h4>
+                <p><strong>Site Type:</strong> Service-focused legal website (not a content-heavy blog)</p>
+                <p style="margin-top: 12px;"><strong>Good News:</strong> This is a manageable content volume. The site is primarily page-based (service pages, practice areas) rather than a content-heavy blog. Optimization should be straightforward.</p>
+            </div>
+
+            <h3>Theme Assessment: Divi</h3>
+            
+            <div class="card">
+                <h4>Divi Theme Analysis</h4>
+                <p><strong>Version:</strong> 4.27.4 (Elegant Themes)</p>
+                <p><strong>Status:</strong> Current version, actively maintained</p>
+                
+                <p style="margin-top: 15px;"><strong>Assessment:</strong></p>
+                <ul>
+                    <li>✅ Divi is a robust, feature-rich theme suitable for legal websites</li>
+                    <li>✅ Good customization options for practice areas</li>
+                    <li>⚠️ Divi can be resource-intensive — optimization important</li>
+                    <li>✅ Current version includes performance improvements</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <strong>Theme Recommendation:</strong> Continue with Divi theme. It's well-suited for your site structure and practice areas. Focus on optimizing Divi performance through proper caching and image optimization rather than theme replacement.
+            </div>
+        </section>
+
+        <!-- Plugin Analysis -->
+        <section id="plugins">
+            <div class="section-header">
+                <div class="section-icon">🔌</div>
+                <div class="section-title-group">
+                    <h2>Plugin Inventory & Analysis</h2>
+                    <p class="section-subtitle">30+ plugins analyzed across 6 categories</p>
+                </div>
+            </div>
+
+            <h3>Critical Issues</h3>
+
+            <div class="card critical">
+                <div class="card-header">
+                    <span class="card-icon">🔴</span>
+                    <h4 style="color: var(--error); margin: 0;">Issue #1: Caching Plugin Conflict</h4>
+                    <span class="badge critical" style="margin-left: auto;">Critical</span>
+                </div>
+                <p><strong>Plugins:</strong> NitroPack + WP-Optimize</p>
+                
+                <p style="margin-top: 12px;"><strong>Problem:</strong> Both plugins have caching capabilities. If both caching features are enabled simultaneously, they will conflict, causing:</p>
+                <ul>
+                    <li>Double caching layers (inefficient)</li>
+                    <li>Cache conflicts and inconsistencies</li>
+                    <li>Potential site errors or blank pages</li>
+                </ul>
+                
+                <div class="highlight" style="margin-top: 16px;">
+                    <strong>✅ Recommended Solution:</strong> Keep both plugins but disable WP-Optimize caching features. Use NitroPack for caching/CDN/optimization, use WP-Optimize for database cleanup only.
+                </div>
+            </div>
+
+            <div class="card critical">
+                <div class="card-header">
+                    <span class="card-icon">🔴</span>
+                    <h4 style="color: var(--error); margin: 0;">Issue #2: Duplicate Backup Plugins</h4>
+                    <span class="badge critical" style="margin-left: auto;">High</span>
+                </div>
+                <p><strong>Plugins:</strong> All-in-One WP Migration + UpdraftPlus</p>
+                <p><strong>Problem:</strong> Two backup solutions running simultaneously wastes server resources</p>
+                <p><strong>Solution:</strong> Keep UpdraftPlus (more robust), remove All-in-One WP Migration</p>
+            </div>
+
+            <div class="card warning">
+                <div class="card-header">
+                    <span class="card-icon">🟡</span>
+                    <h4 style="color: var(--warning); margin: 0;">Issue #3: Code Injection Redundancy</h4>
+                    <span class="badge warning" style="margin-left: auto;">Medium</span>
+                </div>
+                <p><strong>Plugins:</strong> Code Snippets + WPCode Lite + WP Headers and Footers</p>
+                <p><strong>Problem:</strong> Three plugins handling code injection creates confusion and potential conflicts</p>
+                <p><strong>Solution:</strong> Keep WPCode Lite (most comprehensive), migrate code, remove others</p>
+            </div>
+
+            <h3>Plugin Inventory by Category</h3>
+
+            <div class="collapsible open">
+                <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+                    <span class="collapsible-trigger-left">
+                        <span>📈</span>
+                        Analytics / Tracking / SEO (6 plugins)
+                    </span>
+                    <span class="collapsible-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="table-wrapper">
+                            <table>
+                                <tr>
+                                    <th>Plugin</th>
+                                    <th>Purpose</th>
+                                    <th>State</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                                <tr>
+                                    <td>RankMath SEO</td>
+                                    <td>SEO optimization</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Site Kit by Google</td>
+                                    <td>Google Analytics integration</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Instant Indexing</td>
+                                    <td>Search Console indexing</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>CallRail</td>
+                                    <td>Call tracking</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>GTM4WP</td>
+                                    <td>Google Tag Manager integration</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge warning">Review</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Google Tag Manager</td>
+                                    <td>Tag management</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge warning">Review</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+                    <span class="collapsible-trigger-left">
+                        <span>⚡</span>
+                        Speed / Optimization (6 plugins)
+                    </span>
+                    <span class="collapsible-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="table-wrapper">
+                            <table>
+                                <tr>
+                                    <th>Plugin</th>
+                                    <th>Purpose</th>
+                                    <th>State</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                                <tr>
+                                    <td>NitroPack</td>
+                                    <td>All-in-one optimization</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>ShortPixel Image Optimizer</td>
+                                    <td>Image compression</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>WP-Optimize</td>
+                                    <td>Database cleanup</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge warning">Disable Caching</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Auto Image Attributes</td>
+                                    <td>Image SEO</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Simple Custom CSS and JS</td>
+                                    <td>Custom code</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge warning">Consolidate</span></td>
+                                </tr>
+                                <tr>
+                                    <td>WP Front Scroll Top</td>
+                                    <td>UI enhancement</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+                    <span class="collapsible-trigger-left">
+                        <span>💾</span>
+                        Backups & File Management (3 plugins)
+                    </span>
+                    <span class="collapsible-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="table-wrapper">
+                            <table>
+                                <tr>
+                                    <th>Plugin</th>
+                                    <th>Purpose</th>
+                                    <th>State</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                                <tr>
+                                    <td>All-in-One WP Migration</td>
+                                    <td>Backup solution</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge critical">Deactivate</span></td>
+                                </tr>
+                                <tr>
+                                    <td>UpdraftPlus</td>
+                                    <td>Backup solution</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>WP File Manager</td>
+                                    <td>File management</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+                    <span class="collapsible-trigger-left">
+                        <span>📝</span>
+                        Content / Forms / UI (6 plugins)
+                    </span>
+                    <span class="collapsible-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="table-wrapper">
+                            <table>
+                                <tr>
+                                    <th>Plugin</th>
+                                    <th>Purpose</th>
+                                    <th>State</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                                <tr>
+                                    <td>Ninja Forms</td>
+                                    <td>Form builder</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Divi Carousel Lite</td>
+                                    <td>Carousel functionality</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Popups for Divi</td>
+                                    <td>Popup builder</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Duplicate Page</td>
+                                    <td>Page duplication</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Web Stories</td>
+                                    <td>Google Web Stories</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>WP Go Maps</td>
+                                    <td>Google Maps</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+                    <span class="collapsible-trigger-left">
+                        <span>📧</span>
+                        Email / SMTP / Chat / CRM (4 plugins)
+                    </span>
+                    <span class="collapsible-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="table-wrapper">
+                            <table>
+                                <tr>
+                                    <th>Plugin</th>
+                                    <th>Purpose</th>
+                                    <th>State</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                                <tr>
+                                    <td>Brevo</td>
+                                    <td>Email/SMS/Chat</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Email Log</td>
+                                    <td>Email logging</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>WP Mail SMTP</td>
+                                    <td>SMTP configuration</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Intaker for Attorneys</td>
+                                    <td>Legal intake forms</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+                    <span class="collapsible-trigger-left">
+                        <span>🛠️</span>
+                        Developer Tools / Utility (6 plugins)
+                    </span>
+                    <span class="collapsible-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="table-wrapper">
+                            <table>
+                                <tr>
+                                    <th>Plugin</th>
+                                    <th>Purpose</th>
+                                    <th>State</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                                <tr>
+                                    <td>Code Snippets</td>
+                                    <td>Code injection</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge critical">Deactivate</span></td>
+                                </tr>
+                                <tr>
+                                    <td>WPCode Lite</td>
+                                    <td>Code injection</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>WP Headers and Footers</td>
+                                    <td>Code injection</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge critical">Deactivate</span></td>
+                                </tr>
+                                <tr>
+                                    <td>WP Last Modified Info</td>
+                                    <td>Content dates</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Temporary Login</td>
+                                    <td>Security utility</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Unbounce Landing Pages</td>
+                                    <td>Landing pages</td>
+                                    <td><span class="badge success">Active</span></td>
+                                    <td><span class="badge success">Keep</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">Recommendations</div>
+
+        <!-- Action Items -->
+        <section id="actions">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div class="section-title-group">
+                    <h2>Prioritized Action Items</h2>
+                    <p class="section-subtitle">Step-by-step implementation guide</p>
+                </div>
+            </div>
+
+            <!-- Progress Summary -->
+            <div class="progress-summary">
+                <div class="progress-text"><strong>0 of 8</strong> tasks completed</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 0%;" id="actionProgress"></div>
+                </div>
+            </div>
+
+            <h3>🔴 Critical Priority</h3>
+
+            <ul class="action-list">
+                <li class="action-item" data-action="1" onclick="toggleAction(this)">
+                    <div class="action-checkbox">
+                        <span class="check-icon" style="display: none;">✓</span>
+                        <span class="check-number">1</span>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Resolve Caching Plugin Conflict</div>
+                        <div class="action-desc">Configure WP-Optimize to disable caching, use NitroPack for all caching/CDN needs, keep WP-Optimize for database cleanup only.</div>
+                        <div class="action-meta">
+                            <span class="action-meta-item">⏱️ 15-30 min</span>
+                            <span class="action-meta-item">📌 Critical Impact</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-item" data-action="2" onclick="toggleAction(this)">
+                    <div class="action-checkbox">
+                        <span class="check-icon" style="display: none;">✓</span>
+                        <span class="check-number">2</span>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Remove Duplicate Backup Plugin</div>
+                        <div class="action-desc">Verify UpdraftPlus is working properly, then deactivate and delete All-in-One WP Migration.</div>
+                        <div class="action-meta">
+                            <span class="action-meta-item">⏱️ 10 min</span>
+                            <span class="action-meta-item">📌 High Impact</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>🟡 High Priority</h3>
+
+            <ul class="action-list">
+                <li class="action-item" data-action="3" onclick="toggleAction(this)">
+                    <div class="action-checkbox">
+                        <span class="check-icon" style="display: none;">✓</span>
+                        <span class="check-number">3</span>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Consolidate Code Injection Plugins</div>
+                        <div class="action-desc">Migrate all code to WPCode Lite, then remove Code Snippets and WP Headers and Footers.</div>
+                        <div class="action-meta">
+                            <span class="action-meta-item">⏱️ 30-45 min</span>
+                            <span class="action-meta-item">📌 Medium Impact</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-item" data-action="4" onclick="toggleAction(this)">
+                    <div class="action-checkbox">
+                        <span class="check-icon" style="display: none;">✓</span>
+                        <span class="check-number">4</span>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Optimize Image Compression</div>
+                        <div class="action-desc">Ensure ShortPixel is optimizing all 879 media files. Run bulk optimization if needed.</div>
+                        <div class="action-meta">
+                            <span class="action-meta-item">⏱️ 30-45 min</span>
+                            <span class="action-meta-item">📌 High Impact</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-item" data-action="5" onclick="toggleAction(this)">
+                    <div class="action-checkbox">
+                        <span class="check-icon" style="display: none;">✓</span>
+                        <span class="check-number">5</span>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Review Tracking Script Configuration</div>
+                        <div class="action-desc">Ensure Google Tag Manager is efficiently handling all tracking without duplicate scripts.</div>
+                        <div class="action-meta">
+                            <span class="action-meta-item">⏱️ 30 min</span>
+                            <span class="action-meta-item">📌 Medium Impact</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>🟢 Medium Priority</h3>
+
+            <ul class="action-list">
+                <li class="action-item" data-action="6" onclick="toggleAction(this)">
+                    <div class="action-checkbox">
+                        <span class="check-icon" style="display: none;">✓</span>
+                        <span class="check-number">6</span>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Database Optimization</div>
+                        <div class="action-desc">After resolving caching conflict, use WP-Optimize for database cleanup. Schedule monthly maintenance.</div>
+                        <div class="action-meta">
+                            <span class="action-meta-item">⏱️ 15 min</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-item" data-action="7" onclick="toggleAction(this)">
+                    <div class="action-checkbox">
+                        <span class="check-icon" style="display: none;">✓</span>
+                        <span class="check-number">7</span>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Plugin Audit & Cleanup</div>
+                        <div class="action-desc">Review all plugins for active use. Deactivate unused plugins, monitor for 2 weeks, then delete.</div>
+                        <div class="action-meta">
+                            <span class="action-meta-item">⏱️ Ongoing</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-item" data-action="8" onclick="toggleAction(this)">
+                    <div class="action-checkbox">
+                        <span class="check-icon" style="display: none;">✓</span>
+                        <span class="check-number">8</span>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Optimize NitroPack Settings</div>
+                        <div class="action-desc">Review and optimize NitroPack configuration for best performance.</div>
+                        <div class="action-meta">
+                            <span class="action-meta-item">⏱️ 20 min</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Modernization Roadmap -->
+        <section id="roadmap">
+            <div class="section-header">
+                <div class="section-icon">🗺️</div>
+                <div class="section-title-group">
+                    <h2>Modernization Roadmap</h2>
+                    <p class="section-subtitle">Phased implementation timeline</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item active">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Phase 1: Critical Fixes</div>
+                        <div class="timeline-text">
+                            <ul>
+                                <li>Resolve caching plugin conflict</li>
+                                <li>Remove duplicate backup plugin</li>
+                                <li>Test site stability</li>
+                                <li>Verify backups working</li>
+                            </ul>
+                            <p style="margin-top: 12px;"><strong>Outcome:</strong> Stable site foundation, no plugin conflicts</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Phase 2: Optimization & Visual Modernization</div>
+                        <div class="timeline-text">
+                            <p style="margin-bottom: 8px; font-weight: 600; color: var(--slate-700);">Performance:</p>
+                            <ul>
+                                <li>Consolidate code injection plugins</li>
+                                <li>Optimize image compression for 879 media files</li>
+                                <li>Review tracking script configuration</li>
+                                <li>Database optimization</li>
+                                <li>Performance testing</li>
+                            </ul>
+                            <p style="margin: 12px 0 8px; font-weight: 600; color: var(--slate-700);">Visual Modernization:</p>
+                            <ul>
+                                <li>Update typography & font styling</li>
+                                <li>Refine spacing & layout consistency</li>
+                                <li>Modernize button & form styles</li>
+                                <li>Improve mobile responsiveness</li>
+                                <li>Refresh color accents where needed</li>
+                            </ul>
+                            <p style="margin-top: 12px;"><strong>Outcome:</strong> Improved performance, cleaner plugin setup, refreshed modern appearance</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Phase 3: Ongoing Maintenance</div>
+                        <div class="timeline-text">
+                            <ul>
+                                <li>Regular plugin audits</li>
+                                <li>Monitor plugin updates</li>
+                                <li>Performance monitoring</li>
+                                <li>Continuous optimization</li>
+                            </ul>
+                            <p style="margin-top: 12px;"><strong>Outcome:</strong> Maintained performance, proactive optimization</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theme Recommendations -->
+        <section id="themes">
+            <div class="section-header">
+                <div class="section-icon">🎨</div>
+                <div class="section-title-group">
+                    <h2>Theme Comparison & Recommendations</h2>
+                    <p class="section-subtitle">Options for modernization</p>
+                </div>
+            </div>
+
+            <div class="card critical" style="margin-bottom: 28px;">
+                <h4>❌ Why Goldenblatt Was Not Recommended</h4>
+                <p>While visually impressive, Goldenblatt contains heavy animations and visual effects that would likely make performance <strong>worse</strong>, not better. Poor Core Web Vitals negatively impact Google rankings.</p>
+            </div>
+
+            <h3>Theme Options Comparison</h3>
+
+            <div class="comparison-grid">
+                <div class="comparison-card recommended">
+                    <div class="comparison-header">
+                        <div class="comparison-badge">✓ Recommended</div>
+                        <div class="comparison-title">Divi (Optimize + Modernize)</div>
+                    </div>
+                    <div class="comparison-body">
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">12-15 hrs</div>
+                            <div class="comparison-stat-label">Effort Required</div>
+                        </div>
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">$800-$1.2K</div>
+                            <div class="comparison-stat-label">Estimated Cost</div>
+                        </div>
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">1-3 wks</div>
+                            <div class="comparison-stat-label">Time to Results</div>
+                        </div>
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">None</div>
+                            <div class="comparison-stat-label">Migration Risk</div>
+                        </div>
+                    </div>
+                    <div class="comparison-features" style="padding: 16px 20px; background: rgba(16, 185, 129, 0.05); border-top: 1px solid var(--border); font-size: 0.85rem;">
+                        <strong style="color: var(--success);">Includes Visual Modernization:</strong>
+                        <ul style="margin: 8px 0 0 16px; color: var(--slate-600);">
+                            <li>Updated typography & spacing</li>
+                            <li>Modern color refinements</li>
+                            <li>Improved mobile responsiveness</li>
+                            <li>Refreshed button & form styles</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <div class="comparison-badge" style="color: var(--slate-500);">Alternative</div>
+                        <div class="comparison-title">Criminal Lawyer 04</div>
+                    </div>
+                    <div class="comparison-body">
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">40-60 hrs</div>
+                            <div class="comparison-stat-label">Effort Required</div>
+                        </div>
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">$4K-$6K</div>
+                            <div class="comparison-stat-label">Estimated Cost</div>
+                        </div>
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">2-3 mos</div>
+                            <div class="comparison-stat-label">Time to Results</div>
+                        </div>
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">Low-Med</div>
+                            <div class="comparison-stat-label">Migration Risk</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <div class="comparison-badge" style="color: var(--slate-500);">Alternative</div>
+                        <div class="comparison-title">Astra Law Firm</div>
+                    </div>
+                    <div class="comparison-body">
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">50-70 hrs</div>
+                            <div class="comparison-stat-label">Effort Required</div>
+                        </div>
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">$5K-$7K</div>
+                            <div class="comparison-stat-label">Estimated Cost</div>
+                        </div>
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">2-3 mos</div>
+                            <div class="comparison-stat-label">Time to Results</div>
+                        </div>
+                        <div class="comparison-stat">
+                            <div class="comparison-stat-value">Low-Med</div>
+                            <div class="comparison-stat-label">Migration Risk</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card success">
+                <h4>✅ Recommended Approach: Optimize Divi First</h4>
+                
+                <div class="highlight" style="margin: 16px 0;">
+                    <strong>Key Insight:</strong> Before investing $4,000-$7,000 in a theme migration, let's first see if optimizing and visually modernizing your current Divi setup can achieve your performance and design goals at a fraction of the cost.
+                </div>
+                
+                <p><strong>Why This Approach Makes Sense:</strong></p>
+                <ul>
+                    <li><strong>Lower risk:</strong> No content migration required</li>
+                    <li><strong>Faster results:</strong> Performance improvements in 1-3 weeks vs. 2-3 months</li>
+                    <li><strong>Cost-effective:</strong> $800-$1,200 vs. $5,000-$7,000</li>
+                    <li><strong>Visual refresh included:</strong> Modern typography, spacing, and responsive improvements</li>
+                    <li><strong>Data-driven decision:</strong> If Divi works after optimization, no migration needed</li>
+                </ul>
+            </div>
+
+            <div class="card warning">
+                <h4>When to Consider Migration</h4>
+                <p>Consider migrating to Astra or Criminal Lawyer theme if:</p>
+                <ul>
+                    <li>Divi optimization doesn't achieve Core Web Vitals targets after 1 month</li>
+                    <li>Performance remains poor despite optimization</li>
+                    <li>You're planning a major site redesign anyway</li>
+                    <li>Budget allows for $5,000-$7,000 migration project</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Content Structure -->
+        <section id="content">
+            <div class="section-header">
+                <div class="section-icon">📚</div>
+                <div class="section-title-group">
+                    <h2>Content Structure Analysis</h2>
+                    <p class="section-subtitle">Overview of site content organization</p>
+                </div>
+            </div>
+
+            <h3>Site Content Overview</h3>
+            
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Content Type</th>
+                        <th>Total</th>
+                        <th>Published</th>
+                        <th>Assessment</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Blog Posts</strong></td>
+                        <td>17</td>
+                        <td>9</td>
+                        <td><span class="badge neutral">Minimal Blog</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pages</strong></td>
+                        <td>154</td>
+                        <td>102</td>
+                        <td><span class="badge success">Well Structured</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Projects</strong></td>
+                        <td>87</td>
+                        <td>36</td>
+                        <td><span class="badge success">Case Studies</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Divi Layouts</strong></td>
+                        <td>149</td>
+                        <td>—</td>
+                        <td><span class="badge success">Templates</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Media Attachments</strong></td>
+                        <td>879</td>
+                        <td>—</td>
+                        <td><span class="badge warning">Needs Compression</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Categories</strong></td>
+                        <td>11</td>
+                        <td>—</td>
+                        <td><span class="badge success">Well Organized</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tags</strong></td>
+                        <td>22</td>
+                        <td>—</td>
+                        <td><span class="badge success">Good Tagging</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <p><strong>Primary Categories (11 total):</strong></p>
+                <ul>
+                    <li>Criminal Defense</li>
+                    <li>Criminal Charges (Felony, Misdemeanor)</li>
+                    <li>Criminal Record Removal (Set Aside)</li>
+                    <li>DUI</li>
+                    <li>Drug Charges</li>
+                </ul>
+                <p style="margin-top: 12px;"><strong>Assessment:</strong> Well-organized content structure aligned with practice areas. Categories properly reflect the legal services offered.</p>
+            </div>
+        </section>
+
+        <!-- Technical Findings -->
+        <section id="technical">
+            <div class="section-header">
+                <div class="section-icon">🔧</div>
+                <div class="section-title-group">
+                    <h2>Technical Findings</h2>
+                    <p class="section-subtitle">WordPress core and security status</p>
+                </div>
+            </div>
+
+            <div class="card success">
+                <h4>WordPress Core</h4>
+                <p><strong>Version:</strong> 6.8.3</p>
+                <p><strong>Status:</strong> ✅ Current and secure</p>
+                <p><strong>Recommendation:</strong> Continue monitoring for updates</p>
+            </div>
+
+            <div class="card">
+                <h4>Security Status</h4>
+                <ul>
+                    <li><strong>WordPress Core:</strong> ✅ Up to date</li>
+                    <li><strong>Theme:</strong> ✅ Current version</li>
+                    <li><strong>Plugins:</strong> ⚠️ Review update status regularly</li>
+                    <li><strong>Backup:</strong> ✅ UpdraftPlus configured</li>
+                </ul>
+            </div>
+
+            <div class="card warning">
+                <h4>Performance Optimization Stack</h4>
+                <p><strong>Current Setup:</strong></p>
+                <ul>
+                    <li><strong>NitroPack</strong> — All-in-one optimization (caching, <span class="tooltip" data-tooltip="Content Delivery Network - distributes your site's files across servers worldwide for faster loading.">CDN</span>, image optimization, minification)</li>
+                    <li><strong>ShortPixel</strong> — Image optimization (essential for 879 media files)</li>
+                    <li><strong>WP-Optimize</strong> — Database cleanup (disable caching to avoid conflict)</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Note:</strong> Both NitroPack and WP-Optimize can coexist when WP-Optimize caching is disabled.</p>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section id="summary">
+            <div class="section-header">
+                <div class="section-icon">✅</div>
+                <div class="section-title-group">
+                    <h2>Summary</h2>
+                    <p class="section-subtitle">Key takeaways and next steps</p>
+                </div>
+            </div>
+
+            <h3>Key Statistics</h3>
+            
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Total Plugins</td>
+                        <td>30+</td>
+                    </tr>
+                    <tr>
+                        <td>Total Published Content</td>
+                        <td>147 items</td>
+                    </tr>
+                    <tr>
+                        <td>Media Files</td>
+                        <td>879</td>
+                    </tr>
+                    <tr>
+                        <td>Critical Issues</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>High Priority Issues</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>WordPress Version</td>
+                        <td>6.8.3 ✅</td>
+                    </tr>
+                    <tr>
+                        <td>Theme Version</td>
+                        <td>Divi 4.27.4 ✅</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card success">
+                <h4>Overall Assessment</h4>
+                <p><strong>Site Type:</strong> Service-focused legal website</p>
+                <p><strong>Site Health:</strong> Good foundation with some optimization needed</p>
+                <p><strong>Critical Issues:</strong> Plugin conflicts identified (see action items)</p>
+                <p><strong>Performance Potential:</strong> High — manageable content volume</p>
+                <p><strong>Maintenance Level:</strong> Moderate — regular plugin updates needed</p>
+            </div>
+
+            <div class="highlight">
+                <strong>Summary:</strong> Address critical plugin conflicts first, then proceed with optimization improvements. The site has a solid foundation with manageable content volume. With these fixes, performance should improve significantly without requiring theme migration.
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-title">WordPress Site Assessment Report</p>
+            <p class="footer-meta">Future First Criminal Law</p>
+            <p class="footer-meta">Prepared by Omar Corral | November 26, 2025</p>
+            <div class="footer-contact">
+                <span class="footer-contact-item">📧 omar.seogears@gmail.com</span>
+                <span class="footer-contact-item">🌐 omar-corral.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reading Progress Bar & Back to Top
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / windowHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Show/hide back to top button
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to top click
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuToggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('mobileMenuToggle');
+            if (window.innerWidth <= 1024 && !sidebar.contains(e.target) && !toggle.contains(e.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id], header[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Default to dashboard if at top
+            if (window.scrollY < 200) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                document.querySelector('.nav-link[href="#hero"]').classList.add('active');
+            }
+        });
+
+        // Collapsible sections
+        function toggleCollapsible(trigger) {
+            const collapsible = trigger.parentElement;
+            collapsible.classList.toggle('open');
+        }
+
+        // Smooth scroll for nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu after clicking
+                    if (window.innerWidth <= 1024) {
+                        document.getElementById('sidebar').classList.remove('open');
+                    }
+                }
+            });
+        });
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+            updateDarkModeUI(isDarkMode);
+        }
+
+        function updateDarkModeUI(isDarkMode) {
+            const icon = document.querySelector('.dark-mode-icon');
+            const label = document.querySelector('.dark-mode-toggle-label');
+            if (isDarkMode) {
+                icon.textContent = '☀️';
+                label.textContent = 'Light Mode';
+            } else {
+                icon.textContent = '🌙';
+                label.textContent = 'Dark Mode';
+            }
+        }
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            updateDarkModeUI(true);
+        }
+
+        // Action Item Toggle
+        let completedActions = JSON.parse(localStorage.getItem('completedActions') || '[]');
+
+        function toggleAction(element) {
+            const actionId = element.dataset.action;
+            element.classList.toggle('completed');
+            
+            if (element.classList.contains('completed')) {
+                if (!completedActions.includes(actionId)) {
+                    completedActions.push(actionId);
+                }
+            } else {
+                completedActions = completedActions.filter(id => id !== actionId);
+            }
+            
+            localStorage.setItem('completedActions', JSON.stringify(completedActions));
+            updateProgressBar();
+        }
+
+        function updateProgressBar() {
+            const totalActions = 8;
+            const completed = completedActions.length;
+            const percentage = (completed / totalActions) * 100;
+            
+            document.getElementById('actionProgress').style.width = percentage + '%';
+            document.querySelector('.progress-text').innerHTML = `<strong>${completed} of ${totalActions}</strong> tasks completed`;
+        }
+
+        // Initialize completed actions from storage
+        function initializeActions() {
+            completedActions.forEach(actionId => {
+                const actionElement = document.querySelector(`[data-action="${actionId}"]`);
+                if (actionElement) {
+                    actionElement.classList.add('completed');
+                }
+            });
+            updateProgressBar();
+        }
+
+        // Initialize on page load
+        initializeActions();
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for scroll animation
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('scroll-reveal');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
