@@ -1937,9 +1937,242 @@
                 display: none;
             }
         }
+
+        /* ========================================
+           PASSWORD PROTECTION OVERLAY
+           ======================================== */
+        .password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 50%, var(--navy-700) 100%);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .password-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .password-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(212, 168, 83, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .password-modal {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-xl);
+            padding: 48px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: modalAppear 0.6s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .password-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold-500), var(--gold-400));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 24px;
+            box-shadow: 0 8px 20px rgba(212, 168, 83, 0.3);
+        }
+
+        .password-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.75rem;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .password-subtitle {
+            font-size: 0.9rem;
+            color: var(--slate-400);
+            margin-bottom: 32px;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 16px 48px 16px 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .password-input::placeholder {
+            color: var(--slate-500);
+        }
+
+        .password-input:focus {
+            border-color: var(--gold-500);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.2);
+        }
+
+        .password-input.error {
+            border-color: var(--error);
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+            20%, 40%, 60%, 80% { transform: translateX(4px); }
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--slate-400);
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .password-toggle:hover {
+            color: var(--slate-300);
+        }
+
+        .password-submit {
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, var(--gold-500), var(--gold-400));
+            border: none;
+            border-radius: var(--radius-md);
+            color: var(--navy-950);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .password-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 168, 83, 0.4);
+        }
+
+        .password-submit:active {
+            transform: translateY(0);
+        }
+
+        .password-error {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 12px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .password-error.visible {
+            opacity: 1;
+        }
+
+        .password-footer {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .password-footer-text {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+        }
+
+        /* Hide content until authenticated */
+        body.locked .progress-bar,
+        body.locked .sidebar,
+        body.locked .mobile-menu-toggle,
+        body.locked .back-to-top,
+        body.locked .main-content,
+        body.locked footer {
+            display: none !important;
+        }
     </style>
 </head>
-<body>
+<body class="locked">
+    <!-- Password Protection Overlay -->
+    <div class="password-overlay" id="passwordOverlay">
+        <div class="password-modal">
+            <div class="password-icon">🔒</div>
+            <h1 class="password-title">Protected Report</h1>
+            <p class="password-subtitle">This document is confidential.<br>Please enter the password to continue.</p>
+            
+            <form id="passwordForm" onsubmit="return checkPassword(event)">
+                <div class="password-input-wrapper">
+                    <input 
+                        type="password" 
+                        id="passwordInput" 
+                        class="password-input" 
+                        placeholder="Enter password"
+                        autocomplete="off"
+                        autofocus
+                    >
+                    <button type="button" class="password-toggle" onclick="togglePasswordVisibility()" id="passwordToggle">
+                        👁️
+                    </button>
+                </div>
+                <button type="submit" class="password-submit">Access Report</button>
+                <p class="password-error" id="passwordError">Incorrect password. Please try again.</p>
+            </form>
+            
+            <div class="password-footer">
+                <p class="password-footer-text">Future First Criminal Law<br>Site Assessment Report</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Reading Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
 
@@ -3233,6 +3466,73 @@
     </footer>
 
     <script>
+        // ========================================
+        // PASSWORD PROTECTION
+        // ========================================
+        const CORRECT_PASSWORD = 'FFL-report';
+        const SESSION_KEY = 'ffl_report_authenticated';
+
+        // Check if already authenticated this session
+        function checkExistingAuth() {
+            if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+                unlockReport();
+            }
+        }
+
+        function checkPassword(event) {
+            event.preventDefault();
+            const input = document.getElementById('passwordInput');
+            const errorEl = document.getElementById('passwordError');
+            
+            if (input.value === CORRECT_PASSWORD) {
+                sessionStorage.setItem(SESSION_KEY, 'true');
+                unlockReport();
+            } else {
+                input.classList.add('error');
+                errorEl.classList.add('visible');
+                
+                setTimeout(() => {
+                    input.classList.remove('error');
+                }, 500);
+                
+                input.value = '';
+                input.focus();
+            }
+            
+            return false;
+        }
+
+        function unlockReport() {
+            const overlay = document.getElementById('passwordOverlay');
+            overlay.classList.add('hidden');
+            document.body.classList.remove('locked');
+            
+            // Remove overlay from DOM after animation
+            setTimeout(() => {
+                overlay.remove();
+            }, 500);
+        }
+
+        function togglePasswordVisibility() {
+            const input = document.getElementById('passwordInput');
+            const toggle = document.getElementById('passwordToggle');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggle.textContent = '🙈';
+            } else {
+                input.type = 'password';
+                toggle.textContent = '👁️';
+            }
+        }
+
+        // Check authentication on page load
+        checkExistingAuth();
+
+        // ========================================
+        // MAIN FUNCTIONALITY
+        // ========================================
+
         // Reading Progress Bar & Back to Top
         const backToTop = document.getElementById('backToTop');
         
