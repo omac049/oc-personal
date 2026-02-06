@@ -450,6 +450,51 @@
       line-height: 1.5;
     }
 
+    /* Positioning Considerations */
+    .considerations-list {
+      list-style: none;
+      display: grid;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .considerations-list li {
+      padding: 24px 24px 24px 56px;
+      position: relative;
+      background: var(--light);
+      border-radius: 16px;
+      border: 1px solid transparent;
+      border-left: 4px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    .considerations-list li:hover {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border-color: var(--primary-lighter);
+    }
+
+    .considerations-list li::before {
+      content: '📌';
+      position: absolute;
+      left: 20px;
+      top: 24px;
+      font-size: 1.2rem;
+    }
+
+    .considerations-list li strong {
+      color: var(--dark);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .considerations-list li span {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
     /* Page Cards */
     .pages-grid {
       display: grid;
@@ -1294,6 +1339,10 @@
         padding: 20px 20px 20px 60px;
       }
 
+      .considerations-list li {
+        padding: 20px 20px 20px 56px;
+      }
+
       .goals-list li::before {
         left: 16px;
         width: 32px;
@@ -1490,6 +1539,14 @@
 
       .goals-list li {
         padding: 18px 16px 18px 52px;
+      }
+
+      .considerations-list li {
+        padding: 18px 16px 18px 52px;
+      }
+
+      .considerations-list li::before {
+        left: 14px;
       }
 
       .goals-list li::before {
@@ -1968,6 +2025,61 @@
     </div>
   </section>
 
+  <!-- Understanding Your Website & Clear Expectations -->
+  <section>
+    <h2>Understanding Your Website</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle">Here's how websites work and what to expect — I want to be upfront so we're aligned from day one.</p>
+    
+    <div class="education-grid">
+      <div class="education-card">
+        <div class="education-icon">🏠</div>
+        <h4>Domain Name</h4>
+        <p class="subtitle">Your Address</p>
+        <p><strong>figshomecare.com</strong><br>How people find you online</p>
+        <span class="education-badge included">Included</span>
+      </div>
+      
+      <div class="education-card">
+        <div class="education-icon">🖥️</div>
+        <h4>Web Hosting</h4>
+        <p class="subtitle">Your Land</p>
+        <p>Where your website files live on the internet</p>
+        <span class="education-badge separate">~$10-30/month</span>
+      </div>
+      
+      <div class="education-card">
+        <div class="education-icon">✨</div>
+        <h4>Website</h4>
+        <p class="subtitle">Your House</p>
+        <p>The design, content, and functionality</p>
+        <span class="education-badge included">Included</span>
+      </div>
+    </div>
+
+    <div class="content-highlight" style="background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);">
+      <h3>What's Included vs. Ongoing Costs</h3>
+      <p style="margin-bottom: 0;">
+        <strong>Included:</strong> Domain registration, website design & development, content writing, SSL certificate<br>
+        <strong>Separate:</strong> Web hosting (~$10-30/mo), domain renewal (after year 1)
+      </p>
+    </div>
+
+    <h3>What Else to Expect</h3>
+    <ul class="considerations-list">
+      <li>
+        <strong>Results, Not Just Looks</strong>
+        <span>You're investing in a site that works for you. I focus on content, SEO, and clear calls-to-action so families can find you and take the next step — not just a beautiful design.</span>
+      </li>
+      <li>
+        <strong>Revision Rounds</strong>
+        <span>Each package includes a set number of revision rounds (1, 2, or more). That way you know what to expect and I can deliver on time without scope creep.</span>
+      </li>
+    </ul>
+
+    <p style="margin-top: 24px; font-size: 0.95rem; color: var(--text-light); text-align: center;"><em>I'll recommend reliable hosting providers and help you get set up. You'll have full control of your hosting account.</em></p>
+  </section>
+
   <!-- Timeline -->
   <section>
     <h2>Project Timeline</h2>
@@ -2068,7 +2180,7 @@
         <div class="step-number"></div>
         <div class="step-content">
           <h4>Schedule a Call</h4>
-          <p>Let's discuss the proposal details — <a href="tel:+13053315727">call 305-331-5727</a> or I'll reach out</p>
+          <p>I'll be in touch to schedule a follow-up call to go over this document with you.</p>
         </div>
       </div>
       <div class="step">
@@ -2093,48 +2205,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Website Education -->
-  <section>
-    <h2>Understanding Your Website</h2>
-    <div class="section-divider"></div>
-    <p class="section-subtitle">Here's a quick guide to how websites work — think of it like building a house:</p>
-    
-    <div class="education-grid">
-      <div class="education-card">
-        <div class="education-icon">🏠</div>
-        <h4>Domain Name</h4>
-        <p class="subtitle">Your Address</p>
-        <p><strong>figshomecare.com</strong><br>How people find you online</p>
-        <span class="education-badge included">Included</span>
-      </div>
-      
-      <div class="education-card">
-        <div class="education-icon">🖥️</div>
-        <h4>Web Hosting</h4>
-        <p class="subtitle">Your Land</p>
-        <p>Where your website files live on the internet</p>
-        <span class="education-badge separate">~$10-30/month</span>
-      </div>
-      
-      <div class="education-card">
-        <div class="education-icon">✨</div>
-        <h4>Website</h4>
-        <p class="subtitle">Your House</p>
-        <p>The design, content, and functionality</p>
-        <span class="education-badge included">Included</span>
-      </div>
-    </div>
-
-    <div class="content-highlight" style="background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);">
-      <h3>What's Included vs. Ongoing Costs</h3>
-      <p style="margin-bottom: 0;">
-        <strong>Included:</strong> Domain registration, website design & development, content writing, SSL certificate<br>
-        <strong>Separate:</strong> Web hosting (~$10-30/mo), domain renewal (after year 1)
-      </p>
-    </div>
-    <p style="margin-top: 20px; font-size: 0.95rem; color: var(--text-light); text-align: center;"><em>I'll recommend reliable hosting providers and help you get set up. You'll have full control of your hosting account.</em></p>
   </section>
 
   <!-- Brand Colors -->
