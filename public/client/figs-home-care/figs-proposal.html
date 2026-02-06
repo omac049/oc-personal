@@ -50,6 +50,7 @@
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
+      -webkit-overflow-scrolling: touch;
     }
 
     body {
@@ -59,11 +60,25 @@
       background: var(--gradient-soft);
       min-height: 100vh;
       min-height: -webkit-fill-available;
+      min-height: 100dvh;
       overflow-x: hidden;
+      overscroll-behavior-y: contain;
       /* Safe area for notched devices */
       padding-left: env(safe-area-inset-left);
       padding-right: env(safe-area-inset-right);
       padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .animate-in,
+      .header-badge::before {
+        animation: none;
+      }
     }
 
     h1, h2, h3, h4 {
@@ -74,6 +89,33 @@
       color: inherit;
       -webkit-tap-highlight-color: rgba(102, 76, 141, 0.2);
       tap-highlight-color: rgba(102, 76, 141, 0.2);
+      touch-action: manipulation;
+    }
+
+    /* Engaging tap feedback on mobile */
+    @media (hover: none) {
+      .overview-item:active,
+      .goals-list li:active,
+      .considerations-list li:active,
+      .page-card:active,
+      .content-item:active,
+      .material-item:active,
+      .reference-item:active,
+      .step:active,
+      .package:active,
+      .education-card:active {
+        transform: scale(0.98);
+      }
+
+      .cta-item a:active {
+        opacity: 0.9;
+        transform: scale(0.97);
+      }
+
+      .page-card a:active,
+      .step-content a:active {
+        opacity: 0.85;
+      }
     }
 
     /* Animations */
@@ -240,6 +282,8 @@
       display: block;
       width: calc(100% + 1.3px);
       height: 60px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
     .header-wave .shape-fill {
@@ -1288,6 +1332,14 @@
     }
 
     @media (max-width: 768px) {
+      .header-wave svg {
+        height: 48px;
+      }
+
+      section {
+        scroll-margin-top: 20px;
+      }
+
       .header {
         padding: 60px 20px 70px;
         padding-top: max(60px, env(safe-area-inset-top));
@@ -1452,8 +1504,12 @@
       }
     }
 
-    /* Small phones (iPhone SE, older Android) */
+    /* Small phones (iPhone SE, iPhone 12/13 mini, older Android) */
     @media (max-width: 480px) {
+      .header-wave svg {
+        height: 40px;
+      }
+
       .header-decoration,
       .header-decoration-2 {
         opacity: 0.5;
@@ -1720,6 +1776,21 @@
       .footer-note {
         font-size: 0.75rem;
         padding: 10px 18px;
+      }
+    }
+
+    /* Large iPhones (14/15 Pro, 14/15 Plus) - 391–430px: slightly larger typography */
+    @media (min-width: 391px) and (max-width: 430px) {
+      .header h1 {
+        font-size: 2.15rem;
+      }
+
+      section h2 {
+        font-size: 1.6rem;
+      }
+
+      .package .price {
+        font-size: 2rem;
       }
     }
 
