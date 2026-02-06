@@ -25,26 +25,6 @@ client/
 
 ---
 
-## 🏛️ Current Clients
-
-### Future First Criminal Law
-**Folder:** `future-first-law/`  
-**Client Contact:** Alicia Kea  
-**Project:** WordPress Theme Installation (Divi → Goldenblatt)  
-**Status:** 🟡 Proposal Stage  
-**Start Date:** TBD
-
-📂 [View Project Files](./future-first-law/)
-
----
-
-## 📋 File Organization Standards
-
-### Client Folder Naming
-- Use lowercase with hyphens
-- Keep names short but recognizable
-- Examples: `future-first-law`, `acme-corp`, `tech-startup`
-
 ### Required Files Per Client
 1. **README.md** - Client-specific overview
 2. **START-HERE.md** - Navigation guide
@@ -73,10 +53,6 @@ client/
 ```
 [client-name]-[document-type]-[description].[extension]
 
-Examples:
-- future-first-law-proposal.html
-- future-first-law-migration-analysis.md
-- acme-corp-seo-audit-2025-11.md
 ```
 
 ---
@@ -177,7 +153,6 @@ Examples:
 ## 📝 Templates Available
 
 - **Email Templates:** `EMAIL-TEMPLATE.md`
-- **Proposal Structure:** See `future-first-law/` for example
 - **Presentation Format:** HTML presentation template
 
 ---
@@ -217,5 +192,5 @@ When a project is completed:
 
 ---
 
-**Last Updated:** November 19, 2025  
-**Next Review:** After first client project completion
+
+
