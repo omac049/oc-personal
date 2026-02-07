@@ -30,9 +30,10 @@ jobs:
             ~/.npm
             ./node_modules
             ./seo-resources/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          # Bump cache-version to invalidate all caches (e.g. after clearing or troubleshooting)
+          key: ${{ runner.os }}-node-v1-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-node-v1-
 
       - name: Install main site dependencies
         run: |
