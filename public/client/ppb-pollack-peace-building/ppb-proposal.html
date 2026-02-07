@@ -371,50 +371,109 @@
 
     section h3:first-of-type { margin-top: 0; }
 
-    /* ----- Situation grid ----- */
+    /* ----- Situation ----- */
+    .situation-context-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      margin-top: 8px;
+    }
+
     .situation-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 32px;
+      margin-top: 0;
     }
 
     .situation-card {
       background: var(--light);
-      padding: 32px 24px;
+      padding: 28px 24px 32px;
       border-radius: var(--radius);
       text-align: center;
-      border: 1px solid transparent;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--text-muted);
       transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
     }
 
     .situation-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow), 0 8px 24px -8px rgba(30, 58, 95, 0.15);
       border-color: var(--border-strong);
     }
+
+    .situation-card.risk {
+      border-left-color: #b91c1c;
+      background: linear-gradient(180deg, rgba(185, 28, 28, 0.04) 0%, var(--light) 100%);
+    }
+    .situation-card.risk .situation-card-label { color: #b91c1c; }
 
     .situation-card.highlight {
       background: linear-gradient(145deg, var(--primary-mid) 0%, var(--primary) 100%);
       color: var(--surface);
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.15);
+      border-left-color: var(--accent);
     }
 
-    .situation-card.highlight:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .situation-card.highlight:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg), 0 12px 32px -8px rgba(30, 58, 95, 0.25); }
 
-    .situation-card label {
-      font-size: 0.68rem;
+    .situation-card.hosting { border-left-color: var(--primary-mid); }
+    .situation-card.hosting .situation-card-label { color: var(--primary); }
+
+    .situation-card-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .situation-card.risk .situation-card-icon { background: rgba(185, 28, 28, 0.12); }
+    .situation-card.highlight .situation-card-icon { background: rgba(255, 255, 255, 0.2); }
+    .situation-card.hosting .situation-card-icon { background: var(--accent-muted); }
+
+    .situation-card-label {
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 1.4px;
+      letter-spacing: 1.5px;
       color: var(--text-muted);
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      font-weight: 600;
     }
 
-    .situation-card.highlight label { color: rgba(255, 255, 255, 0.75); }
+    .situation-card.highlight .situation-card-label { color: rgba(255, 255, 255, 0.85); }
 
-    .situation-card span { font-size: 0.95rem; font-weight: 600; color: var(--dark); display: block; line-height: 1.4; }
-    .situation-card.highlight span { color: var(--surface); }
+    .situation-card-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+      display: block;
+      line-height: 1.45;
+    }
+    .situation-card.highlight .situation-card-value { color: var(--surface); }
+
+    .situation-subsection {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .situation-subsection h3 {
+      margin-top: 0;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
 
     /* ----- Goals / checklist ----- */
     .goals-list { list-style: none; display: grid; gap: 16px; }
@@ -971,26 +1030,43 @@
       <h2>Situation</h2>
       <p class="section-subtitle">Your site has faced repeated bot-related issues. We’re proposing a structured security audit and hardening plan to reduce risk and improve resilience.</p>
 
+      <p class="situation-context-heading">Context at a glance</p>
       <div class="situation-grid">
-        <div class="situation-card" data-aos="fade-up" data-aos-duration="400" data-aos-delay="0"><label>Attack types</label><span>Login brute force, form/contact spam, DDoS</span></div>
-        <div class="situation-card highlight" data-aos="fade-up" data-aos-duration="400" data-aos-delay="80"><label>Current defense</label><span>Cloudflare (free)</span></div>
-        <div class="situation-card" data-aos="fade-up" data-aos-duration="400" data-aos-delay="160"><label>Hosting</label><span>Hostinger (shared)</span></div>
+        <div class="situation-card risk" data-aos="fade-up" data-aos-duration="400" data-aos-delay="0">
+          <div class="situation-card-icon" aria-hidden="true">⚠</div>
+          <span class="situation-card-label">Attack types</span>
+          <span class="situation-card-value">Login brute force, form/contact spam, DDoS</span>
+        </div>
+        <div class="situation-card highlight" data-aos="fade-up" data-aos-duration="400" data-aos-delay="80">
+          <div class="situation-card-icon" aria-hidden="true">🛡</div>
+          <span class="situation-card-label">Current defense</span>
+          <span class="situation-card-value">Cloudflare (free)</span>
+        </div>
+        <div class="situation-card hosting" data-aos="fade-up" data-aos-duration="400" data-aos-delay="160">
+          <div class="situation-card-icon" aria-hidden="true">◉</div>
+          <span class="situation-card-label">Hosting</span>
+          <span class="situation-card-value">Hostinger (shared)</span>
+        </div>
       </div>
 
-      <h3>Findings from your WordPress export</h3>
-      <p class="section-subtitle" style="margin-bottom: 18px;">Our review of your site export identified these items we’ll address in scope:</p>
-      <ul class="goals-list" style="margin-bottom: 28px;">
-        <li><strong>User accounts</strong> <span>Confirm roles so only necessary users are Administrator; ensure strong passwords and 2FA for all users with login access. (Your shared admin account is correct as-is.)</span></li>
-        <li><strong>Plugin consolidation</strong> <span>If both Yoast SEO and Rank Math are active, we’ll keep one and remove the other to reduce attack surface and avoid conflicts.</span></li>
-      </ul>
+      <div class="situation-subsection">
+        <h3>Findings from your WordPress export</h3>
+        <p class="section-subtitle" style="margin-bottom: 20px;">Our review of your site export identified these items we’ll address in scope:</p>
+        <ul class="goals-list" style="margin-bottom: 0;">
+          <li><strong>User accounts</strong> <span>Confirm roles so only necessary users are Administrator; ensure strong passwords and 2FA for all users with login access. (Your shared admin account is correct as-is.)</span></li>
+          <li><strong>Plugin consolidation</strong> <span>If both Yoast SEO and Rank Math are active, we’ll keep one and remove the other to reduce attack surface and avoid conflicts.</span></li>
+        </ul>
+      </div>
 
-      <h3>Our approach</h3>
-      <ul class="goals-list">
-        <li><strong>WordPress & plugin hygiene</strong> <span>Update core, themes, and plugins; remove unused or abandoned plugins to shrink the attack surface.</span></li>
-        <li><strong>Security hardening</strong> <span>Strong logins, two-factor authentication (2FA), login lockout, disable file editing, and automated backups.</span></li>
-        <li><strong>Cloudflare tuning</strong> <span>Ensure Bot Fight Mode and Security level are set appropriately; add simple firewall/rate rules where useful.</span></li>
-        <li><strong>Additional security layer</strong> <span>We recommend Cloudflare Pro and Wordfence Premium for stronger bot/WAF protection and real-time updates; free tiers are available as a baseline if you prefer.</span></li>
-      </ul>
+      <div class="situation-subsection">
+        <h3>Our approach</h3>
+        <ul class="goals-list">
+          <li><strong>WordPress & plugin hygiene</strong> <span>Update core, themes, and plugins; remove unused or abandoned plugins to shrink the attack surface.</span></li>
+          <li><strong>Security hardening</strong> <span>Strong logins, two-factor authentication (2FA), login lockout, disable file editing, and automated backups.</span></li>
+          <li><strong>Cloudflare tuning</strong> <span>Ensure Bot Fight Mode and Security level are set appropriately; add simple firewall/rate rules where useful.</span></li>
+          <li><strong>Additional security layer</strong> <span>We recommend Cloudflare Pro and Wordfence Premium for stronger bot/WAF protection and real-time updates; free tiers are available as a baseline if you prefer.</span></li>
+        </ul>
+      </div>
     </section>
 
     <section id="scope" data-aos="fade-up" data-aos-duration="500" data-aos-offset="60">
