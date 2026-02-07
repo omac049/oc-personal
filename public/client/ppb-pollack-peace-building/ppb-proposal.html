@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0c1929">
+  <title>Security Audit & Hardening Proposal | Pollack Peacebuilding Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0c1929',
+            accent: '#d97706',
+            'accent-soft': '#f59e0b',
+          },
+          fontFamily: { sans: ['DM Sans', 'system-ui'], serif: ['Fraunces', 'Georgia'] },
+          boxShadow: {
+            'glow': '0 0 40px -10px rgba(217, 119, 6, 0.35)',
+            'glow-lg': '0 0 60px -15px rgba(217, 119, 6, 0.4)',
+            'inner-glow': 'inset 0 0 60px -20px rgba(217, 119, 6, 0.08)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --primary: #0c1929;
+      --primary-mid: #1a2d4a;
+      --primary-light: #2d4a73;
+      --accent: #d97706;
+      --accent-soft: #f59e0b;
+      --accent-muted: rgba(217, 119, 6, 0.12);
+      --dark: #0f172a;
+      --text: #334155;
+      --text-light: #64748b;
+      --text-muted: #94a3b8;
+      --light: #f8fafc;
+      --surface: #ffffff;
+      --border: rgba(12, 25, 41, 0.08);
+      --border-strong: rgba(12, 25, 41, 0.12);
+      --shadow-sm: 0 1px 3px rgba(12, 25, 41, 0.06);
+      --shadow: 0 4px 24px rgba(12, 25, 41, 0.08);
+      --shadow-lg: 0 12px 48px rgba(12, 25, 41, 0.12);
+      --shadow-glow: 0 0 0 1px rgba(217, 119, 6, 0.2), 0 8px 32px rgba(217, 119, 6, 0.15);
+      --gradient-hero: linear-gradient(160deg, #0c1929 0%, #1a2d4a 40%, #243b5c 100%);
+      --gradient-hero-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(217, 119, 6, 0.18), transparent 60%);
+      --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+      --gradient-border: linear-gradient(135deg, rgba(217,119,6,0.5), rgba(245,158,11,0.3), rgba(217,119,6,0.2));
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--light);
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; }
+
+    a {
+      color: var(--primary-mid);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    a:hover { color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* ----- Nav ----- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--primary);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .nav-logo:hover { opacity: 0.9; text-decoration: none; }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-light);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+    }
+    .nav-links a:hover { color: var(--accent); background: var(--accent-muted); }
+
+    /* ----- Hero ----- */
+    .hero {
+      background: var(--gradient-hero);
+      color: var(--surface);
+      padding: 80px 24px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.6;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      position: relative;
+    }
+
+    .hero-logo {
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .hero-logo img {
+      max-height: 64px;
+      width: auto;
+      display: inline-block;
+      object-fit: contain;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      opacity: 0.92;
+      font-weight: 400;
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-wave {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+      overflow: hidden;
+    }
+
+    .hero-wave svg {
+      width: calc(100% + 1.3px);
+      height: 56px;
+      display: block;
+    }
+
+    .hero-wave .shape-fill { fill: var(--light); }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-hero-glow);
+      pointer-events: none;
+    }
+
+    @keyframes shine {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .hero-badge {
+      animation: fadeIn 0.8s ease-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ----- Container & layout ----- */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* ----- Table of contents ----- */
+    .toc {
+      background: var(--surface);
+      margin: -32px auto 40px;
+      padding: 28px 32px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow), 0 0 0 1px rgba(255,255,255,0.6) inset;
+      max-width: 900px;
+      border: 1px solid var(--border);
+      position: relative;
+      z-index: 2;
+    }
+
+    .toc h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+
+    .toc-grid a {
+      font-size: 0.95rem;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--light);
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+    .toc-grid a:hover { background: var(--accent-muted); color: var(--accent); transform: translateY(-1px); }
+
+    /* ----- Sections ----- */
+    section {
+      background: var(--surface);
+      margin: 0 auto 36px;
+      padding: 48px 44px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm), 0 0 0 1px rgba(255,255,255,0.5) inset;
+      max-width: 900px;
+      border: 1px solid var(--border);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    section:hover { box-shadow: var(--shadow), 0 8px 30px -12px rgba(12, 25, 41, 0.12); }
+
+    .section-num {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    section h2 {
+      color: var(--primary);
+      font-size: 1.85rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+
+    .section-divider {
+      width: 56px;
+      height: 4px;
+      background: var(--gradient-accent);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    section h3 {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 32px 0 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    section h3:first-of-type { margin-top: 0; }
+
+    /* ----- Situation grid ----- */
+    .situation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .situation-card {
+      background: var(--light);
+      padding: 28px 22px;
+      border-radius: var(--radius);
+      text-align: center;
+      border: 1px solid transparent;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .situation-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: var(--border-strong);
+    }
+
+    .situation-card.highlight {
+      background: linear-gradient(145deg, var(--primary-mid) 0%, var(--primary) 100%);
+      color: var(--surface);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .situation-card.highlight:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+    .situation-card label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .situation-card.highlight label { color: rgba(255, 255, 255, 0.75); }
+
+    .situation-card span { font-size: 0.95rem; font-weight: 600; color: var(--dark); display: block; line-height: 1.4; }
+    .situation-card.highlight span { color: var(--surface); }
+
+    /* ----- Goals / checklist ----- */
+    .goals-list { list-style: none; display: grid; gap: 14px; }
+
+    .goals-list li {
+      padding: 20px 24px 20px 58px;
+      position: relative;
+      background: var(--light);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--accent);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .goals-list li:hover { background: var(--accent-muted); transform: translateX(4px); }
+
+    .goals-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background: var(--gradient-accent);
+      color: var(--surface);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .goals-list li strong { color: var(--dark); display: block; margin-bottom: 4px; font-size: 1rem; }
+    .goals-list li span { color: var(--text-light); font-size: 0.92rem; line-height: 1.55; }
+
+    /* ----- Scope table ----- */
+    .scope-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .scope-table th,
+    .scope-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .scope-table th {
+      background: var(--light);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .scope-table tbody tr { transition: background var(--transition); }
+    .scope-table tbody tr:hover td { background: var(--accent-muted); }
+    .scope-table tbody tr:last-child td { border-bottom: none; }
+
+    .scope-table code {
+      font-size: 0.85em;
+      background: var(--light);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: ui-monospace, monospace;
+    }
+
+    .scope-table.compact { font-size: 0.88rem; }
+    .scope-table.compact th, .scope-table.compact td { padding: 12px 16px; }
+    .scope-table.compact td:nth-child(3) { font-size: 0.82rem; color: var(--text-light); }
+
+    /* ----- Fee box ----- */
+    .fee-box {
+      background: linear-gradient(145deg, var(--primary) 0%, var(--primary-mid) 100%);
+      color: var(--surface);
+      border-radius: var(--radius-xl);
+      padding: 48px 44px;
+      margin: 32px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255, 255, 255, 0.08) inset, 0 20px 50px -20px rgba(0,0,0,0.25);
+    }
+
+    .fee-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 60%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .fee-box .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.9;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .fee-box .amount {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.25rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .fee-box .note {
+      font-size: 0.98rem;
+      opacity: 0.92;
+      margin-top: 20px;
+      line-height: 1.6;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    .fee-box .terms {
+      font-size: 0.85rem;
+      opacity: 0.82;
+      margin-top: 16px;
+      position: relative;
+    }
+
+    /* ----- Investment phases ----- */
+    .investment-phases {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .phase-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      position: relative;
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .phase-card:hover { box-shadow: var(--shadow); }
+
+    .phase-card.phase-1 {
+      border-color: var(--primary-mid);
+      background: linear-gradient(180deg, var(--light) 0%, var(--surface) 100%);
+      box-shadow: var(--shadow), 0 0 0 1px rgba(26, 45, 74, 0.06) inset;
+    }
+    .phase-card.phase-1:hover { box-shadow: var(--shadow-lg), 0 0 30px -8px rgba(12, 25, 41, 0.2); }
+
+    .phase-card.phase-2 {
+      border-color: var(--border-strong);
+    }
+
+    .phase-card .phase-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .phase-card.phase-2 .phase-tag { color: var(--text-light); }
+
+    .phase-card .phase-optional {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 50px;
+      background: var(--light);
+      color: var(--text-light);
+      margin-left: 10px;
+    }
+
+    .phase-card h3.phase-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0 0 16px;
+      text-transform: none;
+      letter-spacing: -0.01em;
+    }
+
+    .phase-card .phase-amount {
+      font-family: 'Fraunces', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .phase-card .phase-unit {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .phase-card .phase-hours {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .phase-card .phase-desc {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .phase-card .phase-recommend {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .investment-terms {
+      margin-top: 28px;
+      padding: 24px 28px;
+      background: var(--light);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .investment-terms strong { color: var(--dark); }
+
+    /* ----- Data & compliance ----- */
+    .compliance-list { list-style: none; }
+
+    .compliance-list li {
+      padding: 14px 0 14px 30px;
+      position: relative;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compliance-list li:last-child { border-bottom: none; }
+
+    .compliance-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* ----- Packages (investment) ----- */
+    .packages { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
+
+    .package {
+      background: var(--light);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px 26px;
+      transition: all var(--transition);
+    }
+
+    .package:hover { border-color: var(--border-strong); box-shadow: var(--shadow); }
+
+    .package.recommended {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-glow), 0 0 0 1px rgba(217, 119, 6, 0.15) inset;
+      background: var(--surface);
+    }
+
+    .package h4 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .package .tag {
+      display: inline-block;
+      background: var(--gradient-accent);
+      color: var(--surface);
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .package ul { list-style: none; margin-top: 14px; }
+    .package li {
+      padding: 8px 0 8px 22px;
+      position: relative;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .package li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .package .price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ----- Next steps ----- */
+    .steps-list { list-style: none; counter-reset: step; }
+
+    .steps-list li {
+      padding: 20px 0 20px 56px;
+      position: relative;
+      counter-increment: step;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+
+    .steps-list li:hover { background: var(--light); }
+
+    .steps-list li:last-child { border-bottom: none; }
+
+    .steps-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 20px;
+      width: 36px;
+      height: 36px;
+      background: var(--gradient-accent);
+      color: var(--surface);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .steps-list li strong { color: var(--dark); display: block; margin-bottom: 6px; }
+    .steps-list li span { font-size: 0.95rem; color: var(--text-light); line-height: 1.5; }
+
+    /* ----- Site Health ----- */
+    .health-summary { display: flex; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
+
+    .health-badge {
+      background: var(--light);
+      padding: 16px 24px;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--accent);
+      flex: 1;
+      min-width: 160px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .health-badge:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+    .health-badge.critical { border-left-color: #dc2626; }
+    .health-badge.recommended { border-left-color: var(--primary-mid); }
+
+    .health-badge strong { display: block; color: var(--dark); font-size: 1.1rem; margin-bottom: 4px; }
+    .health-badge span { font-size: 0.9rem; color: var(--text-light); }
+
+    .health-list { list-style: none; }
+    .health-list li {
+      padding: 14px 0 14px 28px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .health-list li:last-child { border-bottom: none; }
+    .health-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .health-list.critical li::before { background: #dc2626; }
+
+    /* ----- Footer ----- */
+    .footer {
+      background: var(--primary);
+      color: var(--surface);
+      padding: 56px 24px;
+      text-align: center;
+      margin-top: 48px;
+      position: relative;
+    }
+
+    .footer-site-link {
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .footer-site-link img {
+      height: 36px;
+      width: auto;
+      opacity: 0.95;
+    }
+    .footer-site-link:hover img { opacity: 1; }
+    .footer-client {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+    .footer h3 { color: var(--surface); font-size: 1.35rem; margin-bottom: 10px; }
+    .footer p { opacity: 0.9; font-size: 0.98rem; }
+    .footer a { color: var(--accent-soft); font-weight: 500; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ----- Back to top ----- */
+    .back-to-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent-soft);
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.08);
+      transition: background var(--transition), color var(--transition);
+    }
+    .back-to-top:hover { background: rgba(255, 255, 255, 0.14); color: var(--surface); }
+
+    /* ----- Responsive ----- */
+    @media (max-width: 768px) {
+      .hero { padding: 56px 20px 72px; }
+      .hero h1 { font-size: 1.9rem; }
+      .toc { margin: -24px 16px 32px; padding: 22px 24px; }
+      .toc-grid { grid-template-columns: 1fr; }
+      section { padding: 36px 24px; margin-left: 16px; margin-right: 16px; max-width: none; }
+      .situation-grid { grid-template-columns: 1fr; }
+      .investment-phases { grid-template-columns: 1fr; }
+      .packages { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media print {
+      .nav, .toc, .back-to-top { display: none !important; }
+      body { background: var(--surface); }
+      section {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+      }
+      .hero { padding: 48px 24px 56px; }
+      a[href]::after { content: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav shadow-sm" aria-label="Proposal navigation">
+    <div class="nav-inner">
+      <a href="https://pollackpeacebuilding.com/" class="nav-logo" target="_blank" rel="noopener" aria-label="Pollack Peacebuilding Systems">
+        <img src="https://pollackpeacebuilding.com/wp-content/uploads/2020/12/orange-blue-logo.png" alt="Pollack Peacebuilding Systems" width="180" height="40">
+        <span class="nav-brand">Proposal</span>
+      </a>
+      <div class="nav-links">
+        <a href="#situation">Situation</a>
+        <a href="#scope">Scope</a>
+        <a href="#plugin-inventory">Plugins</a>
+        <a href="#investment">Investment</a>
+        <a href="#next-steps">Next steps</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <a href="https://pollackpeacebuilding.com/" class="hero-logo" target="_blank" rel="noopener" data-aos="fade-down" data-aos-duration="600" aria-label="Pollack Peacebuilding Systems">
+      <img src="https://pollackpeacebuilding.com/wp-content/uploads/2020/12/orange-blue-logo.png" alt="Pollack Peacebuilding Systems" width="200" height="64">
+    </a>
+    <div class="hero-badge" data-aos="fade-down" data-aos-duration="600" data-aos-delay="50">Proposal</div>
+    <h1 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">Security Audit & Hardening</h1>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">Workplace Conflict Resolution Consulting — pollackpeacebuilding.com</p>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </header>
+
+  <div class="toc" data-aos="fade-up" data-aos-duration="500" data-aos-offset="80">
+    <h2>In this proposal</h2>
+    <div class="toc-grid">
+      <a href="#situation">Situation</a>
+      <a href="#scope">Scope of work</a>
+      <a href="#plugin-inventory">Plugin inventory</a>
+      <a href="#complete-scope">Complete scope</a>
+      <a href="#data-compliance">Data & compliance</a>
+      <a href="#site-health">Site Health</a>
+      <a href="#investment">Investment</a>
+      <a href="#next-steps">Next steps</a>
+    </div>
+  </div>
+
+  <main>
+    <section id="situation" data-aos="fade-up" data-aos-duration="500" data-aos-offset="60">
+      <span class="section-num">01</span>
+      <div class="section-divider"></div>
+      <h2>Situation</h2>
+      <p class="section-subtitle">Your site has faced repeated bot-related issues. We’re proposing a structured security audit and hardening plan to reduce risk and improve resilience.</p>
+
+      <div class="situation-grid">
+        <div class="situation-card" data-aos="fade-up" data-aos-duration="400" data-aos-delay="0"><label>Attack types</label><span>Login brute force, form/contact spam, DDoS</span></div>
+        <div class="situation-card highlight" data-aos="fade-up" data-aos-duration="400" data-aos-delay="80"><label>Current defense</label><span>Cloudflare (free)</span></div>
+        <div class="situation-card" data-aos="fade-up" data-aos-duration="400" data-aos-delay="160"><label>Hosting</label><span>Hostinger (shared)</span></div>
+      </div>
+
+      <h3>Findings from your WordPress export</h3>
+      <p class="section-subtitle" style="margin-bottom: 18px;">Our review of your site export identified these items we’ll address in scope:</p>
+      <ul class="goals-list" style="margin-bottom: 28px;">
+        <li><strong>User accounts</strong> <span>Confirm roles so only necessary users are Administrator; ensure strong passwords and 2FA for all users with login access. (Your shared admin account is correct as-is.)</span></li>
+        <li><strong>Plugin consolidation</strong> <span>If both Yoast SEO and Rank Math are active, we’ll keep one and remove the other to reduce attack surface and avoid conflicts.</span></li>
+      </ul>
+
+      <h3>Our approach</h3>
+      <ul class="goals-list">
+        <li><strong>WordPress & plugin hygiene</strong> <span>Update core, themes, and plugins; remove unused or abandoned plugins to shrink the attack surface.</span></li>
+        <li><strong>Security hardening</strong> <span>Strong logins, two-factor authentication (2FA), login lockout, disable file editing, and automated backups.</span></li>
+        <li><strong>Cloudflare tuning</strong> <span>Ensure Bot Fight Mode and Security level are set appropriately; add simple firewall/rate rules where useful.</span></li>
+        <li><strong>Additional security layer</strong> <span>We recommend Cloudflare Pro and Wordfence Premium for stronger bot/WAF protection and real-time updates; free tiers are available as a baseline if you prefer.</span></li>
+      </ul>
+    </section>
+
+    <section id="scope" data-aos="fade-up" data-aos-duration="500" data-aos-offset="60">
+      <span class="section-num">02</span>
+      <div class="section-divider"></div>
+      <h2>Scope of work</h2>
+      <p class="section-subtitle">A practical checklist we’ll work through with your WordPress export and access.</p>
+
+      <table class="scope-table">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Updates & cleanup</strong></td>
+            <td>Update WordPress core, all plugins, active theme; <strong>set PHP version compatible with WordPress</strong> (Hostinger reports PHP 8.3 not compatible with current WP—we’ll align PHP with the WordPress version); remove unused plugins; hide WordPress version. If both Yoast SEO and Rank Math are active, keep one and remove the other.</td>
+          </tr>
+          <tr>
+            <td><strong>Login & admin</strong></td>
+            <td>Confirm only necessary users are Administrator; enforce strong passwords; enable 2FA for admins; limit login attempts (e.g. Wordfence); disable file editing in <code>wp-config.php</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>Cloudflare</strong></td>
+            <td>Confirm Bot Fight Mode and Security level; add firewall/rate rules for <code>/wp-admin</code> and login if needed.</td>
+          </tr>
+          <tr>
+            <td><strong>WordPress security plugin</strong></td>
+            <td>Review and configure Wordfence (free) if already installed; install only if missing. Ensure firewall, malware scan, login lockout, and 2FA are enabled. Run a vulnerability scan (e.g. Wordfence, Jetpack Protect, WPScan) after updates.</td>
+          </tr>
+          <tr>
+            <td><strong>Backups</strong></td>
+            <td>Set up automated backups (Hostinger or plugin) and ensure at least one off-site backup with a tested restore.</td>
+          </tr>
+          <tr>
+            <td><strong>Form & spam</strong></td>
+            <td>Add form spam protection (e.g. reCAPTCHA, hCaptcha, or Cloudflare Turnstile) to contact/request forms to reduce bot submissions.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="plugin-inventory" data-aos="fade-up" data-aos-duration="500" data-aos-offset="60">
+      <span class="section-num">03</span>
+      <div class="section-divider"></div>
+      <h2>Plugin & theme inventory (from export)</h2>
+      <p class="section-subtitle">Inferred from your WordPress export. Active/Inactive must be confirmed in Dashboard → Plugins. Site Health reported 14 plugins need updates and 14 inactive.</p>
+
+      <table class="scope-table compact">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Plugin or theme</th>
+            <th>Evidence in export</th>
+            <th>Recommendation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Advanced Custom Fields (ACF)</td><td>Post types: acf-field, acf-field-group</td><td>Keep & update if you use custom fields; else remove.</td></tr>
+          <tr><td>2</td><td>All in One Schema Rich Snippets (BSF)</td><td>Post type: aiosrs-schema; meta: bsf-aiosrs-*</td><td>Consolidate: use one schema solution only (Rank Math, Yoast, SASWP).</td></tr>
+          <tr><td>3</td><td>AMP for WP</td><td>Meta: amp_*, ampforwp_*</td><td>Keep & update if you use AMP; else remove.</td></tr>
+          <tr><td>4</td><td>Beaver Builder (FL Builder)</td><td>Meta: _fl_builder_*</td><td>Keep & update if you build pages with it; else remove.</td></tr>
+          <tr><td>5</td><td>Bold Timeline</td><td>Post type: bold-timeline (3 items)</td><td>Keep & update if timeline content is used; else remove.</td></tr>
+          <tr><td>6</td><td>Classic Editor</td><td>Meta: classic-editor-remember</td><td>Keep & update if you prefer classic editor; else remove.</td></tr>
+          <tr><td>7</td><td>Duplicate Post</td><td>Meta: _dp_*</td><td>Remove if unused; else keep & update.</td></tr>
+          <tr><td>8</td><td>Easy Table of Contents (EZ TOC)</td><td>Meta: _ez-toc-*</td><td>Keep & update if TOC is used; else remove.</td></tr>
+          <tr><td>9</td><td>Elementor (and possibly Pro)</td><td>Meta: _elementor_*, _elementor_pro_version</td><td>Keep & update (core to layout). Update both if Pro active.</td></tr>
+          <tr><td>10</td><td>Header Footer (e.g. for Elementor)</td><td>Meta: hefo_*</td><td>Keep & update if used for global header/footer; else remove.</td></tr>
+          <tr><td>11</td><td>Imagify</td><td>Meta: _imagify_* on attachments</td><td>Keep & update if used; if Smush also active, use one image optimizer only.</td></tr>
+          <tr><td>12</td><td>LifterLMS</td><td>Post type: llms_txt</td><td>Keep & update if you run courses; else remove (large surface).</td></tr>
+          <tr><td>13</td><td>Rank Math SEO</td><td>Meta: rank_math_*</td><td>Consolidate: if Yoast also active, keep one, remove the other. Then keep & update.</td></tr>
+          <tr><td>14</td><td>SASWP (Schema & Structured Data)</td><td>Post type: saswp; meta: saswp_*</td><td>Consolidate: use one schema solution only. Update or remove.</td></tr>
+          <tr><td>15</td><td>Smush</td><td>Meta: wp-smush-*, wp-smpro-smush-*</td><td>Keep & update if used; if Imagify also active, keep one only.</td></tr>
+          <tr><td>16</td><td>WP Internal Links (Link Whisper / wpil)</td><td>Term meta: wpil_*</td><td>Keep & update if you use internal linking; else remove.</td></tr>
+          <tr><td>17</td><td>WPForms</td><td>Meta: wpforms_form_locations</td><td>Keep & update (forms in use). Fix license (Site Health critical).</td></tr>
+          <tr><td>18</td><td>Yoast SEO</td><td>Meta: _yoast_wpseo_*</td><td>Consolidate: if Rank Math also active, keep one, remove the other. Then keep & update.</td></tr>
+          <tr><td>—</td><td>Celest (parent theme)</td><td>Client confirmed</td><td>Keep & update. Parent + child is the recommended setup for customizations; update parent first.</td></tr>
+          <tr><td>—</td><td>Celest child theme</td><td>Client confirmed</td><td>Keep & update. Customizations live here and survive parent theme updates.</td></tr>
+          <tr><td>—</td><td>Bold Themes (if still present)</td><td>Meta: boldthemes_*; portfolio</td><td>If replaced by Celest, remove; else keep & update.</td></tr>
+          <tr><td>—</td><td>Primer (possible theme)</td><td>Meta: primer_layout</td><td>Confirm in Appearance; if unused, remove.</td></tr>
+          <tr><td>—</td><td>Default theme (e.g. Twenty Twenty-Four)</td><td>—</td><td>Install one and leave inactive as fallback if not already present.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Summary</h3>
+      <ul class="compliance-list" style="margin-top: 14px;">
+        <li><strong>Consolidate SEO/schema:</strong> Use one of Rank Math, Yoast, All in One Schema, SASWP. Remove or disable the others.</li>
+        <li><strong>Consolidate image optimization:</strong> If both Imagify and Smush are active, keep one and remove the other.</li>
+        <li><strong>Remove</strong> any plugin that is Inactive and not needed (confirm with you before deleting).</li>
+        <li><strong>Update</strong> every Active plugin and the active theme first.</li>
+        <li><strong>Theme setup:</strong> Celest parent + Celest child is the <strong>recommended approach</strong> — customizations go in the child and survive parent updates; always update the parent theme first, then test.</li>
+      </ul>
+    </section>
+
+    <section id="complete-scope" data-aos="fade-up" data-aos-duration="500" data-aos-offset="60">
+      <span class="section-num">04</span>
+      <div class="section-divider"></div>
+      <h2>Complete scope of work (detailed)</h2>
+      <p class="section-subtitle">Everything we will do as part of this engagement.</p>
+
+      <h3>WordPress & plugin hygiene</h3>
+      <ul class="goals-list">
+        <li><strong>Update WordPress core</strong> <span>To latest stable (e.g. 6.9.1). After full backup.</span></li>
+        <li><strong>PHP version compatibility</strong> <span>Hostinger reports PHP 8.3 is not compatible with the current WordPress version. We’ll set PHP (in hPanel → Advanced → PHP Configuration or similar) to a version that matches WordPress requirements (e.g. 8.1 or 8.2 per WP compatibility) to avoid errors and security issues.</span></li>
+        <li><strong>Plugin & theme audit</strong> <span>Confirm Active/Inactive for each plugin in the inventory table; apply Keep / Remove / Consolidate per recommendations.</span></li>
+        <li><strong>Update all active plugins and theme</strong> <span>Install available updates. For Celest: update the parent theme first, then test with the child active. Resolve WPForms license or replace.</span></li>
+        <li><strong>Remove unused plugins</strong> <span>Delete inactive plugins you don’t need (with your approval). Consolidate duplicate SEO/schema and image-optimizer plugins.</span></li>
+        <li><strong>Hide WordPress version</strong> <span>Remove generator meta and version from front-end (plugin or code).</span></li>
+        <li><strong>Install default theme fallback</strong> <span>One default theme (e.g. Twenty Twenty-Four) installed and inactive.</span></li>
+      </ul>
+
+      <h3>Security hardening</h3>
+      <ul class="goals-list">
+        <li><strong>Review & configure Wordfence (free)</strong> <span>Confirm Wordfence is installed; if so, verify firewall, malware scan, login lockout, and 2FA for admins are properly configured. Install only if not present.</span></li>
+        <li><strong>User account review</strong> <span>Confirm only necessary users are Administrator; enforce strong passwords; enable 2FA for all users with login access.</span></li>
+        <li><strong>Disable file editing</strong> <span>Add <code>define( 'DISALLOW_FILE_EDIT', true );</code> in <code>wp-config.php</code> above “That’s all, stop editing!” This removes the Theme Editor and Plugin Editor from WP admin; content editing (posts, pages) is unchanged.</span></li>
+        <li><strong>Run vulnerability scan</strong> <span>After updates (Wordfence, Jetpack Protect, or WPScan).</span></li>
+      </ul>
+
+      <h3>Cloudflare & form protection</h3>
+      <ul class="goals-list">
+        <li><strong>Cloudflare tuning</strong> <span>Confirm Bot Fight Mode and Security level; add firewall/rate rules for /wp-admin and login if needed.</span></li>
+        <li><strong>Form spam protection</strong> <span>Add reCAPTCHA, hCaptcha, or Cloudflare Turnstile to contact/request forms.</span></li>
+      </ul>
+
+      <h3>Site Health & backups</h3>
+      <ul class="goals-list">
+        <li><strong>Fix REST API & loopback (403)</strong> <span>Allow /wp-json and loopback in Wordfence (or host) so auto-updates and cron work.</span></li>
+        <li><strong>Backups</strong> <span>Set up automated backups (Hostinger or plugin); ensure at least one off-site backup; verify restore works.</span></li>
+      </ul>
+
+      <h3>Data & compliance</h3>
+      <ul class="goals-list">
+        <li><strong>Privacy Policy</strong> <span>Confirm a clear Privacy Policy is published and linked (footer) for contact form data.</span></li>
+      </ul>
+    </section>
+
+    <section id="data-compliance" data-aos="fade-up" data-aos-duration="500" data-aos-offset="60">
+      <span class="section-num">05</span>
+      <div class="section-divider"></div>
+      <h2>Data & compliance</h2>
+      <p class="section-subtitle">Based on a review of your site (contact form and public pages).</p>
+
+      <ul class="compliance-list">
+        <li>Your contact / “Request a Call Back” form collects <strong>Name, Phone, Email, Message</strong>. We recommend a clear <strong>Privacy Policy</strong> (linked in footer) that explains how you collect, use, and retain this data.</li>
+        <li>Ensure all forms are served over <strong>HTTPS</strong> (already in place if your site uses SSL).</li>
+        <li>Add <strong>form spam protection</strong> (e.g. reCAPTCHA, Cloudflare Turnstile) to cut down on bot submissions and protect contact data quality.</li>
+        <li>We did not identify payment or health data; focus is on standard B2B contact data handling and transparency.</li>
+      </ul>
+    </section>
+
+    <section id="site-health" data-aos="fade-up" data-aos-duration="500" data-aos-offset="60">
+      <span class="section-num">06</span>
+      <div class="section-divider"></div>
+      <h2>Site Health (WordPress)</h2>
+      <p class="section-subtitle">From your Site Health report. Addressing these items will improve security, updates, and performance.</p>
+
+      <div class="health-summary">
+        <div class="health-badge critical">
+          <strong>2 critical</strong>
+          <span>Prioritize first</span>
+        </div>
+        <div class="health-badge recommended">
+          <strong>8 recommended</strong>
+          <span>Beneficial to address</span>
+        </div>
+      </div>
+
+      <h3>Critical issues</h3>
+      <ul class="health-list critical">
+        <li><strong>WPForms license expired</strong> — Renew at <a href="https://wpforms.com/account/" target="_blank" rel="noopener">wpforms.com/account</a> or remove/replace WPForms. Without a valid license you lose updates, security fixes, and support.</li>
+        <li><strong>Background updates not working</strong> — Often tied to REST API / loopback returning 403. Fix REST API and loopback (security plugin or host) so core and plugins can auto-update.</li>
+      </ul>
+
+      <h3>Recommended improvements</h3>
+      <ul class="health-list">
+        <li><strong>WordPress update available (6.9.1)</strong> — Install via Dashboard → Updates after a backup.</li>
+        <li><strong>Remove inactive plugins & update plugins</strong> — 14 plugins need updates; 14 inactive. Update all active; delete inactive ones you don’t need (or document for approval).</li>
+        <li><strong>Default theme</strong> — Install one default theme (e.g. Twenty Twenty-Four) and leave inactive as a fallback if the active theme fails.</li>
+        <li><strong>Scheduled event failed</strong> (<code>action_scheduler_run_queue</code>) — Usually fixed once loopback/REST API work; then re-check Site Health.</li>
+        <li><strong>REST API 403 Forbidden</strong> — Allow <code>/wp-json</code> in Wordfence (or similar) and host firewall; block editor and cron depend on it.</li>
+        <li><strong>Persistent object cache</strong> — Host supports Redis/Memcached; enabling one (via host + plugin) will speed up the site.</li>
+        <li><strong>Loopback request failed (403)</strong> — Same fix as REST API: allow requests to your own site URL (security plugin / host).</li>
+        <li><strong>Page cache not detected</strong> — May be a side effect of loopback failure; after fixing loopback, confirm Hostinger or a cache plugin is serving cache headers.</li>
+      </ul>
+
+
+      <h3>PHP version (Hostinger)</h3>
+      <p class="section-subtitle" style="margin-bottom: 12px;">Hostinger reports that your current PHP version (8.3) is not compatible with your current WordPress version. This can cause errors and should be addressed during stabilization.</p>
+      <ul class="health-list">
+        <li><strong>Action</strong> — In Hostinger hPanel, set PHP to a version compatible with your WordPress release (e.g. PHP 8.1 or 8.2; check <a href="https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/" target="_blank" rel="noopener">WordPress PHP requirements</a>). Typically: Advanced → PHP Configuration (or similar), select the PHP version for this site. We’ll include this in Phase 1 scope.</li>
+      </ul>
+    </section>
+
+    <section id="investment" data-aos="fade-up" data-aos-duration="500" data-aos-offset="60">
+      <span class="section-num">07</span>
+      <div class="section-divider"></div>
+      <h2>Project investment</h2>
+      <p class="section-subtitle">Structured in two phases: an upfront stabilization, then an optional ongoing layer to keep your security posture strong over time.</p>
+
+      <div class="investment-phases">
+        <div class="phase-card phase-1" data-aos="fade-right" data-aos-duration="500" data-aos-offset="40">
+          <span class="phase-tag">Phase 1</span>
+          <h3 class="phase-title">Security Stabilization</h3>
+          <div class="phase-amount">$1,200 – $1,500</div>
+          <div class="phase-unit">One-time</div>
+          <div class="phase-hours">Est. 10–12 hours total</div>
+          <p class="phase-desc">Full scope in this proposal: WordPress & plugin audit and updates, <strong>PHP version compatibility</strong> (align Hostinger PHP with WordPress—currently reported incompatible), Wordfence review & config (install only if not already on site), 2FA for admins, Cloudflare tuning, backup setup, Site Health critical fixes (REST/loopback, WPForms), form spam protection, hide version, disable file editing, and handoff summary. Final quote confirmed after scope walkthrough.</p>
+        </div>
+
+        <div class="phase-card phase-2" data-aos="fade-left" data-aos-duration="500" data-aos-offset="40">
+          <span class="phase-tag">Phase 2</span>
+          <span class="phase-optional">Optional</span>
+          <h3 class="phase-title">Ongoing Protection</h3>
+          <div class="phase-amount">$150 – $300</div>
+          <div class="phase-unit">Per month</div>
+          <p class="phase-desc">Monthly retainer for ongoing security maintenance: updates, monitoring, and keeping protections effective.</p>
+          <p class="phase-recommend">Phase 2 is recommended after stabilization to maintain security posture, reduce future risk, and ensure updates and protections remain effective over time. No pressure—just logic.</p>
+        </div>
+      </div>
+
+      <div class="investment-terms">
+        <p><strong>Excludes:</strong> WPForms license renewal, Cloudflare Pro, Wordfence Premium, or other third-party subscriptions you choose to add.</p>
+      </div>
+
+      <h3>Software (your costs)</h3>
+      <p class="section-subtitle" style="margin-bottom: 18px;">We recommend the paid versions below for stronger bot protection, real-time security updates, and better support. You pay the provider directly; pricing is separate from our Phase 1 fee.</p>
+      <ul class="goals-list">
+        <li><strong>Cloudflare Pro (recommended)</strong> <span>~$20/month. Super Bot Fight Mode, more WAF and rate-limiting rules, and better DDoS/bot protection than the free tier. We’ll tune it as part of Phase 1. Sign up at cloudflare.com/plans.</span></li>
+        <li><strong>Wordfence Premium (recommended)</strong> <span>Annual subscription. Real-time firewall rule updates, priority support, and country blocking. Complements Cloudflare and keeps your WordPress security current. Sign up at wordfence.com.</span></li>
+        <li><strong>Free tier (baseline)</strong> <span>If you prefer to start without paid add-ons: Wordfence (free), Cloudflare (free) tuning, and Hostinger or plugin backups. We can upgrade to Pro/Premium later if needed.</span></li>
+        <li><strong>WPForms license</strong> <span>If you keep WPForms, renew at wpforms.com/account so you receive updates and support. (Site Health critical item.)</span></li>
+      </ul>
+    </section>
+
+    <section id="next-steps" data-aos="fade-up" data-aos-duration="500" data-aos-offset="60">
+      <span class="section-num">08</span>
+      <div class="section-divider"></div>
+      <h2>Next steps</h2>
+      <p class="section-subtitle">WordPress export and access have been received. What happens next:</p>
+
+      <ol class="steps-list">
+        <li><strong>Approve this proposal</strong> <span>Confirm you’d like to proceed with Phase 1: Security Stabilization.</span></li>
+        <li><strong>We complete Phase 1</strong> <span>We run through the full scope: audit and updates, Wordfence review & config, 2FA for admins, Cloudflare tuning, backup setup, Site Health fixes, form spam protection, and handoff summary.</span></li>
+        <li><strong>Optional: Phase 2 — Ongoing Protection</strong> <span>After stabilization, we can discuss a monthly retainer ($150–$300/month) to maintain security posture, apply updates, and keep protections effective. No pressure—just an option.</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer" data-aos="fade-up" data-aos-duration="500">
+    <a href="https://pollackpeacebuilding.com/" target="_blank" rel="noopener" class="footer-site-link">
+      <img src="https://pollackpeacebuilding.com/wp-content/uploads/2020/12/orange-blue-logo.png" alt="Pollack Peacebuilding Systems" width="120" height="32">
+    </a>
+    <p class="footer-client">Security proposal prepared for Pollack Peacebuilding Systems</p>
+    <h3>Omar Corral</h3>
+    <p>Consultant — Security audit & hardening proposal</p>
+    <p><a href="mailto:omar.webhosting@gmail.com">omar.webhosting@gmail.com</a> · <a href="https://omar-corral.com" target="_blank" rel="noopener">omar-corral.com</a></p>
+    <a href="#" class="back-to-top rounded-lg hover:shadow-lg transition-shadow" aria-label="Back to top">↑ Back to top</a>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 500,
+      offset: 60,
+      once: true,
+      easing: 'ease-out-cubic',
+    });
+  </script>
+</body>
+</html>
