@@ -5,8 +5,8 @@
  * Use this if you prefer CDN over npm package
  * 
  * Add to your docusaurus.config.ts head tags:
- * <link rel="stylesheet" href="https://unpkg.com/@algolia/sitesearch@latest/dist/search-askai.min.css" />
- * <script src="https://unpkg.com/@algolia/sitesearch@latest/dist/search-askai.min.js"></script>
+ * <link rel="stylesheet" href="https://unpkg.com/@algolia/sitesearch@1.0.12/dist/search-askai.min.css" />
+ * <script src="https://unpkg.com/@algolia/sitesearch@1.0.12/dist/search-askai.min.js"></script>
  */
 
 import React, { useEffect, useRef } from 'react';

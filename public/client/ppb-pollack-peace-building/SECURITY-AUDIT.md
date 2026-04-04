@@ -49,7 +49,7 @@ Use this as a **checklist and reference** when you have access to the WordPress 
 | Finding | Detail | Action (see checklist below) |
 |--------|--------|------------------------------|
 | **WordPress version** | Export shows 6.1.9 (outdated). | Update core to latest (§3.1, §7). |
-| **User accounts** | 3 authors: GSC Admin (admin@growthsciencecap.com), omarc, JeremyP. **GSC Admin is intentional** — client uses this as shared admin for all their sites. | Confirm roles; strong passwords + 2FA (§4.1, §7). |
+| **User accounts** | 3 authors: GSC Admin ([redacted]), omarc, JeremyP. **GSC Admin is intentional** — client uses this as shared admin for all their sites. | Confirm roles; strong passwords + 2FA (§4.1, §7). |
 | **Comments** | Client confirmed: comments are off site-wide; 0 comments. Export showed some `comment_status` = open (legacy); **not a current issue**. | None unless you later enable comments. |
 | **Version leakage** | Generator tag exposes WordPress version. | Hide version after update (§3.3, §7). |
 

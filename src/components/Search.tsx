@@ -45,21 +45,24 @@ export default function Search({ isOpen, onClose }: SearchProps) {
       instantsearch.widgets.hits({
         container: '#search-hits',
         templates: {
-          item: (hit: any, { html, components }: any) => html`
+          item: (hit: any, { html, components }: any) => {
+            const safeUrl = (hit.url && /^https?:\/\//i.test(hit.url)) ? hit.url : '#';
+            return html`
             <article class="search-hit">
               <div class="search-hit-content">
                 <h3 class="search-hit-title">
-                  <a href="${hit.url}" class="search-hit-link" onclick="window.parent.closeSearch()">
+                  <a href="${safeUrl}" class="search-hit-link" rel="noopener noreferrer">
                     ${components.Highlight({ hit, attribute: 'title' })}
                   </a>
                 </h3>
                 <p class="search-hit-description">
                   ${components.Highlight({ hit, attribute: 'description' })}
                 </p>
-                <span class="search-hit-url">${hit.url}</span>
+                <span class="search-hit-url">${safeUrl}</span>
               </div>
             </article>
-          `,
+          `;
+          },
           empty: `
             <div class="search-empty">
               <p>No results found for your search.</p>

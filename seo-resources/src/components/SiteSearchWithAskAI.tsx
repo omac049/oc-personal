@@ -49,14 +49,14 @@ export default function SiteSearchWithAskAI({
         if (!document.querySelector('link[href*="sitesearch"]')) {
           const link = document.createElement('link');
           link.rel = 'stylesheet';
-          link.href = 'https://unpkg.com/@algolia/sitesearch@latest/dist/search-askai.min.css';
+          link.href = 'https://unpkg.com/@algolia/sitesearch@1.0.12/dist/search-askai.min.css';
           document.head.appendChild(link);
         }
 
         // Load JS
         if (!document.querySelector('script[src*="sitesearch"]')) {
           const script = document.createElement('script');
-          script.src = 'https://unpkg.com/@algolia/sitesearch@latest/dist/search-askai.min.js';
+          script.src = 'https://unpkg.com/@algolia/sitesearch@1.0.12/dist/search-askai.min.js';
           script.onload = () => resolve();
           script.onerror = () => {
             console.error('Failed to load SiteSearch CDN script');

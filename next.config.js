@@ -9,23 +9,54 @@ const nextConfig = {
   // GitHub Pages deployment configuration for custom domain
   assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
   basePath: process.env.NODE_ENV === 'production' ? '' : '',
+
+  // Security headers
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+        ],
+      },
+    ];
+  },
   
   // Enhanced SEO and crawlability features
   experimental: {
     scrollRestoration: true,
-    // Enable modern bundling optimizations
     esmExternals: true,
   },
 
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
-    // Remove React DevTools in production
     reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
 
-  // Performance optimizations (swcMinify is default in Next.js 13+)
-  
   // Webpack configuration to ignore seo-resources directory
   webpack: (config, { isServer }) => {
     // Ignore seo-resources directory during build to prevent conflicts

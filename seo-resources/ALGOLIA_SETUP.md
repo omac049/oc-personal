@@ -27,8 +27,11 @@ Your Docusaurus site is configured to use Algolia DocSearch for search functiona
 | Key Type | Value | Usage | Safe to Commit? |
 |----------|-------|-------|-----------------|
 | **Search API Key** | `c3a190e475e64ffda0f8bbd9a40e69c1` | Docusaurus config | ✅ Yes (Public) |
-| **Write API Key** | `49f5af2ab8c2675c662b033b7e52c935` | Crawler config | ❌ No (Private) |
-| **Admin API Key** | `b1661f0f390e28a7a5b3ee15a0000eed` | Dashboard/admin | ❌ No (Private) |
+| **Write API Key** | *Set via `ALGOLIA_WRITE_API_KEY` env var* | Crawler config | ❌ No (Private) |
+| **Admin API Key** | *Set via `ALGOLIA_ADMIN_API_KEY` env var* | Dashboard/admin | ❌ No (Private) |
+
+> **IMPORTANT:** Write and Admin API keys must NEVER be committed to version control.
+> Store them in environment variables or a `.env` file (already in `.gitignore`).
 
 ## Setting Up the Crawler in Algolia Dashboard
 
@@ -59,7 +62,7 @@ The crawler is responsible for indexing your site's content. Follow these steps:
 The crawler config should include:
 
 - **appId**: `ZLQ21UNSR7`
-- **apiKey**: `49f5af2ab8c2675c662b033b7e52c935` (Write API Key)
+- **apiKey**: `$ALGOLIA_WRITE_API_KEY` (Write API Key — set via environment variable)
 - **startUrls**: 
   - `https://omar-corral.com/seo-resources/`
   - `https://omar-corral.com/seo-resources/docs/`

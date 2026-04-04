@@ -48,9 +48,9 @@ Inferred from post types, taxonomies, and post meta only (not from a plugin/them
 
 | Login    | Display name   | Email |
 |----------|----------------|--------|
-| GSC Admin | GSC Admin     | admin@growthsciencecap.com |
-| omarc    | omarc         | omar.webhosting@gmail.com |
-| JeremyP  | Jeremy Pollack | jeremy@pollackpeacebuilding.com |
+| GSC Admin | GSC Admin     | [redacted] |
+| omarc    | omarc         | [redacted] |
+| JeremyP  | Jeremy Pollack | [redacted] |
 
 ---
 

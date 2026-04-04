@@ -329,7 +329,7 @@
 
     @page {
       size: letter;
-      margin: 0.4in;
+      margin: 0.35in;
     }
 
     @media print {
@@ -338,41 +338,50 @@
         padding: 0;
         margin: 0;
         max-width: none;
-        font-size: 12px;
-        line-height: 1.4;
+        font-size: 11px;
+        line-height: 1.35;
       }
       .download-pdf-bar { display: none !important; }
       .invoice-page {
         box-shadow: none;
-        border: 1px solid #ddd;
-        padding: 0.28in 0.4in;
+        border: none;
+        padding: 0.2in 0.3in;
         max-width: none;
         page-break-inside: avoid;
       }
-      .invoice-logo img { height: 32px; }
-      .invoice-logo-text { font-size: 1.25rem; }
-      .invoice-header { padding-bottom: 0.14in; margin-bottom: 0.16in; }
-      .invoice-title { font-size: 1.4rem; }
-      .invoice-meta .inv-number, .invoice-meta .inv-date { font-size: 0.85rem; }
-      .invoice-meta .service-period { font-size: 0.75rem; }
-      .line-item-detail ul, .sites-group { font-size: 0.72rem; }
-      .sites-group ul { margin-left: 0.9em; }
-      .parties { gap: 0.22in; margin-bottom: 0.18in; }
-      .party-name { font-size: 1rem; }
-      .party-details, .party-details p { font-size: 0.8rem; }
-      .invoice-table { font-size: 0.8rem; }
-      .invoice-table th, .invoice-table td { padding: 6px 10px; }
-      .invoice-total-row td { padding: 8px 10px; font-size: 1rem; }
-      .line-item-desc { font-size: 0.85rem; }
-      .line-item-detail { font-size: 0.78rem; }
-      .payment-block { margin-top: 0.16in; padding: 0.12in 0.18in; }
-      .payment-block h3 { font-size: 0.85rem; margin-bottom: 6px; }
-      .payment-block .payment-meta { font-size: 0.78rem; margin-bottom: 10px; }
-      .payment-block dl { font-size: 0.78rem; }
-      .payment-block dt { margin-top: 6px; }
-      .payment-block .inv-ref { font-size: 0.72rem; margin-top: 8px; }
-      .invoice-footer { margin-top: 0.16in; padding-top: 0.12in; font-size: 0.75rem; }
-      .print-instruction-print { display: block !important; font-size: 0.65rem; margin-top: 0.1in; padding-top: 0.08in; }
+      .invoice-logo { margin-bottom: 10px; }
+      .invoice-logo img { height: 28px; }
+      .invoice-logo-text { font-size: 1.1rem; }
+      .invoice-header { padding-bottom: 0.1in; margin-bottom: 0.12in; }
+      .invoice-header-row { gap: 12px; }
+      .invoice-title { font-size: 1.2rem; }
+      .invoice-meta .inv-number { font-size: 0.8rem; }
+      .invoice-meta .inv-date { font-size: 0.8rem; }
+      .invoice-meta .service-period { font-size: 0.7rem; margin-top: 3px; }
+      .parties { gap: 0.18in; margin-bottom: 0.12in; }
+      .party-label { font-size: 0.6rem; margin-bottom: 4px; }
+      .party-name { font-size: 0.9rem; margin-bottom: 2px; }
+      .party-details, .party-details p { font-size: 0.72rem; margin-bottom: 1px; }
+      .invoice-table { font-size: 0.72rem; margin-bottom: 0; }
+      .invoice-table th { padding: 4px 8px; font-size: 0.62rem; }
+      .invoice-table td { padding: 6px 8px; }
+      .invoice-total-row td { padding: 6px 8px; font-size: 0.9rem; }
+      .line-item-desc { font-size: 0.78rem; }
+      .line-item-detail { font-size: 0.68rem; margin-top: 3px; }
+      .line-item-detail ul { margin: 4px 0 0 1em; }
+      .line-item-detail li { margin-bottom: 1px; }
+      .sites-group { margin-top: 6px; font-size: 0.68rem; }
+      .sites-group strong { margin-bottom: 2px; font-size: 0.68rem; }
+      .sites-group ul { margin: 0 0 0 0.9em; columns: 2; column-gap: 1em; }
+      .sites-group li { margin-bottom: 1px; }
+      .payment-block { margin-top: 0.1in; padding: 0.08in 0.14in; }
+      .payment-block h3 { font-size: 0.75rem; margin-bottom: 4px; }
+      .payment-block .payment-meta { font-size: 0.68rem; margin-bottom: 6px; }
+      .payment-block dl { font-size: 0.68rem; }
+      .payment-block dt { margin-top: 4px; }
+      .payment-block .inv-ref { font-size: 0.62rem; margin-top: 6px; }
+      .invoice-footer { margin-top: 0.1in; padding-top: 0.08in; font-size: 0.65rem; }
+      .print-instruction-print { display: none !important; }
     }
   </style>
 </head>
@@ -434,8 +443,6 @@
               <li>Routine security scans and hardening</li>
               <li>Ongoing monitoring of Google Search Console for security concerns</li>
               <li>Fixes if updates impact layout or functionality</li>
-              <li>Uptime monitoring and alerts</li>
-              <li>Simple monthly summary report</li>
             </ul>
             <div class="sites-group">
               <strong>Hostinger</strong>
