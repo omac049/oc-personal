@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1e3a5f">
-  <title>Invoice | Pollack Peacebuilding Systems — Omar Corral</title>
+  <title>Invoice INV-PPB-003 | Multi-site support — Omar Corral</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&display=swap" rel="stylesheet">
@@ -100,6 +100,36 @@
     .invoice-meta .inv-date {
       font-size: 0.95rem;
       color: var(--text-light);
+    }
+
+    .invoice-meta .service-period {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .line-item-detail ul {
+      margin: 8px 0 0 1.1em;
+      padding: 0;
+    }
+
+    .line-item-detail li { margin-bottom: 4px; }
+
+    .sites-group {
+      margin-top: 10px;
+      font-size: 0.88rem;
+    }
+
+    .sites-group strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .sites-group ul {
+      margin: 0 0 0 1.1em;
+      padding: 0;
     }
 
     .parties {
@@ -324,6 +354,9 @@
       .invoice-header { padding-bottom: 0.14in; margin-bottom: 0.16in; }
       .invoice-title { font-size: 1.4rem; }
       .invoice-meta .inv-number, .invoice-meta .inv-date { font-size: 0.85rem; }
+      .invoice-meta .service-period { font-size: 0.75rem; }
+      .line-item-detail ul, .sites-group { font-size: 0.72rem; }
+      .sites-group ul { margin-left: 0.9em; }
       .parties { gap: 0.22in; margin-bottom: 0.18in; }
       .party-name { font-size: 1rem; }
       .party-details, .party-details p { font-size: 0.8rem; }
@@ -353,8 +386,9 @@
       <div class="invoice-header-row">
         <h1 class="invoice-title">Invoice</h1>
         <div class="invoice-meta">
-          <div class="inv-number">INV-PPB-002</div>
-          <div class="inv-date">February 25, 2026</div>
+          <div class="inv-number">INV-PPB-003</div>
+          <div class="inv-date">March 3, 2026</div>
+          <div class="service-period"><strong>Service period:</strong> March 3, 2026 – April 3, 2026 (first month)</div>
         </div>
       </div>
     </header>
@@ -364,7 +398,7 @@
         <div class="party-label">From</div>
         <div class="party-name">Omar Corral</div>
         <div class="party-details">
-          <p>Consultant — Security audit & hardening</p>
+          <p>Consultant — WordPress support & security</p>
           <p><a href="mailto:omar.webhosting@gmail.com" style="color: var(--primary);">omar.webhosting@gmail.com</a></p>
           <p><a href="https://omar-corral.com" style="color: var(--primary);">omar-corral.com</a></p>
         </div>
@@ -390,18 +424,50 @@
       <tbody>
         <tr>
           <td>
-            <div class="line-item-desc">Phase 1: Security Stabilization — completed</div>
+            <div class="line-item-desc">Phase 2: Multi-site support — first monthly billing cycle</div>
             <div class="line-item-detail">
-              WordPress & plugin audit and updates; Wordfence review & config; 2FA for admins; Cloudflare tuning; backup setup; Site Health critical fixes (REST/loopback); form spam protection; hide version; disable file editing; handoff summary. Per agreed proposal scope.
+              Agreed ongoing support plan: <strong>$350–$450/month</strong>. This invoice is for the first month, <strong>March 3 – April 3, 2026</strong>, covering <strong>13 WordPress properties</strong> as discussed.
+            </div>
+            <div class="line-item-detail" style="margin-top: 10px;"><strong>Includes:</strong></div>
+            <ul>
+              <li>Weekly WordPress core, theme, and plugin updates</li>
+              <li>Routine security scans and hardening</li>
+              <li>Ongoing monitoring of Google Search Console for security concerns</li>
+              <li>Fixes if updates impact layout or functionality</li>
+              <li>Uptime monitoring and alerts</li>
+              <li>Simple monthly summary report</li>
+            </ul>
+            <div class="sites-group">
+              <strong>Hostinger</strong>
+              <ul>
+                <li>pollackpeacebuilding.com</li>
+                <li>levantage.ai</li>
+                <li>growthsciencecapitalholdings.com</li>
+                <li>navigentai.com</li>
+                <li>glialsolutions.com</li>
+                <li>real-estate-de-escalation.com</li>
+              </ul>
+            </div>
+            <div class="sites-group">
+              <strong>Hosting.com</strong>
+              <ul>
+                <li>conflict-resolution-training.com</li>
+                <li>constructiveteams.com</li>
+                <li>deescalation-training.com</li>
+                <li>growthsciencecap.com</li>
+                <li>peacefulleadersacademy.com</li>
+                <li>thoughtmarketingagency.com</li>
+                <li>workplace-conflict-resolution.com</li>
+              </ul>
             </div>
           </td>
-          <td>$1,500.00</td>
+          <td>$400.00</td>
         </tr>
       </tbody>
       <tfoot>
         <tr class="invoice-total-row">
           <td class="total-label">Total due</td>
-          <td class="total-amount">$1,500.00</td>
+          <td class="total-amount">$400.00</td>
         </tr>
       </tfoot>
     </table>
@@ -409,7 +475,7 @@
     <div class="payment-block">
       <h3>Payment terms & details</h3>
       <p class="payment-meta">
-        <span><strong>Amount due:</strong> $1,500.00 USD</span>
+        <span><strong>Amount due:</strong> $400.00 USD</span>
         <span><strong>Due:</strong> Upon receipt (Net 15 if preferred)</span>
       </p>
       <dl>
@@ -420,13 +486,13 @@
         <dt>Wire transfer</dt>
         <dd>Routing 021000021 · Account same as above</dd>
       </dl>
-      <p class="inv-ref">Please include invoice number <strong>INV-PPB-002</strong> with your payment. Thank you for your business.</p>
+      <p class="inv-ref">Please include invoice number <strong>INV-PPB-003</strong> and service period (Mar 3 – Apr 3, 2026) with your payment. Thank you, Jeremy.</p>
     </div>
 
     <p class="print-instruction-print">To save as PDF: In the print dialog, choose &quot;Save as PDF&quot; or &quot;Microsoft Print to PDF&quot; as the destination, then save.</p>
 
     <footer class="invoice-footer">
-      Invoice prepared by Omar Corral · Security audit & hardening · <a href="ppb-proposal.html" style="color: var(--primary);">View proposal</a>
+      Omar Corral · WordPress support & security · omar-corral.com
     </footer>
   </div>
 

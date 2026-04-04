@@ -18,6 +18,10 @@
     "test:links": "docusaurus build && docusaurus serve",
     "dev": "npm run start"
   },
+  "overrides": {
+    "minimatch": "^10.2.2",
+    "qs": "^6.14.1"
+  },
   "dependencies": {
     "@algolia/sitesearch": "^1.0.9",
     "@docusaurus/core": "^3.9.1",

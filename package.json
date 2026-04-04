@@ -14,13 +14,16 @@
     "serve": "npx serve@latest out",
     "analyze": "ANALYZE=true npm run build"
   },
+  "overrides": {
+    "minimatch": "^10.2.2"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.1",
     "@fortawesome/free-brands-svg-icons": "^7.0.1",
     "@fortawesome/free-solid-svg-icons": "^7.0.1",
     "@fortawesome/react-fontawesome": "^3.0.2",
     "framer-motion": "^12.23.12",
-    "next": "15.5.2",
+    "next": "15.5.12",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "web-vitals": "^5.1.0"
@@ -32,7 +35,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.2",
+    "eslint-config-next": "15.5.12",
     "gh-pages": "^6.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
