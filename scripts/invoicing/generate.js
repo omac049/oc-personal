@@ -41,10 +41,10 @@ function shortMonth(monthIndex) {
 function getMonthNumber(client) {
   const [firstYear, firstMonth] = client.firstBillingMonth.split('-').map(Number);
   const now = new Date();
-  const currentYear = now.getFullYear();
-  const currentMonth = now.getMonth() + 1;
+  const billingYear = now.getMonth() === 0 ? now.getFullYear() - 1 : now.getFullYear();
+  const billingMonth = now.getMonth() === 0 ? 12 : now.getMonth();
 
-  return (currentYear - firstYear) * 12 + (currentMonth - firstMonth) + 1;
+  return (billingYear - firstYear) * 12 + (billingMonth - firstMonth) + 1;
 }
 
 function buildIncludesList(includes) {
@@ -92,18 +92,18 @@ function generateInvoice(client, sender, payment, template) {
   const invoiceNum = `${client.invoicePrefix}-${String(client.nextInvoiceNumber).padStart(3, '0')}`;
 
   const now = new Date();
-  const currentYear = now.getFullYear();
-  const currentMonth = now.getMonth();
+  const prevMonth = now.getMonth() === 0 ? 11 : now.getMonth() - 1;
+  const prevYear = now.getMonth() === 0 ? now.getFullYear() - 1 : now.getFullYear();
   const cycleDay = client.billingCycleStartDay;
 
-  const periodStart = formatDate(currentYear, currentMonth, cycleDay);
-  const nextMonth = (currentMonth + 1) % 12;
-  const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
-  const periodEnd = formatDate(nextYear, nextMonth, cycleDay);
+  const periodStart = formatDate(prevYear, prevMonth, cycleDay);
+  const endMonth = now.getMonth();
+  const endYear = now.getFullYear();
+  const periodEnd = formatDate(endYear, endMonth, cycleDay);
   const servicePeriod = `${periodStart} – ${periodEnd}`;
-  const servicePeriodShort = `${shortMonth(currentMonth)} ${cycleDay} – ${shortMonth(nextMonth)} ${cycleDay}, ${nextYear}`;
+  const servicePeriodShort = `${shortMonth(prevMonth)} ${cycleDay} – ${shortMonth(endMonth)} ${cycleDay}, ${endYear}`;
 
-  const invoiceDate = formatDate(currentYear, currentMonth, cycleDay);
+  const invoiceDate = formatDate(prevYear, prevMonth, cycleDay);
   const amountFormatted = `$${client.amount.toFixed(2)}`;
   const totalSites = getTotalSites(client.siteGroups);
   const clientFirstName = client.name.split(' ')[0];
