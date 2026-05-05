@@ -426,15 +426,10 @@
       <tbody>
         <tr>
           <td>
-            <div class="line-item-desc">{{SERVICE_DESCRIPTION}} — {{MONTH_ORDINAL}} monthly billing cycle</div>
+            <div class="line-item-desc">{{SERVICE_DESCRIPTION}}</div>
             <div class="line-item-detail">
-              Agreed ongoing support plan: <strong>{{AMOUNT_RANGE}}</strong>. This invoice is for the {{MONTH_ORDINAL}} month, <strong>{{SERVICE_PERIOD}}</strong>, covering <strong>{{TOTAL_SITES}} WordPress properties</strong> as discussed.
+              {{SERVICE_PERIOD}} · {{TOTAL_SITES}} WordPress properties
             </div>
-            <div class="line-item-detail" style="margin-top: 10px;"><strong>Includes:</strong></div>
-            <ul>
-{{INCLUDES_LIST}}
-            </ul>
-{{SITE_GROUPS_HTML}}
           </td>
           <td>{{AMOUNT_FORMATTED}}</td>
         </tr>
