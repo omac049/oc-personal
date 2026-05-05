@@ -1,0 +1,65 @@
+{
+  "clients": [
+    {
+      "id": "ppb",
+      "name": "Jeremy Pollack",
+      "company": "Pollack Peacebuilding Systems",
+      "email": "omar.webhosting@gmail.com",
+      "website": "pollackpeacebuilding.com",
+      "invoicePrefix": "INV-PPB",
+      "nextInvoiceNumber": 5,
+      "amount": 400,
+      "amountRange": "$350–$450/month",
+      "serviceDescription": "Phase 2: Multi-site support",
+      "billingCycleStartDay": 3,
+      "firstBillingMonth": "2026-03",
+      "includes": [
+        "Weekly WordPress core, theme, and plugin updates",
+        "Routine security scans and hardening",
+        "Ongoing monitoring of Google Search Console for security concerns",
+        "Fixes if updates impact layout or functionality"
+      ],
+      "siteGroups": [
+        {
+          "host": "Hostinger",
+          "sites": [
+            "pollackpeacebuilding.com",
+            "levantage.ai",
+            "growthsciencecapitalholdings.com",
+            "navigentai.com",
+            "glialsolutions.com",
+            "real-estate-de-escalation.com"
+          ]
+        },
+        {
+          "host": "Hosting.com",
+          "sites": [
+            "conflict-resolution-training.com",
+            "constructiveteams.com",
+            "deescalation-training.com",
+            "growthsciencecap.com",
+            "peacefulleadersacademy.com",
+            "thoughtmarketingagency.com",
+            "workplace-conflict-resolution.com"
+          ]
+        }
+      ],
+      "outputDir": "public/client/ppb-pollack-peace-building"
+    }
+  ],
+  "sender": {
+    "name": "Omar Corral",
+    "title": "Consultant — WordPress support & security",
+    "email": "omar.webhosting@gmail.com",
+    "website": "omar-corral.com",
+    "footerLine": "Omar Corral · WordPress support & security · omar-corral.com"
+  },
+  "payment": {
+    "terms": "Upon receipt (Net 15 if preferred)",
+    "methods": [
+      { "label": "Zelle", "envKey": "PAYMENT_ZELLE" },
+      { "label": "Bank transfer (ACH / direct deposit)", "envKey": "PAYMENT_ACH" },
+      { "label": "Wire transfer", "envKey": "PAYMENT_WIRE" }
+    ]
+  }
+}

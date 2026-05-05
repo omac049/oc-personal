@@ -1,0 +1,82 @@
+name: Generate Monthly Invoices
+
+on:
+  schedule:
+    # Runs at 9:00 AM UTC on the 2nd of every month
+    - cron: '0 9 2 * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (preview only, no files generated)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate invoices
+        env:
+          PAYMENT_ZELLE: ${{ secrets.PAYMENT_ZELLE }}
+          PAYMENT_ACH: ${{ secrets.PAYMENT_ACH }}
+          PAYMENT_WIRE: ${{ secrets.PAYMENT_WIRE }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "Running in dry-run mode..."
+            node scripts/invoicing/generate.js --dry-run
+          else
+            echo "Generating invoices..."
+            node scripts/invoicing/generate.js
+          fi
+
+      - name: Commit and push
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/client/ scripts/invoicing/clients.json
+          
+          MONTH=$(date +"%B %Y")
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(invoice): generate ${MONTH} invoices"
+            git push
+            echo "Invoices committed and pushed — deploy workflow will trigger automatically."
+          fi
+
+      - name: Build email content
+        id: email
+        if: github.event.inputs.dry_run != 'true'
+        run: node scripts/invoicing/build-email.js
+
+      - name: Send invoice email to client
+        if: github.event.inputs.dry_run != 'true' && steps.email.outputs.email_to != ''
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: ${{ steps.email.outputs.email_subject }}
+          to: ${{ steps.email.outputs.email_to }}
+          from: ${{ secrets.SMTP_USERNAME }}
+          body: ${{ steps.email.outputs.email_body }}

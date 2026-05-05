@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1e3a5f">
-  <title>Invoice INV-PPB-004 | Multi-site support — Omar Corral</title>
+  <title>Invoice {{INVOICE_NUMBER}} | {{SERVICE_DESCRIPTION}} — {{SENDER_NAME}}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&display=swap" rel="stylesheet">
@@ -86,9 +86,7 @@
       color: var(--primary);
     }
 
-    .invoice-meta {
-      text-align: right;
-    }
+    .invoice-meta { text-align: right; }
 
     .invoice-meta .inv-number {
       font-weight: 700;
@@ -260,7 +258,6 @@
     }
 
     .payment-block dt:first-child { margin-top: 0; }
-
     .payment-block dd { margin-left: 0; }
 
     .payment-block .inv-ref {
@@ -288,7 +285,6 @@
       background: var(--surface);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
     }
 
     .download-pdf-bar .print-instruction-screen {
@@ -312,10 +308,7 @@
       transition: background 0.2s, transform 0.1s;
     }
 
-    .btn-download-pdf:hover {
-      background: var(--primary-dark);
-    }
-
+    .btn-download-pdf:hover { background: var(--primary-dark); }
     .btn-download-pdf:active { transform: scale(0.98); }
 
     .print-instruction-print {
@@ -388,16 +381,16 @@
 <body>
   <div class="invoice-page">
     <header class="invoice-header">
-      <a href="https://omar-corral.com" class="invoice-logo" target="_blank" rel="noopener" aria-label="Omar Corral">
-        <img src="https://omar-corral.com/favicon.svg" alt="Omar Corral" width="40" height="40" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-        <span class="invoice-logo-text" style="display: none;">Omar Corral</span>
+      <a href="https://{{SENDER_WEBSITE}}" class="invoice-logo" target="_blank" rel="noopener" aria-label="{{SENDER_NAME}}">
+        <img src="https://{{SENDER_WEBSITE}}/favicon.svg" alt="{{SENDER_NAME}}" width="40" height="40" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+        <span class="invoice-logo-text" style="display: none;">{{SENDER_NAME}}</span>
       </a>
       <div class="invoice-header-row">
         <h1 class="invoice-title">Invoice</h1>
         <div class="invoice-meta">
-          <div class="inv-number">INV-PPB-004</div>
-          <div class="inv-date">April 3, 2026</div>
-          <div class="service-period"><strong>Service period:</strong> April 3, 2026 – May 3, 2026 (second month)</div>
+          <div class="inv-number">{{INVOICE_NUMBER}}</div>
+          <div class="inv-date">{{INVOICE_DATE}}</div>
+          <div class="service-period"><strong>Service period:</strong> {{SERVICE_PERIOD}} ({{MONTH_ORDINAL}} month)</div>
         </div>
       </div>
     </header>
@@ -405,20 +398,20 @@
     <div class="parties">
       <div>
         <div class="party-label">From</div>
-        <div class="party-name">Omar Corral</div>
+        <div class="party-name">{{SENDER_NAME}}</div>
         <div class="party-details">
-          <p>Consultant — WordPress support & security</p>
-          <p><a href="mailto:omar.webhosting@gmail.com" style="color: var(--primary);">omar.webhosting@gmail.com</a></p>
-          <p><a href="https://omar-corral.com" style="color: var(--primary);">omar-corral.com</a></p>
+          <p>{{SENDER_TITLE}}</p>
+          <p><a href="mailto:{{SENDER_EMAIL}}" style="color: var(--primary);">{{SENDER_EMAIL}}</a></p>
+          <p><a href="https://{{SENDER_WEBSITE}}" style="color: var(--primary);">{{SENDER_WEBSITE}}</a></p>
         </div>
       </div>
       <div>
         <div class="party-label">Bill to</div>
-        <div class="party-name">Jeremy Pollack</div>
+        <div class="party-name">{{CLIENT_NAME}}</div>
         <div class="party-details">
-          <p>Pollack Peacebuilding Systems</p>
-          <p><a href="mailto:jeremy@pollackpeacebuilding.com" style="color: var(--primary);">jeremy@pollackpeacebuilding.com</a></p>
-          <p>pollackpeacebuilding.com</p>
+          <p>{{CLIENT_COMPANY}}</p>
+          <p><a href="mailto:{{CLIENT_EMAIL}}" style="color: var(--primary);">{{CLIENT_EMAIL}}</a></p>
+          <p>{{CLIENT_WEBSITE}}</p>
         </div>
       </div>
     </div>
@@ -433,48 +426,23 @@
       <tbody>
         <tr>
           <td>
-            <div class="line-item-desc">Phase 2: Multi-site support — second monthly billing cycle</div>
+            <div class="line-item-desc">{{SERVICE_DESCRIPTION}} — {{MONTH_ORDINAL}} monthly billing cycle</div>
             <div class="line-item-detail">
-              Agreed ongoing support plan: <strong>$350–$450/month</strong>. This invoice is for the second month, <strong>April 3 – May 3, 2026</strong>, covering <strong>13 WordPress properties</strong> as discussed.
+              Agreed ongoing support plan: <strong>{{AMOUNT_RANGE}}</strong>. This invoice is for the {{MONTH_ORDINAL}} month, <strong>{{SERVICE_PERIOD}}</strong>, covering <strong>{{TOTAL_SITES}} WordPress properties</strong> as discussed.
             </div>
             <div class="line-item-detail" style="margin-top: 10px;"><strong>Includes:</strong></div>
             <ul>
-              <li>Weekly WordPress core, theme, and plugin updates</li>
-              <li>Routine security scans and hardening</li>
-              <li>Ongoing monitoring of Google Search Console for security concerns</li>
-              <li>Fixes if updates impact layout or functionality</li>
+{{INCLUDES_LIST}}
             </ul>
-            <div class="sites-group">
-              <strong>Hostinger</strong>
-              <ul>
-                <li>pollackpeacebuilding.com</li>
-                <li>levantage.ai</li>
-                <li>growthsciencecapitalholdings.com</li>
-                <li>navigentai.com</li>
-                <li>glialsolutions.com</li>
-                <li>real-estate-de-escalation.com</li>
-              </ul>
-            </div>
-            <div class="sites-group">
-              <strong>Hosting.com</strong>
-              <ul>
-                <li>conflict-resolution-training.com</li>
-                <li>constructiveteams.com</li>
-                <li>deescalation-training.com</li>
-                <li>growthsciencecap.com</li>
-                <li>peacefulleadersacademy.com</li>
-                <li>thoughtmarketingagency.com</li>
-                <li>workplace-conflict-resolution.com</li>
-              </ul>
-            </div>
+{{SITE_GROUPS_HTML}}
           </td>
-          <td>$400.00</td>
+          <td>{{AMOUNT_FORMATTED}}</td>
         </tr>
       </tbody>
       <tfoot>
         <tr class="invoice-total-row">
           <td class="total-label">Total due</td>
-          <td class="total-amount">$400.00</td>
+          <td class="total-amount">{{AMOUNT_FORMATTED}}</td>
         </tr>
       </tfoot>
     </table>
@@ -482,24 +450,19 @@
     <div class="payment-block">
       <h3>Payment terms & details</h3>
       <p class="payment-meta">
-        <span><strong>Amount due:</strong> $400.00 USD</span>
-        <span><strong>Due:</strong> Upon receipt (Net 15 if preferred)</span>
+        <span><strong>Amount due:</strong> {{AMOUNT_FORMATTED}} USD</span>
+        <span><strong>Due:</strong> {{PAYMENT_TERMS}}</span>
       </p>
       <dl>
-        <dt>Zelle</dt>
-        <dd>omar.webhosting@gmail.com</dd>
-        <dt>Bank transfer (ACH / direct deposit)</dt>
-        <dd>Chase · Routing 122100024 · Account 331223120</dd>
-        <dt>Wire transfer</dt>
-        <dd>Routing 021000021 · Account same as above</dd>
+{{PAYMENT_METHODS_HTML}}
       </dl>
-      <p class="inv-ref">Please include invoice number <strong>INV-PPB-004</strong> and service period (Apr 3 – May 3, 2026) with your payment. Thank you, Jeremy.</p>
+      <p class="inv-ref">Please include invoice number <strong>{{INVOICE_NUMBER}}</strong> and service period ({{SERVICE_PERIOD_SHORT}}) with your payment. Thank you, {{CLIENT_FIRST_NAME}}.</p>
     </div>
 
     <p class="print-instruction-print">To save as PDF: In the print dialog, choose &quot;Save as PDF&quot; or &quot;Microsoft Print to PDF&quot; as the destination, then save.</p>
 
     <footer class="invoice-footer">
-      Omar Corral · WordPress support & security · omar-corral.com
+      {{FOOTER_LINE}}
     </footer>
   </div>
 
@@ -507,7 +470,7 @@
     <button type="button" class="btn-download-pdf" onclick="window.print();" aria-label="Download invoice as PDF">
       Download PDF
     </button>
-    <span class="print-instruction-screen">→ In the print dialog, choose &quot;Save as PDF&quot; or &quot;Microsoft Print to PDF&quot; to save the file.</span>
+    <span class="print-instruction-screen">&rarr; In the print dialog, choose &quot;Save as PDF&quot; or &quot;Microsoft Print to PDF&quot; to save the file.</span>
   </div>
 </body>
 </html>
