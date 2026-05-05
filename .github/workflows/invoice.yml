@@ -29,6 +29,20 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Check secrets are loaded
+        env:
+          PAYMENT_ZELLE: ${{ secrets.PAYMENT_ZELLE }}
+          PAYMENT_ACH: ${{ secrets.PAYMENT_ACH }}
+          PAYMENT_WIRE: ${{ secrets.PAYMENT_WIRE }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          echo "PAYMENT_ZELLE is: $([ -n "$PAYMENT_ZELLE" ] && echo 'SET' || echo 'EMPTY')"
+          echo "PAYMENT_ACH is: $([ -n "$PAYMENT_ACH" ] && echo 'SET' || echo 'EMPTY')"
+          echo "PAYMENT_WIRE is: $([ -n "$PAYMENT_WIRE" ] && echo 'SET' || echo 'EMPTY')"
+          echo "SMTP_USERNAME is: $([ -n "$SMTP_USERNAME" ] && echo 'SET' || echo 'EMPTY')"
+          echo "SMTP_PASSWORD is: $([ -n "$SMTP_PASSWORD" ] && echo 'SET' || echo 'EMPTY')"
+
       - name: Generate invoices
         env:
           PAYMENT_ZELLE: ${{ secrets.PAYMENT_ZELLE }}
