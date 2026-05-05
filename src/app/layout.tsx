@@ -60,7 +60,7 @@ export default function RootLayout({
         {/* Content Security Policy — unsafe-eval required for Next.js dev mode hot reload */}
         <meta 
           httpEquiv="Content-Security-Policy" 
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.google.com *.googletagmanager.com *.google-analytics.com *.algolia.net *.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com *.jsdelivr.net https://cdn.jsdelivr.net; font-src 'self' data: fonts.gstatic.com; img-src 'self' data: *.google.com *.google-analytics.com *.googletagmanager.com; connect-src 'self' ws: wss: *.google-analytics.com *.google.com *.googletagmanager.com *.algolia.net *.algolianet.com; object-src 'none'; base-uri 'self';"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.google.com *.googletagmanager.com *.google-analytics.com *.algolia.net *.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com *.jsdelivr.net https://cdn.jsdelivr.net; font-src 'self' data: fonts.gstatic.com; img-src 'self' data: *.google.com *.google-analytics.com *.googletagmanager.com; connect-src 'self' ws: wss: *.google-analytics.com *.google.com *.googletagmanager.com *.algolia.net *.algolianet.com https://formspree.io; object-src 'none'; base-uri 'self';"
         />
         
         {/* Algolia site verification for search functionality */}
