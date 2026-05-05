@@ -23,7 +23,20 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
-  // No additional plugins needed - Algolia search is configured in themeConfig below
+  plugins: [
+    function suppressCriticalDependencyWarning() {
+      return {
+        name: 'suppress-critical-dependency-warning',
+        configureWebpack() {
+          return {
+            ignoreWarnings: [
+              {module: /vscode-languageserver-types/},
+            ],
+          };
+        },
+      };
+    },
+  ],
 
   // Set the production url of your site here
   url: 'https://omar-corral.com',
