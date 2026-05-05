@@ -7,7 +7,7 @@
       "email": "omar.webhosting@gmail.com",
       "website": "pollackpeacebuilding.com",
       "invoicePrefix": "INV-PPB",
-      "nextInvoiceNumber": 5,
+      "nextInvoiceNumber": 6,
       "amount": 400,
       "amountRange": "$350–$450/month",
       "serviceDescription": "Phase 2: Multi-site support",
@@ -57,9 +57,18 @@
   "payment": {
     "terms": "Upon receipt (Net 15 if preferred)",
     "methods": [
-      { "label": "Zelle", "envKey": "PAYMENT_ZELLE" },
-      { "label": "Bank transfer (ACH / direct deposit)", "envKey": "PAYMENT_ACH" },
-      { "label": "Wire transfer", "envKey": "PAYMENT_WIRE" }
+      {
+        "label": "Zelle",
+        "envKey": "PAYMENT_ZELLE"
+      },
+      {
+        "label": "Bank transfer (ACH / direct deposit)",
+        "envKey": "PAYMENT_ACH"
+      },
+      {
+        "label": "Wire transfer",
+        "envKey": "PAYMENT_WIRE"
+      }
     ]
   }
 }
