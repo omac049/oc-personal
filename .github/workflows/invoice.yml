@@ -19,13 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -39,10 +35,8 @@ jobs:
           PAYMENT_WIRE: ${{ secrets.PAYMENT_WIRE }}
         run: |
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
-            echo "Running in dry-run mode..."
             node scripts/invoicing/generate.js --dry-run
           else
-            echo "Generating invoices..."
             node scripts/invoicing/generate.js
           fi
 
@@ -59,7 +53,6 @@ jobs:
           else
             git commit -m "chore(invoice): generate ${MONTH} invoices"
             git push
-            echo "Invoices committed and pushed — deploy workflow will trigger automatically."
           fi
 
       - name: Build email content
