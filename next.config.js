@@ -11,7 +11,6 @@ const nextConfig = {
 
   // Enhanced SEO and crawlability features
   experimental: {
-    scrollRestoration: true,
     esmExternals: true,
   },
 

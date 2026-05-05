@@ -4,9 +4,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faCog, faBrain, faChartLine, faGlobe, faShoppingCart, faLightbulb,
-  faCrown, faInfinity, faWandMagicSparkles, faWandSparkles, faGem, faStar,
-  faHeart, faRocket, faMagic, faPlay, faPause, faEye, faEyeSlash,
-  faExpand, faCompress, faBars, faCube
+  faCrown, faInfinity, faWandMagicSparkles, faWandSparkles, faGem, faStar
 } from '@fortawesome/free-solid-svg-icons';
 import SkillModal from './SkillModal';
 import AlgorithmBackground from './AlgorithmBackground';
@@ -124,14 +122,12 @@ export default function Skills() {
   const [mounted, setMounted] = useState(false);
   const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
   
-  // SEO Solar System Control States
-  const [controlsOpen, setControlsOpen] = useState(false);
-  const [animationSpeed, setAnimationSpeed] = useState(1); // 0.25, 0.5, 1, 2, 4
-  const [viewMode, setViewMode] = useState<'2d' | '3d'>('2d');
-  const [planetSize, setPlanetSize] = useState(1); // 0.7, 1, 1.3, 1.6
-  const [orbitalDistance, setOrbitalDistance] = useState(1); // 0.7, 1, 1.3
-  const [showRings, setShowRings] = useState(true);
-  const [isPaused, setIsPaused] = useState(false);
+  const animationSpeed = 1;
+  const viewMode = '2d' as const;
+  const planetSize = 1;
+  const orbitalDistance = 1;
+  const showRings = true;
+  const isPaused = false;
   
   // Device detection for performance optimization
   const deviceInfo = useDeviceDetection();
@@ -146,22 +142,7 @@ export default function Skills() {
 
   useEffect(() => {
     setMounted(true);
-    
-    // Keyboard shortcuts
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.code === 'Space') {
-        e.preventDefault();
-        setIsPaused(!isPaused);
-      } else if (e.code === 'KeyC') {
-        setControlsOpen(!controlsOpen);
-      } else if (e.code === 'KeyR') {
-        setShowRings(!showRings);
-      }
-    };
-    
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isPaused, controlsOpen, showRings]);
+  }, []);
 
   const openSkillModal = useCallback((skill: { name: string; icon: string; proficiency: number }) => {
     setSelectedSkill(skill);
@@ -200,8 +181,7 @@ export default function Skills() {
         {/* Site-consistent gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900" />
         
-        {/* Adaptive star count based on device */}
-        {[...Array(deviceInfo.isTablet ? 40 : 80)].map((_, i) => (
+        {[...Array(deviceInfo.isTablet ? 20 : 30)].map((_, i) => (
           <motion.div
             key={`star-${i}`}
             className="absolute rounded-full bg-white/60"
@@ -824,213 +804,6 @@ export default function Skills() {
     </motion.div>
   );
 
-  // SEO Solar System Control Panel - Fixed positioning and visibility
-  const ControlPanel = () => (
-    <motion.div
-      className="fixed top-20 right-4 z-50"
-      initial={{ x: 350, opacity: 0, scale: 0.9 }}
-      animate={{ 
-        x: controlsOpen ? 0 : 350, 
-        opacity: controlsOpen ? 1 : 0,
-        scale: controlsOpen ? 1 : 0.9
-      }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      style={{
-        pointerEvents: controlsOpen ? 'auto' : 'none'
-      }}
-    >
-      <motion.div
-        className="bg-slate-800/95 backdrop-blur-xl rounded-2xl p-6 border border-white/20 shadow-2xl min-w-[300px]"
-        style={{
-          background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(51, 65, 85, 0.95))',
-          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(96, 165, 246, 0.1)'
-        }}
-      >
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-white font-semibold flex items-center gap-2">
-            <FontAwesomeIcon icon={faInfinity} className="text-amber-400" />
-            SEO Solar System
-          </h3>
-          <motion.button
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center text-gray-300 hover:text-white text-sm"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setControlsOpen(false)}
-          >
-            ✕
-          </motion.button>
-        </div>
-
-        <div className="space-y-5">
-          {/* Animation Control */}
-          <div>
-            <label className="block text-gray-300 text-sm mb-2 font-medium">Animation</label>
-            <motion.button
-              className={`w-full py-2 px-3 rounded-lg text-sm font-medium transition-all ${
-                isPaused ? 'bg-red-500/20 text-red-300 border border-red-500/30' : 'bg-green-500/20 text-green-300 border border-green-500/30'
-              }`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setIsPaused(!isPaused)}
-            >
-              <FontAwesomeIcon icon={isPaused ? faPlay : faPause} className="mr-2" />
-              {isPaused ? 'Start Orbiting' : 'Pause Orbits'}
-            </motion.button>
-          </div>
-
-          {/* Speed Control */}
-          <div>
-            <label className="block text-gray-300 text-sm mb-2 font-medium">Orbital Speed: {animationSpeed}x</label>
-            <div className="grid grid-cols-5 gap-1">
-              {[0.25, 0.5, 1, 2, 4].map((speed) => (
-                <motion.button
-                  key={speed}
-                  className={`py-2 px-2 rounded-lg text-xs font-medium transition-all ${
-                    animationSpeed === speed 
-                      ? 'bg-blue-500/30 text-blue-300 border border-blue-500/50' 
-                      : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setAnimationSpeed(speed)}
-                >
-                  {speed}x
-                </motion.button>
-              ))}
-            </div>
-          </div>
-
-          {/* View Mode (2D/3D) */}
-          <div>
-            <label className="block text-gray-300 text-sm mb-2 font-medium">View Mode</label>
-            <div className="grid grid-cols-2 gap-2">
-              {[
-                { value: '2d' as const, label: '2D View', icon: faExpand },
-                { value: '3d' as const, label: '3D View', icon: faCube }
-              ].map((mode) => (
-                <motion.button
-                  key={mode.value}
-                  className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
-                    viewMode === mode.value 
-                      ? 'bg-amber-500/30 text-amber-300 border border-amber-500/50' 
-                      : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setViewMode(mode.value)}
-                >
-                  <FontAwesomeIcon icon={mode.icon} className="mr-1" />
-                  {mode.label}
-                </motion.button>
-              ))}
-            </div>
-          </div>
-
-          {/* Planet Size Control */}
-          <div>
-            <label className="block text-gray-300 text-sm mb-2 font-medium">Planet Size: {Math.round(planetSize * 100)}%</label>
-            <div className="grid grid-cols-4 gap-1">
-              {[0.7, 1, 1.3, 1.6].map((size) => (
-                <motion.button
-                  key={size}
-                  className={`py-2 px-2 rounded-lg text-xs font-medium transition-all ${
-                    planetSize === size 
-                      ? 'bg-green-500/30 text-green-300 border border-green-500/50' 
-                      : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setPlanetSize(size)}
-                >
-                  {Math.round(size * 100)}%
-                </motion.button>
-              ))}
-            </div>
-          </div>
-
-          {/* Orbital Distance Control */}
-          <div>
-            <label className="block text-gray-300 text-sm mb-2 font-medium">Orbital Distance: {Math.round(orbitalDistance * 100)}%</label>
-            <div className="grid grid-cols-3 gap-1">
-              {[0.7, 1, 1.3].map((distance) => (
-                <motion.button
-                  key={distance}
-                  className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
-                    orbitalDistance === distance 
-                      ? 'bg-purple-500/30 text-purple-300 border border-purple-500/50' 
-                      : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setOrbitalDistance(distance)}
-                >
-                  {distance === 0.7 ? 'Close' : distance === 1 ? 'Normal' : 'Far'}
-                </motion.button>
-              ))}
-            </div>
-          </div>
-
-          {/* Show Rings Toggle */}
-          <div>
-            <motion.button
-              className={`w-full py-2 px-3 rounded-lg text-sm font-medium transition-all ${
-                showRings 
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30' 
-                  : 'bg-white/5 text-gray-400 border border-white/10'
-              }`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setShowRings(!showRings)}
-            >
-              <FontAwesomeIcon icon={showRings ? faEye : faEyeSlash} className="mr-2" />
-              {showRings ? 'Hide' : 'Show'} Orbital Rings
-            </motion.button>
-          </div>
-        </div>
-
-        {/* Keyboard Shortcuts */}
-        <div className="mt-6 pt-4 border-t border-white/10">
-          <div className="text-xs text-gray-400">
-            <div className="flex justify-between mb-1">
-              <span>Space:</span>
-              <span>Pause/Play</span>
-            </div>
-            <div className="flex justify-between mb-1">
-              <span>C:</span>
-              <span>Toggle Controls</span>
-            </div>
-            <div className="flex justify-between">
-              <span>R:</span>
-              <span>Toggle Rings</span>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-
-  // Control Toggle Button - Fixed with better visibility
-  const ControlToggle = () => (
-    <div className="fixed top-4 right-4 z-40">
-      <motion.button
-        className={`w-14 h-14 bg-gradient-to-br ${controlsOpen ? 'from-green-600 to-green-700' : 'from-blue-600 to-purple-600'} backdrop-blur-lg rounded-full border-2 border-white/30 shadow-2xl flex items-center justify-center text-white hover:from-blue-500 hover:to-purple-500 transition-all`}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => {
-          console.log('Control toggle clicked, current state:', controlsOpen);
-          setControlsOpen(!controlsOpen);
-        }}
-        title="SEO Solar System Controls"
-      >
-        <FontAwesomeIcon icon={controlsOpen ? faCompress : faBars} size="lg" />
-      </motion.button>
-      {/* Debug indicator */}
-      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-white bg-black/50 px-2 py-1 rounded">
-        {controlsOpen ? 'OPEN' : 'CLOSED'}
-      </div>
-    </div>
-  );
-
   if (!mounted) {
     return (
       <section ref={containerRef} id="skills" className="min-h-screen bg-slate-900 relative overflow-hidden" suppressHydrationWarning>
@@ -1102,8 +875,8 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <span className="hidden lg:inline">Navigate through the cosmic expanse of SEO expertise. Each skill planet orbits with precision, representing specialized domains of search optimization mastery.</span>
-            <span className="lg:hidden">Explore my specialized domains of SEO and digital marketing expertise.</span>
+            <span className="hidden lg:inline">Each orbit represents a core discipline — click to explore the tools and techniques behind it.</span>
+            <span className="lg:hidden">Tap a skill area to explore the expertise behind it.</span>
           </motion.p>
         </motion.div>
 
@@ -1250,26 +1023,8 @@ export default function Skills() {
           transition={{ duration: 0.8, delay: 0.8 }}
           viewport={{ once: true }}
         >
-          <motion.p
-            className="text-gray-300 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 lg:mb-8 flex items-center justify-center gap-2 sm:gap-3 font-medium flex-wrap"
-            animate={{
-              opacity: [0.7, 1, 0.7],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <FontAwesomeIcon icon={faHeart} className="text-pink-400 text-sm sm:text-base" />
-            <span className="hidden lg:inline">Click on skill planets to explore orbital expertise</span>
-            <span className="lg:hidden text-center">Tap on skills to explore expertise</span>
-            <FontAwesomeIcon icon={faWandSparkles} className="text-amber-400 text-sm sm:text-base" />
-          </motion.p>
-
-          {/* Call to Action */}
           <motion.button
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-full font-semibold shadow-xl transition-all duration-300 flex items-center gap-2 mx-auto min-w-[48px] min-h-[48px] sm:min-w-[52px] sm:min-h-[52px] text-sm sm:text-base"
+            className="bg-blue-600 hover:bg-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold shadow-xl transition-all duration-300 flex items-center gap-2 mx-auto min-w-[48px] min-h-[48px] text-sm sm:text-base"
             whileHover={{ 
               scale: 1.05, 
               y: -2,
@@ -1277,10 +1032,7 @@ export default function Skills() {
             whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <FontAwesomeIcon icon={faRocket} className="text-sm sm:text-base" />
-            <span className="hidden sm:inline">Launch Your SEO Journey</span>
-            <span className="sm:hidden">Get Started</span>
-            <FontAwesomeIcon icon={faMagic} className="text-sm sm:text-base" />
+            Get in Touch
           </motion.button>
         </motion.div>
       </div>
@@ -1297,11 +1049,6 @@ export default function Skills() {
         onClose={closeSkillModal}
       />
 
-      {/* SEO Solar System Control Panel - Desktop Only */}
-      <div className="hidden lg:block">
-        <ControlPanel />
-        <ControlToggle />
-      </div>
     </section>
   );
 }

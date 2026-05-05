@@ -35,7 +35,7 @@ export default function Contact() {
             Let&apos;s Work Together
           </h2>
           <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-slate-300 mb-4 sm:mb-6 lg:mb-8 max-w-2xl mx-auto px-2 sm:px-4">
-            Ready to boost your SEO performance? Let&apos;s discuss your project and create something amazing together.
+            Tell me about your goals — I&apos;ll tell you how SEO and AI can get you there.
           </p>
           <div className="w-12 sm:w-16 lg:w-24 h-1 bg-blue-700 mx-auto"></div>
         </motion.div>

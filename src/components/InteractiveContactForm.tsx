@@ -237,7 +237,6 @@ export default function InteractiveContactForm() {
                   placeholder={steps[currentStep].placeholder}
                   rows={4}
                   className="w-full px-4 py-4 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none"
-                  autoFocus
                 />
               ) : (
                 <motion.input
@@ -247,7 +246,6 @@ export default function InteractiveContactForm() {
                   onKeyPress={handleKeyPress}
                   placeholder={steps[currentStep].placeholder}
                   className="w-full px-4 py-4 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-lg"
-                  autoFocus
                 />
               )}
               

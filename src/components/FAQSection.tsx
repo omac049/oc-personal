@@ -95,8 +95,8 @@ export default function FAQSection() {
               Frequently Asked Questions
             </h2>
           </div>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Common questions about AI-powered SEO, LLM optimization, and my services
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+            What clients ask before we start working together
           </p>
           <div className="w-24 h-1 bg-blue-500 mx-auto mt-6"></div>
         </motion.div>
@@ -154,17 +154,6 @@ export default function FAQSection() {
                         {item.answer}
                       </p>
                       
-                      {/* Keywords for SEO */}
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {item.keywords.map((keyword, keyIndex) => (
-                          <span
-                            key={keyIndex}
-                            className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-400/30"
-                          >
-                            {keyword}
-                          </span>
-                        ))}
-                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -185,8 +174,7 @@ export default function FAQSection() {
             Have More Questions?
           </h3>
           <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-            Get personalized answers about AI-powered SEO strategies for your business. 
-            I&apos;m here to help you navigate the future of search.
+            I&apos;m happy to discuss your specific situation — reach out anytime.
           </p>
           <a
             href="#contact"

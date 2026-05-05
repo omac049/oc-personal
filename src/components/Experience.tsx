@@ -1,74 +1,19 @@
 'use client';
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { experienceData } from '@/data/experience';
 import AlgorithmBackground from './AlgorithmBackground';
-// Animation utilities temporarily disabled for build optimization
-// import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faBriefcase, faCalendarAlt, faRocket, faTrophy, faChartLine,
-  faCrown, faStar, faGem, faLightbulb, faMagic, faInfinity,
-  faBolt, faAtom, faFire, faWandMagicSparkles
-} from '@fortawesome/free-solid-svg-icons';
-
-// Professional floating elements for enhanced engagement
-const professionalElements = [
-  { icon: faRocket, color: '#60a5fa', size: 'w-8 h-8', position: { top: '15%', left: '10%' }, label: 'Growth' },
-  { icon: faTrophy, color: '#f59e0b', size: 'w-7 h-7', position: { top: '25%', right: '15%' }, label: 'Achievement' },
-  { icon: faChartLine, color: '#10b981', size: 'w-6 h-6', position: { top: '60%', left: '8%' }, label: 'Performance' },
-  { icon: faCrown, color: '#8b5cf6', size: 'w-9 h-9', position: { bottom: '20%', right: '12%' }, label: 'Leadership' },
-  { icon: faStar, color: '#06b6d4', size: 'w-5 h-5', position: { top: '40%', right: '8%' }, label: 'Excellence' },
-  { icon: faGem, color: '#ec4899', size: 'w-6 h-6', position: { bottom: '35%', left: '15%' }, label: 'Quality' },
-  { icon: faLightbulb, color: '#f97316', size: 'w-7 h-7', position: { top: '70%', right: '25%' }, label: 'Innovation' },
-  { icon: faMagic, color: '#84cc16', size: 'w-8 h-8', position: { top: '30%', left: '20%' }, label: 'Strategy' },
-  { icon: faInfinity, color: '#3b82f6', size: 'w-6 h-6', position: { bottom: '45%', right: '20%' }, label: 'Scalability' },
-  { icon: faBolt, color: '#eab308', size: 'w-5 h-5', position: { top: '80%', left: '25%' }, label: 'Speed' },
-  { icon: faAtom, color: '#a855f7', size: 'w-7 h-7', position: { top: '50%', left: '5%' }, label: 'Technical' },
-  { icon: faFire, color: '#ef4444', size: 'w-6 h-6', position: { top: '35%', left: '85%' }, label: 'Passion' },
-  { icon: faWandMagicSparkles, color: '#06b6d4', size: 'w-8 h-8', position: { bottom: '60%', left: '30%' }, label: 'Transformation' },
-];
+import { faBriefcase, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  // Device detection temporarily disabled for build optimization
-  // const deviceInfo = useDeviceDetection();
-  // const animConfig = getAnimationConfig(deviceInfo);
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothMouseX = useSpring(mouseX, { damping: 30, stiffness: 200 });
-  const smoothMouseY = useSpring(mouseY, { damping: 30, stiffness: 200 });
-
-  // Parallax transforms based on scroll and mouse
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);
-  const parallaxX = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
-  const mouseParallaxX = useTransform(smoothMouseX, [-200, 200], [-30, 30]);
-  const mouseParallaxY = useTransform(smoothMouseY, [-200, 200], [-20, 20]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = sectionRef.current?.getBoundingClientRect();
-      if (rect) {
-        const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-        const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-        mouseX.set(x * 200);
-        mouseY.set(y * 200);
-      }
-    };
-
-    const element = sectionRef.current;
-    if (element) {
-      element.addEventListener('mousemove', handleMouseMove);
-      return () => element.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, [mouseX, mouseY]);
 
   return (
     <section 
@@ -77,93 +22,12 @@ const Experience = () => {
       className="min-h-screen py-20 bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900 relative overflow-hidden"
       suppressHydrationWarning
     >
-      {/* Algorithm Background */}
       <AlgorithmBackground opacity="opacity-5" />
 
-      {/* Professional Floating Elements */}
-      <div className="hidden lg:block">
-        {professionalElements.map((element, index) => (
-          <motion.div
-            key={index}
-            className={`absolute z-20 opacity-60 hover:opacity-100 transition-all duration-500 group cursor-pointer`}
-            style={{
-              ...element.position,
-              color: element.color,
-              x: mouseParallaxX,
-              y: mouseParallaxY,
-            }}
-            whileHover={{ 
-              scale: 1.8,
-              rotate: 360,
-              transition: { duration: 0.6 }
-            }}
-            animate={{ 
-              y: [0, -15, 0],
-              rotate: [0, 5, -5, 0],
-            }}
-            transition={{
-              duration: 3 + index * 0.5,
-              repeat: Infinity,
-              delay: index * 0.3,
-              ease: "easeInOut"
-            }}
-          >
-            <FontAwesomeIcon icon={element.icon} className={element.size} />
-            
-            {/* Tooltip */}
-            <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-2 py-1 bg-gray-900/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-30">
-              {element.label}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Enhanced Particle System */}
-      <motion.div
-        className="absolute inset-0 overflow-hidden"
-        style={{
-          y: parallaxY,
-          x: parallaxX,
-        }}
-      >
-        {Array.from({ length: 30 }, (_, i) => {
-          // Generate deterministic pseudo-random values based on index
-          const leftSeed = (i * 31 + 17) % 97;
-          const topSeed = (i * 23 + 41) % 89;
-          const sizeSeed = (i * 13 + 7) % 5;
-          const delaySeed = (i * 19 + 29) % 37;
-          
-          return (
-            <motion.div
-              key={i}
-              className="absolute bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full"
-              style={{
-                left: `${(leftSeed / 97) * 100}%`,
-                top: `${(topSeed / 89) * 100}%`,
-                width: `${2 + sizeSeed}px`,
-                height: `${2 + sizeSeed}px`,
-              }}
-              animate={{
-                y: [0, -20 - sizeSeed * 5, 0],
-                opacity: [0.2, 0.8, 0.2],
-                scale: [1, 1.2 + sizeSeed * 0.1, 1],
-                rotate: [0, 180, 360],
-              }}
-              transition={{
-                duration: 4 + sizeSeed,
-                repeat: Infinity,
-                delay: (delaySeed / 37) * 3,
-                ease: "easeInOut"
-              }}
-            />
-          );
-        })}
-      </motion.div>
-
-              <motion.div 
+      <motion.div 
           className="max-w-6xl mx-auto px-6 relative z-10"
           style={{
-            y: useTransform(scrollYProgress, [0, 1], ['0%', '-10%']),
+            y: useTransform(scrollYProgress, [0, 1], ['0%', '-5%']),
           }}
         >
         {/* Header */}
@@ -177,7 +41,7 @@ const Experience = () => {
             Professional Experience
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            A journey through technology leadership, innovation, and growth
+            10+ years driving organic growth across education, agency, and enterprise environments
           </p>
         </motion.div>
 

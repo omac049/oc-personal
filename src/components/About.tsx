@@ -1,405 +1,120 @@
 'use client';
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useState } from 'react';
 import { aboutData } from '@/data/about';
-import Image from 'next/image';
 import AlgorithmBackground from './AlgorithmBackground';
-import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faRocket, 
   faBrain, 
-  faCog,
-  faRobot,
-  faStar,
-  faGem,
-  faAtom,
-  faMagic,
-  faInfinity,
-  faBolt
+  faCog
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function About() {
   const containerRef = useRef<HTMLElement>(null);
   const [selectedStat, setSelectedStat] = useState<number | null>(null);
-  const deviceInfo = useDeviceDetection();
-  const animConfig = getAnimationConfig(deviceInfo);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
   
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothMouseX = useSpring(mouseX, { damping: 30, stiffness: 200 });
-  const smoothMouseY = useSpring(mouseY, { damping: 30, stiffness: 200 });
-
-  // Parallax transforms based on scroll and mouse - Always call hooks
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);
-  const parallaxX = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
-  const mouseParallaxX = useTransform(smoothMouseX, [-200, 200], [-50, 50]);
-  const mouseParallaxY = useTransform(smoothMouseY, [-200, 200], [-30, 30]);
-  
-  // Content block mouse transforms - Always call hooks
-  const contentTransform1 = useTransform(smoothMouseX, [-100, 100], [-5, 5]);
-  const contentTransform2 = useTransform(smoothMouseX, [-100, 100], [5, -5]);
-  const contentTransform3 = useTransform(smoothMouseX, [-100, 100], [-3, 3]);
-  const contentTransform4 = useTransform(smoothMouseX, [-100, 100], [3, -3]);
-
-  // Modern floating elements
-  const modernElements = [
-    { icon: faAtom, color: '#60a5fa', size: 'w-8 h-8', position: { top: '10%', left: '15%' } },
-    { icon: faGem, color: '#a78bfa', size: 'w-6 h-6', position: { top: '20%', right: '20%' } },
-    { icon: faMagic, color: '#34d399', size: 'w-7 h-7', position: { top: '70%', left: '10%' } },
-    { icon: faInfinity, color: '#f59e0b', size: 'w-9 h-9', position: { bottom: '30%', right: '15%' } },
-    { icon: faBolt, color: '#ef4444', size: 'w-5 h-5', position: { top: '40%', right: '8%' } },
-    { icon: faStar, color: '#06b6d4', size: 'w-6 h-6', position: { bottom: '50%', left: '25%' } },
-  ];
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = containerRef.current?.getBoundingClientRect();
-      if (rect) {
-        const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-        const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-        mouseX.set(x * 100);
-        mouseY.set(y * 100);
-      }
-    };
-
-    const element = containerRef.current;
-    if (element) {
-      element.addEventListener('mousemove', handleMouseMove);
-      return () => element.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, [mouseX, mouseY]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
 
   return (
     <section ref={containerRef} id="about" className="min-h-screen bg-slate-900 relative overflow-hidden" suppressHydrationWarning>
       {/* Global Algorithm Background */}
       <AlgorithmBackground opacity="opacity-5" />
       
-      {/* Simplified Interactive Background Elements */}
       <motion.div 
         className="absolute inset-0 z-0"
-        style={{ y: parallaxY, x: parallaxX }}
+        style={{ y: parallaxY }}
       >
-        {/* Simplified morphing shapes */}
-        <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-purple-500/5 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-purple-500/8 to-green-500/4 blur-3xl"
-          animate={{ 
-            scale: [1.1, 0.9, 1.1],
-            rotate: [360, 180, 0]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Dynamic mesh grid */}
-        <motion.div
-          className="absolute inset-0 opacity-3"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(96, 165, 246, 0.2) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(96, 165, 246, 0.2) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-          }}
-          animate={{
-            backgroundPosition: ['0px 0px', '60px 60px', '0px 0px'],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-purple-500/8 to-green-500/4 blur-3xl" />
       </motion.div>
 
-      {/* Performance-Aware Floating Elements */}
-      {animConfig.enableBackgroundAnimations && modernElements.map((element, index) => (
-        <motion.div
-          key={index}
-          className="absolute z-5 pointer-events-none"
-          style={{
-            ...element.position,
-          }}
-          animate={{
-            rotate: [0, 360],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            rotate: { duration: 15 + index * 3, repeat: Infinity, ease: "linear" },
-            opacity: { duration: 4 + index * 0.5, repeat: Infinity, ease: "easeInOut" }
-          }}
-        >
-          <motion.div
-            className={`${element.size} rounded-lg backdrop-blur-sm flex items-center justify-center`}
-            style={{ 
-              backgroundColor: `${element.color}10`
-            }}
-            whileHover={{ scale: 1.2, opacity: 0.5 }}
-          >
-            <FontAwesomeIcon 
-              icon={element.icon} 
-              className="w-full h-full p-1"
-              style={{ color: element.color }}
-            />
-          </motion.div>
-        </motion.div>
-      ))}
-      
-      {/* Static elements for mobile */}
-      {!animConfig.enableBackgroundAnimations && modernElements.slice(0, 4).map((element, index) => (
-        <div
-          key={`static-${index}`}
-          className="absolute z-5 pointer-events-none opacity-20"
-          style={{
-            ...element.position,
-          }}
-        >
-          <div
-            className={`${element.size} rounded-lg backdrop-blur-sm flex items-center justify-center`}
-            style={{ 
-              backgroundColor: `${element.color}20`
-            }}
-          >
-            <FontAwesomeIcon 
-              icon={element.icon} 
-              className="w-full h-full p-1"
-              style={{ color: element.color }}
-            />
-          </div>
-        </div>
-      ))}
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
-        {/* Modern Hero Header */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-16 sm:mb-24 lg:mb-32"
+          className="text-center mb-16 sm:mb-20 lg:mb-24"
         >
-          {/* Title Section */}
-          <motion.div 
-            className="relative inline-block mb-8 sm:mb-12 lg:mb-16"
-            style={{
-              x: mouseParallaxX,
-              y: mouseParallaxY,
-            }}
-          >
-            <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 sm:mb-6 tracking-tight px-2"
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              style={{
-                background: 'linear-gradient(90deg, #ffffff, #60a5fa, #a78bfa, #34d399, #ffffff)',
-                backgroundSize: '300% 100%',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              {aboutData.title}
-            </motion.h2>
-
-            {/* Simplified underline */}
-            <motion.div
-              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 rounded-full"
-              initial={{ width: 0, opacity: 0 }}
-              whileInView={{ width: '100%', opacity: 1 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
-            />
-          </motion.div>
-          
-          {/* Descriptive text */}
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            <motion.p 
-              className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed relative z-10"
-              style={{
-                x: useTransform(smoothMouseX, [-50, 50], [-5, 5]),
-              }}
-            >
-              Pioneering the future of search with artificial intelligence and data-driven strategies
-            </motion.p>
-          </motion.div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 sm:mb-6 tracking-tight">
+            {aboutData.title}
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 rounded-full mx-auto mb-6" />
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            SEO strategist who bridges traditional search and the AI era
+          </p>
         </motion.div>
 
         {/* Modern Layout Grid - Enhanced Mobile optimized */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 items-start">
-          {/* Profile Section - Simplified Design */}
           <motion.div 
             className="lg:col-span-2 order-1 lg:order-none px-2 sm:px-0"
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, delay: 0.3 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <motion.div
-              className="relative bg-white/8 backdrop-blur-xl rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/15 overflow-hidden"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.4 }}
-              style={{
-                x: useTransform(smoothMouseX, [-100, 100], [-10, 10]),
-                y: useTransform(smoothMouseY, [-100, 100], [-5, 5]),
-              }}
-            >
-              {/* Simplified background gradient */}
-              <motion.div
-                className="absolute inset-0 opacity-20"
-                animate={{
-                  background: [
-                    'linear-gradient(45deg, #3b82f6, #8b5cf6, #34d399)',
-                    'linear-gradient(135deg, #8b5cf6, #34d399, #3b82f6)',
-                    'linear-gradient(225deg, #34d399, #3b82f6, #8b5cf6)',
-                  ]
-                }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              />
-
-              {/* Omar's Professional Headshot - Enhanced responsive sizing */}
-              <motion.div 
-                className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 xl:w-48 xl:h-48 mx-auto mb-4 sm:mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 p-1"
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.div 
-                  className="w-full h-full rounded-xl overflow-hidden bg-white relative"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Image
-                    src="/omar.jpeg"
-                    alt="Omar Corral - SEO Specialist & AI Marketing Expert"
-                    fill
-                    className="object-cover object-center"
-                    priority
-                    style={{
-                      filter: 'brightness(1.1) contrast(1.05) saturate(1.1)'
-                    }}
-                  />
-                </motion.div>
-              </motion.div>
-
-              {/* Professional Info */}
-              <div className="text-center relative z-10">
-                <motion.h3 
-                  className="text-xl sm:text-2xl font-bold text-white mb-2"
-                >
-                  Omar Corral
-                </motion.h3>
-                <p className="text-blue-200 mb-4 text-sm sm:text-base">SEO Specialist & AI Marketing Expert</p>
+            <div className="relative bg-white/8 backdrop-blur-xl rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/15 overflow-hidden">
+              <div className="relative z-10">
+                <p className="text-gray-200 leading-relaxed text-sm sm:text-base mb-6">
+                  I&apos;ve spent over a decade helping businesses grow through search. Today that means optimizing not just for Google, but for the AI models that increasingly shape how people discover brands.
+                </p>
                 
-                {/* Skill badges */}
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {['AI Strategy', 'LLM Optimization', 'Technical SEO', 'Analytics'].map((skill, index) => (
+                <div className="flex flex-wrap gap-2">
+                  {['SEO Strategy', 'AI & LLM Optimization', 'Technical Audits', 'Analytics & Reporting'].map((skill, index) => (
                     <motion.span
                       key={skill}
-                      className="px-2 py-1 sm:px-3 bg-white/10 backdrop-blur-sm rounded-full text-xs sm:text-xs text-white border border-white/20"
+                      className="px-2 py-1 sm:px-3 bg-white/10 backdrop-blur-sm rounded-full text-xs text-white border border-white/20"
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1, duration: 0.5 }}
-                      whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
                     >
                       {skill}
                     </motion.span>
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* Content & Stats Section */}
           <motion.div 
-            className="lg:col-span-3 space-y-8 lg:space-y-16 order-2 lg:order-none"
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
+            className="lg:col-span-3 space-y-8 lg:space-y-12 order-2 lg:order-none"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
             viewport={{ once: true }}
           >
-                         {/* Creative Content Blocks with Right-to-Left Animation */}
-            <div className="space-y-16">
-                             {/* AI Expertise Block */}
-               <motion.div
+            <div className="space-y-8">
+              <motion.div
                  className="relative group"
-                 initial={{ opacity: 0, x: deviceInfo.isMobile ? 50 : 300 }}
-                 whileInView={{ opacity: 1, x: 0 }}
-                 transition={{ duration: deviceInfo.isMobile ? 0.6 : 1, delay: deviceInfo.isMobile ? 0.1 : 0.2, ease: [0.22, 1, 0.36, 1] }}
-                 viewport={{ once: true, margin: deviceInfo.isMobile ? "-50px" : "-100px" }}
-                 whileHover={{ scale: deviceInfo.isMobile ? 1.01 : 1.02, x: deviceInfo.isMobile ? 0 : -10 }}
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                 viewport={{ once: true, margin: "-50px" }}
               >
-                <motion.div 
-                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-blue-500/20 overflow-hidden"
-                  style={{
-                    x: animConfig.enableComplexAnimations ? contentTransform1 : 0,
-                  }}
-                >
-                  {/* Simplified corner accent */}
-                  <motion.div
-                    className="absolute top-0 left-0 w-16 h-16 bg-blue-400/10 rounded-br-full"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.1, 0.2, 0.1]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  />
+                <div className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-blue-500/20 overflow-hidden">
+                  <div className="absolute top-0 left-0 w-16 h-16 bg-blue-400/10 rounded-br-full" />
 
-                  {/* Simple floating icon */}
-                  <motion.div
-                    className="absolute top-6 right-6 w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center"
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  >
-                    <FontAwesomeIcon icon={faBrain} className="text-blue-400 text-lg" />
-                  </motion.div>
+                  <div className="absolute top-6 right-6 w-10 h-10 bg-blue-500/15 rounded-xl flex items-center justify-center">
+                    <FontAwesomeIcon icon={faBrain} className="text-blue-400 text-sm" />
+                  </div>
 
-                                     {/* Content with right slide-in animation */}
-                   <div className="relative z-10">
-                                          <motion.div
-                        className="flex items-start gap-4 mb-6"
-                        initial={{ opacity: 0, x: deviceInfo.isMobile ? 30 : 200 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: deviceInfo.isMobile ? 0.2 : 0.4, duration: deviceInfo.isMobile ? 0.5 : 0.8 }}
-                        viewport={{ once: true }}
-                     >
-                      <motion.div
-                        className="w-1 h-16 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full"
-                        initial={{ scaleY: 0 }}
-                        whileInView={{ scaleY: 1 }}
-                        transition={{ delay: 0.6, duration: 1 }}
-                        viewport={{ once: true }}
-                      />
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-1 h-12 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full flex-shrink-0" />
                       <div>
-                                                 <motion.h3 
-                           className="text-xl sm:text-2xl font-bold text-white mb-2"
-                           initial={{ opacity: 0, x: 150 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 0.5, duration: 0.8 }}
-                           viewport={{ once: true }}
-                        >
-                          AI-Powered SEO Innovation
-                        </motion.h3>
-                                                 <motion.div
-                           className="flex gap-2 mb-4"
-                           initial={{ opacity: 0, x: 100 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 0.7, duration: 0.6 }}
-                           viewport={{ once: true }}
-                        >
-                          {['AI', 'LLM', 'SGE'].map((tag) => (
+                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                          Search Strategy
+                        </h3>
+                        <div className="flex gap-2">
+                          {['Keyword Research', 'Content Planning', 'SGE'].map((tag) => (
                             <span
                               key={tag}
                               className="px-3 py-1 bg-blue-500/15 text-blue-300 text-sm rounded-full border border-blue-400/20"
@@ -407,189 +122,40 @@ export default function About() {
                               {tag}
                             </span>
                           ))}
-                        </motion.div>
+                        </div>
                       </div>
-                    </motion.div>
+                    </div>
                     
-                                                                                          <motion.p 
-                       className="text-gray-200 leading-relaxed text-sm sm:text-base"
-                       initial={{ opacity: 0, x: deviceInfo.isMobile ? 20 : 250 }}
-                       whileInView={{ opacity: 1, x: 0 }}
-                       transition={{ delay: deviceInfo.isMobile ? 0.3 : 0.9, duration: deviceInfo.isMobile ? 0.5 : 1 }}
-                       viewport={{ once: true }}
-                    >
-                      I&apos;m a forward-thinking SEO specialist and digital marketing strategist who combines traditional SEO expertise with cutting-edge AI technologies to help businesses dominate search results. My approach integrates comprehensive SEO strategies with advanced LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) optimization.
-                    </motion.p>
+                    <p className="text-gray-200 leading-relaxed text-sm sm:text-base">
+                      Building data-informed SEO strategies that account for how people search today — through Google, through AI overviews, and through LLMs like ChatGPT and Perplexity.
+                    </p>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
 
-                             {/* LLM Specialization Block */}
-               <motion.div
+              <motion.div
                  className="relative group"
-                 initial={{ opacity: 0, x: deviceInfo.isMobile ? 50 : 300 }}
-                 whileInView={{ opacity: 1, x: 0 }}
-                 transition={{ duration: deviceInfo.isMobile ? 0.6 : 1, delay: deviceInfo.isMobile ? 0.2 : 0.4, ease: [0.22, 1, 0.36, 1] }}
-                 viewport={{ once: true, margin: deviceInfo.isMobile ? "-50px" : "-100px" }}
-                 whileHover={{ scale: deviceInfo.isMobile ? 1.01 : 1.02, x: deviceInfo.isMobile ? 0 : -10 }}
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                 viewport={{ once: true, margin: "-50px" }}
               >
-                <motion.div 
-                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-purple-500/20 overflow-hidden"
-                  style={{
-                    x: animConfig.enableComplexAnimations ? contentTransform2 : 0,
-                  }}
-                >
-                  {/* Simplified corner accent */}
-                  <motion.div
-                    className="absolute top-0 right-0 w-20 h-20 bg-purple-400/10 rounded-bl-full"
-                    animate={{
-                      scale: [1.1, 1, 1.1],
-                      opacity: [0.2, 0.1, 0.2]
-                    }}
-                    transition={{ duration: 3.5, repeat: Infinity }}
-                  />
+                <div className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-green-500/20 overflow-hidden">
+                  <div className="absolute top-0 left-0 w-[4.5rem] h-[4.5rem] bg-green-400/10 rounded-br-full" />
 
-                  {/* Simple floating icon */}
-                  <motion.div
-                    className="absolute top-6 right-6 w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center"
-                    animate={{ rotate: [0, -360] }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                  >
-                    <FontAwesomeIcon icon={faRobot} className="text-purple-400 text-lg" />
-                  </motion.div>
-
-                                     {/* Content with right slide-in animation */}
-                   <div className="relative z-10">
-                                          <motion.div
-                        className="flex items-start gap-4 mb-6"
-                        initial={{ opacity: 0, x: 200 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.6, duration: 0.8 }}
-                        viewport={{ once: true }}
-                    >
-                      <div>
-                                                 <motion.h3 
-                           className="text-2xl font-bold text-white mb-2"
-                           initial={{ opacity: 0, x: 150 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 0.7, duration: 0.8 }}
-                           viewport={{ once: true }}
-                        >
-                          LLM & AI Tools Mastery
-                        </motion.h3>
-                                                 <motion.div
-                           className="flex gap-2 mb-4"
-                           initial={{ opacity: 0, x: 100 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 0.9, duration: 0.6 }}
-                           viewport={{ once: true }}
-                        >
-                          {['ChatGPT', 'Claude', 'Tools'].map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-3 py-1 bg-purple-500/15 text-purple-300 text-sm rounded-full border border-purple-400/20"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </motion.div>
-                      </div>
-                      <motion.div
-                        className="w-1 h-16 bg-gradient-to-b from-purple-400 to-green-400 rounded-full ml-auto"
-                        initial={{ scaleY: 0 }}
-                        whileInView={{ scaleY: 1 }}
-                        transition={{ delay: 0.8, duration: 1 }}
-                        viewport={{ once: true }}
-                      />
-                    </motion.div>
-                    
-                                         <motion.p 
-                       className="text-gray-200 leading-relaxed text-base"
-                       initial={{ opacity: 0, x: 250 }}
-                       whileInView={{ opacity: 1, x: 0 }}
-                       transition={{ delay: 1.1, duration: 1 }}
-                       viewport={{ once: true }}
-                    >
-                      I specialize in leveraging Large Language Models and AI tools like ChatGPT, Claude, and custom AI solutions to enhance SEO performance. From AI-powered keyword research and automated content optimization to prompt engineering for SEO-focused content creation, I stay at the forefront of the AI revolution in search marketing.
-                    </motion.p>
+                  <div className="absolute top-6 right-6 w-10 h-10 bg-green-500/15 rounded-xl flex items-center justify-center">
+                    <FontAwesomeIcon icon={faCog} className="text-green-400 text-sm" />
                   </div>
-                </motion.div>
-              </motion.div>
 
-                             {/* Technical Excellence Block */}
-               <motion.div
-                 className="relative group"
-                 initial={{ opacity: 0, x: deviceInfo.isMobile ? 50 : 300 }}
-                 whileInView={{ opacity: 1, x: 0 }}
-                 transition={{ duration: deviceInfo.isMobile ? 0.6 : 1, delay: deviceInfo.isMobile ? 0.3 : 0.6, ease: [0.22, 1, 0.36, 1] }}
-                 viewport={{ once: true, margin: deviceInfo.isMobile ? "-50px" : "-100px" }}
-                 whileHover={{ scale: deviceInfo.isMobile ? 1.01 : 1.02, x: deviceInfo.isMobile ? 0 : -10 }}
-              >
-                <motion.div 
-                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-green-500/20 overflow-hidden"
-                  style={{
-                    x: animConfig.enableComplexAnimations ? contentTransform3 : 0,
-                  }}
-                >
-                  {/* Simplified corner accent */}
-                  <motion.div
-                    className="absolute top-0 left-0 w-18 h-18 bg-green-400/10 rounded-br-full"
-                    animate={{
-                      scale: [1, 1.3, 1],
-                      opacity: [0.1, 0.2, 0.1]
-                    }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                  />
-
-                  {/* Simple floating icon */}
-                  <motion.div
-                    className="absolute top-6 right-6 w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center"
-                    animate={{ 
-                      y: [0, -5, 0],
-                      rotate: [0, 360]
-                    }}
-                    transition={{ 
-                      y: { duration: 3, repeat: Infinity },
-                      rotate: { duration: 25, repeat: Infinity, ease: "linear" }
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faCog} className="text-green-400 text-lg" />
-                  </motion.div>
-
-                                     {/* Content with right slide-in animation */}
-                   <div className="relative z-10">
-                                          <motion.div
-                        className="flex items-start gap-4 mb-6"
-                        initial={{ opacity: 0, x: 200 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.8, duration: 0.8 }}
-                        viewport={{ once: true }}
-                    >
-                      <motion.div
-                        className="w-1 h-16 bg-gradient-to-b from-green-400 to-yellow-400 rounded-full"
-                        initial={{ scaleY: 0 }}
-                        whileInView={{ scaleY: 1 }}
-                        transition={{ delay: 1, duration: 1 }}
-                        viewport={{ once: true }}
-                      />
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-1 h-12 bg-gradient-to-b from-green-400 to-yellow-400 rounded-full flex-shrink-0" />
                       <div>
-                                                 <motion.h3 
-                           className="text-2xl font-bold text-white mb-2"
-                           initial={{ opacity: 0, x: 150 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 0.9, duration: 0.8 }}
-                           viewport={{ once: true }}
-                        >
-                          Technical Excellence & Strategy
-                        </motion.h3>
-                                                 <motion.div
-                           className="flex gap-2 mb-4"
-                           initial={{ opacity: 0, x: 100 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 1.1, duration: 0.6 }}
-                           viewport={{ once: true }}
-                        >
-                          {['Analytics', 'Audits', 'Schema'].map((tag) => (
+                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                          Technical Execution
+                        </h3>
+                        <div className="flex gap-2">
+                          {['Audits', 'Schema', 'Core Web Vitals'].map((tag) => (
                             <span
                               key={tag}
                               className="px-3 py-1 bg-green-500/15 text-green-300 text-sm rounded-full border border-green-400/20"
@@ -597,161 +163,85 @@ export default function About() {
                               {tag}
                             </span>
                           ))}
-                        </motion.div>
+                        </div>
                       </div>
-                    </motion.div>
+                    </div>
                     
-                                         <motion.p 
-                       className="text-gray-200 leading-relaxed text-base"
-                       initial={{ opacity: 0, x: 250 }}
-                       whileInView={{ opacity: 1, x: 0 }}
-                       transition={{ delay: 1.3, duration: 1 }}
-                       viewport={{ once: true }}
-                    >
-                      My expertise extends beyond traditional SEO to include LLM content optimization, AI-assisted technical audits, automated schema markup generation, and developing strategies that perform well in both traditional search results and AI-powered search experiences. I use industry-leading tools including Google Search Console, Google Analytics, SEMrush, Moz, Ahrefs, alongside AI platforms to deliver comprehensive solutions.
-                    </motion.p>
+                    <p className="text-gray-200 leading-relaxed text-sm sm:text-base">
+                      Technical audits, structured data, site speed, and crawlability — using Google Search Console, Analytics, SEMrush, and Ahrefs to identify and fix what&apos;s holding your rankings back.
+                    </p>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
 
-                             {/* Future-Forward Commitment Block */}
-               <motion.div
+              <motion.div
                  className="relative group"
-                 initial={{ opacity: 0, x: deviceInfo.isMobile ? 50 : 300 }}
-                 whileInView={{ opacity: 1, x: 0 }}
-                 transition={{ duration: deviceInfo.isMobile ? 0.6 : 1, delay: deviceInfo.isMobile ? 0.4 : 0.8, ease: [0.22, 1, 0.36, 1] }}
-                 viewport={{ once: true, margin: deviceInfo.isMobile ? "-50px" : "-100px" }}
-                 whileHover={{ scale: deviceInfo.isMobile ? 1.01 : 1.02, x: deviceInfo.isMobile ? 0 : -10 }}
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                 viewport={{ once: true, margin: "-50px" }}
               >
-                <motion.div 
-                  className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-orange-500/20 overflow-hidden"
-                  style={{
-                    x: animConfig.enableComplexAnimations ? contentTransform4 : 0,
-                  }}
-                >
-                  {/* Simplified corner accent */}
-                  <motion.div
-                    className="absolute top-0 right-0 w-24 h-24 bg-orange-400/10 rounded-bl-full"
-                    animate={{
-                      scale: [1.2, 1, 1.2],
-                      opacity: [0.2, 0.1, 0.2]
-                    }}
-                    transition={{ duration: 4.5, repeat: Infinity }}
-                  />
+                <div className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-4 sm:p-6 lg:p-8 border border-purple-500/20 overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-purple-400/10 rounded-bl-full" />
 
-                  {/* Simple floating icon */}
-                  <motion.div
-                    className="absolute top-6 right-6 w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center"
-                    animate={{ 
-                      scale: [1, 1.1, 1],
-                      rotate: [0, 360]
-                    }}
-                    transition={{ 
-                      scale: { duration: 2, repeat: Infinity },
-                      rotate: { duration: 12, repeat: Infinity, ease: "easeInOut" }
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faRocket} className="text-orange-400 text-lg" />
-                  </motion.div>
+                  <div className="absolute top-6 right-6 w-10 h-10 bg-purple-500/15 rounded-xl flex items-center justify-center">
+                    <FontAwesomeIcon icon={faRocket} className="text-purple-400 text-sm" />
+                  </div>
 
-                                     {/* Content with right slide-in animation */}
-                   <div className="relative z-10">
-                                          <motion.div
-                        className="flex items-start gap-4 mb-6"
-                        initial={{ opacity: 0, x: 200 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1, duration: 0.8 }}
-                        viewport={{ once: true }}
-                    >
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-4">
                       <div>
-                                                 <motion.h3 
-                           className="text-2xl font-bold text-white mb-2"
-                           initial={{ opacity: 0, x: 150 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 1.1, duration: 0.8 }}
-                           viewport={{ once: true }}
-                        >
-                          Future-Proofing Your Business
-                        </motion.h3>
-                                                 <motion.div
-                           className="flex gap-2 mb-4"
-                           initial={{ opacity: 0, x: 100 }}
-                           whileInView={{ opacity: 1, x: 0 }}
-                           transition={{ delay: 1.3, duration: 0.6 }}
-                           viewport={{ once: true }}
-                        >
-                          {['Innovation', 'Strategy', 'Growth'].map((tag) => (
+                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                          Measurable Growth
+                        </h3>
+                        <div className="flex gap-2">
+                          {['Organic Traffic', 'Rankings', 'ROI'].map((tag) => (
                             <span
                               key={tag}
-                              className="px-3 py-1 bg-orange-500/15 text-orange-300 text-sm rounded-full border border-orange-400/20"
+                              className="px-3 py-1 bg-purple-500/15 text-purple-300 text-sm rounded-full border border-purple-400/20"
                             >
                               {tag}
                             </span>
                           ))}
-                        </motion.div>
+                        </div>
                       </div>
-                      <motion.div
-                        className="w-1 h-16 bg-gradient-to-b from-orange-400 to-red-400 rounded-full ml-auto"
-                        initial={{ scaleY: 0 }}
-                        whileInView={{ scaleY: 1 }}
-                        transition={{ delay: 1.2, duration: 1 }}
-                        viewport={{ once: true }}
-                      />
-                    </motion.div>
+                      <div className="w-1 h-12 bg-gradient-to-b from-purple-400 to-blue-400 rounded-full ml-auto flex-shrink-0" />
+                    </div>
                     
-                                         <motion.p 
-                       className="text-gray-200 leading-relaxed text-base"
-                       initial={{ opacity: 0, x: 250 }}
-                       whileInView={{ opacity: 1, x: 0 }}
-                       transition={{ delay: 1.5, duration: 1 }}
-                       viewport={{ once: true }}
-                    >
-                      Whether it&apos;s optimizing content for AI search engines, implementing AI-driven SEO workflows, or developing LLM-enhanced content strategies, I&apos;m committed to delivering cutting-edge results that future-proof your business in the evolving search landscape.
-                    </motion.p>
+                    <p className="text-gray-200 leading-relaxed text-sm sm:text-base">
+                      Every engagement is measured against real business outcomes — organic sessions, keyword rankings, and revenue attribution. Monthly reporting keeps strategy aligned with results.
+                    </p>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             </div>
 
-            {/* Simplified Stats Visualization */}
             <motion.div 
-              className="mt-20"
-              initial={{ opacity: 0, y: 80 }}
+              className="mt-16"
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <motion.h3 
-                className="text-3xl font-bold text-white text-center mb-12"
-                style={{
-                  x: useTransform(smoothMouseX, [-100, 100], [-10, 10]),
-                }}
-              >
+              <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-10">
                 Key Achievements
-              </motion.h3>
+              </h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 {aboutData.stats.map((stat, index) => (
-                                     <motion.div
+                  <motion.div
                      key={index}
                      className="relative group"
-                     initial={{ opacity: 0, x: 200 }}
-                     whileInView={{ opacity: 1, x: 0 }}
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
                      transition={{ 
-                       duration: 0.8, 
-                       delay: index * 0.15,
+                       duration: 0.5, 
+                       delay: index * 0.1,
                        ease: [0.22, 1, 0.36, 1]
                      }}
                      viewport={{ once: true }}
                      onClick={() => setSelectedStat(selectedStat === index ? null : index)}
-                     whileHover={{ 
-                       scale: 1.05,
-                       x: -10
-                     }}
-                    style={{
-                      x: mouseParallaxX,
-                      y: mouseParallaxY,
-                    }}
+                     whileHover={{ scale: 1.03 }}
                   >
                     <motion.div 
                       className="bg-white/8 backdrop-blur-xl rounded-2xl p-8 border border-white/15 relative overflow-hidden h-40 cursor-pointer"

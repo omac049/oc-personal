@@ -1,77 +1,12 @@
 'use client';
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { useRef, useEffect } from 'react';
-import { heroData } from '@/data/hero';
-import AnimatedText from './AnimatedText';
+import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import Image from 'next/image';
 import AlgorithmBackground from './AlgorithmBackground';
-import { useDeviceDetection, getAnimationConfig } from '@/hooks/useDeviceDetection';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faSearch, 
-  faChartLine, 
-  faRocket, 
-  faBullseye, 
-  faEye,
-  faHashtag,
-  faLink,
-  faLightbulb,
-  faGlobe,
-  faMagnifyingGlassChart,
-  faArrowUp,
-  faDesktop,
-  faSitemap
-} from '@fortawesome/free-solid-svg-icons';
-
-
-
-// SEO-related floating icons data - Updated with brand colors
-const seoIcons = [
-  { icon: faSearch, label: 'Keyword Research', position: { top: '15%', left: '10%' }, speed: 0.8, color: 'text-blue-700' },
-  { icon: faChartLine, label: 'Analytics', position: { top: '25%', right: '15%' }, speed: 1.2, color: 'text-amber-400' },
-  { icon: faBullseye, label: 'Target SEO', position: { top: '60%', left: '8%' }, speed: 0.6, color: 'text-blue-600' },
-  { icon: faRocket, label: 'Performance', position: { bottom: '20%', right: '12%' }, speed: 1.4, color: 'text-amber-400' },
-  { icon: faEye, label: 'Visibility', position: { top: '40%', right: '8%' }, speed: 0.9, color: 'text-blue-700' },
-  { icon: faHashtag, label: 'Keywords', position: { bottom: '35%', left: '15%' }, speed: 1.1, color: 'text-amber-400' },
-  { icon: faLink, label: 'Link Building', position: { top: '70%', right: '25%' }, speed: 0.7, color: 'text-blue-600' },
-  { icon: faLightbulb, label: 'Strategy', position: { top: '30%', left: '20%' }, speed: 1.3, color: 'text-amber-400' },
-  { icon: faGlobe, label: 'Global SEO', position: { bottom: '45%', right: '20%' }, speed: 0.8, color: 'text-blue-700' },
-  { icon: faMagnifyingGlassChart, label: 'SEO Analysis', position: { top: '80%', left: '25%' }, speed: 1.0, color: 'text-blue-600' },
-  { icon: faArrowUp, label: 'Growth', position: { top: '50%', left: '5%' }, speed: 1.2, color: 'text-amber-400' },
-  { icon: faDesktop, label: 'Technical SEO', position: { top: '35%', left: '85%' }, speed: 1.0, color: 'text-blue-700' },
-  { icon: faSitemap, label: 'Site Structure', position: { bottom: '60%', left: '30%' }, speed: 0.9, color: 'text-blue-600' },
-];
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
-  const deviceInfo = useDeviceDetection();
-  const animConfig = getAnimationConfig(deviceInfo);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const mouseX = useMotionValue(0);
-  const smoothMouseX = useSpring(mouseX, { damping: 50, stiffness: 400 });
-
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = containerRef.current?.getBoundingClientRect();
-      if (rect) {
-        const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-        mouseX.set(x * 50);
-      }
-    };
-
-    const element = containerRef.current;
-    if (element) {
-      element.addEventListener('mousemove', handleMouseMove);
-      return () => element.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, [mouseX]);
 
   return (
     <section 
@@ -80,283 +15,82 @@ export default function Hero() {
       className="min-h-screen flex items-center justify-center bg-slate-900 text-white relative overflow-hidden"
       suppressHydrationWarning
     >
-      {/* Global Algorithm Background */}
       <AlgorithmBackground opacity="opacity-10" />
 
-      {/* Performance-Aware Interactive SEO Icons */}
-      {animConfig.enableComplexAnimations && (
-        <div className="hidden lg:block">
-          {seoIcons.slice(0, 6).map((seoIcon, index) => ( // Limit to 6 icons for performance
-            <motion.div
-              key={index}
-              className={`absolute z-20 ${seoIcon.color} opacity-70 hover:opacity-100 transition-opacity duration-300 group`}
-              style={{
-                ...seoIcon.position,
-                transform: `translateY(${index * 2}px)`,
-              }}
-              whileHover={{ 
-                scale: 1.3, // Reduced animation intensity
-                transition: { duration: 0.2 }
-              }}
-              animate={{ 
-                y: [0, -8, 0], // Reduced movement
-              }}
-              transition={{ 
-                duration: 6 + index * 0.3, // Slower animations
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: index * 0.4
-              }}
-            >
-              <div className="relative">
-                <FontAwesomeIcon 
-                  icon={seoIcon.icon} 
-                  className="w-6 h-6 md:w-8 md:h-8 drop-shadow-lg filter" 
-                />
-                
-                {/* Floating Tooltip */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                  whileHover={{ opacity: 1, scale: 1, y: 0 }}
-                  className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-slate-800/90 text-white text-xs rounded-lg whitespace-nowrap backdrop-blur-sm pointer-events-none border border-slate-700/50"
-                >
-                  {seoIcon.label}
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800/90"></div>
-                </motion.div>
-                
-                {/* Pulse Ring Effect */}
-                <motion.div
-                  className="absolute inset-0 border-2 border-current rounded-full opacity-30"
-                  animate={{ 
-                    scale: [1, 2, 1],
-                    opacity: [0.3, 0, 0.3]
-                  }}
-                  transition={{ 
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: index * 0.3,
-                    ease: "easeOut"
-                  }}
-                />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      )}
-      
-      {/* Minimal mobile/tablet version */}
-      {!animConfig.enableComplexAnimations && (
-        <div className="hidden md:block lg:hidden">
-          {seoIcons.slice(0, 6).map((seoIcon, index) => (
-            <div
-              key={`static-${index}`}
-              className={`absolute z-20 ${seoIcon.color} opacity-40`}
-              style={{
-                top: seoIcon.position.top,
-                right: index % 2 === 0 ? '10%' : undefined,
-                left: index % 2 === 1 ? '10%' : undefined,
-              }}
-            >
-              <FontAwesomeIcon 
-                icon={seoIcon.icon} 
-                className="w-5 h-5" 
+      <div className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 sm:mb-10"
+        >
+          <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 mx-auto rounded-full bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 p-1 shadow-2xl">
+            <div className="w-full h-full rounded-full overflow-hidden bg-slate-900">
+              <Image
+                src="/omar.jpeg"
+                alt="Omar Corral - SEO Specialist & AI Marketing Expert"
+                width={192}
+                height={192}
+                className="w-full h-full object-cover object-center"
+                priority
               />
             </div>
-          ))}
-        </div>
-      )}
-      
-      {/* Simplified mobile version with minimal animations */}
-      <div className="block md:hidden">
-        {seoIcons.slice(0, 4).map((seoIcon, index) => (
-          <motion.div
-            key={`mobile-${index}`}
-            className={`absolute z-20 ${seoIcon.color} opacity-50`}
-            style={{
-              top: seoIcon.position.top,
-              right: index % 2 === 0 ? '10%' : undefined,
-              left: index % 2 === 1 ? '10%' : undefined,
-            }}
-            animate={animConfig.enableBackgroundAnimations ? { 
-              y: [0, -10, 0],
-              opacity: [0.3, 0.6, 0.3],
-            } : {}}
-            transition={animConfig.enableBackgroundAnimations ? { 
-              duration: 3 + index * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: index * 0.5
-            } : {}}
-          >
-            <FontAwesomeIcon 
-              icon={seoIcon.icon} 
-              className="w-4 h-4 drop-shadow-lg filter" 
-            />
-          </motion.div>
-        ))}
-      </div>
-      
-      {/* Static LCP Content - Renders immediately for performance measurement */}
-      <div className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6">
-        {/* LCP Image Element - Critical for performance measurement */}
-        <div className="mb-6 sm:mb-8">
-          <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 p-1 shadow-2xl">
-            <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-4xl sm:text-5xl font-bold text-white">
-              OC
-            </div>
           </div>
-        </div>
+        </motion.div>
         
-        {/* Critical above-the-fold content for LCP */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight px-2 mb-4 sm:mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-          {heroData.name}
-        </h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight mb-4 sm:mb-6 text-white"
+        >
+          Omar Corral
+        </motion.h1>
         
-        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-slate-300 px-2 mb-6 sm:mb-8">
-          {heroData.headline}
-        </h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="text-lg sm:text-xl md:text-2xl font-light text-slate-300 mb-6 sm:mb-8"
+        >
+          Helping brands rank in search — and in AI
+        </motion.h2>
         
-        <p className="text-base sm:text-lg md:text-xl text-slate-400 px-2 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
-          {heroData.subheading}
-        </p>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="text-base sm:text-lg text-slate-400 mb-10 sm:mb-14 max-w-xl mx-auto leading-relaxed"
+        >
+          10+ years of SEO expertise, now enhanced with tools like ChatGPT and Claude to drive organic growth that lasts.
+        </motion.p>
         
-        {/* CTA Button - Critical for user interaction */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
           <button 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-4 rounded-full font-semibold shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-full font-semibold shadow-xl hover:shadow-blue-500/25 transition-all duration-300 hover:-translate-y-0.5"
           >
-            Get Free SEO Consultation
+            Get in Touch
           </button>
-          <button 
-            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="border border-slate-400 text-slate-300 hover:text-white hover:border-white px-8 py-4 rounded-full font-semibold transition-all duration-300"
-          >
-            Learn More
-          </button>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Animated Content - Loads after LCP */}
-      <motion.div 
-        style={{ 
-          y: textY,
-          x: useTransform(smoothMouseX, [-50, 50], [-10, 10])
-        }}
-        className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6 hidden"
-      >
-        <motion.div
-          initial={{ opacity: 0.8, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ 
-            duration: 0.6, 
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="mb-4 sm:mb-6"
-        >
-          <AnimatedText
-            text={heroData.name}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight px-2"
-            stagger={0.03}
-            delay={0.1}
-            as="h1"
-          />
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0.6, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.5,
-            delay: 0.2,
-            ease: [0.22, 1, 0.36, 1]
-          }}
-          className="mb-6 sm:mb-8"
-        >
-          <AnimatedText
-            text={heroData.headline}
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-slate-300 px-2"
-            stagger={0.01}
-            delay={0.3}
-            as="h2"
-          />
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0.4, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.4, 
-            delay: 0.4,
-            ease: [0.22, 1, 0.36, 1]
-          }}
-          className="mb-8 sm:mb-12"
-        >
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed px-4 sm:px-6">
-            {heroData.subheading}
-          </p>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0.3, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.5, 
-            delay: 0.6,
-            ease: [0.22, 1, 0.36, 1]
-          }}
-        >
-          <motion.a
-            href={heroData.cta.href}
-            whileHover={{ 
-              scale: 1.05, 
-              boxShadow: "0 20px 40px rgba(30, 64, 175, 0.4)",
-              y: -5
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="group inline-block bg-blue-700 hover:bg-blue-600 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full text-sm sm:text-base lg:text-lg font-semibold transition-all duration-500 shadow-lg hover:shadow-xl relative overflow-hidden min-w-[48px] min-h-[48px] sm:min-w-[52px] sm:min-h-[52px]"
-          >
-              {/* Floating Icons around button */}
-              <motion.div
-                className="absolute -top-2 -left-2 text-amber-400 opacity-0 group-hover:opacity-70"
-                animate={{ 
-                  rotate: [0, 360],
-                  scale: [0.8, 1.2, 0.8]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <FontAwesomeIcon icon={faRocket} className="w-3 h-3" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-2 -right-2 text-amber-400 opacity-0 group-hover:opacity-70"
-                animate={{ 
-                  rotate: [360, 0],
-                  scale: [0.8, 1.2, 0.8]
-                }}
-                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-              >
-                <FontAwesomeIcon icon={faChartLine} className="w-3 h-3" />
-              </motion.div>
-              
-              <span className="relative z-10">{heroData.cta.text}</span>
-            </motion.a>
-        </motion.div>
-      </motion.div>
-      
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+          className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center"
         >
-          <div className="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
+          <div className="w-1 h-3 bg-white/40 rounded-full mt-2"></div>
         </motion.div>
       </motion.div>
     </section>
