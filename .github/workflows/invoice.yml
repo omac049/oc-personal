@@ -17,6 +17,7 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    environment: env_invoicing
     permissions:
       contents: write
     steps:

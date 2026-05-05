@@ -57,9 +57,9 @@
   "payment": {
     "terms": "Upon receipt (Net 15 if preferred)",
     "methods": [
-      { "label": "Zelle", "value": "omar.webhosting@gmail.com", "envKey": "PAYMENT_ZELLE" },
-      { "label": "Bank transfer (ACH / direct deposit)", "value": "Chase · Routing 122100024 · Account 331223120", "envKey": "PAYMENT_ACH" },
-      { "label": "Wire transfer", "value": "Routing 021000021 · Account same as above", "envKey": "PAYMENT_WIRE" }
+      { "label": "Zelle", "envKey": "PAYMENT_ZELLE" },
+      { "label": "Bank transfer (ACH / direct deposit)", "envKey": "PAYMENT_ACH" },
+      { "label": "Wire transfer", "envKey": "PAYMENT_WIRE" }
     ]
   }
 }
