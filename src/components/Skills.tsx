@@ -123,7 +123,6 @@ export default function Skills() {
   const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
   
   const animationSpeed = 1;
-  const viewMode = '2d' as const;
   const planetSize = 1;
   const orbitalDistance = 1;
   const showRings = true;
@@ -432,22 +431,9 @@ export default function Skills() {
         <motion.div
           className="absolute"
           style={{
-            // Position planet at orbital distance from center
             left: `${orbitalRadius}px`,
             top: '0px',
             transform: 'translate(-50%, -50%)',
-            transformStyle: viewMode === '3d' ? 'preserve-3d' : 'flat',
-            rotateY: viewMode === '3d' ? 30 : 0,
-          }}
-          animate={{
-            rotateY: viewMode === '3d' ? [30, 60, 30] : 0,
-          }}
-          transition={{
-            rotateY: {
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }
           }}
         >
           {/* Planet Atmosphere */}
