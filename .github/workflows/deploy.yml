@@ -7,10 +7,10 @@ on:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
-  quality:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,56 +22,15 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
+      # ── Main site ───────────────────────────────────────────────
       - name: Install main site dependencies
-        run: npm ci
+        run: npm ci --no-fund
 
       - name: Typecheck main site
         run: npx tsc --noEmit
 
       - name: Lint main site
         run: npm run lint
-
-      - name: Audit main site (critical only)
-        run: npm audit --audit-level=critical || true
-
-      - name: Install SEO Resources dependencies
-        working-directory: seo-resources
-        run: npm ci
-
-      - name: Typecheck SEO Resources
-        working-directory: seo-resources
-        run: npm run typecheck
-
-      - name: Audit SEO Resources (critical only)
-        working-directory: seo-resources
-        run: npm audit --audit-level=critical || true
-
-  build:
-    needs: quality
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.npm
-            ./node_modules
-            ./seo-resources/node_modules
-          key: ${{ runner.os }}-node-v2-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-v2-
-
-      - name: Install main site dependencies
-        run: npm ci
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -81,14 +40,20 @@ jobs:
       - name: Build Next.js main site
         run: npm run build
 
+      # ── SEO Resource Center ─────────────────────────────────────
       - name: Install SEO Resources dependencies
         working-directory: seo-resources
-        run: npm ci
+        run: npm ci --no-fund
+
+      - name: Typecheck SEO Resources
+        working-directory: seo-resources
+        run: npm run typecheck
 
       - name: Build SEO Resource Center
         working-directory: seo-resources
         run: NODE_ENV=production npm run build
 
+      # ── Combine & upload ────────────────────────────────────────
       - name: Prepare combined deployment
         run: |
           mkdir -p ./out/seo-resources

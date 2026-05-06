@@ -1,92 +1,46 @@
-# 🚀 GitHub Actions Deployment Workflow
+# GitHub Actions Workflows
 
-This repository uses GitHub Actions for automated deployment to GitHub Pages.
+## deploy.yml
 
-## 📋 Workflow Overview
+Runs on every push to `main` and on manual dispatch.
 
-The deployment workflow (`deploy.yml`) automatically:
+**Jobs**
 
-1. **🔨 Builds** the Next.js portfolio application
-2. **🔍 Lints** the code for quality assurance
-3. **📤 Uploads** the build artifacts
-4. **🚀 Deploys** to GitHub Pages
+| Job | Steps | Notes |
+|-----|-------|-------|
+| `build` | Typecheck → Lint → Build (Next.js + Docusaurus) → Upload artifact | Single runner; npm cache via `setup-node` |
+| `deploy` | Deploy to GitHub Pages | Requires `build` to pass; skipped on non-main branches |
 
-## ⚡ Triggers
+Concurrency group `pages` with `cancel-in-progress: true` — rapid pushes cancel the previous in-flight deploy automatically.
 
-The workflow runs automatically:
-- 📝 **On push to main branch** - Any commit to `main` triggers deployment
-- 🎯 **Manual dispatch** - Can be triggered manually from the Actions tab
+**Runtime targets:** Node.js 22, Ubuntu latest
 
-## 🛠️ Build Process
-
-1. **Environment Setup**
-   - Ubuntu latest runner
-   - Node.js 18
-   - NPM cache optimization
-
-2. **Code Quality**
-   - ESLint checking (warnings don't fail build)
-   - TypeScript type checking
-
-3. **Build & Export**
-   - Next.js static export
-   - Optimized production build
-   - Assets prepared for GitHub Pages
-
-## 🌐 Deployment Configuration
-
-### Next.js Config (`next.config.js`)
-```javascript
-{
-  output: 'export',           // Static site generation
-  trailingSlash: true,        // GitHub Pages compatibility
-  images: { unoptimized: true }, // No image optimization needed
-  assetPrefix: '/oc-personal/', // Repository path
-  basePath: '/oc-personal'     // Base URL path
-}
-```
-
-### GitHub Pages Settings
-- **Source**: GitHub Actions
-- **Build Tool**: Next.js
-- **Output Directory**: `./out`
-
-## 📊 Monitoring
-
-- ✅ **Build Status**: Check the Actions tab for build results
-- 🌐 **Live Site**: Automatically deployed to `https://omac049.github.io/oc-personal/`
-- 📈 **Performance**: Build times typically 1-2 minutes
-
-## 🔧 Troubleshooting
-
-### Common Issues:
-1. **Build Failures**: Check ESLint warnings and TypeScript errors
-2. **Deployment Issues**: Verify GitHub Pages settings
-3. **Asset Loading**: Ensure `basePath` matches repository name
-
-### Manual Deployment:
-```bash
-npm run build    # Build the application
-npm run deploy   # Deploy using gh-pages
-```
-
-## 📁 File Structure
-
-```
-.github/workflows/
-├── deploy.yml       # Main deployment workflow
-└── README.md        # This documentation
-```
-
-## 🎯 Features
-
-- 🚀 **Automated deployment** on every push
-- 🔍 **Code quality checks** with ESLint
-- 📊 **Build status reporting** 
-- 🌐 **Live URL output** after successful deployment
-- ⚡ **Fast builds** with NPM caching
-- 🛡️ **Security** with proper permissions and concurrency controls
+**Live site:** [omar-corral.com](https://omar-corral.com)
 
 ---
 
-**Live Portfolio**: [https://omac049.github.io/oc-personal/](https://omac049.github.io/oc-personal/)
+## invoice.yml
+
+Runs on the 3rd of each month at 09:00 UTC, or manually via `workflow_dispatch`.
+
+**Steps**
+
+1. Generate invoice HTML from `scripts/invoicing/generate.js`
+2. Commit output to `public/client/` and increment counters in `scripts/invoicing/clients.json`
+3. Trigger `deploy.yml` to publish the updated client folder
+4. Email the invoice to the client via SMTP
+
+**Environment:** `env_invoicing`
+
+**Required secrets:** `PAYMENT_ZELLE`, `PAYMENT_ACH`, `PAYMENT_WIRE`, `SMTP_USERNAME`, `SMTP_PASSWORD`
+
+**Manual dry-run:** set `dry_run: true` in workflow dispatch — previews output without writing files or sending email.
+
+---
+
+## Local quality gate
+
+```bash
+npm run ci:local
+# runs: lint → typecheck (main) → typecheck (seo-resources) → next build
+```
