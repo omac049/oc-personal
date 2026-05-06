@@ -45,28 +45,6 @@ function GoogleAnalytics() {
   );
 }
 
-export function useAnalytics() {
-  const trackEvent = (eventName: string, parameters?: Record<string, unknown>) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', eventName, {
-        event_category: 'engagement',
-        event_label: (parameters?.label as string) || '',
-        value: (parameters?.value as number) || 0,
-        ...parameters,
-      });
-    }
-  };
-
-  const trackFormSubmission = (formName: string, success: boolean = true) => {
-    trackEvent('form_submit', {
-      form_name: formName,
-      success: success,
-      event_category: 'form',
-    });
-  };
-
-  return { trackEvent, trackFormSubmission };
-}
 
 function CoreWebVitalsTracking() {
   useEffect(() => {

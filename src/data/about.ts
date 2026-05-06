@@ -1,4 +1,4 @@
-export interface AboutData {
+interface AboutData {
   name: string;
   bio: string;
   categories: string[];

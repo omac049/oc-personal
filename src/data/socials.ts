@@ -1,10 +1,10 @@
-export interface SocialLink {
+interface SocialLink {
   name: string;
   url: string;
   platform: 'github' | 'linkedin' | 'x';
 }
 
-export interface SocialsData {
+interface SocialsData {
   email: string;
   social: SocialLink[];
 }

@@ -45,6 +45,9 @@ token.json
 *.tsbuildinfo
 next-env.d.ts
 
+# Cursor IDE internal state — never commit
+.cursor/
+
 # Separate repos nested in workspace
 /mcp-gsc/
 

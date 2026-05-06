@@ -58,7 +58,7 @@ export default function RootLayout({
         <link rel="prefetch" href="/robots.txt" />
         
         {/* Structured Data - includes FAQ schema from enhanced-seo.ts */}
-        <StructuredData type="all" />
+        <StructuredData />
         
         {/* Analytics & Tracking */}
         <Analytics />

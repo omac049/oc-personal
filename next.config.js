@@ -42,10 +42,6 @@ const nextConfig = {
   generateEtags: false,
   compress: true,
   
-  // Generate additional static content for crawlers
-  env: {
-    GENERATE_STATIC_CONTENT: 'true',
-  },
 };
 
 module.exports = nextConfig;

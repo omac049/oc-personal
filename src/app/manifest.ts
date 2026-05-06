@@ -76,23 +76,6 @@ export default function manifest(): MetadataRoute.Manifest {
         icons: [{ src: '/favicon-32x32.png', sizes: '32x32' }],
       },
     ],
-    // Screenshots removed until actual images are available
-    // screenshots: [
-    //   {
-    //     src: '/screenshot-desktop.png',
-    //     sizes: '1280x720',
-    //     type: 'image/png',
-    //     form_factor: 'wide',
-    //     label: 'Omar Corral SEO Portfolio - Desktop View',
-    //   },
-    //   {
-    //     src: '/screenshot-mobile.png',
-    //     sizes: '375x667',
-    //     type: 'image/png',
-    //     form_factor: 'narrow',
-    //     label: 'Omar Corral SEO Portfolio - Mobile View',
-    //   },
-    // ],
     related_applications: [
       {
         platform: 'web',

@@ -279,4 +279,4 @@ export const seoData = {
   },
 };
 
-export const { personal, website, meta, openGraph, twitter, structuredData, analytics, technical } = seoData;
+export const { analytics } = seoData;
