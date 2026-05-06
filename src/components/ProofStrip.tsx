@@ -35,6 +35,7 @@ export default function ProofStrip() {
               target={metric.value}
               prefix={metric.prefix}
               suffix={metric.suffix}
+              decimals={metric.value % 1 !== 0 ? 1 : 0}
               className="text-5xl font-bold md:text-6xl"
               style={{ color: 'var(--color-accent)' }}
             />

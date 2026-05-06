@@ -72,6 +72,7 @@ export default function CaseStudies() {
                 target={study.metric.value}
                 prefix={study.metric.prefix}
                 suffix={study.metric.suffix}
+                decimals={study.metric.value % 1 !== 0 ? 1 : 0}
                 className="text-6xl font-bold md:text-7xl"
                 style={{ color: 'var(--color-accent)' }}
               />

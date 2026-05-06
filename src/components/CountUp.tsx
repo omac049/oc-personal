@@ -9,6 +9,7 @@ interface CountUpProps {
   duration?: number;
   className?: string;
   style?: React.CSSProperties;
+  decimals?: number;
 }
 
 export default function CountUp({
@@ -18,8 +19,9 @@ export default function CountUp({
   duration = 1500,
   className = '',
   style,
+  decimals = 0,
 }: CountUpProps) {
-  const [count, setCount] = useState(0);
+  const [display, setDisplay] = useState('0');
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -36,7 +38,7 @@ export default function CountUp({
         observer.disconnect();
 
         if (prefersReducedMotion) {
-          setCount(target);
+          setDisplay(decimals > 0 ? target.toFixed(decimals) : Math.round(target).toString());
           return;
         }
 
@@ -46,7 +48,8 @@ export default function CountUp({
           const elapsed = now - start;
           const progress = Math.min(elapsed / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
-          setCount(Math.round(eased * target));
+          const value = eased * target;
+          setDisplay(decimals > 0 ? value.toFixed(decimals) : Math.round(value).toString());
 
           if (progress < 1) {
             requestAnimationFrame(tick);
@@ -60,11 +63,11 @@ export default function CountUp({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [target, duration, hasAnimated]);
+  }, [target, duration, hasAnimated, decimals]);
 
   return (
     <span ref={ref} className={className} style={style}>
-      {prefix}{count}{suffix}
+      {prefix}{display}{suffix}
     </span>
   );
 }
