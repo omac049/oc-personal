@@ -6,6 +6,9 @@
 - Prefer short, minimal copy on generated invoice line items (avoid long boilerplate in HTML invoices).
 - For portfolio marketing copy, prefer an authority-first tone that establishes expertise and explains the work; avoid hard-sell positioning.
 - When presenting services on the main site, favor weaving them strategically through the narrative (homepage and key sections) rather than relying on a standalone services page as the primary pattern.
+- In proof or metrics UI, avoid signaling very high client volume when positioning as selective and premium; favor tenure, outcomes, and growth metrics instead.
+- Keep the Docusaurus resource center aligned with the main portfolio: shared branding and mutually accurate facts (names, URLs, statistics, and claims).
+- The public marketing site is also a brand-awareness and organic-visibility surface—favor substantive, accurate content that compounds discovery, not only funnel conversion.
 
 ## Learned Workspace Facts
 
@@ -19,3 +22,4 @@
 - Pushes made with the default `GITHUB_TOKEN` inside Actions do not trigger other workflows on that push; chaining a deploy may use the API to dispatch a workflow (e.g. `workflow_dispatch` / `gh workflow run deploy.yml`) with job permissions including **`actions: write`**.
 - The repo spans three concerns: the public marketing site (Next.js portfolio deployed to `omar-corral.com`), the Docusaurus SEO resources subsite under `seo-resources/` (free SEO basics), and in-repo client operations such as invoicing under `scripts/invoicing/`.
 - The active “Signal” redesign direction (black/white/signal-green palette, DM Serif Display + Inter, signal-O mark, fixed top nav, generative hero grid) is written up in `docs/superpowers/specs/2026-05-06-signal-rebrand-design.md`.
+- Scale and hygiene direction: aim for an unambiguous repo layout (single root or clean submodules—not a hybrid); keep confidential client material out of `public/` and publish only shareable artifacts; run lint, typecheck, audit, and build for both the Next portfolio and `seo-resources/` in CI; consolidate SEO and outbound links into one maintained source of truth and remove dead URLs; explicitly classify optional search or demo surfaces as maintained products versus throwaway prototypes.

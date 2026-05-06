@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import CountUp from './CountUp';
 
 const METRICS = [
-  { value: 150, suffix: '+', label: 'Clients' },
   { value: 12, suffix: '+', label: 'Years' },
   { value: 2, prefix: '$', suffix: 'M+', label: 'Revenue Driven' },
   { value: 300, suffix: '%', label: 'Avg. Traffic Growth' },

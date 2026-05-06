@@ -2,12 +2,28 @@
 
 import { motion } from 'framer-motion';
 
-const fadeIn = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.4 },
-};
+const RESOURCES = [
+  {
+    category: 'AI & Search',
+    title: 'How AI Is Changing SEO: What You Need to Know',
+    href: '/seo-resources/blog/ai-search-optimization-guide',
+  },
+  {
+    category: 'Core Frameworks',
+    title: 'The Three Pillars of SEO: Authority, Relevance & Experience',
+    href: '/seo-resources/docs/getting-started/seo-pillars',
+  },
+  {
+    category: 'Search Intent',
+    title: 'The 3Cs Framework: Match What Users Actually Want',
+    href: '/seo-resources/docs/getting-started/search-intent-optimization',
+  },
+  {
+    category: 'Technical SEO',
+    title: 'Structured Data & Schema Markup — What Actually Matters',
+    href: '/seo-resources/docs/technical-seo/structured-data',
+  },
+];
 
 export default function ResourcesCTA() {
   return (
@@ -19,44 +35,99 @@ export default function ResourcesCTA() {
       }}
       aria-labelledby="resources-heading"
     >
-      <motion.div className="mx-auto max-w-4xl" {...fadeIn}>
-        <p
-          className="text-xs font-medium uppercase tracking-[0.2em]"
-          style={{ color: 'var(--color-accent)' }}
-        >
-          Free Resource Center
-        </p>
+      <div className="mx-auto max-w-5xl grid md:grid-cols-[2fr_3fr] gap-16 items-start">
 
-        <h2
-          id="resources-heading"
-          className="font-serif mt-4 text-3xl md:text-5xl"
-          style={{ color: 'var(--color-white)' }}
+        {/* Left: context + CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
         >
-          Learn the strategy behind the results
-        </h2>
+          <p
+            className="text-xs font-medium uppercase tracking-[0.2em]"
+            style={{ color: 'var(--color-accent)' }}
+          >
+            Free Resource Center
+          </p>
 
-        <p
-          className="mt-4 max-w-xl text-base leading-relaxed"
-          style={{ color: 'var(--color-muted)' }}
-        >
-          Guides on technical SEO, content strategy, AI search optimization,
-          and on-page fundamentals — written for practitioners, not beginners.
-        </p>
+          <h2
+            id="resources-heading"
+            className="font-serif mt-4 text-3xl md:text-4xl leading-tight"
+            style={{ color: 'var(--color-white)' }}
+          >
+            The complete SEO playbook. Open to everyone.
+          </h2>
 
-        <a
-          href="/seo-resources/"
-          className="group mt-8 inline-flex items-center gap-3 rounded-sm border px-8 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:bg-white/5"
-          style={{
-            borderColor: 'var(--color-accent)',
-            color: 'var(--color-accent)',
-          }}
-        >
-          Browse SEO resources
-          <span className="inline-block transition-transform duration-150 group-hover:translate-x-1">
-            →
-          </span>
-        </a>
-      </motion.div>
+          <p
+            className="mt-4 text-base leading-relaxed"
+            style={{ color: 'var(--color-muted)' }}
+          >
+            Practitioner-level guides on technical SEO, search intent, AI search
+            strategy, and the frameworks behind the results.
+          </p>
+
+          <a
+            href="/seo-resources/"
+            className="group mt-8 inline-flex items-center gap-3 rounded-sm border px-8 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:bg-white/5"
+            style={{
+              borderColor: 'var(--color-accent)',
+              color: 'var(--color-accent)',
+            }}
+          >
+            Browse all resources
+            <span className="inline-block transition-transform duration-150 group-hover:translate-x-1">
+              →
+            </span>
+          </a>
+
+          <p
+            className="mt-4 text-xs"
+            style={{ color: 'var(--color-muted)' }}
+          >
+            Free · No signup required
+          </p>
+        </motion.div>
+
+        {/* Right: resource list */}
+        <div>
+          {RESOURCES.map((item, i) => (
+            <motion.a
+              key={item.href}
+              href={item.href}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: i * 0.07 }}
+              className="group flex items-start justify-between gap-6 py-5 border-b"
+              style={{ borderColor: 'var(--color-border)' }}
+            >
+              <div>
+                <span
+                  className="text-xs font-medium uppercase tracking-[0.15em]"
+                  style={{ color: 'var(--color-accent)' }}
+                >
+                  {item.category}
+                </span>
+                <p
+                  className="mt-1 text-base font-semibold leading-snug transition-colors duration-150 group-hover:opacity-80"
+                  style={{ color: 'var(--color-white)' }}
+                >
+                  {item.title}
+                </p>
+              </div>
+              <span
+                className="mt-1 shrink-0 text-lg transition-transform duration-150 group-hover:translate-x-1"
+                style={{ color: 'var(--color-accent)' }}
+                aria-hidden="true"
+              >
+                →
+              </span>
+            </motion.a>
+          ))}
+        </div>
+
+      </div>
     </section>
   );
 }
