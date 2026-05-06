@@ -2,320 +2,330 @@ import { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://omar-corral.com';
-  const currentDate = new Date();
-  const lastWeek = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+const BASE = 'https://omar-corral.com';
 
+// Shared date helpers — avoids repeated `new Date()` calls
+const now = new Date('2026-05-06');
+const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    // Main pages
+    // ─── Main portfolio ─────────────────────────────────────────────────────
     {
-      url: baseUrl,
-      lastModified: currentDate,
+      url: BASE,
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/services/`,
-      lastModified: currentDate,
+      url: `${BASE}/case-studies/`,
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/services/seo-audit/`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/ai-search-strategy/`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/case-studies/`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#about`,
-      lastModified: lastWeek,
+      url: `${BASE}/services/`,
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/#faq`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#contact`,
-      lastModified: lastWeek,
+      url: `${BASE}/services/seo-audit/`,
+      lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.6,
+      priority: 0.8,
     },
-    
-    // SEO Resources section
     {
-      url: `${baseUrl}/seo-resources/`,
-      lastModified: lastWeek,
+      url: `${BASE}/services/ai-search-strategy/`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    // ─── SEO Resource Center — root ─────────────────────────────────────────
+    {
+      url: `${BASE}/seo-resources/`,
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/seo-resources/docs`,
-      lastModified: lastWeek,
+      url: `${BASE}/seo-resources/docs/intro`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ─── SEO Resources — Getting Started ────────────────────────────────────
+    {
+      url: `${BASE}/seo-resources/docs/getting-started`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/getting-started/seo-fundamentals`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/getting-started/how-search-engines-work`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/getting-started/seo-pillars`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/getting-started/search-intent-optimization`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/getting-started/measuring-success`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ─── SEO Resources — Keyword Research ───────────────────────────────────
+    {
+      url: `${BASE}/seo-resources/docs/keyword-research`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/keyword-research/fundamentals`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/keyword-research/tools-and-techniques`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/keyword-research/long-tail-keywords`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/keyword-research/local-keyword-research`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ─── SEO Resources — Technical SEO ──────────────────────────────────────
+    {
+      url: `${BASE}/seo-resources/docs/technical-seo`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/technical-seo/core-web-vitals`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/technical-seo/crawlability`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/technical-seo/mobile-optimization`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/technical-seo/structured-data`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ─── SEO Resources — Content Optimization ───────────────────────────────
+    {
+      url: `${BASE}/seo-resources/docs/content-optimization`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/content-optimization/on-page-seo`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/content-optimization/content-strategy`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/content-optimization/content-auditing`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/content-optimization/user-experience`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ─── SEO Resources — Link Building ──────────────────────────────────────
+    {
+      url: `${BASE}/seo-resources/docs/link-building`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/link-building/fundamentals`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/link-building/strategies`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/link-building/outreach`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/link-building/measurement`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ─── SEO Resources — AI Search & GEO (new) ──────────────────────────────
+    {
+      url: `${BASE}/seo-resources/docs/ai-search`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/ai-search/geo-fundamentals`,
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    
-    // SEO Resources - Getting Started
     {
-      url: `${baseUrl}/seo-resources/docs/getting-started`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/getting-started/seo-fundamentals`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/getting-started/how-search-engines-work`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/getting-started/seo-pillars`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/getting-started/search-intent-optimization`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/getting-started/measuring-success`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    
-    // SEO Resources - Technical SEO
-    {
-      url: `${baseUrl}/seo-resources/docs/technical-seo`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/technical-seo/crawlability`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/technical-seo/mobile-optimization`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/technical-seo/core-web-vitals`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/technical-seo/structured-data`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    
-    // SEO Resources - Keyword Research
-    {
-      url: `${baseUrl}/seo-resources/docs/keyword-research`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/keyword-research/fundamentals`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/keyword-research/tools-and-techniques`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/keyword-research/long-tail-keywords`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/keyword-research/local-keyword-research`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    
-    // SEO Resources - Content Optimization
-    {
-      url: `${baseUrl}/seo-resources/docs/content-optimization`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/content-optimization/on-page-seo`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/content-optimization/content-strategy`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/content-optimization/content-auditing`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/content-optimization/user-experience`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    
-    // SEO Resources - Link Building
-    {
-      url: `${baseUrl}/seo-resources/docs/link-building`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/link-building/fundamentals`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/link-building/strategies`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/link-building/outreach`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/link-building/measurement`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    
-    // SEO Resources - Checklists
-    {
-      url: `${baseUrl}/seo-resources/docs/checklists`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/checklists/technical-seo-checklist`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/checklists/on-page-checklist`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/checklists/content-audit-checklist`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/seo-resources/docs/checklists/local-seo-checklist`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    
-    // SEO Resources - Tools
-    {
-      url: `${baseUrl}/seo-resources/docs/tools`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    
-    // Additional pages
-    {
-      url: `${baseUrl}/seo-resources/search`,
-      lastModified: lastWeek,
+      url: `${BASE}/seo-resources/docs/ai-search/ai-overviews`,
+      lastModified: now,
       changeFrequency: 'weekly',
-      priority: 0.5,
+      priority: 0.8,
     },
     {
-      url: `${baseUrl}/seo-resources/markdown-page`,
-      lastModified: lastWeek,
+      url: `${BASE}/seo-resources/docs/ai-search/eeat-for-ai`,
+      lastModified: now,
       changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/ai-search/structured-data-geo`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ─── SEO Resources — Checklists ─────────────────────────────────────────
+    {
+      url: `${BASE}/seo-resources/docs/checklists`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/checklists/technical-seo-checklist`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/checklists/on-page-checklist`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/checklists/content-audit-checklist`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${BASE}/seo-resources/docs/checklists/local-seo-checklist`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+
+    // ─── SEO Resources — Tools ──────────────────────────────────────────────
+    {
+      url: `${BASE}/seo-resources/docs/tools`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ─── SEO Resources — Blog (Insights) ────────────────────────────────────
+    {
+      url: `${BASE}/seo-resources/blog`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE}/seo-resources/blog/ai-search-optimization-guide`,
+      lastModified: new Date('2025-05-06'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/blog/inp-core-web-vitals-2026`,
+      lastModified: new Date('2026-03-18'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/seo-resources/blog/content-clusters-topical-authority-2026`,
+      lastModified: new Date('2026-04-22'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // ─── Docusaurus search ───────────────────────────────────────────────────
+    {
+      url: `${BASE}/seo-resources/search`,
+      lastModified: oneWeekAgo,
+      changeFrequency: 'weekly',
       priority: 0.4,
-    },
-    
-    // Metadata routes
-    {
-      url: `${baseUrl}/sitemap.xml`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/robots.txt`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.1,
-    },
-    {
-      url: `${baseUrl}/rss.xml`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.4,
-    },
-    {
-      url: `${baseUrl}/manifest.json`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly',
-      priority: 0.2,
     },
   ];
 }
