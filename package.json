@@ -14,9 +14,6 @@
     "serve": "npx serve@latest out",
     "analyze": "ANALYZE=true npm run build"
   },
-  "overrides": {
-    "minimatch": "^10.2.2"
-  },
   "dependencies": {
     "framer-motion": "^12.23.12",
     "next": "^15.5.14",

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const PROCESS = [
   {
@@ -77,13 +78,13 @@ export default function SeoAuditPageContent() {
         <h2 className="font-serif text-3xl md:text-5xl" style={{ color: 'var(--color-white)' }}>
           Ready to start?
         </h2>
-        <a
+        <Link
           href="/#contact"
           className="mt-8 inline-flex items-center rounded-sm px-8 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:brightness-110"
           style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-black)' }}
         >
           Get in touch
-        </a>
+        </Link>
       </motion.div>
     </div>
   );
