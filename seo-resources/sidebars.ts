@@ -10,11 +10,11 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       id: 'intro',
-      label: '🏠 Welcome',
+      label: 'Welcome',
     },
     {
       type: 'category',
-      label: '🎓 Getting Started',
+      label: 'Getting Started',
       items: [
         'getting-started/index',
         'getting-started/seo-fundamentals',
@@ -26,14 +26,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🛠️ Tools & Resources',
-      items: [
-        'tools/index',
-      ],
-    },
-    {
-      type: 'category',
-      label: '🔍 Keyword Research',
+      label: 'Keyword Research',
       items: [
         'keyword-research/index',
         'keyword-research/fundamentals',
@@ -44,7 +37,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '⚙️ Technical SEO',
+      label: 'Technical SEO',
       items: [
         'technical-seo/index',
         'technical-seo/core-web-vitals',
@@ -55,7 +48,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '✏️ Content Optimization',
+      label: 'Content Optimization',
       items: [
         'content-optimization/index',
         'content-optimization/on-page-seo',
@@ -66,7 +59,29 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '📋 SEO Checklists',
+      label: 'Link Building',
+      items: [
+        'link-building/index',
+        'link-building/fundamentals',
+        'link-building/strategies',
+        'link-building/outreach',
+        'link-building/measurement',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'AI Search & GEO',
+      items: [
+        'ai-search/index',
+        'ai-search/geo-fundamentals',
+        'ai-search/ai-overviews',
+        'ai-search/eeat-for-ai',
+        'ai-search/structured-data-geo',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Checklists',
       items: [
         'checklists/index',
         'checklists/technical-seo-checklist',
@@ -77,13 +92,9 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🔗 Link Building',
+      label: 'Tools & Resources',
       items: [
-        'link-building/index',
-        'link-building/fundamentals',
-        'link-building/strategies',
-        'link-building/outreach',
-        'link-building/measurement',
+        'tools/index',
       ],
     },
   ],

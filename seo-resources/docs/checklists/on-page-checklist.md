@@ -161,7 +161,7 @@ H1 could be: "Complete On-Page SEO Checklist for Higher Rankings"
 - [ ] 🟢 Use sitewide links sparingly (navigation only)
 - [ ] 🟢 Monitor internal link equity distribution
 
-**Tool:** [Screaming Frog SEO Spider](https://www.screamingfrogseoseo.com/) to audit internal links
+**Tool:** [Screaming Frog SEO Spider](https://www.screamingfrog.co.uk/) to audit internal links
 
 ---
 

@@ -1,19 +1,39 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+seo:
+  label: SEO
+  permalink: /seo
+  description: Search engine optimization strategies, tactics, and industry updates.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+technical-seo:
+  label: Technical SEO
+  permalink: /technical-seo
+  description: Crawlability, indexing, Core Web Vitals, and site architecture.
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+content-strategy:
+  label: Content Strategy
+  permalink: /content-strategy
+  description: Content planning, creation, and optimization for organic search.
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+ai:
+  label: AI Search
+  permalink: /ai
+  description: Generative AI, AI Overviews, LLM optimization, and the evolving search landscape.
+
+keyword-research:
+  label: Keyword Research
+  permalink: /keyword-research
+  description: Finding and prioritizing the right keywords to drive qualified traffic.
+
+link-building:
+  label: Link Building
+  permalink: /link-building
+  description: Authority building through strategic link acquisition and digital PR.
+
+local-seo:
+  label: Local SEO
+  permalink: /local-seo
+  description: Optimizing for local search visibility and Google Business Profile.
+
+analytics:
+  label: Analytics
+  permalink: /analytics
+  description: Measuring SEO performance, reporting, and data-driven decision making.

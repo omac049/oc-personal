@@ -29,7 +29,7 @@ A content audit is a systematic analysis of all content on your website to evalu
 - [ ] 🟡 Gather social sharing data (if available)
 - [ ] 🟢 Export conversion data for key pages
 
-**Tool:** [Screaming Frog SEO Spider](https://www.screamingfrogseoseo.com/) for comprehensive crawling
+**Tool:** [Screaming Frog SEO Spider](https://www.screamingfrog.co.uk/) for comprehensive crawling
 
 ### 1.2 Create Content Spreadsheet
 Include these columns in your content inventory:

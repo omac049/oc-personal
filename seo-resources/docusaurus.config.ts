@@ -28,7 +28,7 @@ const config: Config = {
       {
         hashed: true,
         indexDocs: true,
-        indexBlog: false,
+        indexBlog: true,
         indexPages: true,
         language: ['en'],
         highlightSearchTermsOnTargetPage: true,
@@ -90,7 +90,22 @@ const config: Config = {
           editUrl:
             'https://github.com/omac049/oc-personal/tree/main/seo-resources/',
         },
-        blog: false, // Disable blog for this documentation site
+        blog: {
+          showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
+          editUrl: 'https://github.com/omac049/oc-personal/tree/main/seo-resources/',
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+          blogTitle: 'SEO Insights',
+          blogDescription: 'Practical SEO analysis and strategy from Omar Corral — covering AI search, technical SEO, and organic growth.',
+          postsPerPage: 10,
+          blogSidebarTitle: 'Recent posts',
+          blogSidebarCount: 'ALL',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -123,7 +138,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'SEO Guides',
+          label: 'Guides',
         },
         {
           to: '/docs/checklists',
@@ -131,18 +146,18 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: '/blog',
+          label: 'Insights',
+          position: 'left',
+        },
+        {
           href: 'https://omar-corral.com',
-          label: 'Main Site',
+          label: 'omar-corral.com',
           position: 'right',
         },
         {
           href: 'https://omar-corral.com/#contact',
-          label: 'Contact',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/omac049/oc-personal',
-          label: 'GitHub',
+          label: 'Work Together',
           position: 'right',
         },
       ],
@@ -151,21 +166,12 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'SEO Guides',
+          title: 'Learn SEO',
           items: [
             {
               label: 'Getting Started',
               to: '/docs/getting-started',
             },
-            {
-              label: 'Free SEO Tools',
-              to: '/docs/tools',
-            },
-          ],
-        },
-        {
-          title: 'Deep Dives',
-          items: [
             {
               label: 'Keyword Research',
               to: '/docs/keyword-research',
@@ -178,27 +184,39 @@ const config: Config = {
               label: 'Content Optimization',
               to: '/docs/content-optimization',
             },
+            {
+              label: 'Link Building',
+              to: '/docs/link-building',
+            },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'Checklists',
+              to: '/docs/checklists',
+            },
+            {
+              label: 'SEO Tools',
+              to: '/docs/tools',
+            },
+            {
+              label: 'SEO Insights Blog',
+              to: '/blog',
+            },
           ],
         },
         {
           title: 'Omar Corral',
           items: [
             {
-              label: 'Main Website',
+              label: 'Portfolio & Services',
               href: 'https://omar-corral.com',
             },
             {
-              label: 'Contact',
+              label: 'Work Together',
               href: 'https://omar-corral.com/#contact',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/omac049/oc-personal',
             },
             {
               label: 'LinkedIn',

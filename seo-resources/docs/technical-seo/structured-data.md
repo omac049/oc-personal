@@ -1257,8 +1257,8 @@ graph TB
 You've completed the Technical SEO section! Continue your SEO journey:
 
 1. **[Return to Technical SEO Overview →](./index.md)** - Review all technical optimizations
-2. **[Continue to Content Optimization →](https://omar-corral.com/#contact)** - *Coming Soon - Contact for early access to content optimization with structured data*
-3. **[Get Professional SEO Tools Recommendations →](https://omar-corral.com/#contact)** - Contact for personalized schema testing and monitoring tool recommendations
+2. **[Continue to Content Optimization →](/docs/content-optimization)** - Creating content that complements your structured data implementation
+3. **[Browse the SEO Tools Directory →](/docs/tools)** - Schema testing and monitoring tools, organized by use case
 
 ---
 

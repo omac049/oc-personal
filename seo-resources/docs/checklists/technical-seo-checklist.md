@@ -62,7 +62,7 @@ This comprehensive technical SEO checklist ensures your website has a solid foun
 - [ ] 🟢 Set up 410 status codes for permanently removed content
 - [ ] 🟢 Document redirect mapping in a spreadsheet
 
-**Tool:** [Screaming Frog](https://www.screamingfrogseoseo.com/) for comprehensive redirect audit
+**Tool:** [Screaming Frog](https://www.screamingfrog.co.uk/) for comprehensive redirect audit
 
 ### Internal Linking
 - [ ] 🔴 Ensure all important pages are reachable within 3 clicks from homepage

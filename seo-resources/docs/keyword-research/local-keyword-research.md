@@ -573,10 +573,10 @@ Congratulations! You've now mastered all aspects of keyword research. Here's how
 ### **Continue Your SEO Education**
 Ready to move beyond keyword research? The next crucial step is:
 
-**[Technical SEO →](../technical-seo/)** *(Coming Soon)*
+**[Technical SEO →](/docs/technical-seo)**  
 *Ensure your website can actually rank for all those keywords you've researched.*
 
-**[Content Optimization →](https://omar-corral.com/#contact)** - *Coming Soon - Contact for early access*
+**[Content Optimization →](/docs/content-optimization)**  
 *Create content that perfectly matches keyword intent and drives conversions.*
 
 ---

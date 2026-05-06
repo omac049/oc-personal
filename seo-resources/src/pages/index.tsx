@@ -12,56 +12,38 @@ function SEOResourcesHero() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <div className={styles.heroContent}>
-          <div className={styles.heroIcon}>🎯</div>
+          <p className={styles.heroEyebrow}>SEO Resource Center by Omar Corral</p>
           <Heading as="h1" className={styles.heroTitle}>
-            Modern SEO Mastery
+            SEO that compounds.<br />Not campaigns that expire.
           </Heading>
           <p className={styles.heroSubtitle}>
-            Master the Three Pillars of SEO: Authority, Relevance, and Experience. 
-            From search intent optimization to Core Web Vitals—everything you need for SEO success.
+            Frameworks, checklists, and in-depth guides for practitioners who want durable organic growth — 
+            from search fundamentals to AI-era optimization.
           </p>
-          <div className={styles.heroHighlights}>
-            <div className={styles.highlightItem}>
-              <span className={styles.highlightIcon}>🏗️</span>
-              <span>Three Pillars Framework</span>
-            </div>
-            <div className={styles.highlightItem}>
-              <span className={styles.highlightIcon}>🔍</span>
-              <span>Search Intent Mastery</span>
-            </div>
-            <div className={styles.highlightItem}>
-              <span className={styles.highlightIcon}>⚡</span>
-              <span>Core Web Vitals</span>
-            </div>
-            <div className={styles.highlightItem}>
-              <span className={styles.highlightIcon}>🤖</span>
-              <span>AI-Era SEO</span>
-            </div>
-          </div>
           <div className={styles.heroStats}>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>3</div>
-              <div className={styles.statLabel}>Core SEO Pillars</div>
+              <div className={styles.statNumber}>6</div>
+              <div className={styles.statLabel}>Topic Areas</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>4</div>
-              <div className={styles.statLabel}>Search Intent Types</div>
+              <div className={styles.statNumber}>30+</div>
+              <div className={styles.statLabel}>In-Depth Guides</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>100%</div>
-              <div className={styles.statLabel}>Expert-Level Content</div>
+              <div className={styles.statNumber}>12+</div>
+              <div className={styles.statLabel}>Years in SEO</div>
             </div>
           </div>
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
               to="/docs/getting-started">
-              🚀 Start Your SEO Journey
+              Start Learning
             </Link>
             <Link
               className="button button--outline button--secondary button--lg"
-              to="/docs/getting-started/seo-pillars">
-              📚 Explore Three Pillars
+              to="/docs/checklists">
+              View Checklists
             </Link>
           </div>
         </div>
@@ -73,59 +55,51 @@ function SEOResourcesHero() {
 function SEOResourcesFeatures() {
   const features = [
     {
-      title: 'Authority: Do You Matter?',
-      icon: '🎯',
-      description: (
-        <>
-          Master strategic link building, E-A-T optimization, and expert content creation. 
-          Learn how Google's PageRank algorithm determines which sites deserve to rank.
-        </>
-      ),
-      link: '/docs/getting-started/seo-pillars',
-      linkText: 'Master Authority',
-      color: 'blue'
+      title: 'Authority',
+      subtitle: 'Do you matter to Google?',
+      description:
+        'Link acquisition, E-E-A-T, digital PR, and the mechanics of PageRank. Learn how to build domain authority that compounds over time.',
+      link: '/docs/link-building',
+      linkText: 'Study Authority',
+      colorClass: 'blue',
     },
     {
-      title: 'Relevance: Answer Search Intent',
-      icon: '🔍',
-      description: (
-        <>
-          Understand the 4 types of search intent, the 3Cs framework, and SERP feature optimization. 
-          Create content that perfectly matches what users are actually searching for.
-        </>
-      ),
-      link: '/docs/getting-started/search-intent-optimization',
-      linkText: 'Optimize Intent',
-      color: 'orange'
+      title: 'Relevance',
+      subtitle: 'Do you answer the right questions?',
+      description:
+        'Search intent mapping, the 3Cs framework, SERP feature optimization, and content architecture. Create pages that rank because they deserve to.',
+      link: '/docs/content-optimization',
+      linkText: 'Study Relevance',
+      colorClass: 'orange',
     },
     {
-      title: 'Experience: Delight Users & Bots',
-      icon: '⚡',
-      description: (
-        <>
-          Excel at Core Web Vitals, mobile-first excellence, and technical SEO foundations. 
-          Ensure both users and search bots have an exceptional experience on your site.
-        </>
-      ),
-      link: '/docs/getting-started/seo-pillars',
-      linkText: 'Perfect Experience',
-      color: 'purple'
+      title: 'Experience',
+      subtitle: 'Do users and bots stay?',
+      description:
+        'Core Web Vitals, mobile-first architecture, crawlability, and structured data. Make your site fast, accessible, and parseable.',
+      link: '/docs/technical-seo',
+      linkText: 'Study Experience',
+      colorClass: 'purple',
     },
   ];
 
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className={styles.sectionHeader}>
+          <Heading as="h2">The Three Pillars of Modern SEO</Heading>
+          <p>Every ranking factor maps back to one of these three dimensions. Master all three and rankings follow.</p>
+        </div>
         <div className="row">
           {features.map((feature, idx) => (
             <div key={idx} className={clsx('col col--4')}>
-              <div className={clsx(styles.featureCard, styles[`feature${feature.color}`])}>
-                <div className={styles.featureIcon}>{feature.icon}</div>
+              <div className={clsx(styles.featureCard, styles[`feature${feature.colorClass}`])}>
                 <div className={styles.featureContent}>
                   <Heading as="h3">{feature.title}</Heading>
+                  <p className={styles.featureSubtitle}>{feature.subtitle}</p>
                   <p>{feature.description}</p>
                   <Link
-                    className={clsx("button button--primary button--sm", styles[`button${feature.color}`])}
+                    className={clsx('button button--primary button--sm', styles[`button${feature.colorClass}`])}
                     to={feature.link}>
                     {feature.linkText}
                   </Link>
@@ -139,44 +113,49 @@ function SEOResourcesFeatures() {
   );
 }
 
-function SEOQuickTips() {
-  const tips = [
+function SEOKnowledgeShowcase() {
+  const sections = [
     {
-      icon: '🎯',
-      tip: 'Match Search Intent Precisely',
-      description: 'Use the 3Cs framework: analyze content type, format, and angle of top-ranking pages'
+      title: 'Keyword Research',
+      description: 'From search volume basics to competitive gap analysis and long-tail strategy.',
+      items: ['Search intent mapping', 'Competitive analysis', 'Long-tail strategy'],
+      link: '/docs/keyword-research',
     },
     {
-      icon: '⚡',
-      tip: 'Optimize Core Web Vitals',
-      description: 'LCP under 2.5s, FID under 100ms, CLS under 0.1 for superior user experience'
+      title: 'Technical SEO',
+      description: 'Crawlability, indexing, site speed, and the infrastructure that makes rankings possible.',
+      items: ['Core Web Vitals & INP', 'Structured data / schema', 'Mobile-first optimization'],
+      link: '/docs/technical-seo',
     },
     {
-      icon: '🏗️',
-      tip: 'Build Authority Through E-A-T',
-      description: 'Demonstrate expertise, authoritativeness, and trustworthiness in your content'
+      title: 'AI Search & GEO',
+      description: 'Generative Engine Optimization — how to appear in AI Overviews, Perplexity, and ChatGPT answers.',
+      items: ['LLM citation signals', 'AI Overview optimization', 'E-E-A-T for AI systems'],
+      link: '/docs/ai-search',
     },
-    {
-      icon: '🔍',
-      tip: 'Leverage SERP Features',
-      description: 'Optimize for featured snippets, People Also Ask, and knowledge panels'
-    }
   ];
 
   return (
-    <section className={styles.quickTips}>
+    <section className={styles.knowledgeShowcase}>
       <div className="container">
         <div className={styles.sectionHeader}>
-          <Heading as="h2">Expert SEO Insights</Heading>
-          <p>Advanced techniques that separate professionals from beginners</p>
+          <Heading as="h2">What's Inside</Heading>
+          <p>Practitioner-level content built for people who already know SEO matters and want to get better at it.</p>
         </div>
         <div className="row">
-          {tips.map((tip, idx) => (
-            <div key={idx} className={clsx('col col--3')}>
-              <div className={styles.tipCard}>
-                <div className={styles.tipIcon}>{tip.icon}</div>
-                <h4>{tip.tip}</h4>
-                <p>{tip.description}</p>
+          {sections.map((section, idx) => (
+            <div key={idx} className="col col--4">
+              <div className={styles.frameworkCard}>
+                <h3>{section.title}</h3>
+                <p className={styles.frameworkDescription}>{section.description}</p>
+                <ul className={styles.frameworkItems}>
+                  {section.items.map((item, itemIdx) => (
+                    <li key={itemIdx}>{item}</li>
+                  ))}
+                </ul>
+                <Link className="button button--outline button--primary" to={section.link}>
+                  Explore
+                </Link>
               </div>
             </div>
           ))}
@@ -186,51 +165,43 @@ function SEOQuickTips() {
   );
 }
 
-function SEOKnowledgeShowcase() {
-  const frameworks = [
+function SEOQuickTips() {
+  const tips = [
     {
-      title: "The Three Pillars Framework",
-      description: "Revolutionary approach to modern SEO",
-      items: ["Authority Building", "Relevance Optimization", "Experience Excellence"],
-      link: "/docs/getting-started/seo-pillars"
+      tip: 'Match intent before keywords',
+      description:
+        'Use the 3Cs framework: analyze the content type, format, and angle of pages that currently rank for your target query.',
     },
     {
-      title: "Search Intent Mastery",
-      description: "Complete guide to understanding user intent",
-      items: ["4 Intent Types", "3Cs Analysis", "SERP Features"],
-      link: "/docs/getting-started/search-intent-optimization"
+      tip: 'INP is the metric that matters now',
+      description:
+        'Interaction to Next Paint replaced FID as a Core Web Vitals metric. Target INP under 200ms — it measures real responsiveness.',
     },
     {
-      title: "Technical Excellence",
-      description: "Advanced crawling, indexing, and ranking insights",
-      items: ["Core Web Vitals", "Mobile-First", "Schema Markup"],
-      link: "/docs/getting-started/how-search-engines-work"
-    }
+      tip: 'E-E-A-T is an LLM signal too',
+      description:
+        'Clear authorship, first-person expertise, and cited methodology are signals both Google and AI systems use to decide what to cite.',
+    },
+    {
+      tip: 'Topical depth beats keyword density',
+      description:
+        'AI-driven search rewards comprehensive coverage of a subject. One authoritative guide outperforms ten shallow variations targeting long-tail keywords.',
+    },
   ];
 
   return (
-    <section className={styles.knowledgeShowcase}>
+    <section className={styles.quickTips}>
       <div className="container">
         <div className={styles.sectionHeader}>
-          <Heading as="h2">🧠 Deep SEO Knowledge Base</Heading>
-          <p>Comprehensive frameworks and methodologies developed through years of SEO expertise</p>
+          <Heading as="h2">Practitioner Principles</Heading>
+          <p>The non-obvious things that separate senior SEO strategy from beginner execution.</p>
         </div>
         <div className="row">
-          {frameworks.map((framework, idx) => (
-            <div key={idx} className="col col--4">
-              <div className={styles.frameworkCard}>
-                <h3>{framework.title}</h3>
-                <p className={styles.frameworkDescription}>{framework.description}</p>
-                <ul className={styles.frameworkItems}>
-                  {framework.items.map((item, itemIdx) => (
-                    <li key={itemIdx}>✓ {item}</li>
-                  ))}
-                </ul>
-                <Link
-                  className="button button--outline button--primary"
-                  to={framework.link}>
-                  Learn More
-                </Link>
+          {tips.map((tip, idx) => (
+            <div key={idx} className={clsx('col col--3')}>
+              <div className={styles.tipCard}>
+                <h4>{tip.tip}</h4>
+                <p>{tip.description}</p>
               </div>
             </div>
           ))}
@@ -245,15 +216,17 @@ function SEOResourcesCTA() {
     <section className={styles.ctaSection}>
       <div className="container">
         <div className={styles.ctaContent}>
-          <Heading as="h2">Ready to Put This Into Practice?</Heading>
+          <Heading as="h2">Need someone to execute, not just advise?</Heading>
           <p>
-            I help brands turn SEO strategy into measurable growth — from technical audits to AI search readiness.
+            I work with brands directly on SEO strategy, technical audits, and AI search readiness — 
+            with measurable outcomes, not vanity metrics.
           </p>
           <div className={styles.ctaButtons}>
-            <Link
-              className="button button--primary button--lg"
-              href="https://omar-corral.com/#contact">
+            <Link className="button button--primary button--lg" href="https://omar-corral.com/#contact">
               Start a Conversation
+            </Link>
+            <Link className="button button--outline button--secondary button--lg" href="https://omar-corral.com">
+              View Portfolio
             </Link>
           </div>
         </div>
@@ -266,8 +239,8 @@ export default function Home(): React.ReactElement {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title="Modern SEO Mastery | Expert Resource Center"
-      description="Master the Three Pillars of SEO: Authority, Relevance, and Experience. Expert-level search intent optimization, Core Web Vitals, and modern SEO frameworks by Omar Corral.">
+      title="SEO Resource Center — Guides, Checklists & Frameworks"
+      description="Free SEO resource center by Omar Corral — in-depth guides, checklists, and frameworks covering technical SEO, AI search optimization, and organic growth strategy.">
       <SEOResourcesHero />
       <main>
         <SEOResourcesFeatures />

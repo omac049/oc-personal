@@ -1,10 +1,10 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * CSS modules with the .module.css suffix are scoped locally.
+ * Signal palette: black backgrounds, signal-green (#00E55C dark / #00B847 light), Inter + DM Serif Display.
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 5rem 0 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -12,66 +12,45 @@
 }
 
 .heroContent {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
-.heroIcon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+.heroEyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #00E55C;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
 .heroTitle {
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   font-weight: 300;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ffffff, #a1a1aa);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(45deg, #ffffff 60%, #a1a1aa);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .heroSubtitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #a1a1aa;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.heroHighlights {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0;
-  flex-wrap: wrap;
-}
-
-.highlightItem {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 229, 92, 0.08);
-  border-radius: 20px;
-  border: 1px solid rgba(0, 229, 92, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-.highlightIcon {
-  font-size: 1.2rem;
-}
-
-.highlightItem span:last-child {
-  color: #d4d4d8;
-  font-weight: 500;
-  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .heroStats {
   display: flex;
   justify-content: center;
-  gap: 3rem;
-  margin: 3rem 0;
+  gap: 4rem;
+  margin: 2.5rem 0;
   flex-wrap: wrap;
 }
 
@@ -80,16 +59,17 @@
 }
 
 .statNumber {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 2.8rem;
+  font-weight: 700;
   color: #00E55C;
   line-height: 1;
 }
 
 .statLabel {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #71717a;
   margin-top: 0.5rem;
+  letter-spacing: 0.03em;
 }
 
 .buttons {
@@ -97,13 +77,13 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   flex-wrap: wrap;
 }
 
 /* Features Section */
 .features {
-  padding: 4rem 0;
+  padding: 5rem 0;
   background-color: #0A0A0A;
 }
 
@@ -114,44 +94,54 @@
 .featureCard {
   background: #111111;
   border-radius: 1rem;
-  padding: 2rem;
-  text-align: center;
+  padding: 2.5rem 2rem;
   height: 100%;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   border: 1px solid #27272a;
+  border-top: 4px solid #00E55C;
 }
 
 [data-theme='light'] .featureCard {
   background: white;
   border-color: #e2e8f0;
+  border-top-color: #00B847;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .featureCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px -3px rgba(0, 229, 92, 0.15);
+  box-shadow: 0 12px 28px -4px rgba(0, 229, 92, 0.15);
   border-color: #00E55C;
-}
-
-.featureIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
 }
 
 .featureContent h3 {
   color: #fafafa;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 [data-theme='light'] .featureContent h3 {
   color: #1e293b;
 }
 
+.featureSubtitle {
+  color: #00E55C !important;
+  font-size: 0.9rem !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem !important;
+}
+
+[data-theme='light'] .featureSubtitle {
+  color: #00B847 !important;
+}
+
 .featureContent p {
   color: #a1a1aa;
-  line-height: 1.6;
+  line-height: 1.7;
   margin-bottom: 1.5rem;
 }
 
@@ -159,25 +149,13 @@
   color: #64748b;
 }
 
-/* Feature Color Variants — all use signal green */
-.featureblue,
-.featureorange,
-.featurepurple {
-  border-top: 4px solid #00E55C;
-}
-
-.featureblue:hover,
-.featureorange:hover,
-.featurepurple:hover {
-  border-color: #00E55C;
-  box-shadow: 0 10px 25px -3px rgba(0, 229, 92, 0.2);
-}
-
+/* Shared button color: always signal-green */
 .buttonblue,
 .buttonorange,
 .buttonpurple {
   background: #00B847 !important;
   border-color: #00B847 !important;
+  color: #000 !important;
 }
 
 .buttonblue:hover,
@@ -187,10 +165,34 @@
   border-color: #00CC4F !important;
 }
 
+/* Section headers shared style */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+[data-theme='light'] .sectionHeader h2 {
+  color: #1e293b;
+}
+
+.sectionHeader p {
+  font-size: 1.1rem;
+  color: #71717a;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
 /* Knowledge Showcase Section */
 .knowledgeShowcase {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #0A0A0A 0%, #111111 100%);
+  padding: 5rem 0;
+  background: #111111;
 }
 
 [data-theme='light'] .knowledgeShowcase {
@@ -202,7 +204,7 @@
   border-radius: 1rem;
   padding: 2rem;
   height: 100%;
-  border: 2px solid #27272a;
+  border: 1px solid #27272a;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
@@ -221,9 +223,9 @@
 
 .frameworkCard h3 {
   color: #fafafa;
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
 }
 
 [data-theme='light'] .frameworkCard h3 {
@@ -232,8 +234,8 @@
 
 .frameworkDescription {
   color: #a1a1aa;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
   line-height: 1.6;
 }
 
@@ -250,9 +252,10 @@
 .frameworkItems li {
   color: #d4d4d8;
   font-weight: 500;
-  margin-bottom: 0.8rem;
-  padding-left: 0;
-  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  position: relative;
 }
 
 [data-theme='light'] .frameworkItems li {
@@ -260,74 +263,51 @@
 }
 
 .frameworkItems li::before {
-  content: '✓';
+  content: '→';
   color: #00E55C;
   font-weight: bold;
-  margin-right: 0.5rem;
+  position: absolute;
+  left: 0;
 }
 
-/* Quick Tips Section */
+/* Practitioner Principles Section */
 .quickTips {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #000000 0%, #0A0A0A 100%);
-  color: white;
-}
-
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.sectionHeader h2 {
-  font-size: 2.5rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  color: white;
-}
-
-.sectionHeader p {
-  font-size: 1.2rem;
-  color: #71717a;
+  padding: 5rem 0;
+  background: #000000;
 }
 
 .tipCard {
-  background: rgba(0, 229, 92, 0.05);
+  background: rgba(0, 229, 92, 0.04);
   border-radius: 1rem;
   padding: 2rem 1.5rem;
-  text-align: center;
   height: 100%;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 229, 92, 0.15);
+  border: 1px solid rgba(0, 229, 92, 0.12);
   transition: all 0.3s ease;
 }
 
 .tipCard:hover {
-  background: rgba(0, 229, 92, 0.1);
+  background: rgba(0, 229, 92, 0.08);
   transform: translateY(-2px);
-  border-color: rgba(0, 229, 92, 0.3);
-}
-
-.tipIcon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  border-color: rgba(0, 229, 92, 0.25);
 }
 
 .tipCard h4 {
   color: white;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
   font-weight: 600;
+  line-height: 1.4;
 }
 
 .tipCard p {
   color: #a1a1aa;
   font-size: 0.9rem;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* CTA Section */
 .ctaSection {
-  padding: 4rem 0;
+  padding: 5rem 0;
   background: linear-gradient(135deg, #000000 0%, #0A0A0A 100%);
   color: white;
   border-top: 1px solid rgba(0, 229, 92, 0.2);
@@ -335,13 +315,8 @@
 
 .ctaContent {
   text-align: center;
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
-}
-
-.ctaIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
 }
 
 .ctaContent h2 {
@@ -349,13 +324,14 @@
   font-weight: 300;
   margin-bottom: 1rem;
   color: white;
+  line-height: 1.2;
 }
 
 .ctaContent p {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: #a1a1aa;
-  margin-bottom: 2rem;
-  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
 }
 
 .ctaButtons {
@@ -365,78 +341,63 @@
   flex-wrap: wrap;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 3rem 0;
+    padding: 3.5rem 0 3rem;
   }
-  
+
   .heroTitle {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
-  
+
   .heroSubtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
-  
+
   .heroStats {
-    gap: 2rem;
+    gap: 2.5rem;
   }
-  
+
   .statNumber {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
-  
+
   .features,
+  .knowledgeShowcase,
   .quickTips,
   .ctaSection {
-    padding: 3rem 0;
+    padding: 3.5rem 0;
   }
-  
+
   .sectionHeader h2 {
     font-size: 2rem;
   }
-  
+
   .ctaContent h2 {
     font-size: 2rem;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .heroHighlights {
-    gap: 1rem;
+  .heroTitle {
+    font-size: 2.2rem;
   }
-  
-  .highlightItem {
-    padding: 0.4rem 0.8rem;
-  }
-  
-  .highlightItem span:last-child {
-    font-size: 0.8rem;
-  }
-  
+
   .heroStats {
-    gap: 1.5rem;
+    gap: 2rem;
   }
-  
-  .buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
+
+  .buttons,
   .ctaButtons {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .featureCard,
   .tipCard,
   .frameworkCard {
     margin-bottom: 2rem;
-  }
-  
-  .knowledgeShowcase {
-    padding: 3rem 0;
   }
 }
 

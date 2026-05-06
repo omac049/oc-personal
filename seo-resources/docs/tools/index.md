@@ -249,19 +249,48 @@ User-friendly SEO platform with excellent educational resources.
 
 ## 📊 SEO Reporting Tools
 
-### **Google Data Studio**
+### **Looker Studio** *(formerly Google Data Studio)*
 **Price:** Free | **Data visualization**
-- Custom SEO dashboards
-- Automated reporting
-- Data integration from multiple sources
-- **[Create Reports →](https://datastudio.google.com/)**
+- Custom SEO dashboards connecting GSC, GA4, and third-party data
+- Automated report scheduling
+- Collaborative dashboards with shareable links
+- **[Get Started →](https://lookerstudio.google.com/)**
 
-### **Looker Studio**
-**Price:** Free | **Advanced data visualization**
-- Professional reporting
-- Real-time data connections
-- Collaborative dashboards
-- **[Try Looker Studio →](https://lookerstudio.google.com/)**
+## 🤖 AI-Era SEO Tools
+
+### **Google AI Overviews (GSC)**
+**Price:** Free | **AI search visibility**
+- Monitor which queries trigger AI Overviews for your domain
+- Track impression-to-click ratios to identify AI Overview impact
+- Available within the standard Google Search Console interface
+- **[Open Search Console →](https://search.google.com/search-console)**
+
+### **Perplexity**
+**Price:** Free/Pro | **AI search research**
+- Research how AI systems currently answer your target queries
+- Identify which sources are cited for your competitive keywords
+- Useful for GEO benchmarking and competitor source analysis
+- **[Try Perplexity →](https://perplexity.ai/)**
+
+### **ChatGPT (with Browse)**
+**Price:** Free/Plus | **AI search testing**
+- Test whether your content is cited when AI searches for your target queries
+- Understand how AI systems synthesize information in your topic area
+- **[Try ChatGPT →](https://chat.openai.com/)**
+
+### **BrightEdge (Generative Parser)**
+**Price:** Enterprise | **AI search tracking**
+- Track brand mentions in AI Overviews and generative answers at scale
+- Monitor share of voice in AI-generated content across queries
+- **[Learn More →](https://brightedge.com/)**
+
+### **Schema.org Validator**
+**Price:** Free | **Structured data testing**
+- Validate JSON-LD structured data for GEO readiness
+- Cross-reference schema implementation against Schema.org specs
+- **[Validate Schema →](https://validator.schema.org/)**
+
+---
 
 ## 🎯 Tool Selection Guide
 

@@ -205,15 +205,15 @@ timeline
 Once you've mastered the fundamentals, continue your SEO education with:
 
 ### **🛠️ Essential Tools**
-**[Get Professional SEO Tools Recommendations →](https://omar-corral.com/#contact)**  
-Contact Omar for personalized recommendations on the best free and premium SEO tools for your specific needs.
+**[Browse the Free SEO Tools Directory →](/docs/tools)**  
+Free and premium tools reviewed and organized by use case.
 
-### **📚 Advanced Topics** *(Coming Soon)*
-- **Keyword Research Mastery**: Advanced strategies for finding and targeting keywords
-- **Technical SEO Deep Dive**: Website optimization and technical foundations  
-- **Content Optimization**: Creating content that ranks and converts
-- **Link Building Strategies**: Earning high-quality, authoritative backlinks
-- **Local SEO**: Optimizing for local search and Google My Business
+### **📚 Advanced Topics**
+- **[Keyword Research Mastery →](/docs/keyword-research)**: Advanced strategies for finding and targeting keywords
+- **[Technical SEO Deep Dive →](/docs/technical-seo)**: Website optimization, Core Web Vitals, and technical foundations  
+- **[Content Optimization →](/docs/content-optimization)**: Creating content that ranks and converts
+- **[Link Building Strategies →](/docs/link-building)**: Earning high-quality, authoritative backlinks
+- **[AI Search & GEO →](/docs/ai-search)**: Optimizing for AI Overviews, ChatGPT, and generative search
 
 ---
 
