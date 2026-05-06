@@ -157,7 +157,7 @@ Allow: /`;
     <div className={s.page}>
       {/* ── Hero ──────────────────────────────────────────────── */}
       <section className={s.hero}>
-        <div className={s.container}>
+        <div className={s.heroContainer}>
           <motion.p className={s.heroEyebrow} {...fadeUp(0.1)}>OC MCP · Version 1.0 · May 2026</motion.p>
           <motion.h1 className={s.heroH1} {...fadeUp(0.25)}>The Front Door for AI Agents</motion.h1>
           <motion.p className={s.heroSub} {...fadeUp(0.35)}>
