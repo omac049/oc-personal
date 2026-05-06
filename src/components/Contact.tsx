@@ -1,114 +1,156 @@
 'use client';
 
+import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faLinkedin, faFacebook, faInstagram, faGithub 
-} from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { socialsData } from '@/data/socials';
-import InteractiveContactForm from './InteractiveContactForm';
-import AlgorithmBackground from './AlgorithmBackground';
+import { formConfig } from '@/config/form';
 
-const iconMap: { [key: string]: typeof faLinkedin } = {
-  'linkedin': faLinkedin,
-  'facebook': faFacebook,
-  'instagram': faInstagram,
-  'github': faGithub
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+const fadeIn = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.4 },
 };
 
+const inputClasses =
+  'w-full rounded-sm border bg-transparent px-4 py-3 text-base outline-none transition-colors placeholder:text-[var(--color-muted)]';
+
 export default function Contact() {
+  const [status, setStatus] = useState<FormStatus>('idle');
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('submitting');
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(formConfig.formspree.url, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
   return (
-    <section id="contact" className="py-8 sm:py-12 lg:py-16 xl:py-20 pb-20 sm:pb-24 lg:pb-28 bg-slate-900 text-white relative overflow-hidden">
-      {/* Global Algorithm Background */}
-      <AlgorithmBackground opacity="opacity-5" />
-      
-        <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-6 text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-8 sm:mb-12 lg:mb-16"
+    <section
+      id="contact"
+      className="py-24"
+      style={{ backgroundColor: 'var(--color-surface)' }}
+      aria-labelledby="contact-heading"
+    >
+      <motion.div className="mx-auto max-w-2xl px-6" {...fadeIn}>
+        <h2
+          id="contact-heading"
+          className="font-serif text-4xl md:text-6xl"
+          style={{ color: 'var(--color-white)' }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-3 sm:mb-4 lg:mb-6 tracking-tight px-2">
-            Let&apos;s Work Together
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-slate-300 mb-4 sm:mb-6 lg:mb-8 max-w-2xl mx-auto px-2 sm:px-4">
-            Tell me about your goals — I&apos;ll tell you how SEO and AI can get you there.
-          </p>
-          <div className="w-12 sm:w-16 lg:w-24 h-1 bg-blue-700 mx-auto"></div>
-        </motion.div>
+          Let&apos;s talk.
+        </h2>
 
-        {/* Contact Methods */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex justify-center mb-6 sm:mb-8 lg:mb-12 px-2 sm:px-4"
-        >
-          <motion.a
-            href={`mailto:${socialsData.email}`}
-            className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 p-4 sm:p-6 lg:p-8 rounded-2xl hover:border-blue-500/50 transition-all duration-300 group max-w-md w-full min-h-[56px] flex flex-col justify-center"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <FontAwesomeIcon 
-              icon={faEnvelope} 
-              className="text-3xl sm:text-4xl text-blue-700 mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 block text-center" 
-            />
-            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-1 sm:mb-2 lg:mb-3 text-white text-center">Get In Touch</h3>
-            <p className="text-slate-300 text-center text-sm sm:text-base lg:text-lg break-all px-2">{socialsData.email}</p>
-            <p className="text-slate-400 text-center text-xs sm:text-sm mt-1 sm:mt-2">Click to send me an email</p>
-          </motion.a>
-        </motion.div>
+        <p className="mt-4 text-lg" style={{ color: 'var(--color-muted)' }}>
+          Have a project in mind? I&apos;d love to hear about it.
+        </p>
 
-        {/* Social Media Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mb-6 sm:mb-8 lg:mb-12"
-          suppressHydrationWarning
-        >
-          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6 lg:mb-8 text-white">Connect With Me</h3>
-          <div className="flex justify-center space-x-3 sm:space-x-4 lg:space-x-6" suppressHydrationWarning>
-            {socialsData.social.map((social, index) => (
-              <motion.a
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                whileHover={{ scale: 1.2, y: -5 }}
-                viewport={{ once: true }}
-                className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-full flex items-center justify-center hover:border-blue-500/50 hover:bg-slate-700/50 transition-all duration-300 min-w-[48px] min-h-[48px]"
-                aria-label={social.name}
-                suppressHydrationWarning
-              >
-                <FontAwesomeIcon 
-                  icon={iconMap[social.platform]} 
-                  className="text-lg sm:text-xl lg:text-2xl text-white" 
-                />
-              </motion.a>
-            ))}
+        {status === 'success' ? (
+          <div className="mt-10 rounded-sm border p-8 text-center" style={{ borderColor: 'var(--color-accent)' }}>
+            <p className="text-lg font-medium" style={{ color: 'var(--color-accent)' }}>
+              Message sent. I&apos;ll be in touch soon.
+            </p>
           </div>
-        </motion.div>
+        ) : (
+          <form onSubmit={handleSubmit} className="mt-10 space-y-6">
+            <div>
+              <label htmlFor="name" className="sr-only">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                placeholder="Name"
+                className={inputClasses}
+                style={{
+                  borderColor: 'var(--color-border)',
+                  color: 'var(--color-white)',
+                }}
+              />
+            </div>
 
-        {/* Interactive Contact Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <InteractiveContactForm />
-        </motion.div>
-      </div>
+            <div>
+              <label htmlFor="email" className="sr-only">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder="Email"
+                className={inputClasses}
+                style={{
+                  borderColor: 'var(--color-border)',
+                  color: 'var(--color-white)',
+                }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="sr-only">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={5}
+                placeholder="Message"
+                className={`${inputClasses} resize-none`}
+                style={{
+                  borderColor: 'var(--color-border)',
+                  color: 'var(--color-white)',
+                }}
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={status === 'submitting'}
+              className="w-full rounded-sm px-8 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:brightness-110 disabled:opacity-50"
+              style={{
+                backgroundColor: 'var(--color-accent)',
+                color: 'var(--color-black)',
+              }}
+            >
+              {status === 'submitting' ? 'Sending…' : 'Send message'}
+            </button>
+
+            {status === 'error' && (
+              <p className="text-sm text-red-400">
+                Something went wrong. Please try again or email directly.
+              </p>
+            )}
+          </form>
+        )}
+
+        <p className="mt-8 text-sm" style={{ color: 'var(--color-muted)' }}>
+          Or email directly:{' '}
+          <a
+            href="mailto:omar.seogears@gmail.com"
+            className="underline transition-colors"
+            style={{ color: 'var(--color-white)' }}
+          >
+            omar.seogears@gmail.com
+          </a>
+        </p>
+      </motion.div>
     </section>
   );
 }
