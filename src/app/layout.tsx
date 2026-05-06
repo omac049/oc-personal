@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from '@/components/Navbar';
 import StructuredData from '@/components/StructuredData';
 import Analytics from '@/components/Analytics';
+import MCPTools from '@/components/MCPTools';
 import StaticContent from '@/components/StaticContent';
 import Footer from '@/components/Footer';
 import { generateMetadata as createSEOMetadata } from '@/utils/seo';
@@ -62,6 +63,7 @@ export default function RootLayout({
         
         {/* Analytics & Tracking */}
         <Analytics />
+        <MCPTools />
         
         {/* Font loading is handled by Next.js font optimization */}
       </head>

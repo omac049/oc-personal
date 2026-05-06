@@ -1,0 +1,43 @@
+{
+  "schema": "oc-mcp/v1",
+  "tool": "getInsights",
+  "data": {
+    "recentAnalysis": [
+      {
+        "title": "We Won the Rankings. The Ecosystem Moved On.",
+        "type": "case-study",
+        "url": "https://omar-corral.com/seo-resources/blog/zero-click-search-rankings-traffic-decoupled",
+        "summary": "17-month GSC + GA4 dataset documenting the zero-click search impact at a university. Rankings up 51%, CTR down 79%. ~1,200 leads/month lost to AI cannibalization.",
+        "date": "2026-05-06",
+        "tags": ["zero-click", "ai-overviews", "analytics", "higher-education"]
+      },
+      {
+        "title": "Content Clusters Are Not What Most Teams Think They Are",
+        "type": "analysis",
+        "url": "https://omar-corral.com/seo-resources/blog/content-clusters-topical-authority-2026",
+        "summary": "Why most pillar-and-cluster implementations fail — and what actually builds topical authority in 2026.",
+        "date": "2026-04-22",
+        "tags": ["content-strategy", "topical-authority", "seo"]
+      },
+      {
+        "title": "INP Replaced FID. Here Is What That Actually Means for Your Site.",
+        "type": "technical-guide",
+        "url": "https://omar-corral.com/seo-resources/blog/inp-core-web-vitals-2026",
+        "summary": "Practitioner-level INP debugging guide. Why INP is harder to fix than FID, and the right optimization process.",
+        "date": "2026-03-18",
+        "tags": ["core-web-vitals", "inp", "technical-seo"]
+      },
+      {
+        "title": "The Front Door for AI Agents (UAGC WebMCP)",
+        "type": "strategy-brief",
+        "url": "https://omac049.github.io/UAGC-WebMCP/",
+        "summary": "Executive brief for AI-agent-native web architecture at a university — dual-layer WebMCP with authorized tool access and honeypot defense.",
+        "date": "2026-04-01",
+        "tags": ["webmcp", "ai-agents", "higher-education", "web-architecture"]
+      }
+    ],
+    "currentFocus": ["AI Search Optimization / GEO", "Zero-Click Search Strategy", "Web MCP Architecture", "E-E-A-T for Generative AI"]
+  },
+  "generated": "2026-05-06",
+  "ttl": 86400
+}

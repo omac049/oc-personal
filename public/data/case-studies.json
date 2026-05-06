@@ -1,0 +1,47 @@
+{
+  "schema": "oc-mcp/v1",
+  "tool": "getCaseStudies",
+  "data": {
+    "caseStudies": [
+      {
+        "id": "uagc-zero-click",
+        "title": "We Won the Rankings. The Ecosystem Moved On.",
+        "client": "University of Arizona Global Campus (UAGC)",
+        "industry": "Higher Education",
+        "type": "Analytics / Zero-Click Search Impact",
+        "period": "Oct 2024 – Feb 2026",
+        "challenge": "University blog achieving best-ever search positions while experiencing severe CTR collapse — the classic zero-click search decoupling pattern.",
+        "approach": "17-month GSC + GA4 longitudinal analysis to quantify the ranking/traffic decoupling, segment by content type, and identify resistant vs. cannibalized query patterns.",
+        "outcomes": {
+          "positionImprovement": "51% (17.7 → 8.7 avg position)",
+          "ctrDecline": "79% (1.07% → 0.22%)",
+          "estimatedLeadsImpact": "~1,200 leads/month lost from zero-click cannibalization",
+          "conversionRateImprovement": "55% (1.55% → 2.40% — remaining traffic is higher intent)"
+        },
+        "keyFinding": "AI Overviews and answer engines cannibalize definitional/informational content (0.08% CTR) while decision and comparison content remains resistant (5.7% CTR). The ecosystem changed the outcome, not the execution.",
+        "fullReport": "https://omac049.github.io/seo-zero-click/",
+        "blogPost": "https://omar-corral.com/seo-resources/blog/zero-click-search-rankings-traffic-decoupled"
+      },
+      {
+        "id": "uagc-webmcp",
+        "title": "The Front Door for AI Agents",
+        "client": "University of Arizona Global Campus (UAGC)",
+        "industry": "Higher Education",
+        "type": "AI Strategy / Web Architecture",
+        "period": "April 2026",
+        "challenge": "AI agents intermediating enrollment discovery without authorization — scraping program data, bypassing conversion funnels, and absorbing prospective student intent data outside institutional control.",
+        "approach": "Dual-layer WebMCP architecture: structured browser tools for authorized AI agents (searchPrograms, submitRFI, getFinancialAidEstimate) paired with honeypot defense for unauthorized scrapers. 14-week phased pilot plan.",
+        "outcomes": {
+          "tokenReduction": ">65% vs. Playwright-based agent browsing",
+          "journeyCompletionTarget": ">60%",
+          "toolReliabilityTarget": ">95%",
+          "scraperTrapRateTarget": ">70%"
+        },
+        "keyFinding": "Amazon v. Perplexity (March 2026 federal ruling) validated institutional right to control AI agent access. Proactive WebMCP architecture is faster and cheaper than reactive legal/engineering response.",
+        "fullReport": "https://omac049.github.io/UAGC-WebMCP/"
+      }
+    ]
+  },
+  "generated": "2026-05-06",
+  "ttl": 604800
+}

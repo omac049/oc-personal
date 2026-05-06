@@ -158,4 +158,12 @@ Use this to assess any existing piece of content for AI search readiness:
 
 ---
 
+## OC MCP — Seeing GEO in Practice
+
+This site implements the principles described in this guide. `omar-corral.com` exposes structured tool endpoints via a `.well-known/webmcp.json` manifest so AI agents can call `getProfile()`, `getServices()`, `getCaseStudies()`, and more directly — no Playwright scraping required.
+
+**[See the implementation →](https://omar-corral.com/oc-mcp/)**
+
+---
+
 *Want a GEO audit on your content? [Let's talk.](https://omar-corral.com/#contact)*

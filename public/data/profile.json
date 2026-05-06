@@ -1,0 +1,35 @@
+{
+  "schema": "oc-mcp/v1",
+  "tool": "getProfile",
+  "data": {
+    "name": "Omar Corral",
+    "title": "Digital Strategist",
+    "specialization": "SEO, AI Search & Organic Growth",
+    "bio": "I've spent 12+ years in search — first agency-side, then in-house, now consulting. My focus is the intersection of traditional SEO and AI-driven discovery: how brands get found, cited, and surfaced across Google, ChatGPT, Perplexity, and whatever comes next.",
+    "yearsExperience": 12,
+    "location": { "city": "Phoenix", "state": "Arizona", "country": "US" },
+    "expertise": [
+      "Technical SEO",
+      "AI Search Optimization / GEO",
+      "Generative Engine Optimization",
+      "Core Web Vitals",
+      "Content Strategy & Topical Authority",
+      "Link Building & Digital PR",
+      "SEO Analytics & Revenue Attribution"
+    ],
+    "industries": ["E-commerce", "SaaS", "Healthcare", "Finance", "Higher Education", "Local Business"],
+    "credentials": {
+      "education": "University of Arizona Global Campus",
+      "practitionerSince": 2012
+    },
+    "contact": "https://omar-corral.com/#contact",
+    "website": "https://omar-corral.com",
+    "sameAs": [
+      "https://linkedin.com/in/omarrcorral",
+      "https://twitter.com/omarrcorral",
+      "https://github.com/omac049"
+    ]
+  },
+  "generated": "2026-05-06",
+  "ttl": 604800
+}

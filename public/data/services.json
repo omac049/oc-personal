@@ -1,0 +1,74 @@
+{
+  "schema": "oc-mcp/v1",
+  "tool": "getServices",
+  "data": {
+    "services": [
+      {
+        "id": "seo-audit",
+        "name": "SEO Audit & Strategy",
+        "url": "https://omar-corral.com/services/seo-audit/",
+        "description": "Comprehensive technical and content SEO audit with a prioritized 90-day roadmap tied to business outcomes.",
+        "scope": [
+          "Technical infrastructure audit (crawlability, indexation, Core Web Vitals)",
+          "Content gap and intent analysis",
+          "Competitive landscape mapping",
+          "Backlink profile assessment",
+          "Prioritized remediation roadmap"
+        ],
+        "idealClient": "Brands with existing organic presence that has plateaued, or new sites preparing for launch.",
+        "deliverable": "90-day prioritized strategy document with effort/impact scoring",
+        "engagement": "project"
+      },
+      {
+        "id": "ai-search-strategy",
+        "name": "AI Search & GEO Strategy",
+        "url": "https://omar-corral.com/services/ai-search-strategy/",
+        "description": "Optimization strategy for AI Overviews, ChatGPT, Perplexity, and generative search surfaces.",
+        "scope": [
+          "GEO audit — how AI systems currently represent your brand",
+          "Structured data implementation (FAQPage, HowTo, Article, Person)",
+          "E-E-A-T signal strengthening",
+          "Content restructuring for AI extraction",
+          "Brand monitoring setup across AI platforms"
+        ],
+        "idealClient": "Brands seeing declining CTR despite improving rankings, or companies wanting proactive AI search positioning.",
+        "deliverable": "GEO strategy document + structured data implementation",
+        "engagement": "project-or-retainer"
+      },
+      {
+        "id": "content-strategy",
+        "name": "Content Strategy & Topical Authority",
+        "url": "https://omar-corral.com/services/",
+        "description": "Topical cluster architecture, intent mapping, and content audit framework for compounding organic growth.",
+        "scope": [
+          "Topical authority gap analysis",
+          "Pillar and cluster architecture design",
+          "Content audit with keep/update/remove prioritization",
+          "Search intent mapping across the funnel",
+          "Editorial guidelines and workflow"
+        ],
+        "idealClient": "Companies with large content libraries underperforming on organic, or teams planning significant content investment.",
+        "deliverable": "Content architecture document + prioritized content calendar",
+        "engagement": "project-or-retainer"
+      },
+      {
+        "id": "growth-analytics",
+        "name": "SEO Analytics & Revenue Attribution",
+        "url": "https://omar-corral.com/services/",
+        "description": "Tying organic search KPIs to business outcomes — beyond rankings and traffic to pipeline and revenue.",
+        "scope": [
+          "GA4 + GSC integration and event architecture",
+          "Organic-to-pipeline attribution modeling",
+          "Zero-click impact analysis",
+          "Executive reporting framework",
+          "KPI recalibration for AI search era"
+        ],
+        "idealClient": "Organizations needing to justify SEO investment to leadership or recalibrate measurement for the zero-click era.",
+        "deliverable": "Analytics architecture + reporting framework + executive dashboard",
+        "engagement": "project-or-retainer"
+      }
+    ]
+  },
+  "generated": "2026-05-06",
+  "ttl": 604800
+}

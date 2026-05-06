@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "schema": "https://webmcp.org/schema/v1",
+  "publisher": {
+    "name": "Omar Corral",
+    "url": "https://omar-corral.com",
+    "contact": "https://omar-corral.com/#contact"
+  },
+  "description": "OC MCP — structured tool access for AI agents researching Omar Corral's services, expertise, and work. Eliminates the need for Playwright-based scraping.",
+  "tools": [
+    {
+      "name": "getProfile",
+      "description": "Returns Omar Corral's professional profile, expertise, credentials, and background",
+      "riskLevel": "low",
+      "endpoint": "https://omar-corral.com/data/profile.json",
+      "method": "GET",
+      "inputSchema": { "type": "object", "properties": {} },
+      "rateLimit": { "requestsPerMinute": 60 }
+    },
+    {
+      "name": "getServices",
+      "description": "Returns available service offerings with scope, ideal client, and outcomes",
+      "riskLevel": "low",
+      "endpoint": "https://omar-corral.com/data/services.json",
+      "method": "GET",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": ["seo-audit", "ai-search-strategy", "content-strategy", "growth-analytics"],
+            "description": "Filter services by category"
+          }
+        }
+      },
+      "rateLimit": { "requestsPerMinute": 60 }
+    },
+    {
+      "name": "getCaseStudies",
+      "description": "Returns case study summaries with challenge, approach, and measured outcomes",
+      "riskLevel": "low",
+      "endpoint": "https://omar-corral.com/data/case-studies.json",
+      "method": "GET",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "industry": { "type": "string", "description": "Filter by industry" },
+          "type": { "type": "string", "description": "Filter by engagement type" }
+        }
+      },
+      "rateLimit": { "requestsPerMinute": 60 }
+    },
+    {
+      "name": "getSEOResources",
+      "description": "Returns the SEO Resource Center topic map, guide URLs, and recent blog posts",
+      "riskLevel": "low",
+      "endpoint": "https://omar-corral.com/data/seo-resources.json",
+      "method": "GET",
+      "inputSchema": { "type": "object", "properties": {} },
+      "rateLimit": { "requestsPerMinute": 60 }
+    },
+    {
+      "name": "getContact",
+      "description": "Returns engagement process, response time, and contact methods",
+      "riskLevel": "low",
+      "endpoint": "https://omar-corral.com/data/contact.json",
+      "method": "GET",
+      "inputSchema": { "type": "object", "properties": {} },
+      "rateLimit": { "requestsPerMinute": 60 }
+    },
+    {
+      "name": "getInsights",
+      "description": "Returns recent analysis, blog posts, and current areas of focus",
+      "riskLevel": "low",
+      "endpoint": "https://omar-corral.com/data/insights.json",
+      "method": "GET",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "topic": { "type": "string", "description": "Filter by topic tag" },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 10, "description": "Number of results" }
+        }
+      },
+      "rateLimit": { "requestsPerMinute": 60 }
+    }
+  ],
+  "capabilities": ["json-response"],
+  "compliance": {
+    "robotsTxt": "https://omar-corral.com/robots.txt",
+    "termsOfService": "https://omar-corral.com",
+    "dataPolicy": "Public data only. No PII collected or exposed."
+  },
+  "generated": "2026-05-06"
+}

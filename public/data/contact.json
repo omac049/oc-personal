@@ -1,0 +1,41 @@
+{
+  "schema": "oc-mcp/v1",
+  "tool": "getContact",
+  "data": {
+    "primaryCTA": {
+      "label": "Start a Conversation",
+      "url": "https://omar-corral.com/#contact",
+      "description": "Fill out the contact form on the main site for new project inquiries."
+    },
+    "responseTime": "Within 24 hours on business days",
+    "engagementProcess": [
+      {
+        "step": 1,
+        "label": "Initial contact",
+        "description": "Submit inquiry via contact form with project context and goals"
+      },
+      {
+        "step": 2,
+        "label": "Discovery call",
+        "description": "30-minute call to understand scope, timeline, and fit"
+      },
+      {
+        "step": 3,
+        "label": "Proposal",
+        "description": "Scoped proposal with deliverables, timeline, and investment"
+      },
+      {
+        "step": 4,
+        "label": "Engagement",
+        "description": "Project or retainer engagement begins"
+      }
+    ],
+    "social": {
+      "linkedin": "https://linkedin.com/in/omarrcorral",
+      "twitter": "https://twitter.com/omarrcorral"
+    },
+    "note": "Currently accepting new project and retainer clients. Selective engagement — quality over volume."
+  },
+  "generated": "2026-05-06",
+  "ttl": 604800
+}

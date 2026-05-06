@@ -1,0 +1,102 @@
+{
+  "schema": "oc-mcp/v1",
+  "tool": "getSEOResources",
+  "data": {
+    "resourceCenter": {
+      "url": "https://omar-corral.com/seo-resources/",
+      "description": "Free SEO resource center — in-depth guides, checklists, and frameworks for practitioners.",
+      "blog": "https://omar-corral.com/seo-resources/blog"
+    },
+    "sections": [
+      {
+        "id": "getting-started",
+        "title": "Getting Started with SEO",
+        "url": "https://omar-corral.com/seo-resources/docs/getting-started",
+        "guides": 6
+      },
+      {
+        "id": "keyword-research",
+        "title": "Keyword Research",
+        "url": "https://omar-corral.com/seo-resources/docs/keyword-research",
+        "guides": 5
+      },
+      {
+        "id": "technical-seo",
+        "title": "Technical SEO",
+        "url": "https://omar-corral.com/seo-resources/docs/technical-seo",
+        "guides": 5
+      },
+      {
+        "id": "content-optimization",
+        "title": "Content Optimization",
+        "url": "https://omar-corral.com/seo-resources/docs/content-optimization",
+        "guides": 5
+      },
+      {
+        "id": "link-building",
+        "title": "Link Building",
+        "url": "https://omar-corral.com/seo-resources/docs/link-building",
+        "guides": 5
+      },
+      {
+        "id": "ai-search",
+        "title": "AI Search & GEO",
+        "url": "https://omar-corral.com/seo-resources/docs/ai-search",
+        "guides": 5,
+        "featured": true,
+        "description": "Generative Engine Optimization — appearing in AI Overviews, ChatGPT, and Perplexity"
+      },
+      {
+        "id": "checklists",
+        "title": "SEO Checklists",
+        "url": "https://omar-corral.com/seo-resources/docs/checklists",
+        "guides": 5
+      },
+      {
+        "id": "tools",
+        "title": "SEO Tools & Resources",
+        "url": "https://omar-corral.com/seo-resources/docs/tools",
+        "guides": 1
+      }
+    ],
+    "featuredGuides": [
+      {
+        "title": "GEO Fundamentals",
+        "url": "https://omar-corral.com/seo-resources/docs/ai-search/geo-fundamentals",
+        "description": "How LLMs retrieve and cite content; the three GEO principles"
+      },
+      {
+        "title": "AI Overviews Optimization",
+        "url": "https://omar-corral.com/seo-resources/docs/ai-search/ai-overviews",
+        "description": "What triggers AI Overviews and how to improve your inclusion rate"
+      },
+      {
+        "title": "Zero-Click Search Case Study",
+        "url": "https://omar-corral.com/seo-resources/blog/zero-click-search-rankings-traffic-decoupled",
+        "description": "17-month dataset showing the ranking/CTR decoupling effect"
+      }
+    ],
+    "recentPosts": [
+      {
+        "title": "We Won the Rankings. The Ecosystem Moved On.",
+        "url": "https://omar-corral.com/seo-resources/blog/zero-click-search-rankings-traffic-decoupled",
+        "date": "2026-05-06",
+        "tags": ["seo", "ai", "analytics"]
+      },
+      {
+        "title": "Content Clusters Are Not What Most Teams Think They Are",
+        "url": "https://omar-corral.com/seo-resources/blog/content-clusters-topical-authority-2026",
+        "date": "2026-04-22",
+        "tags": ["content-strategy", "seo"]
+      },
+      {
+        "title": "INP Replaced FID. Here Is What That Actually Means for Your Site.",
+        "url": "https://omar-corral.com/seo-resources/blog/inp-core-web-vitals-2026",
+        "date": "2026-03-18",
+        "tags": ["technical-seo", "seo"]
+      }
+    ]
+  },
+  "generated": "2026-05-06",
+  "ttl": 86400
+}
