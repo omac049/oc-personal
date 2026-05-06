@@ -106,7 +106,7 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
         { url: '/apple-touch-icon.png', sizes: '180x180' },
       ],
       other: [
-        { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#1e293b' },
+        { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#00E55C' },
       ],
     },
 
@@ -144,7 +144,7 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
       'mobile-web-app-capable': 'yes',
       'apple-mobile-web-app-title': 'Omar SEO',
       'application-name': 'Omar Corral SEO',
-      'msapplication-TileColor': '#0f172a',
+      'msapplication-TileColor': '#000000',
       'msapplication-TileImage': '/mstile-144x144.png',
     },
   };

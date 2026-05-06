@@ -6,10 +6,10 @@ import Link from 'next/link';
 import SignalLogo from './SignalLogo';
 
 const NAV_LINKS = [
-  { label: 'Services', href: '#services' },
-  { label: 'Proof', href: '#proof' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Proof', href: '/#proof' },
+  { label: 'About', href: '/#about' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export default function Navbar() {

@@ -137,13 +137,13 @@ export const enhancedSEOData = {
         "@type": "HowToStep",
         "name": "Audit Current SEO Performance",
         "text": "Analyze existing website performance, identify opportunities, and establish baseline metrics.",
-        "url": "https://omar-corral.com/#experience"
+        "url": "https://omar-corral.com/#services"
       },
       {
         "@type": "HowToStep",
         "name": "Implement AI Content Strategy",
         "text": "Develop content optimized for both traditional search and AI-powered search engines.",
-        "url": "https://omar-corral.com/#skills"
+        "url": "https://omar-corral.com/#proof"
       },
       {
         "@type": "HowToStep",
@@ -340,14 +340,6 @@ export const performanceSchema = {
   "@type": "WebSite",
   "name": "Omar Corral - SEO Specialist & AI Marketing Expert",
   "url": "https://omar-corral.com/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://omar-corral.com/?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  },
   "mainEntity": {
     "@type": "Person",
     "name": "Omar Corral"

@@ -187,15 +187,7 @@ export const seoData = {
       "publisher": {
         "@id": "https://omar-corral.com#person"
       },
-      "inLanguage": "en-US",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://omar-corral.com/search?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
+      "inLanguage": "en-US"
     },
 
     organization: {

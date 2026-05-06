@@ -26,7 +26,7 @@ export default function SignalGrid() {
       const dpr = window.devicePixelRatio || 1;
       canvas.width = canvas.offsetWidth * dpr;
       canvas.height = canvas.offsetHeight * dpr;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
     resize();
@@ -66,7 +66,9 @@ export default function SignalGrid() {
           }
         }
       }
-      return;
+      return () => {
+        window.removeEventListener('resize', resize);
+      };
     }
 
     const draw = () => {
