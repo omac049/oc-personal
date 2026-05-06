@@ -39,22 +39,13 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
       siteName: seoData.openGraph.siteName,
       title: seoData.openGraph.title,
       description: seoData.openGraph.description,
-      images: [
-        {
-          url: '/opengraph-image.png',
-          width: 1200,
-          height: 630,
-          alt: 'Omar Corral — Digital Strategist',
-          type: 'image/png',
-        },
-        ...seoData.openGraph.images.map(img => ({
-          url: img.url,
-          width: img.width,
-          height: img.height,
-          alt: img.alt,
-          type: img.type,
-        })),
-      ],
+      images: seoData.openGraph.images.map(img => ({
+        url: img.url,
+        width: img.width,
+        height: img.height,
+        alt: img.alt,
+        type: img.type,
+      })),
     },
 
     twitter: {
@@ -63,15 +54,7 @@ export function generateMetadata(overrides?: Partial<Metadata>): Metadata {
       creator: seoData.twitter.creator,
       title: seoData.twitter.title,
       description: seoData.twitter.description,
-      images: [
-        {
-          url: '/twitter-image.png',
-          alt: 'Omar Corral — Digital Strategist',
-          width: 1200,
-          height: 600,
-        },
-        seoData.twitter.image
-      ],
+      images: [seoData.twitter.image],
     },
 
     icons: {

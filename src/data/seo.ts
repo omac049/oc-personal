@@ -65,18 +65,11 @@ export const seoData = {
     description: "Omar Corral — digital strategist with 12+ years in organic search. SEO, AI search optimization, and growth strategy for brands that want to lead.",
     images: [
       {
-        url: `${SITE_URL}/og-image.jpg`,
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Omar Corral — Digital Strategist",
-        type: "image/jpeg"
-      },
-      {
-        url: `${SITE_URL}/og-image-square.jpg`,
-        width: 600,
-        height: 600,
-        alt: "Omar Corral — SEO & AI Search",
-        type: "image/jpeg"
+        type: "image/png"
       }
     ]
   },
@@ -87,7 +80,7 @@ export const seoData = {
     creator: "@omarrcorral",
     title: "Omar Corral — Digital Strategist | SEO, AI Search & Growth Strategy",
     description: "Omar Corral — digital strategist with 12+ years in organic search. SEO, AI search optimization, and growth strategy for brands that want to lead.",
-    image: `${SITE_URL}/twitter-card.jpg`,
+    image: `${SITE_URL}/twitter-image`,
     imageAlt: "Omar Corral — Digital Strategist"
   },
 
