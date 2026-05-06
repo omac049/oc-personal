@@ -38,7 +38,8 @@
           "scraperTrapRateTarget": ">70%"
         },
         "keyFinding": "Amazon v. Perplexity (March 2026 federal ruling) validated institutional right to control AI agent access. Proactive WebMCP architecture is faster and cheaper than reactive legal/engineering response.",
-        "fullReport": "https://omac049.github.io/UAGC-WebMCP/"
+        "fullReport": "https://omar-corral.com/oc-mcp/",
+        "note": "OC MCP at omar-corral.com is the live proof-of-concept for this architecture."
       }
     ]
   },

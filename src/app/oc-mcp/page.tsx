@@ -189,12 +189,12 @@ export default function OcMcpPage() {
               View the manifest →
             </a>
             <a
-              href="https://omac049.github.io/UAGC-WebMCP/"
+              href="https://omac049.github.io/seo-zero-click/"
               target="_blank"
               rel="noopener noreferrer"
               style={linkStyle(true)}
             >
-              Read the UAGC brief →
+              Read the zero-click case study →
             </a>
           </div>
         </div>
@@ -548,12 +548,12 @@ export default function OcMcpPage() {
               Start a conversation →
             </a>
             <a
-              href="https://omac049.github.io/UAGC-WebMCP/"
+              href="https://omac049.github.io/seo-zero-click/"
               target="_blank"
               rel="noopener noreferrer"
               style={linkStyle(true)}
             >
-              Read the UAGC WebMCP case study →
+              See the zero-click research →
             </a>
           </div>
         </div>

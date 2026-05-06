@@ -30,7 +30,7 @@
       {
         "title": "The Front Door for AI Agents (UAGC WebMCP)",
         "type": "strategy-brief",
-        "url": "https://omac049.github.io/UAGC-WebMCP/",
+        "url": "https://omar-corral.com/oc-mcp/",
         "summary": "Executive brief for AI-agent-native web architecture at a university — dual-layer WebMCP with authorized tool access and honeypot defense.",
         "date": "2026-04-01",
         "tags": ["webmcp", "ai-agents", "higher-education", "web-architecture"]
