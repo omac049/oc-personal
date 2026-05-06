@@ -1,19 +1,5 @@
 export const aboutData = {
-  title: "About Omar",
-  content: `I help businesses grow their organic visibility — in traditional search results and in the AI-powered experiences that are reshaping how people find information. My approach pairs proven SEO fundamentals with tools like ChatGPT, Claude, and custom automation to move faster without cutting corners.`,
-  image: "https://media.licdn.com/dms/image/v2/C4E03AQFSbqu1dYqIfQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1592950261941?e=1760572800&v=beta&t=Iwd5Dt6WeeGm5dR87fRLSggJZVgeDbO8enrBvt64SY4", // Omar's LinkedIn professional headshot
-  stats: [
-    {
-      number: "31%",
-      label: "Average increase in organic sessions"
-    },
-    {
-      number: "95%",
-      label: "Content optimization efficiency with AI tools"
-    },
-    {
-      number: "10+",
-      label: "Years in SEO and digital marketing"
-    }
-  ]
+  name: "Omar Corral",
+  bio: "I've spent 12+ years in search — first agency-side, then in-house, now consulting. My focus is on the intersection of traditional SEO and AI-driven discovery: how brands get found, cited, and surfaced across Google, ChatGPT, Perplexity, and whatever comes next.",
+  categories: ["E-commerce", "SaaS", "Healthcare", "Finance", "Local Business"],
 };
