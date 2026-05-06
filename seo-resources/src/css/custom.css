@@ -4,153 +4,45 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Signal palette — matches omar-corral.com rebrand */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #00B847;
+  --ifm-color-primary-dark: #00A33F;
+  --ifm-color-primary-darker: #009A3B;
+  --ifm-color-primary-darkest: #007F31;
+  --ifm-color-primary-light: #00CC4F;
+  --ifm-color-primary-lighter: #00D654;
+  --ifm-color-primary-lightest: #00E55C;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #00E55C;
+  --ifm-color-primary-dark: #00CC52;
+  --ifm-color-primary-darker: #00C04D;
+  --ifm-color-primary-darkest: #009A3F;
+  --ifm-color-primary-light: #1AE86C;
+  --ifm-color-primary-lighter: #33EB7C;
+  --ifm-color-primary-lightest: #66F09D;
+  --ifm-background-color: #0A0A0A;
+  --ifm-background-surface-color: #111111;
+  --ifm-footer-background-color: #000000;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 229, 92, 0.15);
 }
 
-/* Enhanced Search Styling */
-.DocSearch-Button {
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  border: 1px solid var(--ifm-color-emphasis-300);
-}
-
-.DocSearch-Button:hover {
-  background: var(--ifm-color-emphasis-100);
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.DocSearch-Button-Placeholder {
-  font-size: 14px;
-}
-
-/* Search Results Highlighting */
-.DocSearch-Hit mark,
+/* Search highlight styling */
 mark.search-highlight {
   background: var(--ifm-color-primary-lightest);
   color: var(--ifm-color-primary-darkest);
   padding: 0 2px;
   border-radius: 2px;
   font-weight: 600;
-  border: 1px solid var(--ifm-color-primary-light);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme='dark'] .DocSearch-Hit mark,
 [data-theme='dark'] mark.search-highlight {
   background: var(--ifm-color-primary-darkest);
   color: var(--ifm-color-primary-lightest);
-  border-color: var(--ifm-color-primary-dark);
-}
-
-/* Local Search Plugin Styling */
-.DocSearch-Container .DocSearch-Modal .DocSearch-Hit-Tree {
-  font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-600);
-}
-
-.local-search-suggestions {
-  max-height: 400px;
-  overflow-y: auto;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
-  background: var(--ifm-background-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.local-search-suggestion-item {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.local-search-suggestion-item:hover {
-  background: var(--ifm-color-emphasis-100);
-}
-
-.local-search-suggestion-item:last-child {
-  border-bottom: none;
-}
-
-/* Search Modal Enhancements */
-.DocSearch-Modal {
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-}
-
-.DocSearch-SearchBar {
-  border-radius: 8px;
-}
-
-.DocSearch-Hit {
-  border-radius: 6px;
-  margin-bottom: 4px;
-}
-
-.DocSearch-Hit[aria-selected='true'] {
-  background: var(--ifm-color-primary-lightest);
-}
-
-[data-theme='dark'] .DocSearch-Hit[aria-selected='true'] {
-  background: var(--ifm-color-primary-darkest);
-}
-
-/* Search Result Categories */
-.DocSearch-Hit-source {
-  background: var(--ifm-color-primary);
-  color: white;
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-/* Keyboard Shortcut Styling */
-.DocSearch-Button-Keys {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.DocSearch-Button-Key {
-  background: var(--ifm-color-emphasis-200);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--ifm-color-emphasis-800);
-}
-
-[data-theme='dark'] .DocSearch-Button-Key {
-  background: var(--ifm-color-emphasis-700);
-  border-color: var(--ifm-color-emphasis-600);
-  color: var(--ifm-color-emphasis-200);
 }
 
 /* Search Page Enhancements */

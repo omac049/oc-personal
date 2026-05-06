@@ -5,13 +5,49 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install main site dependencies
+        run: npm ci
+
+      - name: Typecheck main site
+        run: npx tsc --noEmit
+
+      - name: Lint main site
+        run: npm run lint
+
+      - name: Audit main site (critical only)
+        run: npm audit --audit-level=critical || true
+
+      - name: Install SEO Resources dependencies
+        working-directory: seo-resources
+        run: npm ci
+
+      - name: Typecheck SEO Resources
+        working-directory: seo-resources
+        run: npm run typecheck
+
+      - name: Audit SEO Resources (critical only)
+        working-directory: seo-resources
+        run: npm audit --audit-level=critical || true
+
   build:
+    needs: quality
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,16 +66,12 @@ jobs:
             ~/.npm
             ./node_modules
             ./seo-resources/node_modules
-          # Bump cache-version to invalidate all caches (e.g. after clearing or troubleshooting)
-          key: ${{ runner.os }}-node-v1-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-v2-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-v1-
+            ${{ runner.os }}-node-v2-
 
       - name: Install main site dependencies
-        run: |
-          echo "Installing main site dependencies..."
-          npm ci
-          echo "Main site dependencies installed successfully ✅"
+        run: npm ci
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -47,89 +79,21 @@ jobs:
           static_site_generator: next
 
       - name: Build Next.js main site
-        run: |
-          echo "Building Next.js main site..."
-          npm run build
-          echo "Main site build completed successfully ✅"
+        run: npm run build
 
       - name: Install SEO Resources dependencies
-        run: |
-          echo "Installing SEO Resources dependencies..."
-          cd seo-resources
-          npm ci
-          echo "SEO Resources dependencies installed successfully ✅"
+        working-directory: seo-resources
+        run: npm ci
 
       - name: Build SEO Resource Center
-        run: |
-          echo "Building SEO Resource Center..."
-          cd seo-resources
-          NODE_ENV=production npm run build
-          echo "SEO Resource Center build completed successfully ✅"
-          
-          # Verify build output
-          if [ -d "build" ]; then
-            echo "Build directory exists ✅"
-            ls -la build/
-          else
-            echo "❌ Build directory not found!"
-            exit 1
-          fi
+        working-directory: seo-resources
+        run: NODE_ENV=production npm run build
 
       - name: Prepare combined deployment
         run: |
-          echo "Creating combined site structure..."
-          
-          # Verify main site build exists (Next.js creates ./out directory)
-          if [ ! -d "./out" ]; then
-            echo "❌ Main site build directory ./out not found!"
-            ls -la ./
-            exit 1
-          else
-            echo "Main site build directory found ✅"
-          fi
-          
-          # Create subdirectory for SEO resources
           mkdir -p ./out/seo-resources
-          echo "Created SEO resources subdirectory ✅"
-          
-          # Verify SEO resources build exists
-          if [ ! -d "./seo-resources/build" ]; then
-            echo "❌ SEO resources build directory not found!"
-            ls -la ./seo-resources/
-            exit 1
-          else
-            echo "SEO resources build directory found ✅"
-          fi
-          
-          # Copy SEO resources to subdirectory
-          echo "Copying SEO resources to deployment directory..."
           cp -r ./seo-resources/build/* ./out/seo-resources/
-          
-          # Verify SEO resources were copied successfully
-          if [ -f "./out/seo-resources/index.html" ]; then
-            echo "SEO resources copied successfully ✅"
-          else
-            echo "❌ SEO resources copy failed!"
-            ls -la ./out/seo-resources/
-            exit 1
-          fi
-          
-          # Show final deployment structure
-          echo "Final deployment structure:"
-          echo "Main site files:"
-          ls -la ./out/*.html || echo "No HTML files in root"
-          echo "SEO resources files:"
-          ls -la ./out/seo-resources/*.html || echo "No HTML files in seo-resources"
-          
-          echo "🚀 Combined deployment ready!"
-          echo "📍 Main site: https://omar-corral.com"
-          echo "📚 SEO Resource Center: https://omar-corral.com/seo-resources/"
-
-      - name: Create .nojekyll file
-        run: |
-          echo "Creating .nojekyll file to disable Jekyll processing..."
           touch ./out/.nojekyll
-          echo ".nojekyll file created ✅"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -143,19 +107,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main'
-    
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
-
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
-      - name: Deployment success notification
-        run: |
-          echo "🚀 Deployment completed successfully!"
-          echo "🌐 Main site: https://omar-corral.com"
-          echo "📚 SEO Resource Center: https://omar-corral.com/seo-resources/"

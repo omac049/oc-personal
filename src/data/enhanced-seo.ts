@@ -1,6 +1,6 @@
-// Enhanced SEO data for better search engine HTML rendering
+const SITE_URL = "https://omar-corral.com";
+
 export const enhancedSEOData = {
-  // Breadcrumb Schema for better navigation understanding
   breadcrumb: {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -9,42 +9,41 @@ export const enhancedSEOData = {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://omar-corral.com/"
+        "item": `${SITE_URL}/`
       },
       {
-        "@type": "ListItem", 
+        "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://omar-corral.com/services/"
+        "item": `${SITE_URL}/services/`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Case Studies",
-        "item": "https://omar-corral.com/case-studies/"
+        "item": `${SITE_URL}/case-studies/`
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": "About",
-        "item": "https://omar-corral.com/#about"
+        "item": `${SITE_URL}/#about`
       },
       {
         "@type": "ListItem",
         "position": 5,
         "name": "FAQ",
-        "item": "https://omar-corral.com/#faq"
+        "item": `${SITE_URL}/#faq`
       },
       {
         "@type": "ListItem",
         "position": 6,
         "name": "Contact",
-        "item": "https://omar-corral.com/#contact"
+        "item": `${SITE_URL}/#contact`
       }
     ]
   },
 
-  // FAQ Schema for rich snippets - matches FAQ.tsx content
   faq: {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -78,7 +77,7 @@ export const enhancedSEOData = {
         "name": "Do you work with businesses outside Phoenix?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. While I’m based in Phoenix, Arizona, most of my clients are remote. SEO and AI search strategy work is fully remote-friendly. I work with e-commerce, SaaS, healthcare, and finance brands across the US."
+          "text": "Yes. While I'm based in Phoenix, Arizona, most of my clients are remote. SEO and AI search strategy work is fully remote-friendly. I work with e-commerce, SaaS, healthcare, and finance brands across the US."
         }
       },
       {
@@ -89,90 +88,55 @@ export const enhancedSEOData = {
           "text": "Engagements typically start with a comprehensive audit, followed by a prioritized strategy and ongoing execution. I work on monthly retainers or project-based scopes depending on the need. Every engagement includes regular reporting tied to revenue, not just rankings."
         }
       }
-      ]
+    ]
   },
 
-  // How-To Schema for SEO guides
   howTo: {
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": "How to Implement AI-Enhanced SEO Strategy",
     "description": "Step-by-step guide to implementing artificial intelligence in your SEO strategy",
     "totalTime": "PT4H",
-    "estimatedCost": {
-      "@type": "MonetaryAmount",
-      "currency": "USD",
-      "value": "500-2000"
-    },
-    "supply": [
-      {
-        "@type": "HowToSupply",
-        "name": "Website Analytics Access"
-      },
-      {
-        "@type": "HowToSupply", 
-        "name": "Content Management System"
-      },
-      {
-        "@type": "HowToSupply",
-        "name": "AI Tools (ChatGPT, Claude)"
-      }
-    ],
-    "tool": [
-      {
-        "@type": "HowToTool",
-        "name": "Google Search Console"
-      },
-      {
-        "@type": "HowToTool",
-        "name": "Google Analytics 4"
-      },
-      {
-        "@type": "HowToTool",
-        "name": "AI Content Tools"
-      }
-    ],
     "step": [
       {
         "@type": "HowToStep",
         "name": "Audit Current SEO Performance",
         "text": "Analyze existing website performance, identify opportunities, and establish baseline metrics.",
-        "url": "https://omar-corral.com/#services"
+        "url": `${SITE_URL}/#services`
       },
       {
         "@type": "HowToStep",
         "name": "Implement AI Content Strategy",
         "text": "Develop content optimized for both traditional search and AI-powered search engines.",
-        "url": "https://omar-corral.com/#proof"
+        "url": `${SITE_URL}/#proof`
       },
       {
         "@type": "HowToStep",
         "name": "Technical SEO Optimization",
         "text": "Optimize Core Web Vitals, mobile performance, and implement advanced schema markup.",
-        "url": "https://omar-corral.com/#about"
+        "url": `${SITE_URL}/#about`
       },
       {
         "@type": "HowToStep",
         "name": "Monitor and Iterate",
         "text": "Track performance metrics and continuously optimize based on AI and search engine updates.",
-        "url": "https://omar-corral.com/#contact"
+        "url": `${SITE_URL}/#contact`
       }
     ]
   },
 
-  // Article Schema for main content sections
   article: {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "SEO Specialist: Combining Traditional SEO with Artificial Intelligence",
+    "headline": "Digital Strategist: Combining Traditional SEO with AI Search",
     "description": "Professional portfolio showcasing AI-enhanced SEO expertise, LLM optimization, and Search Generative Experience strategies.",
-    "image": "https://omar-corral.com/omar-social-card.jpg",
+    "image": `${SITE_URL}/og-image.jpg`,
     "author": {
       "@type": "Person",
       "name": "Omar Corral",
-      "url": "https://omar-corral.com",
+      "url": SITE_URL,
       "sameAs": [
-        "https://linkedin.com/in/omar-corral",
+        "https://linkedin.com/in/omarrcorral",
         "https://github.com/omac049"
       ]
     },
@@ -181,29 +145,25 @@ export const enhancedSEOData = {
       "name": "Omar Corral SEO Consulting",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://omar-corral.com/logo.png"
+        "url": `${SITE_URL}/logo.png`
       }
     },
     "datePublished": "2024-01-01",
     "dateModified": new Date().toISOString().split('T')[0],
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://omar-corral.com/"
+      "@id": `${SITE_URL}/`
     },
     "keywords": [
       "AI SEO",
-      "LLM optimization", 
+      "LLM optimization",
       "Search Generative Experience",
-      "ChatGPT SEO",
-      "Claude AI",
       "Technical SEO",
       "Phoenix SEO",
-      "Content Strategy",
-      "Machine Learning SEO"
+      "Content Strategy"
     ]
   },
 
-  // Professional Service Schema with embedded AggregateRating
   service: {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -212,18 +172,11 @@ export const enhancedSEOData = {
     "provider": {
       "@type": "Person",
       "name": "Omar Corral",
-      "url": "https://omar-corral.com"
+      "url": SITE_URL
     },
     "areaServed": {
       "@type": "Country",
       "name": "United States"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "47",
-      "bestRating": "5",
-      "worstRating": "1"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -239,7 +192,7 @@ export const enhancedSEOData = {
         {
           "@type": "Offer",
           "itemOffered": {
-            "@type": "Service", 
+            "@type": "Service",
             "name": "Technical SEO Audit"
           }
         },
@@ -253,93 +206,47 @@ export const enhancedSEOData = {
       ]
     }
   },
-
-  // Course Schema for SEO training
-  course: {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "AI-Enhanced SEO Strategies",
-    "description": "Learn how to integrate artificial intelligence into your SEO workflow for better results.",
-    "provider": {
-      "@type": "Person",
-      "name": "Omar Corral"
-    },
-    "courseMode": "online",
-    "educationalLevel": "Intermediate",
-    "about": [
-      "AI in SEO",
-      "LLM Optimization",
-      "Search Generative Experience",
-      "Technical SEO"
-    ]
-  },
-
-  // Job Posting Schema for SEO opportunities
-  jobPosting: {
-    "@context": "https://schema.org",
-    "@type": "JobPosting",
-    "title": "SEO Consulting Services Available",
-    "description": "Professional SEO consulting services available for businesses looking to improve their search engine visibility with AI-enhanced strategies.",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Omar Corral SEO Consulting"
-    },
-    "jobLocation": {
-      "@type": "Place",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Phoenix",
-        "addressRegion": "AZ",
-        "addressCountry": "US"
-      }
-    },
-    "employmentType": "CONTRACTOR",
-    "workHours": "Flexible",
-    "datePosted": new Date().toISOString().split('T')[0]
-  }
 };
 
-// Navigation Schema
 export const navigationSchema = {
   "@context": "https://schema.org",
   "@type": "SiteNavigationElement",
   "name": "Main Navigation",
-  "url": "https://omar-corral.com/",
+  "url": `${SITE_URL}/`,
   "hasPart": [
     {
       "@type": "SiteNavigationElement",
       "name": "Services",
-      "url": "https://omar-corral.com/#services"
+      "url": `${SITE_URL}/#services`
     },
     {
       "@type": "SiteNavigationElement",
       "name": "Proof",
-      "url": "https://omar-corral.com/#proof"
+      "url": `${SITE_URL}/#proof`
     },
     {
       "@type": "SiteNavigationElement",
       "name": "About",
-      "url": "https://omar-corral.com/#about"
+      "url": `${SITE_URL}/#about`
     },
     {
       "@type": "SiteNavigationElement",
       "name": "FAQ",
-      "url": "https://omar-corral.com/#faq"
+      "url": `${SITE_URL}/#faq`
     },
     {
       "@type": "SiteNavigationElement",
       "name": "Contact",
-      "url": "https://omar-corral.com/#contact"
+      "url": `${SITE_URL}/#contact`
     }
   ]
 };
 
-// Performance Metrics Schema
 export const performanceSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Omar Corral - SEO Specialist & AI Marketing Expert",
-  "url": "https://omar-corral.com/",
+  "name": "Omar Corral — Digital Strategist",
+  "url": `${SITE_URL}/`,
   "mainEntity": {
     "@type": "Person",
     "name": "Omar Corral"

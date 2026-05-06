@@ -1,4 +1,15 @@
-export const socialsData = {
+export interface SocialLink {
+  name: string;
+  url: string;
+  platform: 'github' | 'linkedin' | 'x';
+}
+
+export interface SocialsData {
+  email: string;
+  social: SocialLink[];
+}
+
+export const socialsData: SocialsData = {
   email: "omar.seogears@gmail.com",
   social: [
     {

@@ -2,6 +2,7 @@ import Hero from '@/components/Hero';
 import ProofStrip from '@/components/ProofStrip';
 import Services from '@/components/Services';
 import CaseStudies from '@/components/CaseStudies';
+import ResourcesCTA from '@/components/ResourcesCTA';
 import About from '@/components/About';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
@@ -27,6 +28,7 @@ export default function Home() {
         <ProofStrip />
         <Services />
         <CaseStudies />
+        <ResourcesCTA />
         <About />
         <FAQ />
         <Contact />

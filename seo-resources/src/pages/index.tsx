@@ -244,17 +244,15 @@ function SEOResourcesCTA() {
     <section className={styles.ctaSection}>
       <div className="container">
         <div className={styles.ctaContent}>
-          <div className={styles.ctaIcon}>🚀</div>
-          <Heading as="h2">Ready to Implement Modern SEO?</Heading>
+          <Heading as="h2">Ready to Put This Into Practice?</Heading>
           <p>
-            These advanced frameworks and methodologies represent cutting-edge SEO knowledge. 
-            Get personalized implementation guidance for your specific situation.
+            I help brands turn SEO strategy into measurable growth — from technical audits to AI search readiness.
           </p>
           <div className={styles.ctaButtons}>
             <Link
               className="button button--primary button--lg"
               href="https://omar-corral.com/#contact">
-              Schedule Strategy Call
+              Start a Conversation
             </Link>
           </div>
         </div>

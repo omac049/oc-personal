@@ -1,13 +1,13 @@
+const SITE_URL = "https://omar-corral.com";
+
 export const seoData = {
-  // Personal Information
   personal: {
     name: "Omar Corral",
     jobTitle: "Digital Strategist | SEO, AI Search & Growth Strategy",
-    email: "omar@omarrcorral.com",
-    phone: "+1-555-SEO-GURU", // Replace with actual number
+    email: "omar.seogears@gmail.com",
     location: {
       city: "Phoenix",
-      state: "Arizona", 
+      state: "Arizona",
       country: "United States",
       region: "Arizona"
     },
@@ -15,74 +15,40 @@ export const seoData = {
       linkedin: "https://linkedin.com/in/omarrcorral",
       twitter: "https://twitter.com/omarrcorral",
       github: "https://github.com/omac049",
-      website: "https://omar-corral.com"
+      website: SITE_URL
     }
   },
 
-  // Website Information
   website: {
-    name: "Omar Corral - SEO Specialist & AI Marketing Expert",
-    url: "https://omar-corral.com",
+    name: "Omar Corral — Digital Strategist",
+    url: SITE_URL,
     domain: "omar-corral.com",
-    logo: "https://omar-corral.com/logo.png",
-    favicon: "https://omar-corral.com/favicon.ico",
+    logo: `${SITE_URL}/logo.png`,
+    favicon: `${SITE_URL}/favicon.ico`,
     language: "en-US",
     locale: "en_US",
     timezone: "America/Phoenix"
   },
 
-  // SEO Metadata
   meta: {
     title: "Omar Corral — Digital Strategist | SEO, AI Search & Growth Strategy",
     description: "Omar Corral — digital strategist with 12+ years in organic search. SEO, AI search optimization, and growth strategy for brands that want to lead.",
     keywords: [
-      // Primary Keywords
       "AI SEO specialist",
-      "LLM optimization expert", 
+      "LLM optimization expert",
       "Search Generative Experience",
       "AI-powered digital marketing",
       "Omar Corral SEO",
-      
-      // Technical SEO
       "technical SEO expert",
       "Core Web Vitals optimization",
       "schema markup specialist",
-      "site speed optimization",
-      "mobile-first indexing",
-      
-      // AI & LLM Keywords
-      "ChatGPT SEO optimization",
-      "Claude AI content creation",
-      "AI content strategy",
-      "machine learning SEO",
-      "prompt engineering SEO",
-      
-      // Location-based
       "SEO consultant Phoenix",
       "Arizona digital marketing",
-      "Phoenix SEO expert",
-      
-      // Service Keywords
       "enterprise SEO",
       "e-commerce SEO",
-      "international SEO",
-      "local SEO optimization",
       "SEO audit services",
       "content optimization",
-      "link building strategies",
-      "keyword research",
-      "competitor analysis",
-      "Google Analytics expert",
-      "Search Console optimization",
-      
-      // Industry Terms
-      "SERP optimization",
-      "organic traffic growth", 
-      "conversion rate optimization",
-      "digital marketing ROI",
-      "search engine marketing",
-      "online visibility",
-      "brand awareness SEO"
+      "organic traffic growth",
     ],
     author: "Omar Corral",
     publisher: "Omar Corral",
@@ -90,65 +56,62 @@ export const seoData = {
     tags: ["SEO", "AI", "Digital Marketing", "LLM", "Technology", "Analytics"]
   },
 
-  // Open Graph Data
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://omar-corral.com",
-    siteName: "Omar Corral - SEO Specialist & AI Marketing Expert",
+    url: SITE_URL,
+    siteName: "Omar Corral — Digital Strategist",
     title: "Omar Corral — Digital Strategist | SEO, AI Search & Growth Strategy",
     description: "Omar Corral — digital strategist with 12+ years in organic search. SEO, AI search optimization, and growth strategy for brands that want to lead.",
     images: [
       {
-        url: "https://omar-corral.com/og-image.jpg",
+        url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Omar Corral - SEO Specialist & AI Marketing Expert",
+        alt: "Omar Corral — Digital Strategist",
         type: "image/jpeg"
       },
       {
-        url: "https://omar-corral.com/og-image-square.jpg", 
+        url: `${SITE_URL}/og-image-square.jpg`,
         width: 600,
         height: 600,
-        alt: "Omar Corral - SEO Expert",
+        alt: "Omar Corral — SEO & AI Search",
         type: "image/jpeg"
       }
     ]
   },
 
-  // Twitter Card Data
   twitter: {
     card: "summary_large_image",
     site: "@omarrcorral",
-    creator: "@omarrcorral", 
+    creator: "@omarrcorral",
     title: "Omar Corral — Digital Strategist | SEO, AI Search & Growth Strategy",
     description: "Omar Corral — digital strategist with 12+ years in organic search. SEO, AI search optimization, and growth strategy for brands that want to lead.",
-    image: "https://omar-corral.com/twitter-card.jpg",
-          imageAlt: "Omar Corral - SEO Specialist & AI Marketing Expert"
+    image: `${SITE_URL}/twitter-card.jpg`,
+    imageAlt: "Omar Corral — Digital Strategist"
   },
 
-  // Structured Data (Schema.org)
   structuredData: {
     person: {
       "@context": "https://schema.org",
       "@type": "Person",
-      "@id": "https://omar-corral.com#person",
+      "@id": `${SITE_URL}#person`,
       "name": "Omar Corral",
-      "url": "https://omar-corral.com",
+      "url": SITE_URL,
       "image": {
         "@type": "ImageObject",
-        "url": "https://omar-corral.com/omar-corral-profile.jpg",
+        "url": `${SITE_URL}/omar.jpeg`,
         "width": 300,
         "height": 300
       },
-      "jobTitle": "SEO Specialist & AI Marketing Expert",
+      "jobTitle": "Digital Strategist | SEO, AI Search & Growth Strategy",
       "worksFor": {
         "@type": "Organization",
         "name": "Independent Consultant",
-        "url": "https://omar-corral.com"
+        "url": SITE_URL
       },
       "alumniOf": {
-        "@type": "EducationalOrganization", 
+        "@type": "EducationalOrganization",
         "name": "University of Arizona Global Campus",
         "url": "https://www.uagc.edu"
       },
@@ -159,12 +122,11 @@ export const seoData = {
         "Digital Marketing",
         "Content Strategy",
         "Technical SEO",
-        "Analytics",
-        "Machine Learning"
+        "Analytics"
       ],
       "sameAs": [
         "https://linkedin.com/in/omarrcorral",
-        "https://twitter.com/omarrcorral", 
+        "https://twitter.com/omarrcorral",
         "https://github.com/omac049"
       ],
       "address": {
@@ -173,19 +135,18 @@ export const seoData = {
         "addressRegion": "AZ",
         "addressCountry": "US"
       },
-      "email": "omar@omarrcorral.com",
-      "telephone": "+1-555-SEO-GURU"
+      "email": "omar.seogears@gmail.com"
     },
 
     website: {
       "@context": "https://schema.org",
-      "@type": "WebSite", 
-      "@id": "https://omar-corral.com#website",
-      "url": "https://omar-corral.com",
-      "name": "Omar Corral - SEO Specialist & AI Marketing Expert",
-      "description": "Expert SEO specialist combining traditional search optimization with cutting-edge AI technologies.",
+      "@type": "WebSite",
+      "@id": `${SITE_URL}#website`,
+      "url": SITE_URL,
+      "name": "Omar Corral — Digital Strategist",
+      "description": "Digital strategist combining traditional search optimization with AI technologies.",
       "publisher": {
-        "@id": "https://omar-corral.com#person"
+        "@id": `${SITE_URL}#person`
       },
       "inLanguage": "en-US"
     },
@@ -193,22 +154,21 @@ export const seoData = {
     organization: {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      "@id": "https://omar-corral.com#organization",
+      "@id": `${SITE_URL}#organization`,
       "name": "Omar Corral SEO Consulting",
-      "url": "https://omar-corral.com",
-      "logo": "https://omar-corral.com/logo.png",
-      "image": "https://omar-corral.com/omar-corral-consulting.jpg",
-      "description": "Professional SEO consulting services leveraging AI technologies for LLM optimization and Search Generative Experience strategies.",
+      "url": SITE_URL,
+      "logo": `${SITE_URL}/logo.png`,
+      "description": "SEO consulting leveraging AI technologies for LLM optimization and Search Generative Experience strategies.",
       "founder": {
-        "@id": "https://omar-corral.com#person"
+        "@id": `${SITE_URL}#person`
       },
       "employee": {
-        "@id": "https://omar-corral.com#person" 
+        "@id": `${SITE_URL}#person`
       },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Phoenix",
-        "addressRegion": "AZ", 
+        "addressRegion": "AZ",
         "addressCountry": "US"
       },
       "geo": {
@@ -223,7 +183,7 @@ export const seoData = {
       "serviceType": [
         "Search Engine Optimization",
         "AI-Enhanced Digital Marketing",
-        "LLM Content Optimization", 
+        "LLM Content Optimization",
         "Technical SEO Audits",
         "Content Strategy",
         "Analytics & Reporting"
@@ -242,7 +202,7 @@ export const seoData = {
             "category": "SEO Consulting"
           },
           {
-            "@type": "Offer", 
+            "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
               "name": "Technical SEO Audit",
@@ -253,46 +213,17 @@ export const seoData = {
           {
             "@type": "Offer",
             "itemOffered": {
-              "@type": "Service", 
+              "@type": "Service",
               "name": "Content Optimization for SGE",
               "description": "Search Generative Experience optimization for AI-powered search engines"
             },
             "category": "Content Strategy"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Local SEO Phoenix",
-              "description": "Local search optimization for Phoenix and Arizona businesses"
-            },
-            "category": "Local SEO"
           }
         ]
       },
       "priceRange": "$$",
-      "paymentAccepted": ["Cash", "Credit Card", "PayPal", "Bank Transfer"],
       "currenciesAccepted": "USD",
-      "openingHours": [
-        "Mo-Fr 09:00-17:00",
-        "Sa 10:00-14:00"
-      ],
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "17:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification", 
-          "dayOfWeek": "Saturday",
-          "opens": "10:00",
-          "closes": "14:00"
-        }
-      ],
-      "telephone": "+1-555-SEO-GURU",
-      "email": "omar@omarrcorral.com",
+      "email": "omar.seogears@gmail.com",
       "sameAs": [
         "https://linkedin.com/in/omarrcorral",
         "https://twitter.com/omarrcorral"
@@ -307,73 +238,45 @@ export const seoData = {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://omar-corral.com"
+          "item": SITE_URL
         },
         {
-          "@type": "ListItem", 
+          "@type": "ListItem",
           "position": 2,
-          "name": "About",
-          "item": "https://omar-corral.com#about"
+          "name": "Services",
+          "item": `${SITE_URL}/services/`
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Services",
-          "item": "https://omar-corral.com/services/"
+          "name": "Case Studies",
+          "item": `${SITE_URL}/case-studies/`
         },
         {
           "@type": "ListItem",
           "position": 4,
-          "name": "Case Studies",
-          "item": "https://omar-corral.com/case-studies/"
+          "name": "About",
+          "item": `${SITE_URL}/#about`
         },
         {
           "@type": "ListItem",
           "position": 5,
           "name": "Contact",
-          "item": "https://omar-corral.com#contact"
+          "item": `${SITE_URL}/#contact`
         }
       ]
     }
   },
 
-  // Analytics & Tracking - PRODUCTION READY
   analytics: {
-    googleAnalytics: "G-2GXQ6627P1", // ✅ Real GA4 tracking ID implemented
-    googleTagManager: "GTM-XXXXXXX", // TODO: Replace with actual GTM ID when available
-    googleSearchConsole: "google-site-verification=xxxxxxxxxxxxxxxxxxxxxx", // TODO: Replace with actual verification code
-    bingWebmaster: "msvalidate.01=xxxxxxxxxxxxxxxxxxxxxx", // TODO: Replace with actual Bing code
-    facebookPixel: "xxxxxxxxxxxxx" // TODO: Replace with actual Facebook Pixel ID when available
+    googleAnalytics: "G-2GXQ6627P1",
   },
 
-  // Performance & Technical
   technical: {
     themeColor: "#000000",
     backgroundColor: "#000000",
-    manifestUrl: "/manifest.json",
-    robotsUrl: "/robots.txt",
-    sitemapUrl: "/sitemap.xml",
-    rssUrl: "/rss.xml",
-    canonicalUrl: "https://omar-corral.com",
-    hreflang: [
-      { lang: "en", href: "https://omar-corral.com" },
-      { lang: "es", href: "https://omar-corral.com/es" }, // Future Spanish version
-      { lang: "x-default", href: "https://omar-corral.com" }
-    ]
+    canonicalUrl: SITE_URL,
   },
-
-  // Content Security Policy
-  security: {
-    contentSecurityPolicy: {
-      "default-src": "'self'",
-      "script-src": "'self' 'unsafe-inline' *.google.com *.googletagmanager.com *.google-analytics.com",
-      "style-src": "'self' 'unsafe-inline' fonts.googleapis.com",
-      "font-src": "'self' data: fonts.gstatic.com",
-      "img-src": "'self' data: *.google.com *.google-analytics.com *.googletagmanager.com",
-      "connect-src": "'self' *.google-analytics.com *.google.com"
-    }
-  }
 };
 
-// Export individual sections for easier imports
-export const { personal, website, meta, openGraph, twitter, structuredData, analytics, technical, security } = seoData;
+export const { personal, website, meta, openGraph, twitter, structuredData, analytics, technical } = seoData;

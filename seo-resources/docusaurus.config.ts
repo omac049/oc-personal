@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'SEO Resource Center',
-  tagline: 'Comprehensive SEO guides, tools, and best practices for beginners and experts',
+  tagline: 'Free guides, checklists, and frameworks for organic search — from fundamentals to AI search readiness',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -21,7 +21,23 @@ const config: Config = {
       onBrokenMarkdownLinks: 'warn',
     },
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: true,
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 10,
+        searchBarShortcutHint: true,
+        docsRouteBasePath: '/docs',
+      },
+    ],
+  ],
 
   plugins: [
     function suppressCriticalDependencyWarning() {
@@ -110,9 +126,9 @@ const config: Config = {
           label: 'SEO Guides',
         },
         {
-          to: '/search-ai',
-          label: 'AI Search',
-          position: 'right',
+          to: '/docs/checklists',
+          label: 'Checklists',
+          position: 'left',
         },
         {
           href: 'https://omar-corral.com',
@@ -148,19 +164,19 @@ const config: Config = {
           ],
         },
         {
-          title: 'Coming Soon',
+          title: 'Deep Dives',
           items: [
             {
               label: 'Keyword Research',
-              href: '#',
+              to: '/docs/keyword-research',
             },
             {
               label: 'Technical SEO',
-              href: '#',
+              to: '/docs/technical-seo',
             },
             {
               label: 'Content Optimization',
-              href: '#',
+              to: '/docs/content-optimization',
             },
           ],
         },
@@ -186,7 +202,11 @@ const config: Config = {
             },
             {
               label: 'LinkedIn',
-              href: 'https://linkedin.com/in/omar-corral',
+              href: 'https://linkedin.com/in/omarrcorral',
+            },
+            {
+              label: 'X (Twitter)',
+              href: 'https://twitter.com/omarrcorral',
             },
           ],
         },
@@ -198,7 +218,7 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
     colorMode: {
-      defaultMode: 'light',
+      defaultMode: 'dark',
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
@@ -207,11 +227,11 @@ const config: Config = {
     metadata: [
       {
         name: 'keywords',
-        content: 'SEO, search engine optimization, authority, relevance, experience, technical SEO, content optimization, link building, Core Web Vitals, mobile SEO, keyword research, SEO tools, SEO guide, SEO tutorial, Omar Corral'
+        content: 'SEO, AI search optimization, search engine optimization, authority, relevance, experience, technical SEO, content optimization, link building, Core Web Vitals, keyword research, SEO tools, digital strategy, Omar Corral'
       },
       {
         name: 'description',
-        content: 'Comprehensive SEO resource center covering the three pillars of SEO: Authority, Relevance, and Experience. Learn modern SEO techniques, tools, and best practices.'
+        content: 'Free SEO resource center by Omar Corral — guides, checklists, and frameworks covering technical SEO, AI search optimization, and organic growth strategy.'
       },
       {
         property: 'og:type',
@@ -219,65 +239,11 @@ const config: Config = {
       },
       {
         property: 'og:site_name',
-        content: 'SEO Resource Center by Omar Corral'
+        content: 'Omar Corral — SEO Resource Center'
       }
     ],
     
-    // Algolia DocSearch Configuration - Following Official Best Practices
-    // Documentation: https://docusaurus.io/docs/search#using-algolia-docsearch
-    // Crawler Config: See algolia-crawler-config.js for dashboard setup
-    algolia: {
-      // Application ID provided by Algolia
-      appId: 'ZLQ21UNSR7',
-      
-      // Public Search-Only API key - safe to commit
-      apiKey: 'c3a190e475e64ffda0f8bbd9a40e69c1',
-      
-      // Index name for this documentation
-      indexName: 'omar_corral_com_zlq21unsr7_pages',
-      
-      // Contextual search for better results (Docusaurus v3 feature)
-      // Provides better search results by considering page context
-      contextualSearch: true,
-      
-      // Optional: Search page path (creates a standalone search page at /search)
-      searchPagePath: 'search',
-      
-      // Replace URL paths for proper navigation
-      // Development: /seo-resources/ → / (localhost routing)
-      // Production: No replacement needed (undefined)
-      replaceSearchResultPathname: process.env.NODE_ENV === 'development' ? {
-        from: '/seo-resources/',
-        to: '/',
-      } : undefined,
-      
-      // Advanced search parameters for better UX
-      searchParameters: {
-        // Results per page
-        hitsPerPage: 10,
-        
-        // Highlight matched terms with semantic HTML
-        highlightPreTag: '<mark>',
-        highlightPostTag: '</mark>',
-        
-        // Typo tolerance: 'min' = only allow 1 typo, 'true' = allow typos
-        typoTolerance: 'min',
-        
-        // Optional words that can be omitted from queries
-        optionalWords: ['seo', 'optimization', 'search'],
-      },
-      
-      // Algolia Insights for search analytics (recommended)
-      // Tracks search queries and clicks for better understanding user behavior
-      insights: true,
-      
-      // Custom placeholder text
-      placeholder: 'Search SEO guides and documentation...',
-      
-      // External URL regex - exclude external domains from search results
-      // Only include results from omar-corral.com domain
-      externalUrlRegex: '^https?://(?!omar-corral\\.com)',
-    },
+    // Search is handled by @easyops-cn/docusaurus-search-local (see themes below)
   } satisfies Preset.ThemeConfig,
 };
 

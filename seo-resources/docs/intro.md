@@ -1,109 +1,83 @@
 ---
 sidebar_position: 1
 slug: /
-title: Welcome to SEO Resource Center
-description: Your comprehensive guide to mastering search engine optimization from beginner to expert level
-keywords: [SEO, search engine optimization, beginner guide, SEO resources, Omar Corral]
+title: Welcome to the SEO Resource Center
+description: Free guides, checklists, and frameworks for organic search — from fundamentals to AI search readiness.
+keywords: [SEO, AI search optimization, search engine optimization, digital strategy, Omar Corral]
 ---
 
-# Welcome to SEO Resource Center
+# SEO Resource Center
 
-Your **comprehensive guide** to mastering search engine optimization from beginner to expert level.
+Free, in-depth guides to help you understand and implement modern organic search strategy — from technical fundamentals to AI search readiness.
 
-## 🎯 What You'll Learn
+## What You'll Find
 
-This resource center provides everything you need to understand and implement effective SEO strategies:
-
-### 🚀 **For Beginners**
+### For Beginners
 - SEO fundamentals and core concepts
 - How search engines work
 - Keyword research basics
 - On-page optimization essentials
 - Technical SEO foundations
 
-### 📈 **For Intermediate Users**
+### For Intermediate Practitioners
 - Advanced keyword strategies
 - Content optimization techniques
 - Link building best practices
 - Local SEO implementation
 - Performance monitoring
 
-### 🔬 **For Advanced Practitioners**
+### For Advanced Teams
 - AI-enhanced SEO strategies
 - Enterprise SEO approaches
-- International SEO
-- Advanced technical implementations
 - Search Generative Experience (SGE) optimization
+- Advanced technical implementations
 
-## 📚 **Resource Categories**
+## Resource Categories
 
-### [🎓 Getting Started](/docs/getting-started/)
-Perfect for SEO beginners. Learn the fundamentals of search engine optimization.
+### [Getting Started](/docs/getting-started/)
+The fundamentals of search engine optimization — how engines crawl, index, and rank.
 
-### [🛠️ Tools & Resources](/docs/tools/)
-Discover the best free and premium SEO tools to enhance your workflow.
+### [Keyword Research](/docs/keyword-research/)
+Find and target the right keywords, including local and long-tail strategies.
 
-### 🔍 **Keyword Research** *(Coming Soon)*
-Master the art of finding and targeting the right keywords for your content.
+### [Technical SEO](/docs/technical-seo/)
+Optimize your site's technical foundation — crawlability, Core Web Vitals, structured data, and mobile.
 
-### ⚙️ **Technical SEO** *(Coming Soon)*
-Optimize your website's technical foundation for better search engine crawling and indexing.
+### [Content Optimization](/docs/content-optimization/)
+Create content that ranks well and provides genuine value.
 
-### 📝 **Content Optimization** *(Coming Soon)*
-Create content that ranks well and provides value to your audience.
-
-### 🔗 **Link Building** *(Coming Soon)*
+### [Link Building](/docs/link-building/)
 Build authority and trust through strategic link acquisition.
 
-### ✅ **Checklists** *(Coming Soon)*
-Actionable checklists to ensure you never miss important SEO tasks.
+### [Checklists](/docs/checklists/)
+Actionable checklists so you never miss critical SEO tasks.
 
-## 🎯 **Why This Resource Center?**
+### [Tools & Resources](/docs/tools/)
+The best free and premium SEO tools to enhance your workflow.
 
-Created by **Omar Corral**, an SEO specialist with expertise in:
-- Traditional SEO best practices
-- AI-enhanced optimization strategies
-- Search Generative Experience (SGE)
-- Large Language Model (LLM) optimization
-- Technical SEO implementation
+## About This Resource Center
 
-## 🚀 **Getting Started**
+Created by **Omar Corral** — digital strategist with 12+ years in organic search, specializing in:
+- Traditional and technical SEO
+- AI search optimization and LLM visibility
+- Growth strategy for E-commerce, SaaS, Healthcare, Finance, and Local Business
 
-1. **New to SEO?** Start with our [Getting Started Guide](/docs/getting-started/)
-2. **Looking for tools?** Check out our [Tools & Resources](/docs/tools/) section
-3. **Have some experience?** More advanced guides coming soon!
-4. **Need quick reference?** Checklists and templates coming soon!
+## Quick Start
 
-## 💡 **Featured Quick Tips**
+1. **New to SEO?** Start with the [Getting Started Guide](/docs/getting-started/)
+2. **Need a checklist?** Browse the [Checklists](/docs/checklists/) section
+3. **Looking for tools?** Check out [Tools & Resources](/docs/tools/)
 
 :::tip Pro Tip
-Focus on **user intent** rather than just keywords. Google's algorithms are increasingly sophisticated at understanding what users actually want.
-:::
-
-:::info Did You Know?
-Over 50% of all web traffic comes from mobile devices. Mobile-first optimization isn't optional—it's essential.
+Focus on **user intent** rather than just keywords. Search algorithms are increasingly sophisticated at understanding what users actually want — and so are AI assistants.
 :::
 
 :::warning Common Mistake
 Don't stuff keywords into your content. Modern SEO is about creating valuable, relevant content that naturally incorporates your target terms.
 :::
 
-## 🤝 **Need Personalized Help?**
+## Need Personalized Help?
 
-While these resources are comprehensive, sometimes you need expert guidance tailored to your specific situation.
+These resources are free and comprehensive. If you need expert guidance tailored to your specific situation:
 
-**[Get in Touch for SEO Help →](https://omar-corral.com/#contact)**
-
-**[Schedule a Free Consultation →](https://omar-corral.com/#contact)**
-
----
-
-## 📖 **How to Use This Documentation**
-
-- **Navigation**: Use the sidebar to browse topics
-- **Search**: Use the search bar to find specific information
-- **Cross-references**: Follow links between related topics
-- **Examples**: Look for code blocks and practical examples
-- **Updates**: This documentation is regularly updated with the latest SEO best practices
-
-Ready to master SEO? Let's get started! 🚀
+**[Start a Conversation →](https://omar-corral.com/#contact)**

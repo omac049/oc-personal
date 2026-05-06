@@ -45,7 +45,15 @@ token.json
 *.tsbuildinfo
 next-env.d.ts
 
-# Client sensitive data
+# Separate repos nested in workspace
+/mcp-gsc/
+
+# Client sensitive data — only invoices are intentionally published
 *.WordPress*.xml
 *WordPress*.xml
 *.wp-export.xml
+public/client/**/ppb-proposal.html
+public/client/**/SECURITY-AUDIT.md
+public/client/**/SITE-HEALTH-REPORT.md
+public/client/**/EXPORT-REVIEW.md
+public/client/**/PROJECT-SUMMARY.md

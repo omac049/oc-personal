@@ -39,13 +39,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://connect.facebook.net" />
-        
+
         {/* DNS prefetch for third-party domains */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="//connect.facebook.net" />
         
         {/* Content Security Policy — unsafe-eval required for Next.js dev mode hot reload */}
         <meta 

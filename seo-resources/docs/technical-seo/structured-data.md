@@ -127,9 +127,9 @@ graph TB
         }
     ],
     "sameAs": [
-        "https://www.linkedin.com/in/omar-corral",
-        "https://twitter.com/omarcorral_seo",
-        "https://github.com/omarcorral"
+        "https://linkedin.com/in/omarrcorral",
+        "https://twitter.com/omarrcorral",
+        "https://github.com/omac049"
     ],
     "foundingDate": "2020-01-01",
     "founders": [
@@ -211,8 +211,8 @@ graph TB
             "height": 400
         },
         "sameAs": [
-            "https://linkedin.com/in/omar-corral",
-            "https://twitter.com/omarcorral_seo"
+            "https://linkedin.com/in/omarrcorral",
+            "https://twitter.com/omarrcorral"
         ]
     },
     "publisher": {
