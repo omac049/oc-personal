@@ -5,12 +5,12 @@ export const dynamic = 'force-static';
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Omar Corral - SEO Specialist & AI Marketing Expert',
-    short_name: 'Omar SEO',
-    description: 'Professional SEO specialist leveraging AI technologies and LLM optimization in Phoenix, Arizona. Specializing in ChatGPT, Claude, and Search Generative Experience (SGE) strategies.',
+    short_name: 'Omar Corral',
+    description: 'Digital strategist specializing in SEO, AI search optimization, and growth strategy. Based in Phoenix, Arizona.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#0f172a',
-    theme_color: '#3b82f6',
+    background_color: '#000000',
+    theme_color: '#00E55C',
     orientation: 'portrait-primary',
     scope: '/',
     lang: 'en-US',
@@ -65,7 +65,7 @@ export default function manifest(): MetadataRoute.Manifest {
         name: 'SEO Services',
         short_name: 'Services',
         description: 'View AI-enhanced SEO services',
-        url: '/#skills',
+        url: '/services/',
         icons: [{ src: '/favicon-32x32.png', sizes: '32x32' }],
       },
       {

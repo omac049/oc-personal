@@ -14,20 +14,20 @@ export const enhancedSEOData = {
       {
         "@type": "ListItem", 
         "position": 2,
-        "name": "About",
-        "item": "https://omar-corral.com/#about"
+        "name": "Services",
+        "item": "https://omar-corral.com/services/"
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Services",
-        "item": "https://omar-corral.com/#skills"
+        "name": "Case Studies",
+        "item": "https://omar-corral.com/case-studies/"
       },
       {
         "@type": "ListItem",
         "position": 4,
-        "name": "Experience", 
-        "item": "https://omar-corral.com/#experience"
+        "name": "About",
+        "item": "https://omar-corral.com/#about"
       },
       {
         "@type": "ListItem",
@@ -44,7 +44,7 @@ export const enhancedSEOData = {
     ]
   },
 
-  // FAQ Schema for rich snippets - matches FAQSection.tsx content
+  // FAQ Schema for rich snippets - matches FAQ.tsx content
   faq: {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -54,23 +54,15 @@ export const enhancedSEOData = {
         "name": "What is AI-powered SEO and how does it work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "AI-powered SEO combines traditional search engine optimization with artificial intelligence technologies like ChatGPT, Claude, and machine learning algorithms. It involves using AI for keyword research, content optimization, technical audits, and adapting strategies for Search Generative Experience (SGE). This approach helps websites rank better in both traditional search results and AI-generated responses."
+          "text": "AI-powered SEO combines traditional search engine optimization with artificial intelligence technologies like ChatGPT, Claude, and machine learning algorithms. It involves using AI for keyword research, content optimization, technical audits, and adapting strategies for AI Overviews and LLM-generated responses. The goal is ranking in both traditional results and AI-generated answers."
         }
       },
       {
         "@type": "Question",
-        "name": "How do you optimize content for Large Language Models (LLMs)?",
+        "name": "How do you optimize content for Large Language Models?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "LLM optimization involves structuring content for AI understanding, using natural language patterns, implementing comprehensive schema markup, creating conversational content formats, and optimizing for featured snippets and voice search queries. I focus on making content that performs well in AI-powered search experiences while maintaining human readability."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is Search Generative Experience (SGE) optimization?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SGE optimization prepares websites for AI-powered search engines that generate contextual answers. This includes optimizing for conversational queries, structured data implementation, authoritative content creation, and ensuring content appears in AI-generated search responses. It's essential for staying visible as search evolves."
+          "text": "LLM optimization involves structuring content for AI understanding — natural language patterns, comprehensive schema markup, conversational content formats, and entity-first information architecture. I focus on making content that performs well in AI-powered search while maintaining clarity for human readers."
         }
       },
       {
@@ -78,26 +70,26 @@ export const enhancedSEOData = {
         "name": "How long does it take to see SEO results?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SEO results typically begin showing within 3-6 months, with significant improvements visible in 6-12 months. AI-powered strategies can accelerate certain aspects like content optimization and technical fixes, but organic growth requires consistent effort over time. I provide monthly reports to track progress and adjust strategies."
+          "text": "SEO results typically begin within 3–6 months, with significant improvements at 6–12 months. AI-optimized strategies can accelerate content and technical wins, but organic growth requires sustained effort. I provide monthly reports tracking progress against specific business metrics."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you provide local SEO services for Phoenix businesses?",
+        "name": "Do you work with businesses outside Phoenix?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, I specialize in local SEO for Phoenix, Arizona businesses. Services include Google Business Profile optimization, local keyword targeting, citation building, review management, and location-specific content strategies. I understand the Phoenix market and help businesses dominate local search results."
+          "text": "Yes. While I’m based in Phoenix, Arizona, most of my clients are remote. SEO and AI search strategy work is fully remote-friendly. I work with e-commerce, SaaS, healthcare, and finance brands across the US."
         }
       },
       {
         "@type": "Question",
-        "name": "What tools do you use for AI-powered SEO?",
+        "name": "What does an engagement look like?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "I use a combination of traditional SEO tools (Google Analytics, Search Console, SEMrush, Ahrefs) and AI-powered tools including ChatGPT, Claude, custom automation scripts, and advanced analytics platforms. This hybrid approach ensures comprehensive optimization for both traditional and AI-powered search."
+          "text": "Engagements typically start with a comprehensive audit, followed by a prioritized strategy and ongoing execution. I work on monthly retainers or project-based scopes depending on the need. Every engagement includes regular reporting tied to revenue, not just rankings."
         }
       }
-    ]
+      ]
   },
 
   // How-To Schema for SEO guides
@@ -316,23 +308,18 @@ export const navigationSchema = {
   "hasPart": [
     {
       "@type": "SiteNavigationElement",
-      "name": "Home",
-      "url": "https://omar-corral.com/#hero"
+      "name": "Services",
+      "url": "https://omar-corral.com/#services"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Proof",
+      "url": "https://omar-corral.com/#proof"
     },
     {
       "@type": "SiteNavigationElement",
       "name": "About",
-      "url": "https://omar-corral.com/#about" 
-    },
-    {
-      "@type": "SiteNavigationElement",
-      "name": "Skills",
-      "url": "https://omar-corral.com/#skills"
-    },
-    {
-      "@type": "SiteNavigationElement",
-      "name": "Experience",
-      "url": "https://omar-corral.com/#experience"
+      "url": "https://omar-corral.com/#about"
     },
     {
       "@type": "SiteNavigationElement",

@@ -2,7 +2,7 @@ export const seoData = {
   // Personal Information
   personal: {
     name: "Omar Corral",
-    jobTitle: "SEO Specialist & AI-Enhanced Digital Marketing Strategist",
+    jobTitle: "Digital Strategist | SEO, AI Search & Growth Strategy",
     email: "omar@omarrcorral.com",
     phone: "+1-555-SEO-GURU", // Replace with actual number
     location: {
@@ -33,8 +33,8 @@ export const seoData = {
 
   // SEO Metadata
   meta: {
-    title: "Omar Corral - SEO Specialist & AI-Enhanced Digital Marketing Expert",
-    description: "Human SEO specialist expertly combining traditional search optimization with cutting-edge AI technologies. Specializing in LLM optimization, AI-driven content creation, and Search Generative Experience (SGE) strategies for maximum visibility and growth.",
+    title: "Omar Corral — Digital Strategist | SEO, AI Search & Growth Strategy",
+    description: "Omar Corral — digital strategist with 12+ years in organic search. SEO, AI search optimization, and growth strategy for brands that want to lead.",
     keywords: [
       // Primary Keywords
       "AI SEO specialist",
@@ -96,8 +96,8 @@ export const seoData = {
     locale: "en_US",
     url: "https://omar-corral.com",
     siteName: "Omar Corral - SEO Specialist & AI Marketing Expert",
-    title: "Omar Corral - SEO Specialist & AI-Enhanced Digital Marketing Expert",
-    description: "Expert SEO specialist combining traditional search optimization with cutting-edge AI technologies for maximum visibility and growth.",
+    title: "Omar Corral — Digital Strategist | SEO, AI Search & Growth Strategy",
+    description: "Omar Corral — digital strategist with 12+ years in organic search. SEO, AI search optimization, and growth strategy for brands that want to lead.",
     images: [
       {
         url: "https://omar-corral.com/og-image.jpg",
@@ -121,8 +121,8 @@ export const seoData = {
     card: "summary_large_image",
     site: "@omarrcorral",
     creator: "@omarrcorral", 
-    title: "Omar Corral - SEO Specialist & AI-Enhanced Digital Marketing Expert",
-    description: "Expert SEO specialist combining traditional search optimization with cutting-edge AI technologies.",
+    title: "Omar Corral — Digital Strategist | SEO, AI Search & Growth Strategy",
+    description: "Omar Corral — digital strategist with 12+ years in organic search. SEO, AI search optimization, and growth strategy for brands that want to lead.",
     image: "https://omar-corral.com/twitter-card.jpg",
           imageAlt: "Omar Corral - SEO Specialist & AI Marketing Expert"
   },
@@ -325,15 +325,15 @@ export const seoData = {
         },
         {
           "@type": "ListItem",
-          "position": 3, 
-          "name": "Skills",
-          "item": "https://omar-corral.com#skills"
+          "position": 3,
+          "name": "Services",
+          "item": "https://omar-corral.com/services/"
         },
         {
           "@type": "ListItem",
           "position": 4,
-          "name": "Experience", 
-          "item": "https://omar-corral.com#experience"
+          "name": "Case Studies",
+          "item": "https://omar-corral.com/case-studies/"
         },
         {
           "@type": "ListItem",
@@ -356,8 +356,8 @@ export const seoData = {
 
   // Performance & Technical
   technical: {
-    themeColor: "#1e293b", // slate-800
-    backgroundColor: "#0f172a", // slate-900
+    themeColor: "#000000",
+    backgroundColor: "#000000",
     manifestUrl: "/manifest.json",
     robotsUrl: "/robots.txt",
     sitemapUrl: "/sitemap.xml",
