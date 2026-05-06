@@ -3,7 +3,7 @@ import ProofStrip from '@/components/ProofStrip';
 import Services from '@/components/Services';
 import CaseStudies from '@/components/CaseStudies';
 import ScrollRocket from '@/components/ScrollRocket';
-import FAQSection from '@/components/FAQSection';
+import FAQ from '@/components/FAQ';
 import SEOResourcesCTA from '@/components/SEOResourcesCTA';
 import { 
   LazyAbout, 
@@ -54,15 +54,14 @@ export default function Home() {
         <CaseStudies />
         
         {/* About Section - Professional Background */}
-        <section 
-          id="about" 
+        <div
           aria-labelledby="about-heading"
           aria-label="Professional background and expertise"
           itemScope
           itemType="https://schema.org/AboutPage"
         >
           <LazyAbout />
-        </section>
+        </div>
         
         {/* Skills Section - Technical Expertise */}
         <section 
@@ -90,26 +89,24 @@ export default function Home() {
         <SEOResourcesCTA />
         
         {/* FAQ Section - Frequently Asked Questions */}
-        <section 
-          id="faq" 
+        <div
           aria-labelledby="faq-heading"
           aria-label="Frequently asked questions about AI-powered SEO services"
           itemScope
           itemType="https://schema.org/FAQPage"
         >
-          <FAQSection />
-        </section>
+          <FAQ />
+        </div>
         
         {/* Contact Section - Communication */}
-        <section 
-          id="contact" 
+        <div
           aria-labelledby="contact-heading"
           aria-label="Contact information and communication options"
           itemScope
           itemType="https://schema.org/ContactPage"
         >
           <LazyContact />
-        </section>
+        </div>
       </main>
 
       {/* Structured data for crawlers */}

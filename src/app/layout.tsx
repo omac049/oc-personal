@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import StructuredData from '@/components/StructuredData';
 import Analytics from '@/components/Analytics';
 import StaticContent from '@/components/StaticContent';
+import Footer from '@/components/Footer';
 import { generateMetadata as createSEOMetadata } from '@/utils/seo';
 
 const dmSerif = DM_Serif_Display({
@@ -82,6 +83,7 @@ export default function RootLayout({
         <div id="root">
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   );
