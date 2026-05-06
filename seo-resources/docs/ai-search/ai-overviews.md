@@ -13,6 +13,10 @@ For SEOs, this creates both a threat and an opportunity. Pages that appear as AI
 
 This guide covers what is known about how AI Overviews select sources and what you can do to improve your inclusion rate.
 
+:::note Real-World Evidence
+The ranking/CTR decoupling this guide describes is documented in a 17-month GSC + GA4 dataset. A university blog achieved its best-ever position (8.7) and its worst-ever CTR (0.22%) in the same month — a 79% CTR decline while rankings improved 51%. Read the full analysis: **[We Won the Rankings. The Ecosystem Moved On. →](/blog/zero-click-search-rankings-traffic-decoupled)**
+:::
+
 ---
 
 ## How AI Overviews Work (Mechanically)
@@ -136,6 +140,8 @@ Since Google does not provide direct AI Overview impression data in GSC (as of m
 :::note The Data Gap
 AI Overview attribution data is a known industry gap as of 2025–2026. Google has not provided publisher-level visibility into AI Overview impressions or clicks. This may change. Track this space closely.
 :::
+
+The CTR trend method is well-documented in practice. In a 17-month dataset tracking a university blog, average position improved from 17.7 to 8.7 while CTR fell from 1.07% to 0.22% — a **79% CTR decline concurrent with a 51% ranking improvement**. The widening gap between impressions and clicks is the clearest observable proxy for AI Overview cannibalization. [See the full case study →](/blog/zero-click-search-rankings-traffic-decoupled)
 
 ---
 
