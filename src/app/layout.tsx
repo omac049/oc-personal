@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
 import ScrollProgress from '@/components/ScrollProgress';
 import FloatingNav from '@/components/FloatingNav';
 import MonogramLogo from '@/components/MonogramLogo';
@@ -12,20 +10,19 @@ import Analytics from '@/components/Analytics';
 import StaticContent from '@/components/StaticContent';
 import { generateMetadata as createSEOMetadata } from '@/utils/seo';
 
-config.autoAddCss = false;
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSerif = DM_Serif_Display({
+  variable: "--font-dm-serif",
   subsets: ["latin"],
-  display: 'swap',
+  weight: "400",
+  display: "swap",
   preload: true,
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  display: 'swap',
-  preload: false,
+  display: "swap",
+  preload: true,
 });
 
 // Generate comprehensive SEO metadata
@@ -81,7 +78,7 @@ export default function RootLayout({
         {/* Font loading is handled by Next.js font optimization */}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900`}
+        className={`${dmSerif.variable} ${inter.variable} antialiased`}
         itemScope
         itemType="https://schema.org/WebPage"
         suppressHydrationWarning
