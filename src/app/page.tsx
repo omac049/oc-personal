@@ -1,4 +1,7 @@
 import Hero from '@/components/Hero';
+import ProofStrip from '@/components/ProofStrip';
+import Services from '@/components/Services';
+import CaseStudies from '@/components/CaseStudies';
 import ScrollRocket from '@/components/ScrollRocket';
 import FAQSection from '@/components/FAQSection';
 import SEOResourcesCTA from '@/components/SEOResourcesCTA';
@@ -44,16 +47,11 @@ export default function Home() {
           </p>
         </header>
         
-        {/* Hero Section - Primary Landing */}
-        <section 
-          id="hero" 
-          aria-labelledby="hero-heading"
-          aria-label="Introduction and overview"
-          itemScope
-          itemType="https://schema.org/WebPageElement"
-        >
-          <Hero />
-        </section>
+        {/* Hero, proof, services, case studies (Signal rebrand) */}
+        <Hero />
+        <ProofStrip />
+        <Services />
+        <CaseStudies />
         
         {/* About Section - Professional Background */}
         <section 
