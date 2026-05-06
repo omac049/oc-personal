@@ -2,7 +2,21 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import s from './page.module.css';
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.4, delay, ease: 'easeOut' as const },
+});
+
+const revealSection = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.4, ease: 'easeOut' as const },
+};
 
 const SECTIONS = [
   { id: 's1', label: 'The Problem' },
@@ -144,14 +158,14 @@ Allow: /`;
       {/* ── Hero ──────────────────────────────────────────────── */}
       <section className={s.hero}>
         <div className={s.container}>
-          <p className={s.heroEyebrow}>OC MCP · Version 1.0 · May 2026</p>
-          <h1 className={s.heroH1}>The Front Door for AI Agents</h1>
-          <p className={s.heroSub}>
+          <motion.p className={s.heroEyebrow} {...fadeUp(0.1)}>OC MCP · Version 1.0 · May 2026</motion.p>
+          <motion.h1 className={s.heroH1} {...fadeUp(0.25)}>The Front Door for AI Agents</motion.h1>
+          <motion.p className={s.heroSub} {...fadeUp(0.35)}>
             AI agents are already accessing your site. The question is whether
             you invited them in or they let themselves in.
-          </p>
+          </motion.p>
 
-          <div className={s.liveProofBadge}>
+          <motion.div className={s.liveProofBadge} {...fadeUp(0.45)}>
             <p className={s.liveProofTitle}>
               <span className={s.liveProofDot} />
               omar-corral.com is running this architecture right now
@@ -177,9 +191,9 @@ Allow: /`;
                 Try getProfile() →
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div className={s.statsRow}>
+          <motion.div className={s.statsRow} {...fadeUp(0.55)}>
             <div>
               <p className={s.statValue}>~97%</p>
               <p className={s.statLabel}>fewer tokens vs. Playwright</p>
@@ -192,9 +206,9 @@ Allow: /`;
               <p className={s.statValue}>May 2026</p>
               <p className={s.statLabel}>live since</p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className={s.heroLinks}>
+          <motion.div className={s.heroLinks} {...fadeUp(0.65)}>
             <a href="#s1" className={s.linkGreen}>Read the brief ↓</a>
             <a
               href="https://omac049.github.io/seo-zero-click/"
@@ -204,7 +218,7 @@ Allow: /`;
             >
               Zero-click research →
             </a>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -239,10 +253,11 @@ Allow: /`;
         <main className={s.content}>
 
           {/* §1 — The Problem */}
-          <section
+          <motion.section
             id="s1"
             data-section="s1"
-            className={`${s.sectionAlt} ${s.fadeIn}`}
+            className={s.sectionAlt}
+            {...revealSection}
           >
             <div className={s.container}>
               <p className={s.sectionNumber} aria-hidden="true">§1</p>
@@ -334,10 +349,10 @@ Allow: /`;
                 </p>
               </Accordion>
             </div>
-          </section>
+          </motion.section>
 
           {/* §2 — Architecture */}
-          <section id="s2" data-section="s2" className={s.section}>
+          <motion.section id="s2" data-section="s2" className={s.section} {...revealSection}>
             <div className={s.container}>
               <p className={s.sectionNumber} aria-hidden="true">§2</p>
               <h2 className={s.sectionHeading}>The Architecture: Two Layers</h2>
@@ -405,10 +420,10 @@ Allow: /`;
                 </p>
               </Accordion>
             </div>
-          </section>
+          </motion.section>
 
           {/* §3 — Layer 1 */}
-          <section id="s3" data-section="s3" className={s.sectionAlt}>
+          <motion.section id="s3" data-section="s3" className={s.sectionAlt} {...revealSection}>
             <div className={s.container}>
               <p className={s.sectionNumber} aria-hidden="true">§3</p>
               <h2 className={s.sectionHeading}>Layer 1: Authorized Tool Access</h2>
@@ -543,10 +558,10 @@ Allow: /`;
                 </p>
               </Accordion>
             </div>
-          </section>
+          </motion.section>
 
           {/* §4 — Layer 2 */}
-          <section id="s4" data-section="s4" className={s.section}>
+          <motion.section id="s4" data-section="s4" className={s.section} {...revealSection}>
             <div className={s.container}>
               <p className={s.sectionNumber} aria-hidden="true">§4</p>
               <h2 className={s.sectionHeading}>Layer 2: Unauthorized Scraper Defense</h2>
@@ -657,10 +672,10 @@ Allow: /`;
                 </p>
               </Accordion>
             </div>
-          </section>
+          </motion.section>
 
           {/* §5 — Live Proof */}
-          <section id="s5" data-section="s5" className={s.sectionAlt}>
+          <motion.section id="s5" data-section="s5" className={s.sectionAlt} {...revealSection}>
             <div className={s.container}>
               <p className={s.sectionNumber} aria-hidden="true">§5</p>
               <h2 className={s.sectionHeading}>Live Proof: OC MCP on omar-corral.com</h2>
@@ -732,10 +747,10 @@ Allow: /`;
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
 
           {/* §6 — How to Build */}
-          <section id="s6" data-section="s6" className={s.section}>
+          <motion.section id="s6" data-section="s6" className={s.section} {...revealSection}>
             <div className={s.container}>
               <p className={s.sectionNumber} aria-hidden="true">§6</p>
               <h2 className={s.sectionHeading}>How to Build This: Any Site, Four Phases</h2>
@@ -808,10 +823,10 @@ Allow: /`;
                 </p>
               </Accordion>
             </div>
-          </section>
+          </motion.section>
 
           {/* CTA */}
-          <section className={s.sectionAlt}>
+          <motion.section className={s.sectionAlt} {...revealSection}>
             <div className={s.container}>
               <h2 className={s.sectionHeading}>Want this for your site?</h2>
               <p className={s.sectionSummary}>
@@ -833,7 +848,7 @@ Allow: /`;
                 </a>
               </div>
             </div>
-          </section>
+          </motion.section>
 
         </main>
       </div>

@@ -6,10 +6,12 @@ import Link from 'next/link';
 import SignalLogo from './SignalLogo';
 
 const NAV_LINKS = [
-  { label: 'Services', href: '/#services' },
-  { label: 'Proof', href: '/#proof' },
-  { label: 'About', href: '/#about' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Services', href: '/#services', external: false },
+  { label: 'Proof', href: '/#proof', external: false },
+  { label: 'About', href: '/#about', external: false },
+  { label: 'Contact', href: '/#contact', external: false },
+  { label: 'OC MCP', href: '/oc-mcp/', external: false },
+  { label: 'Resources', href: '/seo-resources/', external: true },
 ];
 
 export default function Navbar() {
@@ -55,8 +57,9 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
+                  {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   className="group relative text-sm font-medium uppercase tracking-widest"
-                  style={{ color: 'var(--color-white)' }}
+                  style={{ color: link.external ? 'var(--color-accent)' : 'var(--color-white)' }}
                 >
                   {link.label}
                   <span
@@ -109,8 +112,9 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={handleNavClick}
+                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="font-serif text-4xl"
-                style={{ color: 'var(--color-white)' }}
+                style={{ color: link.external ? 'var(--color-accent)' : 'var(--color-white)' }}
               >
                 {link.label}
               </a>
