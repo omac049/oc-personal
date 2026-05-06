@@ -1,8 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
+const ArrowRight = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12" />
+    <polyline points="12 5 19 12 12 19" />
+  </svg>
+);
 
 const featured = [
   {
@@ -63,7 +68,7 @@ export default function InsightsSection() {
             className="hidden md:inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors whitespace-nowrap"
           >
             All resources
-            <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+            <ArrowRight />
           </a>
         </motion.div>
 
@@ -107,7 +112,7 @@ export default function InsightsSection() {
             className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
           >
             All resources
-            <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+            <ArrowRight />
           </a>
         </motion.div>
       </div>

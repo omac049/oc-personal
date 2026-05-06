@@ -1,16 +1,36 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faArrowTrendDown,
-  faRobot,
-  faChartLine,
-} from '@fortawesome/free-solid-svg-icons';
 
-const perspectives = [
+const TrendDownIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
+    <polyline points="16 17 22 17 22 11" />
+  </svg>
+);
+
+const RobotIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="11" width="18" height="10" rx="2" />
+    <circle cx="12" cy="5" r="2" />
+    <path d="M12 7v4" />
+    <line x1="8" y1="16" x2="8" y2="16" />
+    <line x1="16" y1="16" x2="16" y2="16" />
+  </svg>
+);
+
+const ChartIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="20" x2="18" y2="10" />
+    <line x1="12" y1="20" x2="12" y2="4" />
+    <line x1="6" y1="20" x2="6" y2="14" />
+  </svg>
+);
+
+const perspectives: { icon: ReactNode; heading: string; body: string; tools: string[]; accent: string }[] = [
   {
-    icon: faArrowTrendDown,
+    icon: <TrendDownIcon />,
     heading: 'Most SEO plateaus are a strategy problem, not a traffic problem',
     body:
       'Algorithm updates, thin content, and accumulated technical debt don\'t announce themselves. By the time traffic flatlines, the root causes have been compounding for months. The fix isn\'t more content — it\'s a clear-eyed audit of what\'s actually holding the site back, followed by a prioritized roadmap that addresses decay before chasing growth.',
@@ -18,7 +38,7 @@ const perspectives = [
     accent: 'blue',
   },
   {
-    icon: faRobot,
+    icon: <RobotIcon />,
     heading: 'AI search isn\'t coming — it\'s here, and most sites aren\'t built for it',
     body:
       'ChatGPT, Perplexity, and Google AI Overviews pull from structured, authoritative sources. They don\'t crawl like traditional search. If your content isn\'t formatted for extraction — direct answers, proper schema, topical depth — you\'re invisible on the fastest-growing search surfaces. This is the biggest shift in SEO since mobile-first indexing.',
@@ -26,7 +46,7 @@ const perspectives = [
     accent: 'purple',
   },
   {
-    icon: faChartLine,
+    icon: <ChartIcon />,
     heading: 'The gap between "doing SEO" and measuring what matters keeps growing',
     body:
       'Rankings and impressions tell you what happened. They don\'t tell you why, or what to do next. The organizations winning at organic are connecting search data to business outcomes — revenue attribution, lead quality, pipeline influence — and using that signal to make faster, better decisions about where to invest.',
@@ -68,7 +88,7 @@ export default function ServicesOverview() {
         </motion.div>
 
         <div className="space-y-20">
-          {perspectives.map((item, i) => {
+          {perspectives.map((item) => {
             const colors = accentMap[item.accent];
             return (
               <motion.div
@@ -79,10 +99,9 @@ export default function ServicesOverview() {
                 viewport={{ once: true }}
               >
                 <div className="flex items-start gap-4 mb-5">
-                  <FontAwesomeIcon
-                    icon={item.icon}
-                    className={`w-5 h-5 mt-1 ${colors.icon} shrink-0`}
-                  />
+                  <span className={`mt-1 ${colors.icon} shrink-0`}>
+                    {item.icon}
+                  </span>
                   <h3 className="text-xl md:text-2xl font-medium text-white leading-snug">
                     {item.heading}
                   </h3>
