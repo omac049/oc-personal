@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
-import ScrollProgress from '@/components/ScrollProgress';
-import FloatingNav from '@/components/FloatingNav';
-import MonogramLogo from '@/components/MonogramLogo';
-import ScrollToTop from '@/components/ScrollToTop';
+import Navbar from '@/components/Navbar';
 import StructuredData from '@/components/StructuredData';
 import Analytics from '@/components/Analytics';
 import StaticContent from '@/components/StaticContent';
@@ -48,20 +45,12 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         <link rel="dns-prefetch" href="//connect.facebook.net" />
-        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-        
-        {/* Performance hints */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
         {/* Content Security Policy — unsafe-eval required for Next.js dev mode hot reload */}
         <meta 
           httpEquiv="Content-Security-Policy" 
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.google.com *.googletagmanager.com *.google-analytics.com *.algolia.net *.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com *.jsdelivr.net https://cdn.jsdelivr.net; font-src 'self' data: fonts.gstatic.com; img-src 'self' data: *.google.com *.google-analytics.com *.googletagmanager.com; connect-src 'self' ws: wss: *.google-analytics.com *.google.com *.googletagmanager.com *.algolia.net *.algolianet.com https://formspree.io; object-src 'none'; base-uri 'self';"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.google.com *.googletagmanager.com *.google-analytics.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' data: fonts.gstatic.com; img-src 'self' data: *.google.com *.google-analytics.com *.googletagmanager.com; connect-src 'self' ws: wss: *.google-analytics.com *.google.com *.googletagmanager.com https://formspree.io; object-src 'none'; base-uri 'self';"
         />
-        
-        {/* Algolia site verification for search functionality */}
-        <meta name="algolia-site-verification" content="694E3C0A56DD602C" />
         
         {/* Fonts are optimized by Next.js automatically */}
         
@@ -84,10 +73,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {/* Enhanced UI Components */}
-        <ScrollToTop />
-        <MonogramLogo />
-        <ScrollProgress />
-        <FloatingNav />
+        <Navbar />
         
         {/* Static Content for Crawlers and No-JS Users */}
         <StaticContent />
