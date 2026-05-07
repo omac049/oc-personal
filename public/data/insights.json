@@ -9,7 +9,13 @@
         "url": "https://omar-corral.com/seo-resources/docs/ai-search/webmcp-implementation",
         "summary": "Implementation walkthrough for the WebMCP AI-agent-native layer on omar-corral.com. Architecture decisions, real TypeScript code, token math (~90% reduction vs. Playwright), CORS setup, and a production-ready checklist.",
         "date": "2026-05-06",
-        "tags": ["webmcp", "ai-agents", "implementation", "static-site", "typescript"]
+        "tags": [
+          "webmcp",
+          "ai-agents",
+          "implementation",
+          "static-site",
+          "typescript"
+        ]
       },
       {
         "title": "We Won the Rankings. The Ecosystem Moved On.",
@@ -17,15 +23,24 @@
         "url": "https://omar-corral.com/seo-resources/blog/zero-click-search-rankings-traffic-decoupled",
         "summary": "17-month GSC + GA4 dataset documenting the zero-click search impact at a university. Rankings up 51%, CTR down 79%. ~1,200 leads/month lost to AI cannibalization.",
         "date": "2026-05-06",
-        "tags": ["zero-click", "ai-overviews", "analytics", "higher-education"]
+        "tags": [
+          "zero-click",
+          "ai-overviews",
+          "analytics",
+          "higher-education"
+        ]
       },
       {
         "title": "Content Clusters Are Not What Most Teams Think They Are",
         "type": "analysis",
         "url": "https://omar-corral.com/seo-resources/blog/content-clusters-topical-authority-2026",
-        "summary": "Why most pillar-and-cluster implementations fail — and what actually builds topical authority in 2026.",
+        "summary": "Why most pillar-and-cluster implementations fail \u2014 and what actually builds topical authority in 2026.",
         "date": "2026-04-22",
-        "tags": ["content-strategy", "topical-authority", "seo"]
+        "tags": [
+          "content-strategy",
+          "topical-authority",
+          "seo"
+        ]
       },
       {
         "title": "INP Replaced FID. Here Is What That Actually Means for Your Site.",
@@ -33,19 +48,45 @@
         "url": "https://omar-corral.com/seo-resources/blog/inp-core-web-vitals-2026",
         "summary": "Practitioner-level INP debugging guide. Why INP is harder to fix than FID, and the right optimization process.",
         "date": "2026-03-18",
-        "tags": ["core-web-vitals", "inp", "technical-seo"]
+        "tags": [
+          "core-web-vitals",
+          "inp",
+          "technical-seo"
+        ]
       },
       {
         "title": "The Front Door for AI Agents (UAGC WebMCP)",
         "type": "strategy-brief",
         "url": "https://omar-corral.com/oc-mcp/",
-        "summary": "Executive brief for AI-agent-native web architecture at a university — dual-layer WebMCP with authorized tool access and honeypot defense.",
+        "summary": "Executive brief for AI-agent-native web architecture at a university \u2014 dual-layer WebMCP with authorized tool access and honeypot defense.",
         "date": "2026-04-01",
-        "tags": ["webmcp", "ai-agents", "higher-education", "web-architecture"]
+        "tags": [
+          "webmcp",
+          "ai-agents",
+          "higher-education",
+          "web-architecture"
+        ]
       }
     ],
-    "currentFocus": ["WebMCP & AI-Agent-Native Web Architecture", "Zero-Click Search Strategy", "Retrieval Pipeline Optimization", "E-E-A-T for Generative AI"]
+    "currentFocus": [
+      "WebMCP & AI-Agent-Native Web Architecture",
+      "Zero-Click Search Strategy",
+      "Retrieval Pipeline Optimization",
+      "E-E-A-T for Generative AI"
+    ]
   },
   "generated": "2026-05-06",
-  "ttl": 86400
+  "ttl": 86400,
+  "_agent": {
+    "note": "This is 1 of 6 structured tool endpoints. Discover all tools at the manifest.",
+    "manifest": "https://omar-corral.com/.well-known/webmcp.json",
+    "allTools": [
+      "getProfile",
+      "getServices",
+      "getCaseStudies",
+      "getSEOResources",
+      "getContact",
+      "getInsights"
+    ]
+  }
 }

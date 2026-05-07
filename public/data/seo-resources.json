@@ -4,7 +4,7 @@
   "data": {
     "resourceCenter": {
       "url": "https://omar-corral.com/seo-resources/",
-      "description": "Free SEO resource center — in-depth guides, checklists, and frameworks for practitioners.",
+      "description": "Free SEO resource center \u2014 in-depth guides, checklists, and frameworks for practitioners.",
       "blog": "https://omar-corral.com/seo-resources/blog"
     },
     "sections": [
@@ -44,7 +44,7 @@
         "url": "https://omar-corral.com/seo-resources/docs/ai-search",
         "guides": 5,
         "featured": true,
-        "description": "Generative Engine Optimization — appearing in AI Overviews, ChatGPT, and Perplexity"
+        "description": "Generative Engine Optimization \u2014 appearing in AI Overviews, ChatGPT, and Perplexity"
       },
       {
         "id": "checklists",
@@ -81,22 +81,44 @@
         "title": "We Won the Rankings. The Ecosystem Moved On.",
         "url": "https://omar-corral.com/seo-resources/blog/zero-click-search-rankings-traffic-decoupled",
         "date": "2026-05-06",
-        "tags": ["seo", "ai", "analytics"]
+        "tags": [
+          "seo",
+          "ai",
+          "analytics"
+        ]
       },
       {
         "title": "Content Clusters Are Not What Most Teams Think They Are",
         "url": "https://omar-corral.com/seo-resources/blog/content-clusters-topical-authority-2026",
         "date": "2026-04-22",
-        "tags": ["content-strategy", "seo"]
+        "tags": [
+          "content-strategy",
+          "seo"
+        ]
       },
       {
         "title": "INP Replaced FID. Here Is What That Actually Means for Your Site.",
         "url": "https://omar-corral.com/seo-resources/blog/inp-core-web-vitals-2026",
         "date": "2026-03-18",
-        "tags": ["technical-seo", "seo"]
+        "tags": [
+          "technical-seo",
+          "seo"
+        ]
       }
     ]
   },
   "generated": "2026-05-06",
-  "ttl": 86400
+  "ttl": 86400,
+  "_agent": {
+    "note": "This is 1 of 6 structured tool endpoints. Discover all tools at the manifest.",
+    "manifest": "https://omar-corral.com/.well-known/webmcp.json",
+    "allTools": [
+      "getProfile",
+      "getServices",
+      "getCaseStudies",
+      "getSEOResources",
+      "getContact",
+      "getInsights"
+    ]
+  }
 }

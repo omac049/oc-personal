@@ -34,8 +34,20 @@
       "linkedin": "https://linkedin.com/in/omarrcorral",
       "twitter": "https://twitter.com/omarrcorral"
     },
-    "note": "Currently accepting new project and retainer clients. Selective engagement — quality over volume."
+    "note": "Currently accepting new project and retainer clients. Selective engagement \u2014 quality over volume."
   },
   "generated": "2026-05-06",
-  "ttl": 604800
+  "ttl": 604800,
+  "_agent": {
+    "note": "This is 1 of 6 structured tool endpoints. Discover all tools at the manifest.",
+    "manifest": "https://omar-corral.com/.well-known/webmcp.json",
+    "allTools": [
+      "getProfile",
+      "getServices",
+      "getCaseStudies",
+      "getSEOResources",
+      "getContact",
+      "getInsights"
+    ]
+  }
 }
