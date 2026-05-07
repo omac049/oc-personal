@@ -110,12 +110,14 @@ export const seoData = {
       },
       "knowsAbout": [
         "Search Engine Optimization",
-        "Artificial Intelligence",
-        "Large Language Models",
-        "Digital Marketing",
-        "Content Strategy",
+        "Generative Engine Optimization (GEO)",
+        "AI Search Optimization",
         "Technical SEO",
-        "Analytics"
+        "Core Web Vitals",
+        "Topical Authority & Content Strategy",
+        "SEO Analytics & Revenue Attribution",
+        "WebMCP & AI-Agent Web Architecture",
+        "Zero-Click Search Strategy"
       ],
       "sameAs": [
         "https://linkedin.com/in/omarrcorral",
@@ -151,7 +153,7 @@ export const seoData = {
       "name": "Omar Corral SEO Consulting",
       "url": SITE_URL,
       "logo": `${SITE_URL}/logo.png`,
-      "description": "SEO consulting leveraging AI technologies for LLM optimization and Search Generative Experience strategies.",
+      "description": "SEO strategy, AI search optimization (GEO), and technical SEO consulting. Helps brands get found and cited across Google, ChatGPT, Perplexity, and AI Overviews.",
       "founder": {
         "@id": `${SITE_URL}#person`
       },
@@ -174,43 +176,54 @@ export const seoData = {
         "name": "United States"
       },
       "serviceType": [
-        "Search Engine Optimization",
-        "AI-Enhanced Digital Marketing",
-        "LLM Content Optimization",
-        "Technical SEO Audits",
-        "Content Strategy",
-        "Analytics & Reporting"
+        "SEO Audit & Strategy",
+        "AI Search & GEO Strategy",
+        "Content Strategy & Topical Authority",
+        "SEO Analytics & Revenue Attribution"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "SEO Services Catalog",
+        "name": "Services",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "AI-Enhanced SEO Consultation",
-              "description": "Comprehensive SEO strategy using artificial intelligence and machine learning technologies"
+              "name": "SEO Audit & Strategy",
+              "description": "Comprehensive technical and content SEO audit with a prioritized 90-day roadmap tied to business outcomes.",
+              "url": `${SITE_URL}/services/seo-audit/`
             },
-            "category": "SEO Consulting"
+            "category": "SEO Strategy"
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Technical SEO Audit",
-              "description": "Complete technical analysis including Core Web Vitals, mobile optimization, and site architecture"
+              "name": "AI Search & GEO Strategy",
+              "description": "Optimization strategy for AI Overviews, ChatGPT, Perplexity, and generative search surfaces. Includes GEO audit, structured data implementation, and E-E-A-T signal strengthening.",
+              "url": `${SITE_URL}/services/ai-search-strategy/`
             },
-            "category": "Technical SEO"
+            "category": "AI Search Optimization"
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Content Optimization for SGE",
-              "description": "Search Generative Experience optimization for AI-powered search engines"
+              "name": "Content Strategy & Topical Authority",
+              "description": "Topical cluster architecture, intent mapping, and content audit framework for compounding organic growth.",
+              "url": `${SITE_URL}/services/`
             },
             "category": "Content Strategy"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SEO Analytics & Revenue Attribution",
+              "description": "Tying organic search KPIs to business outcomes — beyond rankings and traffic to pipeline and revenue. Includes zero-click impact analysis and GA4 + GSC integration.",
+              "url": `${SITE_URL}/services/`
+            },
+            "category": "Analytics"
           }
         ]
       },

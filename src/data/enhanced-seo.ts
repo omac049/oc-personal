@@ -167,8 +167,8 @@ export const enhancedSEOData = {
   service: {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AI-Enhanced SEO Consulting",
-    "description": "Comprehensive SEO services combining traditional optimization with artificial intelligence technologies for enhanced search performance.",
+    "name": "SEO & AI Search Consulting",
+    "description": "SEO strategy, AI search optimization (GEO), content strategy, and analytics consulting. Specialized in getting brands found and cited across traditional and AI-powered search surfaces.",
     "provider": {
       "@type": "Person",
       "name": "Omar Corral",
@@ -180,27 +180,38 @@ export const enhancedSEOData = {
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "SEO Services",
+      "name": "Services",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "AI Content Optimization"
+            "name": "SEO Audit & Strategy",
+            "description": "Comprehensive technical and content SEO audit with a prioritized 90-day roadmap tied to business outcomes."
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Technical SEO Audit"
+            "name": "AI Search & GEO Strategy",
+            "description": "Optimization strategy for AI Overviews, ChatGPT, Perplexity, and generative search surfaces."
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "LLM Strategy Development"
+            "name": "Content Strategy & Topical Authority",
+            "description": "Topical cluster architecture, intent mapping, and content audit framework for compounding organic growth."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "SEO Analytics & Revenue Attribution",
+            "description": "Tying organic search KPIs to business outcomes — beyond rankings and traffic to pipeline and revenue."
           }
         }
       ]
