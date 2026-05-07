@@ -112,9 +112,9 @@ export const enhancedSEOData = {
       },
       {
         "@type": "HowToStep",
-        "name": "Technical SEO Optimization",
-        "text": "Optimize Core Web Vitals, mobile performance, and implement advanced schema markup.",
-        "url": `${SITE_URL}/#about`
+        "name": "Technical Foundation & Structured Data",
+        "text": "Optimize Core Web Vitals, crawlability, and schema markup so AI systems can accurately parse and cite your content.",
+        "url": `${SITE_URL}/#services`
       },
       {
         "@type": "HowToStep",

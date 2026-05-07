@@ -19,7 +19,7 @@ const STUDIES = [
     metric: { value: 4, suffix: '', label: 'AI Platforms Citing Brand' },
   },
   {
-    category: 'Healthcare \u00b7 Local SEO',
+    category: 'Healthcare · AI Search',
     headline: '$1.2M in attributed revenue from organic search',
     summary:
       'A regional healthcare provider needed local visibility in a competitive metro. With a localized content strategy, Google Business Profile optimization, and review management, organic became their top revenue channel.',

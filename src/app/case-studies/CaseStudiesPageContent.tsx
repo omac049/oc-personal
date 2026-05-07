@@ -27,7 +27,7 @@ const CASE_STUDIES = [
     metric: { value: 4, suffix: '', label: 'AI Platforms Citing Brand' },
   },
   {
-    category: 'Healthcare · Local SEO',
+    category: 'Healthcare · AI Search',
     headline: '$1.2M in attributed revenue from organic search',
     problem:
       'A regional healthcare provider was invisible in local search despite having 12 locations. Their Google Business Profiles were inconsistent, their site had no local content strategy, and they were losing patients to aggregator sites.',
