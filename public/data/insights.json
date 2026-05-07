@@ -4,6 +4,14 @@
   "data": {
     "recentAnalysis": [
       {
+        "title": "Building a WebMCP Layer on a Static Site",
+        "type": "technical-guide",
+        "url": "https://omar-corral.com/seo-resources/docs/ai-search/webmcp-implementation",
+        "summary": "Implementation walkthrough for the WebMCP AI-agent-native layer on omar-corral.com. Architecture decisions, real TypeScript code, token math (~90% reduction vs. Playwright), CORS setup, and a production-ready checklist.",
+        "date": "2026-05-06",
+        "tags": ["webmcp", "ai-agents", "implementation", "static-site", "typescript"]
+      },
+      {
         "title": "We Won the Rankings. The Ecosystem Moved On.",
         "type": "case-study",
         "url": "https://omar-corral.com/seo-resources/blog/zero-click-search-rankings-traffic-decoupled",
@@ -36,7 +44,7 @@
         "tags": ["webmcp", "ai-agents", "higher-education", "web-architecture"]
       }
     ],
-    "currentFocus": ["AI Search Optimization / GEO", "Zero-Click Search Strategy", "Web MCP Architecture", "E-E-A-T for Generative AI"]
+    "currentFocus": ["WebMCP & AI-Agent-Native Web Architecture", "Zero-Click Search Strategy", "Retrieval Pipeline Optimization", "E-E-A-T for Generative AI"]
   },
   "generated": "2026-05-06",
   "ttl": 86400

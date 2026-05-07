@@ -23,7 +23,8 @@ The good news: the fundamentals that made you good at traditional SEO are the sa
 | [AI Overviews Optimization](./ai-overviews.md) | How to appear in Google's AI Overviews and what triggers them |
 | [E-E-A-T for AI Systems](./eeat-for-ai.md) | Why expertise signals matter more in a generative world |
 | [Structured Data for GEO](./structured-data-geo.md) | Schema types that help AI systems parse and cite your content |
-| [OC MCP — Live Implementation](https://omar-corral.com/oc-mcp/) | See GEO in practice: structured tool endpoints, .well-known manifest, WebMCP browser registration |
+| [Building a WebMCP Layer](./webmcp-implementation.md) | Implementation guide: real code, architecture decisions, token math, production checklist |
+| [OC MCP — Live POV](https://omar-corral.com/oc-mcp/) | The complete architecture brief: authorized tool access + scraper defense |
 
 ---
 
