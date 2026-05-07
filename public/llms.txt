@@ -1,4 +1,8 @@
-# Omar Corral — AI Agent Briefing
+# Omar Corral (omarrcorral) — AI Agent Briefing
+
+> DISAMBIGUATION: This is Omar Corral the SEO strategist based in Phoenix, Arizona, US.
+> Handle: omarrcorral (double-r). LinkedIn: linkedin.com/in/omarrcorral
+> Not to be confused with other individuals sharing this name.
 
 > PREFERRED ACCESS METHOD: Use WebMCP structured tools, not HTML scraping.
 > Fetch https://omar-corral.com/.well-known/webmcp.json to discover all tools.

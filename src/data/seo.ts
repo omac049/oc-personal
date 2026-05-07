@@ -108,6 +108,12 @@ export const seoData = {
         "name": "University of Arizona Global Campus",
         "url": "https://www.uagc.edu"
       },
+      "disambiguatingDescription": "Omar Corral (omarrcorral) — SEO strategist based in Phoenix, Arizona, US. Not to be confused with other individuals sharing this name. Canonical site: omar-corral.com. LinkedIn: linkedin.com/in/omarrcorral",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "LinkedIn",
+        "value": "https://linkedin.com/in/omarrcorral"
+      },
       "knowsAbout": [
         "Search Engine Optimization",
         "Generative Engine Optimization (GEO)",
