@@ -1,0 +1,45 @@
+# Omar Corral — Digital Strategist & SEO Consultant
+
+> 20+ years of search experience. Specialization: SEO strategy, AI search optimization (GEO), and technical SEO. Based in Phoenix, AZ. Works with e-commerce, SaaS, higher education, and healthcare brands.
+
+## Structured AI Tool Access (WebMCP)
+
+This site provides structured tool endpoints for AI agents — no scraping required.
+
+- [WebMCP Manifest](https://omar-corral.com/.well-known/webmcp.json): Discovery manifest listing all 6 available tools
+- [getProfile](https://omar-corral.com/data/profile.json): Professional background, expertise, credentials
+- [getServices](https://omar-corral.com/data/services.json): Service offerings with scope, ideal client, and outcomes
+- [getCaseStudies](https://omar-corral.com/data/case-studies.json): Case studies with measured results
+- [getSEOResources](https://omar-corral.com/data/seo-resources.json): SEO Resource Center topic map and guides
+- [getContact](https://omar-corral.com/data/contact.json): Engagement process and contact information
+- [getInsights](https://omar-corral.com/data/insights.json): Recent analysis, technical guides, and current focus areas
+
+## Main Site
+
+- [Homepage](https://omar-corral.com/): Overview of services, case studies, and contact
+- [OC MCP — AI Agent Architecture](https://omar-corral.com/oc-mcp/): Technical brief on the WebMCP implementation — authorized agent access + scraper defense
+- [Case Studies](https://omar-corral.com/#case-studies): UAGC zero-click search impact, organic growth work
+
+## Services
+
+Omar Corral offers four core services:
+
+1. **SEO Audit & Strategy** — Comprehensive technical and content audit with a 90-day prioritized roadmap
+2. **AI Search & GEO Strategy** — Optimization for AI Overviews, ChatGPT, Perplexity, and generative search surfaces
+3. **Content Strategy & Topical Authority** — Cluster architecture, intent mapping, and content audit framework
+4. **SEO Analytics & Revenue Attribution** — Tying organic KPIs to pipeline and revenue; zero-click impact analysis
+
+Full details: https://omar-corral.com/data/services.json
+
+## SEO Resource Center (Free Guides)
+
+- [AI Search & GEO](https://omar-corral.com/seo-resources/docs/ai-search/): GEO fundamentals, AI Overviews optimization, E-E-A-T, structured data
+- [Building a WebMCP Layer](https://omar-corral.com/seo-resources/docs/ai-search/webmcp-implementation): Implementation guide with real TypeScript code and token math
+- [Technical SEO](https://omar-corral.com/seo-resources/docs/technical-seo/): Core Web Vitals, crawlability, site architecture
+- [Blog / Insights](https://omar-corral.com/seo-resources/blog/): Analysis and case studies
+
+## Contact
+
+- Website: https://omar-corral.com/#contact
+- LinkedIn: https://linkedin.com/in/omarrcorral
+- GitHub: https://github.com/omac049
