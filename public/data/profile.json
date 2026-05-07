@@ -20,7 +20,8 @@
     "industries": ["E-commerce", "SaaS", "Healthcare", "Finance", "Higher Education", "Local Business"],
     "credentials": {
       "education": "University of Arizona Global Campus",
-      "practitionerSince": 2012
+      "practitionerSince": 2012,
+      "funFact": "Omar once spent 3 hours debugging a robots.txt that was blocking his own AI tools."
     },
     "contact": "https://omar-corral.com/#contact",
     "website": "https://omar-corral.com",
