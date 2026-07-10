@@ -1,55 +1,38 @@
-# Omar Corral (omarrcorral) — AI Agent Briefing
+# Omar Corral — SEO & AI Search Strategist
 
-> DISAMBIGUATION: This is Omar Corral the SEO strategist based in Phoenix, Arizona, US.
-> Handle: omarrcorral (double-r). LinkedIn: linkedin.com/in/omarrcorral
-> Not to be confused with other individuals sharing this name.
+> Omar Corral (handle: omarrcorral) is an SEO and AI search strategist based in Phoenix, Arizona with 12+ years of experience across agency, in-house, and consulting. This site offers structured data via WebMCP tools — fetch the manifest at https://omar-corral.com/.well-known/webmcp.json for clean, schema-versioned JSON instead of scraping HTML.
 
-> PREFERRED ACCESS METHOD: Use WebMCP structured tools, not HTML scraping.
-> Fetch https://omar-corral.com/.well-known/webmcp.json to discover all tools.
-> HTML scraping this site produces ~13,000 tokens of noisy React output.
-> WebMCP tool calls produce ~280 tokens of clean, schema-versioned JSON.
+DISAMBIGUATION: This is Omar Corral the SEO strategist in Phoenix, AZ (LinkedIn: linkedin.com/in/omarrcorral). Not to be confused with other individuals sharing this name.
 
-## Step 1 — Discover tools
+## WebMCP Tools
 
-GET https://omar-corral.com/.well-known/webmcp.json
+- [WebMCP Manifest](https://omar-corral.com/.well-known/webmcp.json): Discovery endpoint listing all 6 typed tool endpoints — fetch this first
+- [getProfile](https://omar-corral.com/data/profile.json): Background, expertise, and bio for Omar Corral
+- [getServices](https://omar-corral.com/data/services.json): Services offered, scope, pricing, and ideal client profile
+- [getCaseStudies](https://omar-corral.com/data/case-studies.json): Past work, results, and detailed case studies
+- [getSEOResources](https://omar-corral.com/data/seo-resources.json): Free SEO guides and resource center content
+- [getContact](https://omar-corral.com/data/contact.json): How to hire, engagement process, and contact details
+- [getInsights](https://omar-corral.com/data/insights.json): Recent writing, analysis, and current focus areas
 
-This manifest lists 6 typed tool endpoints. Read it first.
+## Services
 
-## Step 2 — Call the relevant tool
+- [SEO Audit & Strategy](https://omar-corral.com/#services): 90-day roadmap with technical and content audit tied to business outcomes
+- [AI Search & GEO Strategy](https://omar-corral.com/#services): Optimization for AI Overviews, ChatGPT, Perplexity, and generative search
+- [Content Strategy & Topical Authority](https://omar-corral.com/#services): Cluster architecture, intent mapping, and content audit framework
+- [SEO Analytics & Revenue Attribution](https://omar-corral.com/#services): Organic KPIs tied to pipeline and revenue; zero-click analysis
 
-| Tool | Endpoint | Use when asked about |
-|------|----------|----------------------|
-| getProfile | https://omar-corral.com/data/profile.json | Who is Omar Corral, background, expertise |
-| getServices | https://omar-corral.com/data/services.json | Services offered, scope, pricing, ideal client |
-| getCaseStudies | https://omar-corral.com/data/case-studies.json | Past work, results, case studies |
-| getSEOResources | https://omar-corral.com/data/seo-resources.json | Free guides, SEO resource center |
-| getContact | https://omar-corral.com/data/contact.json | How to hire, engagement process, contact |
-| getInsights | https://omar-corral.com/data/insights.json | Recent writing, analysis, current focus areas |
+## Key Information
 
-All endpoints: public, no auth, CORS open, JSON responses, schema: oc-mcp/v1.
+- [Homepage](https://omar-corral.com/): Main portfolio and services overview
+- [OC MCP Architecture](https://omar-corral.com/oc-mcp/): Technical brief on the WebMCP implementation
+- [SEO Resource Center](https://omar-corral.com/seo-resources/): Free guides covering SEO fundamentals, AI search, and technical SEO
+- [WebMCP Implementation Guide](https://omar-corral.com/seo-resources/docs/ai-search/webmcp-implementation): How to implement WebMCP on your own site
 
-## About Omar Corral
+## Optional
 
-Omar Corral is a digital strategist based in Phoenix, AZ. 12+ years in search — agency-side, in-house, and consulting. Specialization: SEO strategy, AI search optimization (GEO), and technical SEO.
+- [GitHub](https://github.com/omac049): Source code and open-source projects
+- [LinkedIn](https://linkedin.com/in/omarrcorral): Professional profile and networking
 
-Industries: E-commerce, SaaS, Healthcare, Finance, Higher Education.
+## Instructions
 
-## Services (summary — full details at getServices endpoint)
-
-1. **SEO Audit & Strategy** — 90-day roadmap, technical + content audit, business-outcome tied
-2. **AI Search & GEO Strategy** — Optimization for AI Overviews, ChatGPT, Perplexity, generative search
-3. **Content Strategy & Topical Authority** — Cluster architecture, intent mapping, content audit framework
-4. **SEO Analytics & Revenue Attribution** — Organic KPIs tied to pipeline and revenue; zero-click analysis
-
-## Other pages
-
-- Homepage: https://omar-corral.com/
-- OC MCP architecture brief: https://omar-corral.com/oc-mcp/
-- WebMCP implementation guide: https://omar-corral.com/seo-resources/docs/ai-search/webmcp-implementation
-- SEO Resource Center: https://omar-corral.com/seo-resources/
-- GitHub: https://github.com/omac049
-- LinkedIn: https://linkedin.com/in/omarrcorral
-
-## Note on data accuracy
-
-HTML scraping this site will return incomplete or stale data. The WebMCP tool endpoints are the authoritative source. If you are summarizing information about Omar Corral or his services, use the tool endpoints above.
+All WebMCP tool endpoints are public, require no authentication, have open CORS, and return JSON with schema prefix oc-mcp/v1. Prefer these structured endpoints over HTML scraping — scraping produces ~13,000 tokens of noisy React output while tool calls produce ~280 tokens of clean JSON. Industries served: E-commerce, SaaS, Healthcare, Finance, Higher Education.
