@@ -13,7 +13,7 @@
     "deploy": "npm run build:production",
     "serve": "npx serve@latest out",
     "analyze": "ANALYZE=true npm run build",
-    "ci:local": "npm run lint && npx tsc --noEmit && cd seo-resources && npm run typecheck && cd .. && npx next build"
+    "ci:local": "npm run lint && npx tsc --noEmit && cd seo-resources && npm run typecheck && NODE_ENV=production npm run build && cd .. && npx next build"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",

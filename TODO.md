@@ -1,7 +1,7 @@
 # 📋 Project TODO - Documentation Consolidation & SEO Resources
 
 **Created:** $(date)  
-**Status:** In Progress  
+**Status:** Content complete — polish & launch QA remaining  
 **Owner:** Omar Corral
 
 ## 🎯 **PHASE 1: IMMEDIATE ACTIONS (Week 1)**
@@ -22,33 +22,17 @@
   - [x] **Main Portfolio: Fixed placeholder GA4 ID in src/data/seo.ts (was blocking analytics)**
   - [x] **Main Portfolio: Comprehensive Analytics component with Core Web Vitals tracking**
   - [x] **Global Coverage: Both omar-corral.com AND omar-corral.com/seo-resources/ now tracked**
-- [x] **Search Functionality** ✅ **PRODUCTION-READY WITH ALGOLIA**
-  - [x] **Algolia DocSearch Implementation** - Following official best practices
-  - [x] **Index Configuration**: Using 'omar_corral_com_zlq21unsr7_pages' (verified working)
-  - [x] **Environment-Aware URL Routing**:
-    - [x] Development: /seo-resources/ → / (localhost:3000)
-    - [x] Production: /seo-resources/ → /seo-resources/ (omar-corral.com)
-  - [x] **Advanced Search Features**:
-    - [x] Contextual search enabled (Docusaurus v3)
-    - [x] Typo tolerance for better UX
-    - [x] Custom placeholder text
-    - [x] Semantic HTML highlighting with `<mark>` tags
-    - [x] 10 results per page with pagination
-  - [x] **Performance Optimizations**:
-    - [x] Removed local search plugin (prevented CI/CD issues)
-    - [x] Clean production build verified
-    - [x] Proper search page path configured
-  - [x] **Documentation Created**:
-    - [x] ALGOLIA_SETUP.md (setup guide)
-    - [x] SEARCH_TROUBLESHOOTING_GUIDE.md (diagnostics)
-    - [x] SEARCH_IMPROVEMENT_GUIDE.md (optimization tips)
+- [x] **Search Functionality** ✅ **LOCAL SEARCH (Docusaurus)**
+  - [x] `@easyops-cn/docusaurus-search-local` indexes docs, blog, and pages
+  - [x] Environment-aware `baseUrl` (`/` dev, `/seo-resources/` production)
+  - [x] Search shortcut and highlighted terms on target pages
 - [x] **Complete missing assets**
-  - [x] Add proper favicon to `seo-resources/static/img/` (already exists)
-  - [x] Create social media card image (`seo-social-card.jpg`) (renamed from existing)
-  - [x] Add logo.svg to navigation (already configured)
+  - [x] Favicon via Signal logo (`seo-resources/static/img/logo.svg`)
+  - [x] Social card (`seo-resources/static/img/seo-social-card.svg`)
+  - [x] Logo in navigation
 
 ### 📝 **Content Restructuring - Getting Started**
-- [ ] **Break down 874-line getting-started/index.md into modular sections:**
+- [x] **Break down 874-line getting-started/index.md into modular sections:**
   - [x] Create `seo-fundamentals.md` (What is SEO, why it matters - lines 1-100)
   - [x] Create `how-search-engines-work.md` (Crawling, indexing, ranking - lines 100-400)
   - [x] Create `seo-pillars.md` (Authority, Relevance, Experience - lines 400-600)
@@ -110,6 +94,19 @@
   - [x] `link-building/strategies.md`
   - [x] `link-building/outreach.md`
   - [x] `link-building/measurement.md`
+
+### 🤖 **AI Search & GEO Section** ✅ **COMPLETED**
+- [x] **Create ai-search directory:**
+  - [x] `ai-search/index.md`
+  - [x] `ai-search/geo-fundamentals.md`
+  - [x] `ai-search/ai-overviews.md`
+  - [x] `ai-search/eeat-for-ai.md`
+  - [x] `ai-search/structured-data-geo.md`
+  - [x] `ai-search/webmcp-implementation.md`
+- [x] **Integration polish:**
+  - [x] Sidebar, sitemap, navbar, footer, and MCP JSON discoverability
+  - [x] Main-site `ResourcesCTA` deep-links to GEO, WebMCP, and Insights
+  - [x] `ci:local` includes production Docusaurus build
 
 ## 🔧 **PHASE 4: TECHNICAL IMPROVEMENTS (Week 6)**
 
@@ -211,5 +208,5 @@
 
 ---
 
-**Last Updated:** Initial creation  
-**Next Review:** After Phase 1 completion
+**Last Updated:** 2026-07-10  
+**Next Review:** After Phase 4–5 QA (accessibility, Lighthouse, GSC submit)

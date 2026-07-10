@@ -259,6 +259,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    {
+      url: `${BASE}/seo-resources/docs/ai-search/webmcp-implementation`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
 
     // ─── SEO Resources — Checklists ─────────────────────────────────────────
     {

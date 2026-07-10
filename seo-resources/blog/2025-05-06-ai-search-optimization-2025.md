@@ -9,7 +9,7 @@ keywords: [AI SEO, LLM optimization, AI Overviews, ChatGPT search, Perplexity SE
 
 AI is no longer a future consideration for SEO -- it's the present. Google's AI Overviews, ChatGPT's browsing mode, and Perplexity are fundamentally changing how users discover and consume content.
 
-After a decade in SEO and the last two years integrating AI tools into my workflow, here's what I've learned about optimizing for this new landscape.
+After 12+ years in SEO and the last two years integrating AI tools into my workflow, here's what I've learned about optimizing for this new landscape.
 
 <!-- truncate -->
 

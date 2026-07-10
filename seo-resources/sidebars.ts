@@ -77,6 +77,7 @@ const sidebars: SidebarsConfig = {
         'ai-search/ai-overviews',
         'ai-search/eeat-for-ai',
         'ai-search/structured-data-geo',
+        'ai-search/webmcp-implementation',
       ],
     },
     {

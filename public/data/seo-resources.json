@@ -42,7 +42,7 @@
         "id": "ai-search",
         "title": "AI Search & GEO",
         "url": "https://omar-corral.com/seo-resources/docs/ai-search",
-        "guides": 5,
+        "guides": 6,
         "featured": true,
         "description": "Generative Engine Optimization \u2014 appearing in AI Overviews, ChatGPT, and Perplexity"
       },
@@ -74,6 +74,11 @@
         "title": "Zero-Click Search Case Study",
         "url": "https://omar-corral.com/seo-resources/blog/zero-click-search-rankings-traffic-decoupled",
         "description": "17-month dataset showing the ranking/CTR decoupling effect"
+      },
+      {
+        "title": "WebMCP Implementation Guide",
+        "url": "https://omar-corral.com/seo-resources/docs/ai-search/webmcp-implementation",
+        "description": "How to expose structured site data to AI agents via the WebMCP browser API"
       }
     ],
     "recentPosts": [

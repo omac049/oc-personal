@@ -22,7 +22,7 @@ function SEOResourcesHero() {
           </p>
           <div className={styles.heroStats}>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>6</div>
+              <div className={styles.statNumber}>8</div>
               <div className={styles.statLabel}>Topic Areas</div>
             </div>
             <div className={styles.statItem}>

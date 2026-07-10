@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'SEO Resource Center',
   tagline: 'Free guides, checklists, and frameworks for organic search — from fundamentals to AI search readiness',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -126,7 +126,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/seo-social-card.jpg',
+    image: 'img/seo-social-card.svg',
     navbar: {
       title: 'SEO Resource Center',
       logo: {
@@ -143,6 +143,11 @@ const config: Config = {
         {
           to: '/docs/checklists',
           label: 'Checklists',
+          position: 'left',
+        },
+        {
+          to: '/docs/ai-search',
+          label: 'AI Search',
           position: 'left',
         },
         {
@@ -188,6 +193,10 @@ const config: Config = {
               label: 'Link Building',
               to: '/docs/link-building',
             },
+            {
+              label: 'AI Search & GEO',
+              to: '/docs/ai-search',
+            },
           ],
         },
         {
@@ -196,6 +205,10 @@ const config: Config = {
             {
               label: 'Checklists',
               to: '/docs/checklists',
+            },
+            {
+              label: 'WebMCP Guide',
+              to: '/docs/ai-search/webmcp-implementation',
             },
             {
               label: 'SEO Tools',

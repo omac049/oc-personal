@@ -1,41 +1,41 @@
-# Website
+# SEO Resource Center
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Docusaurus subsite for [omar-corral.com/seo-resources](https://omar-corral.com/seo-resources/) — free guides, checklists, GEO docs, and the **SEO Insights** blog.
 
-## Installation
-
-```bash
-yarn
-```
-
-## Local Development
+## Local development
 
 ```bash
-yarn start
+cd seo-resources
+npm install
+npm start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Dev server runs at `http://localhost:3000` with `baseUrl: /`.
 
-## Build
+## Production build
 
 ```bash
-yarn build
+NODE_ENV=production npm run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Output goes to `build/`. The root deploy workflow copies this into `out/seo-resources/` alongside the Next.js static export.
 
-## Deployment
+## Content map
 
-Using SSH:
+| Section | Path |
+|---------|------|
+| Getting Started | `docs/getting-started/` |
+| Keyword Research | `docs/keyword-research/` |
+| Technical SEO | `docs/technical-seo/` |
+| Content Optimization | `docs/content-optimization/` |
+| Link Building | `docs/link-building/` |
+| AI Search & GEO | `docs/ai-search/` |
+| Checklists | `docs/checklists/` |
+| Tools | `docs/tools/` |
+| Insights blog | `blog/` |
 
-```bash
-USE_SSH=true yarn deploy
-```
+## Cross-site integration
 
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+- Main portfolio links: `Navbar`, `Footer`, `ResourcesCTA`, `not-found`
+- Sitemap entries: `src/app/sitemap.ts`
+- WebMCP tool data: `public/data/seo-resources.json`

@@ -687,13 +687,13 @@ graph TB
             "@type": "ListItem",
             "position": 3,
             "name": "Technical SEO",
-            "item": "https://omar-corral.com/seo-resources/technical-seo/"
+            "item": "https://omar-corral.com/seo-resources/docs/technical-seo"
         },
         {
             "@type": "ListItem",
             "position": 4,
             "name": "Structured Data Guide",
-            "item": "https://omar-corral.com/seo-resources/technical-seo/structured-data/"
+            "item": "https://omar-corral.com/seo-resources/docs/technical-seo/structured-data"
         }
     ]
 }

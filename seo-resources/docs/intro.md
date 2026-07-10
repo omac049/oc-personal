@@ -29,7 +29,8 @@ Free, in-depth guides to help you understand and implement modern organic search
 ### For Advanced Teams
 - AI-enhanced SEO strategies
 - Enterprise SEO approaches
-- Search Generative Experience (SGE) optimization
+- AI Overviews and GEO optimization
+- WebMCP and LLM discoverability
 - Advanced technical implementations
 
 ## Resource Categories
@@ -49,6 +50,9 @@ Create content that ranks well and provides genuine value.
 ### [Link Building](/docs/link-building/)
 Build authority and trust through strategic link acquisition.
 
+### [AI Search & GEO](/docs/ai-search/)
+Appear in AI Overviews, Perplexity, and ChatGPT — plus WebMCP implementation for LLM discoverability.
+
 ### [Checklists](/docs/checklists/)
 Actionable checklists so you never miss critical SEO tasks.
 
@@ -65,8 +69,9 @@ Created by **Omar Corral** — digital strategist with 12+ years in organic sear
 ## Quick Start
 
 1. **New to SEO?** Start with the [Getting Started Guide](/docs/getting-started/)
-2. **Need a checklist?** Browse the [Checklists](/docs/checklists/) section
-3. **Looking for tools?** Check out [Tools & Resources](/docs/tools/)
+2. **Preparing for AI search?** Read [GEO Fundamentals](/docs/ai-search/geo-fundamentals)
+3. **Need a checklist?** Browse the [Checklists](/docs/checklists/) section
+4. **Looking for tools?** Check out [Tools & Resources](/docs/tools/)
 
 :::tip Pro Tip
 Focus on **user intent** rather than just keywords. Search algorithms are increasingly sophisticated at understanding what users actually want — and so are AI assistants.

@@ -242,7 +242,7 @@ H1 could be: "Complete On-Page SEO Checklist for Higher Rankings"
 - [ ] 🟡 Avoid unnecessary parameters and session IDs
 - [ ] 🟢 Remove stop words (a, the, and, or) if URL becomes too long
 
-**Good URL:** `https://omar-corral.com/seo-resources/on-page-checklist/`  
+**Good URL:** `https://omar-corral.com/seo-resources/docs/checklists/on-page-checklist`  
 **Bad URL:** `https://omar-corral.com/page.php?id=123&cat=seo`
 
 ### URL Management

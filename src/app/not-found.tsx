@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: '/', label: 'Home', desc: 'Start here' },
   { href: '/services', label: 'Services', desc: 'SEO · AI Search · Strategy' },
   { href: '/case-studies', label: 'Case Studies', desc: 'Real results, real clients' },
+  { href: '/seo-resources/', label: 'SEO Resources', desc: 'Free guides, checklists & GEO' },
 ];
 
 function ScanGrid() {

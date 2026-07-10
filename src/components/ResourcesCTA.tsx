@@ -4,24 +4,24 @@ import { motion } from 'framer-motion';
 
 const RESOURCES = [
   {
-    category: 'AI & Search',
-    title: 'How AI Is Changing SEO: What You Need to Know',
-    href: '/seo-resources/blog/ai-search-optimization-guide',
+    category: 'AI & GEO',
+    title: 'GEO Fundamentals — How LLMs Retrieve and Cite Content',
+    href: '/seo-resources/docs/ai-search/geo-fundamentals',
+  },
+  {
+    category: 'AI Discoverability',
+    title: 'WebMCP Implementation — Expose Your Site to AI Agents',
+    href: '/seo-resources/docs/ai-search/webmcp-implementation',
+  },
+  {
+    category: 'Insights',
+    title: 'We Won the Rankings. The Ecosystem Moved On.',
+    href: '/seo-resources/blog/zero-click-search-rankings-traffic-decoupled',
   },
   {
     category: 'Core Frameworks',
     title: 'The Three Pillars of SEO: Authority, Relevance & Experience',
     href: '/seo-resources/docs/getting-started/seo-pillars',
-  },
-  {
-    category: 'Search Intent',
-    title: 'The 3Cs Framework: Match What Users Actually Want',
-    href: '/seo-resources/docs/getting-started/search-intent-optimization',
-  },
-  {
-    category: 'Technical SEO',
-    title: 'Structured Data & Schema Markup — What Actually Matters',
-    href: '/seo-resources/docs/technical-seo/structured-data',
   },
 ];
 
