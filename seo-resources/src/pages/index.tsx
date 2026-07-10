@@ -130,7 +130,7 @@ function SEOKnowledgeShowcase() {
     {
       title: 'AI Search & GEO',
       description: 'Generative Engine Optimization — how to appear in AI Overviews, Perplexity, and ChatGPT answers.',
-      items: ['LLM citation signals', 'AI Overview optimization', 'E-E-A-T for AI systems'],
+      items: ['LLM citation signals', 'AI Overview optimization', 'SEO task agents & MCP tooling'],
       link: '/docs/ai-search',
     },
   ];
@@ -200,7 +200,7 @@ function SEOQuickTips() {
           {tips.map((tip, idx) => (
             <div key={idx} className={clsx('col col--3')}>
               <div className={styles.tipCard}>
-                <h4>{tip.tip}</h4>
+                <h3>{tip.tip}</h3>
                 <p>{tip.description}</p>
               </div>
             </div>

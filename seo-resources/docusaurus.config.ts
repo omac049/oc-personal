@@ -151,6 +151,16 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: '/docs/ai-search/seo-agents',
+          label: 'SEO Agents',
+          position: 'left',
+        },
+        {
+          to: '/docs/ai-search/webmcp-implementation',
+          label: 'WebMCP Guide',
+          position: 'left',
+        },
+        {
           to: '/blog',
           label: 'Insights',
           position: 'left',
@@ -205,6 +215,10 @@ const config: Config = {
             {
               label: 'Checklists',
               to: '/docs/checklists',
+            },
+            {
+              label: 'SEO Agents',
+              to: '/docs/ai-search/seo-agents',
             },
             {
               label: 'WebMCP Guide',

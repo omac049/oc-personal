@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Building a WebMCP Layer — Implementation Guide
 description: How to build a WebMCP AI-agent-native layer on a static site. Architecture decisions, real code, token math, and a production implementation walkthrough.
 keywords: [WebMCP implementation, AI agent structured access, navigator.modelContext, well-known webmcp.json, static site AI tools, MCP browser API, AI agent optimization]
@@ -8,6 +8,8 @@ keywords: [WebMCP implementation, AI agent structured access, navigator.modelCon
 # Building a WebMCP Layer on a Static Site
 
 This is the implementation story behind [OC MCP](https://omar-corral.com/oc-mcp/) — the AI-agent-native layer running on `omar-corral.com`. It covers the architecture decisions, the actual code, what breaks, and how to build this on any static site without server infrastructure.
+
+> **Outbound agents:** To build agents that *run SEO workflows* (GSC analysis, crawl triage, content briefs), see [Building Agents for SEO Tasks](./seo-agents.md).
 
 The live implementation is on GitHub Pages. No serverless functions, no API routes, no backend. Just static JSON and a browser component.
 

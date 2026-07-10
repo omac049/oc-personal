@@ -67,7 +67,7 @@
 
 .statLabel {
   font-size: 0.85rem;
-  color: #71717a;
+  color: #a1a1aa;
   margin-top: 0.5rem;
   letter-spacing: 0.03em;
 }
@@ -127,7 +127,7 @@
 }
 
 .featureSubtitle {
-  color: #00E55C !important;
+  color: #86efac !important;
   font-size: 0.9rem !important;
   font-weight: 600;
   text-transform: uppercase;
@@ -136,7 +136,7 @@
 }
 
 [data-theme='light'] .featureSubtitle {
-  color: #00B847 !important;
+  color: #047857 !important;
 }
 
 .featureContent p {
@@ -184,7 +184,7 @@
 
 .sectionHeader p {
   font-size: 1.1rem;
-  color: #71717a;
+  color: #a1a1aa;
   max-width: 640px;
   margin: 0 auto;
 }
@@ -262,6 +262,16 @@
   color: #475569;
 }
 
+.frameworkCard .button--outline.button--primary {
+  color: #fafafa !important;
+  border-color: #00E55C !important;
+}
+
+[data-theme='light'] .frameworkCard .button--outline.button--primary {
+  color: #0f172a !important;
+  border-color: #00B847 !important;
+}
+
 .frameworkItems li::before {
   content: '→';
   color: #00E55C;
@@ -291,7 +301,7 @@
   border-color: rgba(0, 229, 92, 0.25);
 }
 
-.tipCard h4 {
+.tipCard h3 {
   color: white;
   margin-bottom: 0.75rem;
   font-size: 1rem;

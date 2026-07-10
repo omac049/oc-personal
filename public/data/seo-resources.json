@@ -42,7 +42,7 @@
         "id": "ai-search",
         "title": "AI Search & GEO",
         "url": "https://omar-corral.com/seo-resources/docs/ai-search",
-        "guides": 6,
+        "guides": 7,
         "featured": true,
         "description": "Generative Engine Optimization \u2014 appearing in AI Overviews, ChatGPT, and Perplexity"
       },
@@ -74,6 +74,11 @@
         "title": "Zero-Click Search Case Study",
         "url": "https://omar-corral.com/seo-resources/blog/zero-click-search-rankings-traffic-decoupled",
         "description": "17-month dataset showing the ranking/CTR decoupling effect"
+      },
+      {
+        "title": "Building Agents for SEO Tasks",
+        "url": "https://omar-corral.com/seo-resources/docs/ai-search/seo-agents",
+        "description": "Design bounded agents for GSC analysis, technical triage, and content briefs with human review gates"
       },
       {
         "title": "WebMCP Implementation Guide",
