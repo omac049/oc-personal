@@ -67,13 +67,13 @@ export default function Hero() {
       </div>
 
       <p
-        className="absolute bottom-8 left-1/2 z-10 max-w-md -translate-x-1/2 px-6 text-center text-xs animate-[fadeUp_0.5s_1.0s_both_cubic-bezier(0.23,1,0.32,1)]"
+        className="absolute bottom-8 left-1/2 z-10 w-full max-w-xs -translate-x-1/2 px-6 text-center text-xs leading-relaxed animate-[fadeUp_0.5s_1.0s_both_cubic-bezier(0.23,1,0.32,1)] sm:max-w-md"
         style={{ color: 'var(--color-muted)' }}
       >
-        <span className="font-medium uppercase tracking-[0.2em]">
+        <span className="block font-medium uppercase tracking-[0.2em] sm:inline">
           Currently exploring:
-        </span>{' '}
-        {CURRENTLY_EXPLORING}
+        </span>
+        <span className="sm:ml-1">{CURRENTLY_EXPLORING}</span>
       </p>
     </section>
   );
