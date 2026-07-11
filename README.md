@@ -1,88 +1,55 @@
-# Omar Corral Portfolio
+# Omar Corral — Portfolio & SEO Resource Center
 
-## Project Overview
+Public marketing site and free SEO education subsite for [omar-corral.com](https://omar-corral.com), deployed as a combined static export to GitHub Pages.
 
-Welcome to the codebase for Omar Corral's personal website. This portfolio showcases Omar's expertise as an SEO specialist and digital marketing strategist. It is designed to present his professional profile, highlight his skills, and share his experience in search-engine optimization (SEO) and digital marketing. Built with modern frontend technologies, the site is optimized for performance, accessibility, and SEO to ensure potential clients and employers can easily learn about Omar and connect with him.
+## What's in this repo
 
-## Purpose
+| Surface | Stack | URL |
+|---------|-------|-----|
+| **Main portfolio** | Next.js 15 (static export) | [omar-corral.com](https://omar-corral.com) |
+| **SEO Resource Center** | Docusaurus 3 | [omar-corral.com/seo-resources/](https://omar-corral.com/seo-resources/) |
+| **Client operations** | Node scripts + GitHub Actions | Invoicing under `scripts/invoicing/` |
 
-Omar uses this platform to demonstrate how he helps businesses grow by understanding search algorithms, identifying keyword opportunities, and crafting data-driven strategies that improve search rankings. His experience covers keyword research, on-page and technical SEO, content strategy, analytics, and proficiency with industry-leading tools such as Google Search Console, Google Analytics, SEMrush, Moz, and Ahrefs. The site also details his work history, including roles at the University of Arizona Global Campus, Zovio, Manifest LLC, and V Digital Services.
+The main site covers services, case studies, contact, and OC MCP (`/oc-mcp`). The resource center ships 39 guides across 8 sections, an **Insights** blog, and AI Search & GEO documentation including the [WebMCP implementation guide](https://omar-corral.com/seo-resources/docs/ai-search/webmcp-implementation).
 
----
+## Quick start
 
-## Features
+```bash
+# Main site
+npm install
+npm run dev          # http://localhost:3000
 
-- **About Section**  
-  An introduction highlighting Omar's SEO philosophy and the value he brings as a consultant and manager.
+# SEO Resource Center (separate dev server)
+cd seo-resources && npm install && npm start   # http://localhost:3000 (baseUrl /)
+```
 
-- **Skills Matrix**  
-  Showcases expertise areas such as keyword research, on-page/off-page/technical SEO, content strategy, mobile/local/eCommerce SEO, analytics, schema markup, bilingual SEO, and AI tools like ChatGPT and Midjourney.
+## Verify before pushing
 
-- **Experience Timeline**  
-  Summarizes past and current professional roles with measurable achievements, including significant organic traffic growth and performance marketing successes.
+```bash
+npm run ci:local
+```
 
-- **Contact & Social Links**  
-  Provides multiple ways to get in touch, including email and social media profiles, encouraging collaboration.
+Runs lint, typecheck, production Docusaurus build, Next build, and merges both into `out/` the same way CI deploy does.
 
----
+## Deploy
 
-## Libraries & Tools
+Push to `main` → GitHub Actions builds both sites and deploys to GitHub Pages.
 
-This project leverages a modern frontend stack with the following key libraries and tools:
+See **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** for the full workflow. Resource-center content procedures live in **[seo-resources/MAINTENANCE.md](./seo-resources/MAINTENANCE.md)**.
 
-- **Next.js & React**  
-  Core framework providing routing, components, static site generation, and server-side rendering. Supports static export for fast, SEO-friendly pages.  
-  [Next.js Documentation](https://nextjs.org)
+## Key paths
 
-- **Tailwind CSS**  
-  Utility-first CSS framework for rapid, responsive design with easy customization.  
-  [Tailwind CSS](https://tailwindcss.com)
+- `src/components/` — Signal UI (`Hero`, `Navbar`, `ResourcesCTA`, `MCPTools`, …)
+- `src/data/` — Marketing copy and metadata
+- `public/data/` — WebMCP tool JSON (`profile.json`, `seo-resources.json`, …)
+- `seo-resources/docs/` — Guide content
+- `seo-resources/blog/` — Insights posts
+- `scripts/invoicing/` — Monthly invoice generator (secrets via `.env.invoicing` / GitHub Actions)
 
-- **Font Awesome**  
-  Comprehensive icon library included for UI enhancement.
+## Design
 
-- **Framer Motion**  
-  Production-grade animation library for smooth transitions and interactive effects.  
-  [Framer Motion](https://www.framer.com/motion/)
-
-- **gh-pages**  
-  Dev dependency used to deploy the built site to GitHub Pages.
-
-- **Optional Utilities**  
-  Includes `@headlessui/react` for accessible UI components, icon libraries like `lucide-react` or `heroicons`, and email utilities such as `@emailjs/browser` or Formspree for contact forms.
-
----
-
-## Customising Your Content
-
-Content is managed through data files in the `src/data` directory:
-
-- `hero.js` — Headline and subheading for the landing page.
-- `about.js` — Text describing Omar's background and approach.
-- `skills.js` — Array of skills and tools.
-- `experience.js` — Work history with roles and achievements.
-- `socials.js` — Links to social profiles and contact email.
-
-Edit these files to personalize your portfolio. The components import these modules to render dynamic sections.
-
----
-
-## Design & Brand Guidelines
-
-For comprehensive design guidelines, color palettes, typography, components, and brand standards, please refer to the dedicated **[Brand Guide](./brand_guide.md)**.
-
-The brand guide includes:
-- Complete color palette and usage guidelines
-- Typography scale and font specifications  
-- Component styling standards
-- Animation and interaction principles
-- Layout and spacing guidelines
-- SEO and performance standards
-- Accessibility requirements
-- Implementation checklists
-
----
+Signal palette: black / white / signal-green (`#00E55C`), DM Serif Display + Inter. Spec: `docs/superpowers/specs/2026-05-06-signal-rebrand-design.md`.
 
 ## License
 
-This project is licensed under the MIT License. You are free to use, modify, and distribute the code for your personal portfolio or to help others establish their online presence.
+MIT

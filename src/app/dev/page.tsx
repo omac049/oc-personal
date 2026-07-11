@@ -1,21 +1,21 @@
 import dynamic from 'next/dynamic';
-import Hero from '@/components/dev/Hero';
+import DevHero from '@/components/dev/Hero';
 import SignalFlowClient from '@/components/dev/SignalFlowClient';
 
 const PhilosophyStrip = dynamic(
   () => import('@/components/dev/PhilosophyStrip'),
 );
-const Services = dynamic(() => import('@/components/dev/Services'));
-const CaseStudies = dynamic(() => import('@/components/dev/CaseStudies'));
-const ResourcesCTA = dynamic(() => import('@/components/dev/ResourcesCTA'));
+const DevServices = dynamic(() => import('@/components/dev/Services'));
+const DevCaseStudies = dynamic(() => import('@/components/dev/CaseStudies'));
+const DevResourcesCTA = dynamic(() => import('@/components/dev/ResourcesCTA'));
 const Beliefs = dynamic(() => import('@/components/dev/Beliefs'));
 const WhatImLearning = dynamic(
   () => import('@/components/dev/WhatImLearning'),
 );
-const FAQ = dynamic(() => import('@/components/dev/FAQ'));
-const Contact = dynamic(() => import('@/components/dev/Contact'));
+const DevFAQ = dynamic(() => import('@/components/dev/FAQ'));
+const DevContact = dynamic(() => import('@/components/dev/Contact'));
 
-export default function Home() {
+export default function DevHome() {
   return (
     <>
       <SignalFlowClient />
@@ -32,15 +32,15 @@ export default function Home() {
         itemType="https://schema.org/Person"
         className="relative z-[1]"
       >
-        <Hero />
+        <DevHero />
         <PhilosophyStrip />
-        <Services />
-        <CaseStudies />
-        <ResourcesCTA />
+        <DevServices />
+        <DevCaseStudies />
+        <DevResourcesCTA />
         <Beliefs />
         <WhatImLearning />
-        <FAQ />
-        <Contact />
+        <DevFAQ />
+        <DevContact />
       </main>
     </>
   );

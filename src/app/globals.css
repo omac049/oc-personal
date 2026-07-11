@@ -144,6 +144,18 @@ body {
   }
 }
 
+/* Hero entrance animation — CSS-only to avoid blocking LCP on JS */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Core Web Vitals */
 img,
 video,
